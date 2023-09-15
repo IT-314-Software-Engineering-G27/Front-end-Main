@@ -17,7 +17,6 @@ export default function IndividualList() {
             setIsLoading(false);
         });
     }, [query, page]);
-    console.log(organizations);
 
     return (
         <>
@@ -27,7 +26,7 @@ export default function IndividualList() {
             <ul>
                 {organizations.map((organization) => (
                     <li key={organization.legal_name}>
-                        <OrganizationCard organization={organization} />
+                        <OrganizationCard organization={organization} isLoading={isLoading} />
                     </li>
                 ))}
             </ul>

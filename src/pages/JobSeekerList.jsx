@@ -21,13 +21,13 @@ export default function JobSeekerList() {
             <h1>JobSeekers</h1>
             <input value={query} onChange={(e) => setQuery(e.target.value)} />
             {isLoading && <h2> Loading...</h2>}
-            <ul>
-                {jobSeekers.map((jobSeeker) => (
-                    <li key={jobSeeker.username}>
-                        <JobSeekerCard jobSeeker={jobSeeker} />
-                    </li>
-                ))}
-            </ul>
+                <ul>
+                    {jobSeekers.map((jobSeeker) => (
+                        <li key={jobSeeker.username}>
+                            <JobSeekerCard jobSeeker={jobSeeker} isLoading={isLoading} />
+                        </li>
+                    ))}
+                </ul>
             <button onClick={() => setPage((page) => (page + 1))} disabled={page === -1} > Next Page </button>
             <button onClick={() => setPage((page) => (page - 1))} disabled={page === 1} > Previous Page </button>
         </>);

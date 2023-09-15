@@ -24,7 +24,7 @@ export default function IndividualList() {
             <ul>
                 {individuals.map((individual) => (
                     <li key={individual.username}>
-                        <IndividualCard individual={individual} />
+                        <IndividualCard individual={individual} isLoading={isLoading} />
                     </li>
                 ))}
             </ul>
