@@ -1,8 +1,7 @@
 import React from 'react';
-import Form from './components/Form';
-import Logo from './components/Logo';
-import './App.css';
-import './components/main.css'
+import Form from '../components/Organization_Form';
+import Logo from '../components/Logo';
+import '../components/main.css'
 
 function App() {
   return (
