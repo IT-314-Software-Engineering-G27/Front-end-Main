@@ -21,7 +21,6 @@ function Root() {
                     {/* <Route path="/" element={<h1> Home </h1>} /> */}
                     <Route path="/individuals" element={<IndividualList />} />
                     <Route path="/organizations" element={<OrganizationList />} />
-                    <Route path="/jobseekers" element={<JobSeekerList />} />
                 </Routes>
             </HashRouter>
         </>
