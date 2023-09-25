@@ -27,7 +27,7 @@ const Register = () => {
                     </p>
                     <button>
                         {/* link to RegAsInd */}
-                        <Link to='' className='mainSn'>
+                        <Link to='/Register/Individual' className='mainSn'>
                             Sign up
                         </Link>
                     </button>
@@ -43,7 +43,7 @@ const Register = () => {
                     </p>
                     <button>
                         {/* link to RegAsOrg */}
-                        <Link to='' className='mainSn'>
+                        <Link to='/Register/Organization' className='mainSn'>
                             Sign up
                         </Link>
                     </button>
