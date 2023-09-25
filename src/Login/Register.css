@@ -1,0 +1,115 @@
+#top {
+    display: flex;
+    justify-content: right;
+    margin: 10px;
+    padding: 10px;
+    position: fixed;
+    margin-right: 0;
+    width: 98%;
+}
+
+#title {
+    color: #2f1263;
+}
+
+#maintext {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+    /* align-items: center;
+    justify-content: center;*/
+}
+
+
+
+.register {
+
+    /* display: flex; */
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('\Logo.png');
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.topsn {
+    position: fixed;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 15ex;
+}
+
+#indi, #org {
+    background-color: rgba(222, 215, 253, 0.6);
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    padding: 0 10ex;
+    width: 100vw;
+
+
+}
+
+p {
+    font-weight: bold;
+}
+
+#org {
+    background-color: rgba(255, 255, 255, 0.6);
+
+}
+#indi button,
+#org button {
+    background-color: #2f1263;
+    /* color:white; */
+    width: 60%;
+    height: 35px;
+    border-radius: 2em;
+    margin-top: 4ex;
+    /* margin:0 8em; */
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+.mainSn {
+    font-size: larger;
+}
+
+#btn {
+    width: 160px;
+    height: 30px;
+    background-color: #2f1263;
+    border-radius: 2em;
+    /* color: white; */
+    margin-right: 35px;
+    margin-top: 10px;
+}
+
+@media (max-width: 582px) {
+    .register {
+
+        /* Fit the background as content */
+          width: fit-content; 
+      
+        }
+
+        #maintext{
+            flex-direction: column;
+        }
+
+        #indi{
+            padding-top: 15ex;
+            height:50%;
+        }
+
+        #org{
+            /* padding-top: 15ex; */
+            height:50%;
+        }
+}
