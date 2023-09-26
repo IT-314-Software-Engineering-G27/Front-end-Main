@@ -13,7 +13,7 @@ function RegisterIndividual() {
                         <td style={{ height: '50pt', textAlign: 'center', width: '90%' }}>Register as Individual</td>
                         <td style={{ height: '50pt', textAlign: 'center', width: '10%' }}>
                             <button class="button button1" >
-                                <Link to='/login'>
+                                <Link to='/login' style={{ color: 'black' }}>
                                     Sign in
                                 </Link>
                             </button>

@@ -12,8 +12,8 @@ function RegisterOrganization() {
                     <tr class="header">
                         <td style={{ height: '50pt', textAlign: 'center', width: '90%' }}>Register as Organization</td>
                         <td style={{ height: '50pt', textAlign: 'center', width: '10%' }}>
-                            <button class="button button1">
-                                <Link to='/login'>
+                            <button class="button button1" >
+                                <Link to='/login' style={{ color: 'black' }}>
                                     Sign in
                                 </Link>
                             </button>
