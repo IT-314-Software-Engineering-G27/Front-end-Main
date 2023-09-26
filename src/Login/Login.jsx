@@ -3,13 +3,13 @@ import './Login.css';
 import Phone from './Phone.png';
 import document from './document.png';
 import Logo from './Logo.png';
-import {Link} from  'react-router-dom';
-import {useState} from 'react';
+import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
 
 const Login = () => {
-    const[regi, setRegi] = useState();
-    const handleEventChange= (evnt)=>{
+    const [regi, setRegi] = useState();
+    const handleEventChange = (evnt) => {
         setRegi(evnt.target.value);
     }
 
@@ -18,11 +18,11 @@ const Login = () => {
             <div id='nav'>
 
                 <div id='leftnav'>
-                <Link to=''>
-                <img src={document} alt="legal section" id='legal' />
+                    <Link to=''>
+                        <img src={document} alt="legal section" id='legal' />
                     </Link>
                     <Link to=''>
-                    <img src={Phone} alt="contact us" id='contact' />
+                        <img src={Phone} alt="contact us" id='contact' />
                     </Link>
                 </div>
 
@@ -46,14 +46,14 @@ const Login = () => {
 
                         <div id='radio1'>
                             <label>
-                                <input type="radio" name='regi' value='Individual' onChange={handleEventChange}/>
+                                <input type="radio" name='regi' value='Individual' onChange={handleEventChange} />
                                 Individual
                             </label>
                         </div>
 
                         <div id='radio2'>
                             <label>
-                                <input type="radio" name='regi' value='Organisation' onChange={handleEventChange}/>
+                                <input type="radio" name='regi' value='Organisation' onChange={handleEventChange} />
                                 Organisation
                             </label>
                         </div>
@@ -74,14 +74,14 @@ const Login = () => {
                             Password
                         </p>
                         <div>
-                                <input type='password' className='inbox' id='pswd'/>
+                            <input type='password' className='inbox' id='pswd' />
                         </div>
                     </div>
 
                     <div id='snBtn'>
                         <button id='signInbtn' >
                             <Link to=''>
-                            Sign in
+                                Sign in
                             </Link>
                         </button>
                     </div>
@@ -94,14 +94,14 @@ const Login = () => {
                                 Remember me
                             </label>
                         </div>
-                      
+
                         <div id='help'>
-                        <Link to=''>
+                            <Link to=''>
                                 Need help?
-                                </Link>
+                            </Link>
                         </div>
-                       
-                        
+
+
                     </div>
 
                     <div id='lastLine'>
@@ -112,13 +112,13 @@ const Login = () => {
                         </Link>
 
                     </div>
-                 </div>
+                </div>
                 <div id='lg'>
                     <img src={Logo} alt="startApp logo" id='SAlogo' />
                 </div>
 
             </div>
-         </div>
+        </div>
     )
 }
 
