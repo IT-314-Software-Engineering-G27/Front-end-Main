@@ -1,5 +1,5 @@
 import React from 'react';
-import Form from '../components/Individual_Form';
+import IndividualForm from '../components/IndividualForm';
 import Logo from '../components/Logo';
 import '../components/main.css'
 
@@ -21,7 +21,7 @@ function RegisterIndividual() {
           <tr>
             <td style={{ padding: '10%', paddingTop: 0, width: '10%'}}></td>
             <td style={{ padding: '10%', paddingTop: '10pt', width: '40%'}}>
-              <Form />
+              <IndividualForm />
             </td>
             <td style={{ padding: '10%', paddingTop: 0, width: '40%' }}>
               <Logo />

@@ -1,5 +1,5 @@
 import React from 'react';
-import Form from '../components/Organization_Form';
+import OrganizationForm from '../components/OrganizationForm';
 import Logo from '../components/Logo';
 import '../components/main.css'
 
@@ -21,7 +21,7 @@ function RegisterOrganization() {
           <tr>
             <td style={{ padding: '10%', paddingTop: 0, width: '10%'}}></td>
             <td style={{ padding: '10%', paddingTop: '10pt', width: '40%'}}>
-              <Form />
+              <OrganizationForm />
             </td>
             <td style={{ padding: '10%', paddingTop: 0, width: '40%' }}>
               <Logo />
