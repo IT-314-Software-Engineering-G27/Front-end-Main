@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { fetchIndividuals } from "../database/Individual";
+import { fetchIndividuals } from "../database/individual";
 import IndividualCard from "../components/IndividualCard";
 
 export default function IndividualList() {

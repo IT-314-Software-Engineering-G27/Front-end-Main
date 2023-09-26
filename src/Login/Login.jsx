@@ -6,7 +6,6 @@ import Logo from './Logo.png';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 
-
 const Login = () => {
     const [regi, setRegi] = useState();
     const handleEventChange = (evnt) => {
@@ -28,10 +27,9 @@ const Login = () => {
 
                 <div id='rightnav'>
                     <button id='snup'>
-                        <Link to='/Register'>
+                        <Link to='/register'>
                             Sign up
                         </Link>
-
                     </button>
                 </div>
 
@@ -79,11 +77,13 @@ const Login = () => {
                     </div>
 
                     <div id='snBtn'>
+
                         <button id='signInbtn' >
-                            <Link to=''>
+                            <Link to='/'>
                                 Sign in
                             </Link>
                         </button>
+
                     </div>
 
                     <div id='footer'>
@@ -107,7 +107,7 @@ const Login = () => {
                     <div id='lastLine'>
                         Don't have an account?
 
-                        <Link to="/Register">
+                        <Link to="/register">
                             Sign up
                         </Link>
 

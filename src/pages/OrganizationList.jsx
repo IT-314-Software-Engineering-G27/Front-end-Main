@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { fetchOrganizations } from "../database/Organization";
+import { fetchOrganizations } from "../database/organization";
 import OrganizationCard from "../components/OrganizationCard";
 
 export default function IndividualList() {

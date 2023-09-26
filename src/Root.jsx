@@ -1,5 +1,4 @@
 
-import './App.css';
 import { HashRouter, Navigate } from "react-router-dom";
 import { Routes, Route } from "react-router";
 import Header from './Header';
@@ -18,13 +17,13 @@ function Root() {
             <ThemeContextProvider>
                 <HashRouter>
                     <Routes>
-                        <Route exact path="/" element={<Navigate to={"/Login"} />} />
-                        <Route path='/Register'>
-                            <Route path="/Register/Individual" element={<RegisterIndividual />} />
-                            <Route path="/Register/Organization" element={<RegisterOrganization />} />
-                            <Route path="/Register" element={<Register />} />
+                        <Route exact path="/" element={<Navigate to={"/login"} />} />
+                        <Route path='/register'>
+                            <Route path="/register/individual" element={<RegisterIndividual />} />
+                            <Route path="/register/organization" element={<RegisterOrganization />} />
+                            <Route path="/register" element={<Register />} />
                         </Route>
-                        <Route exact path="/Login" element={<Login />} />
+                        <Route exact path="/login" element={<Login />} />
                         <Route path="/individuals" element={<IndividualList />} />
                         <Route path="/organizations" element={<OrganizationList />} />
                         <Route path="/test" element={<Test />} />

@@ -8,7 +8,7 @@ const Register = () => {
         <div className='register'>
             <div id='top'>
                 <button id='btn'>
-                    <Link to='/Login'>
+                    <Link to='/login'>
                         Sign in
                     </Link>
                 </button>
@@ -27,7 +27,7 @@ const Register = () => {
                     </p>
                     <button>
                         {/* link to RegAsInd */}
-                        <Link to='/Register/Individual' className='mainSn'>
+                        <Link to='/register/individual' className='mainSn'>
                             Sign up
                         </Link>
                     </button>
@@ -43,7 +43,7 @@ const Register = () => {
                     </p>
                     <button>
                         {/* link to RegAsOrg */}
-                        <Link to='/Register/Organization' className='mainSn'>
+                        <Link to='/register/organization' className='mainSn'>
                             Sign up
                         </Link>
                     </button>
