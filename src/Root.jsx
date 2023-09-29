@@ -10,11 +10,14 @@ import RegisterIndividual from './pages/RegisterIndividual';
 import RegisterOrganization from './pages/RegisterOrganization';
 import Test from './pages/Test';
 import ThemeContextProvider from './context/theme';
+import Temp from "./pages/Temp";
+import { CssBaseline } from "@mui/material";
 
 function Root() {
     return (
         <>
             <ThemeContextProvider>
+                <CssBaseline />
                 <HashRouter>
                     <Routes>
                         <Route exact path="/" element={<Navigate to={"/login"} />} />
@@ -27,6 +30,7 @@ function Root() {
                         <Route path="/individuals" element={<IndividualList />} />
                         <Route path="/organizations" element={<OrganizationList />} />
                         <Route path="/test" element={<Test />} />
+                        <Route path="/temp" element={<Temp />} />
                     </Routes>
                 </HashRouter>
             </ThemeContextProvider>

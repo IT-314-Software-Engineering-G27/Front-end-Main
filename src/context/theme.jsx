@@ -2,16 +2,16 @@
 
 import { useMediaQuery } from '@mui/material';
 import { ThemeProvider, createTheme, responsiveFontSizes } from '@mui/material/styles';
-import { useEffect, useState } from 'react';
 const theme = createTheme({
     palette: {
         primary: {
-            main: '#9458faaa',
-            dark: '#531a98aa',
-            contrastText: '#ffffff',
+            main: '#471899',
+            light: '#cfa3f2',
+            dark: '#531a98',
         },
         secondary: {
             main: '#8f84adaa',
+            light: '#c3c0d3aa',
             dark: '#453d51aa',
         },
         info: {
@@ -19,14 +19,9 @@ const theme = createTheme({
             dark: '#2c2b36aa',
         },
         background: {
-            default: '#f6f0f9aa',
-            paper: '#303140aa',
+            default: '#ffffff',
+            paper: '#ffffff22',
         },
-        text: {
-            primary: '#ffffff',
-            secondary: '#a3a3a3',
-            disabled: '#a3a3a3',
-        }
     },
     typography: {
         h1: {
@@ -57,12 +52,12 @@ const theme = createTheme({
         h6: {
             fontFamily: 'Anton, sans-serif',
             fontWeight: 300,
-            fontSize: '1rem',
+            fontSize: '1.5rem',
         },
         body1: {
             fontFamily: 'Maven Pro, sans-serif',
             fontWeight: 300,
-            fontSize: '0.8rem',
+            fontSize: '1rem',
         },
         body2: {
             fontFamily: 'Maven Pro, sans-serif',
