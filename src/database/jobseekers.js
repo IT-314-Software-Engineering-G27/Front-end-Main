@@ -31,17 +31,29 @@ function queryJobSeeker(job_seeker, query) {
     return (job_seeker.first_name + job_seeker.last_name + job_seeker.username).toLowerCase().includes(query.toLowerCase());
 }
 
-export async function fetchJobSeekers({ query, page }) {
+export async function asyncFetchJobSeekers({ query, page }) {
     return await new Promise((resolve, reject) => {
         setTimeout(() => {
             if (job_seekers.length === 0) {
                 generateJobSeekers(400).then(() => {
-                    resolve(job_seekers.filter((job_seeker) => queryJobSeeker(job_seeker, query)).slice((page - 1) * 4, page * 4));
+                    resolve(syncFetchJobSeekers(query, page));
                 });
             }
-            resolve(job_seekers.filter((job_seeker) => queryJobSeeker(job_seeker, query)).slice((page - 1) * 4, page * 4));
+            resolve(syncFetchJobSeekers(query, page));
         }, 3000);
     });
 }
+
+function syncFetchJobSeekers(query, page) {
+    return job_seekers.filter((job_seeker) => queryJobSeeker(job_seeker, query)).map((item, index) => index).slice((page - 1) * 4, page * 4);
+}
+
+export async function fetchJobSeeker(id) {
+    return await new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve(job_seekers[id]);
+        }, Math.random() * 4);
+    });
+};
 
 
