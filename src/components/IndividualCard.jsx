@@ -1,11 +1,37 @@
+import { useEffect, useState } from "react";
+import IndividualData from "../database/individual";
+import { Card, CardContent, CardHeader, Skeleton, Typography } from "@mui/material";
 
-export default function IndividualCard({ individual, isLoading }) {
+const { fetchIndividual } = IndividualData;
+
+export default function IndividualCard({ id, isLoadingData }) {
+    const [individual, setIndividual] = useState({});
+    const [isLoading, setIsLoading] = useState(true);
+    useEffect(() => {
+        setIsLoading(true);
+        fetchIndividual(id).then((individual) => {
+            setIndividual(individual);
+            setIsLoading(false);
+        });
+    }, [id]);
+
+    if (isLoading) return (<Skeleton height={4} />);
     return (<>
-        <div style={{ border: `1px solid ${isLoading ? 'grey' : 'black'}`, color: `${isLoading ? 'grey' : 'black'}`, padding: "1rem", margin: "1rem" }}>
-            <h4>First Name: {individual.first_name}</h4>
-            <h4>Last Name: {individual.last_name}</h4>
-            <h4>Email: {individual.email}</h4>
-            <h4>Country: {individual.country}</h4>
-        </div>
+        <Card sx={{ border: `1px solid ${isLoadingData ? "grey" : "black"}`, height: "100%", width: "100%", overflow: "clip" }}>
+            <CardHeader
+                titleTypographyProps={{ variant: "h5" }}
+                title={`${individual.first_name}`}
+                subheader={`${individual.last_name}`}
+                sx={{ color: isLoadingData ? "grey" : "black" }}
+            />
+            <CardContent>
+                <Typography variant="h6" gutterBottom>
+                    Email: {individual.email}
+                </Typography>
+                <Typography variant="h6" gutterBottom>
+                    Country: {individual.country}
+                </Typography>
+            </CardContent>
+        </Card>
     </>);
 }

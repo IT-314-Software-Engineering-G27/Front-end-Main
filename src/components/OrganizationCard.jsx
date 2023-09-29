@@ -1,11 +1,40 @@
+import { useEffect, useState } from "react";
+import organizationData from "../database/organization";
+import { Card, CardContent, CardHeader, Skeleton, Typography } from "@mui/material";
 
-export default function OrganizationCard({ organization, isLoading }) {
+const { fetchOrganization } = organizationData;
+
+export default function OrganizationCard({ id, isLoadingData }) {
+    const [organization, setOrganization] = useState({});
+    const [isLoading, setIsLoading] = useState(true);
+    useEffect(() => {
+        setIsLoading(true);
+        fetchOrganization(id).then((organization) => {
+            setOrganization(organization);
+            setIsLoading(false);
+        });
+    }, [id]);
+    if (isLoading) return (<Skeleton height={4} />);
     return (<>
-        <div style={{ border: `1px solid ${isLoading ? 'grey' : 'black'}`, color: `${isLoading ? 'grey' : 'black'}`, padding: "1rem", margin: "1rem" }}>
-            <h4>Name: {organization.legal_name}</h4>
-            <h4>CEO: {organization.name_of_ceo}</h4>
-            <h4>Email: {organization.email}</h4>
-            <h4>Website: {organization.website}</h4>
-        </div>
+        <Card sx={{ border: `1px solid ${isLoadingData ? 'grey' : 'black'}`, height: '100%', width: '100%', overflow: 'clip' }}>
+            <CardHeader
+                titleTypographyProps={{ variant: 'h5' }}
+                title={`${organization.legal_name}`}
+                subheader={`CEO: ${organization.name_of_ceo}`}
+                sx={{
+                    color: isLoadingData ? 'grey' : 'black',
+                    borderBottom: '1px solid',
+                    borderBottomColor: isLoadingData ? 'grey' : 'black',
+                }}
+            />
+            <CardContent>
+                <Typography variant="h6" gutterBottom>
+                    Email: {organization.email}
+                </Typography>
+                <Typography variant="h6" gutterBottom>
+                    Website: {organization.website}
+                </Typography>
+            </CardContent>
+        </Card>
     </>);
 }
