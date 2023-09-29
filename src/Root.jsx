@@ -12,28 +12,31 @@ import Test from './pages/Test';
 import ThemeContextProvider from './context/theme';
 import Temp from "./pages/Temp";
 import { CssBaseline } from "@mui/material";
+import QueryContextProvider from "./context/query";
 
 function Root() {
     return (
         <>
-            <ThemeContextProvider>
-                <CssBaseline />
-                <HashRouter>
-                    <Routes>
-                        <Route exact path="/" element={<Navigate to={"/login"} />} />
-                        <Route path='/register'>
-                            <Route path="/register/individual" element={<RegisterIndividual />} />
-                            <Route path="/register/organization" element={<RegisterOrganization />} />
-                            <Route path="/register" element={<Register />} />
-                        </Route>
-                        <Route exact path="/login" element={<Login />} />
-                        <Route path="/individuals" element={<IndividualList />} />
-                        <Route path="/organizations" element={<OrganizationList />} />
-                        <Route path="/test" element={<Test />} />
-                        <Route path="/temp" element={<Temp />} />
-                    </Routes>
-                </HashRouter>
-            </ThemeContextProvider>
+            <QueryContextProvider>
+                <ThemeContextProvider>
+                    <CssBaseline />
+                    <HashRouter>
+                        <Routes>
+                            <Route exact path="/" element={<Navigate to={"/login"} />} />
+                            <Route path='/register'>
+                                <Route path="/register/individual" element={<RegisterIndividual />} />
+                                <Route path="/register/organization" element={<RegisterOrganization />} />
+                                <Route path="/register" element={<Register />} />
+                            </Route>
+                            <Route exact path="/login" element={<Login />} />
+                            <Route path="/individuals" element={<IndividualList />} />
+                            <Route path="/organizations" element={<OrganizationList />} />
+                            <Route path="/test" element={<Test />} />
+                            <Route path="/temp" element={<Temp />} />
+                        </Routes>
+                    </HashRouter>
+                </ThemeContextProvider>
+            </QueryContextProvider>
         </>
     );
 }
