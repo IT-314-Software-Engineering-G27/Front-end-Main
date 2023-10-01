@@ -1,0 +1,74 @@
+
+
+#logoI{
+    padding-top: 6%;
+    height:80%;
+}
+
+.Tfield{
+    /* margin:2%; */
+    width:80%;
+   
+}
+
+#SUbutton{
+    border:10px;
+    border-radius: 10rem;
+    width:80%;
+    height: 2rem;
+    margin-top: 5%;
+    background-color: rgb(64, 12, 113);
+   
+}
+
+#SUbutton a{
+    color: white;
+}
+
+#sgnin{
+    border:10px;
+    border-radius: 10rem;
+    width: 10rem;
+    height: 2rem;
+    background-color: rgb(64, 12, 113);
+}
+
+#sgnin a{
+    color: white;
+}
+
+#txt{
+    display: flex;
+    justify-content:right;
+    padding-right: 11%;
+}
+
+@media (max-width:1085px) {
+    #papr{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #lbox{
+        width:80%;
+        
+        }
+
+        #rbox{
+            width:90%;
+          height: fit-content;
+          
+
+        }
+}
+
+a{
+    text-decoration: none;
+}
+
+@media (max-width:755px){
+    #logoI{
+        width: 80%;
+    }
+}
