@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import PostData from "../database/Post";
+import PostData from "../database/post";
 
 import { Avatar, Button, Card, CardActions, CardContent, CardHeader, Divider, LinearProgress, Skeleton, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
