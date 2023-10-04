@@ -4,17 +4,22 @@ import PostsData from "../database/post";
 import { useDeferredValue } from "react";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { Box, Button, CircularProgress, Container, Grid, Paper, Skeleton, TextField, Typography } from "@mui/material";
-
-
-
+import ClearIcon from "@mui/icons-material/Clear";
 const { asyncFetchPosts } = PostsData;
 
 export default function PostList() {
-    const [query, setQuery] = useState(" ");
+    const [query, setQuery] = useState("");
     const deferredQuery = useDeferredValue(query, { timeoutMs: 1000 });
     useEffect(() => {
+      setQuery("");
+     }, []);
+
+    const handleClear = () => {
+       
         setQuery("");
-    }, []);
+      };
+
+
 
     const { data, fetchNextPage, hasNextPage, isFetching, isFetchingNextPage, isLoading, isError, error } = useInfiniteQuery({
         queryKey: ["Posts", deferredQuery],
@@ -24,76 +29,146 @@ export default function PostList() {
                 return null;
             }
             return pages.length;
-        }
+        },
+
     });
 
     const Posts = useMemo(() => {
-        if (data) {
+        if (data)
             return data.pages.flatMap((page) => page);
-        }
         return [];
     }, [data]);
 
     return (
-
-
-    
-
-      
-        <Container maxWidth="lg" sx={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "2rem" }}>
-        <Typography variant="h1">Posts</Typography>
-        <Box border={1} p={2} borderRadius={2} sx={{ display: "flex", flexDirection: "row", alignItems: "center", gap: "1rem" }}>
-            <TextField
-                label="Search"
+        <Container
+          maxWidth="lg"
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            gap: "2rem",
+          }}
+        >
+          <Typography variant="h1">Posts</Typography>
+          <Box
+            p={2}
+            borderRadius={2}
+            sx={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+              gap: "1rem",
+              background: "#f0f4f8",
+              width: "80rem",
+            }}
+          >
+            <Box
+              p={2}
+              borderRadius={2}
+              sx={{
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+                gap: "1rem",
+                background: "#fff",
+                padding: "0.5rem",
+                width: "100%",
+              }}
+            >
+              <TextField
+                placeholder="Search here..."
                 variant="outlined"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 focused
-            />
-            {isFetching && <CircularProgress color="secondary" />}
-        </Box>
-        <Paper elevation={3} style={{ padding: '2rem', minWidth: "100vw" }}>
+                fullWidth
+                InputProps={{
+                  endAdornment: query && (
+                    <ClearIcon
+                      onClick={handleClear}
+                      style={{ cursor: "pointer" }}
+                    />
+                  ),
+                  sx: {
+                    "& .MuiOutlinedInput-notchedOutline": {
+                      border: "none",
+                    },
+                    "& .MuiInputBase-input": {
+                      background: "white",
+                    },
+                  },
+                }}
+              />
+              {isFetching && (
+                <CircularProgress
+                  color="secondary"
+                  sx={{ marginLeft: "auto" }} 
+                />
+              )}
+            </Box>
+          </Box>
+          <Paper
+            elevation={3}
+            style={{
+              padding: "2rem",
+              background: "rgba(255, 255, 255, 0.9)",
+              borderRadius: "8px",
+              boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+            }}
+          >
             {isLoading && !data && <Skeleton variant="rectangular" height={600} />}
             {isError && (
-                <Typography variant="h2" color="error">
-                    Error: {error.message}
-                </Typography>
+              <Typography variant="h2" color="error">
+                Error: {error.message}
+              </Typography>
             )}
-            
-            <Grid container spacing={3}>
-                {Posts.map((id) => (
-                    <Grid item key={id} xs={12} >
-                 
-                        
-                            <PostCard id={id} isLoadingData={isLoading} />
-                     
-                         
-                    </Grid>
-                ))}
+            <Grid container spacing={3} justifyContent='center'>
+              {Posts.map((id) => (
+                <Grid item key={id} xs={10}  >
+                  <PostCard id={id} isLoadingData={isLoading} />
+                </Grid>
+              ))}
             </Grid>
-            
+           
+    
+    
             <Button
-                onClick={() => fetchNextPage()}
-                disabled={!hasNextPage || isFetchingNextPage}
-                variant="contained"
-                color="primary"
-                fullWidth={true}
-                sx={{ marginTop: "1rem" }}
-                onMouseOver={() => {
-                    if (!hasNextPage || isFetchingNextPage)
-                        return;
-                    fetchNextPage();
-                }}
-            >
-                {isFetchingNextPage ?
-                    <Typography variant="h5" color="info.main">
-                        Loading more...
-                    </Typography>
-                    : hasNextPage ? <Typography variant="h5">Load More</Typography>
-                        : <Typography variant="h5">Nothing more to load</Typography>
-                }
-            </Button>
-        </Paper>
-    </Container>
-    );
-}
+      onClick={() => fetchNextPage()}
+      disabled={!hasNextPage || isFetchingNextPage}
+      variant="contained"
+      color="primary"
+      fullWidth={true}
+      sx={{
+        marginTop: "1rem",
+        background: "#007bff",
+        color: "#fff",
+        padding: "5px 15px", 
+        border: "none",
+        borderRadius: "5px",
+        cursor: "pointer",
+        transition: "background-color 0.3s ease",
+        "&:hover": {
+          backgroundColor: "#0056b3",
+        },
+        display: "flex",
+        justifyContent: "center", 
+      }}
+    >
+      {isFetchingNextPage ? (
+        <Typography variant="h5" color="info.main">
+          Loading more...
+        </Typography>
+      ) : hasNextPage ? (
+        <Typography variant="h6">Load More</Typography>
+      ) : (
+        <Typography variant="h6">Nothing more to load</Typography> 
+      )}
+    </Button>
+    
+    
+    
+          </Paper>
+        </Container>
+      );
+    }
+    
