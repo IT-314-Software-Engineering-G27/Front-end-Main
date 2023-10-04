@@ -13,6 +13,14 @@ import ThemeContextProvider from './context/theme';
 import Temp from "./pages/Temp";
 import { CssBaseline } from "@mui/material";
 import QueryContextProvider from "./context/query";
+import PostList from "./pages/PostList";
+import PostDetails from "./pages/PostDetails";
+import JobList from "./pages/JobList";
+import JobDetails from "./pages/JobDetails";
+import { BrowserRouter } from "react-router-dom";
+import EventList from "./pages/EventList";
+import EventDetails from "./pages/EventDetails";
+
 
 function Root() {
     return (
@@ -20,7 +28,7 @@ function Root() {
             <QueryContextProvider>
                 <ThemeContextProvider>
                     <CssBaseline />
-                    <HashRouter>
+                    <BrowserRouter>
                         <Routes>
                             <Route exact path="/" element={<Navigate to={"/login"} />} />
                             <Route path='/register'>
@@ -29,12 +37,18 @@ function Root() {
                                 <Route path="/register" element={<Register />} />
                             </Route>
                             <Route exact path="/login" element={<Login />} />
+                            <Route path="/post" element={<PostList />}></Route>
+                            <Route path="/post/:postId" element={<PostDetails />}></Route>
+                            <Route path="/jobs" element={<JobList />}></Route>
+                            <Route path="/jobs/:jobId" element={<JobDetails />}></Route>
+                            <Route path="/event" element={<EventList />}></Route>
+                            <Route path="/event/:eventId" element={<EventDetails />}></Route>
                             <Route path="/individuals" element={<IndividualList />} />
                             <Route path="/organizations" element={<OrganizationList />} />
                             <Route path="/test" element={<Test />} />
                             <Route path="/temp" element={<Temp />} />
                         </Routes>
-                    </HashRouter>
+                    </BrowserRouter>
                 </ThemeContextProvider>
             </QueryContextProvider>
         </>

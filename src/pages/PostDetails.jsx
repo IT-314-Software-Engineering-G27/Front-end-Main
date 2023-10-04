@@ -12,20 +12,20 @@ import {
 } from '@mui/material';
 
 function PostDetail() {
-  const { PostId } = useParams(); // Get the PostId parameter from the URL
+  const { postId } = useParams(); 
   const [Post, setPost] = useState(null);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Use the PostId to fetch the specific Post from the database
-    PostsData.fetchPost(PostId)
+   
+    PostsData.fetchPost(postId)
       .then((postsData) => {
         setPost(postsData);
       })
       .catch((error) => {
         setError(error);
       });
-  }, [PostId]);
+  }, [postId]);
 
   if (error) {
     return (

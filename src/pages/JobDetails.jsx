@@ -11,12 +11,12 @@ import {
 } from '@mui/material';
 
 function JobDetail() {
-  const { jobId } = useParams(); // Get the jobId parameter from the URL
+  const { jobId } = useParams(); 
   const [job, setJob] = useState(null);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Use the jobId to fetch the specific job from the database
+    
     JobsData.fetchJob(jobId)
       .then((jobsData) => {
         setJob(jobsData);

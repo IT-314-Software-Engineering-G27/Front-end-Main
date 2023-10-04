@@ -12,19 +12,19 @@ import {
 } from '@mui/material';
 
 function EventDetail() {
-  const { EventId } = useParams();
+  const { eventId } = useParams();
    const [Event, setEvent] = useState(null);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    EventsData.fetchEvent(EventId)
+    EventsData.fetchEvent(eventId)
       .then((EventsData) => {
         setEvent(EventsData);
       })
       .catch((error) => {
         setError(error);
       });
-  }, [EventId]);
+  }, [eventId]);
 
   if (error) {
     return (

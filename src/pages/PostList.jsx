@@ -3,8 +3,8 @@ import PostCard from "../components/PostCard";
 import PostsData from "../database/post";
 import { useDeferredValue } from "react";
 import { useInfiniteQuery } from "@tanstack/react-query";
-import { Box, Button, CircularProgress, Container, Grid, ListItem, Paper, Skeleton, TextField, Typography } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Box, Button, CircularProgress, Container, Grid, Paper, Skeleton, TextField, Typography } from "@mui/material";
+
 
 
 const { asyncFetchPosts } = PostsData;

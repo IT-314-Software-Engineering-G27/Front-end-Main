@@ -49,7 +49,7 @@ export default function PostCard({ id, isLoadingData }) {
             <Divider />
             <CardActions sx={{ marginTop: "auto" }}>
                 <Button variant="contained" color="primary" fullWidth>
-                    <Link to={`/Post/${id}`}> Read more</Link>
+                    <Link to={`/post/${id}`}> Read more</Link>
                 </Button>
             </CardActions>
         </Card>
