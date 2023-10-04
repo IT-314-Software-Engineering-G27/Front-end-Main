@@ -1,7 +1,7 @@
 import { useDeferredValue, useEffect, useMemo, useState } from "react";
 import organizationData from "../database/organization";
 import OrganizationCard from "../components/OrganizationCard";
-import { Box, Button, CircularProgress, Container, Grid, ListItem, Paper, Skeleton, TextField, Typography } from "@mui/material";
+import { Box, Button, CircularProgress, Container, Grid, Paper, Skeleton, TextField, Typography } from "@mui/material";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import ClearIcon from "@mui/icons-material/Clear";
 const { asyncFetchOrganizations } = organizationData;

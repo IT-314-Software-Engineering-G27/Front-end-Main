@@ -3,7 +3,7 @@ import IndividualCard from "../components/IndividualCard";
 import IndividualData from "../database/individual";
 import { useDeferredValue } from "react";
 import { useInfiniteQuery } from "@tanstack/react-query";
-import { Box, Button, CircularProgress, Container, Grid, ListItem, Paper, Skeleton, TextField, Typography } from "@mui/material";
+import { Box, Button, CircularProgress, Container, Grid, Paper, Skeleton, TextField, Typography } from "@mui/material";
 import ClearIcon from "@mui/icons-material/Clear";
 
 const { asyncFetchIndividuals } = IndividualData;
@@ -18,7 +18,7 @@ export default function IndividualList() {
     const handleClear = () => {
         setQuery("");
       };
-      
+
     const { data, fetchNextPage, hasNextPage, isFetching, isFetchingNextPage, isLoading, isError, error } = useInfiniteQuery({
         queryKey: ["organizations", deferredQuery],
         queryFn: ({ pageParam }) => asyncFetchIndividuals({ query: deferredQuery, page: pageParam + 1 || 1 }),
