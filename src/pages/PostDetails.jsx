@@ -8,15 +8,17 @@ import {
   Container,
   Paper,
   Typography,
+  IconButton,
   Divider,
 } from '@mui/material';
-
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import CommentIcon from '@mui/icons-material/Comment';
 
 function PostDetail() {
   const { postId } = useParams();
   const [Post, setPost] = useState(null);
   const [error, setError] = useState(null);
-   
+  const [likeCount, setLikeCount] = useState(0); 
 
   useEffect(() => {
     PostsData.fetchPost(postId)
@@ -27,6 +29,12 @@ function PostDetail() {
         setError(error);
       });
   }, [postId]);
+
+
+  const handleLikeClick = () => {
+   
+    setLikeCount(likeCount + 1);
+  };
 
   if (error) {
     return (
@@ -81,7 +89,7 @@ function PostDetail() {
           <Typography variant="h6">{Post.post_long_description}</Typography>
           <img
             src={Post.post_img}
-            alt="Post Image"
+            alt="Post"
             style={{
               display: 'block',
               margin: '1rem auto',
@@ -89,7 +97,15 @@ function PostDetail() {
               borderRadius: '8px',
             }}
           />
-         
+          <Box display="flex" justifyContent="space-between" alignItems="center">
+            <IconButton color="primary" onClick={handleLikeClick}>
+              <FavoriteIcon />
+              <Typography variant="body1" sx={{ ml: 1 }}>{likeCount}</Typography>
+            </IconButton>
+            <IconButton color="primary">
+              <CommentIcon />
+            </IconButton>
+          </Box>
         </Paper>
       </Box>
     </Container>
