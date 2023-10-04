@@ -125,7 +125,7 @@ export default function EventCard({ id, isLoadingData }) {
       <Divider />
       <CardActions sx={{ marginTop: "auto", display: "flex", justifyContent: "center" }}>
         <Button variant="contained" color="primary" sx={{ width: "30%" }}>
-          <Link to={`/Event/${id}`}> Read more</Link>
+          <Link to={`/events/${id}`}> Read more</Link>
         </Button>
       </CardActions>
     </Card>

@@ -1,7 +1,6 @@
 
-import { HashRouter, Navigate } from "react-router-dom";
+import { BrowserRouter, Navigate } from "react-router-dom";
 import { Routes, Route } from "react-router";
-import Header from './Header';
 import IndividualList from './pages/IndividualList';
 import OrganizationList from './pages/OrganizationList';
 import Login from './Login/Login';
@@ -17,7 +16,6 @@ import PostList from "./pages/PostList";
 import PostDetails from "./pages/PostDetails";
 import JobList from "./pages/JobList";
 import JobDetails from "./pages/JobDetails";
-import { BrowserRouter } from "react-router-dom";
 import EventList from "./pages/EventList";
 import EventDetails from "./pages/EventDetails";
 
@@ -37,12 +35,12 @@ function Root() {
                                 <Route path="/register" element={<Register />} />
                             </Route>
                             <Route exact path="/login" element={<Login />} />
-                            <Route path="/post" element={<PostList />}></Route>
-                            <Route path="/post/:postId" element={<PostDetails />}></Route>
+                            <Route path="/posts" element={<PostList />}></Route>
+                            <Route path="/posts/:postId" element={<PostDetails />}></Route>
                             <Route path="/jobs" element={<JobList />}></Route>
                             <Route path="/jobs/:jobId" element={<JobDetails />}></Route>
-                            <Route path="/event" element={<EventList />}></Route>
-                            <Route path="/event/:eventId" element={<EventDetails />}></Route>
+                            <Route path="/events" element={<EventList />}></Route>
+                            <Route path="/events/:eventId" element={<EventDetails />}></Route>
                             <Route path="/individuals" element={<IndividualList />} />
                             <Route path="/organizations" element={<OrganizationList />} />
                             <Route path="/test" element={<Test />} />
