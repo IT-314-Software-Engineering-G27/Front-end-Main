@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap');
+
+* {
+  font-family: Titillium Web;
+  color: #2F1263;
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  background-color: #DED7FD;
+  margin: 2%;
+}
+
+.main-container {
+  background-color: #EDE9FE;
+  border-radius: 30px;
+}
+
+.sidebar-container {
+  width: 10%;
+  background-color: white;
+  border-radius: 30px;
+}
+
+.sidebar {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.sidebar tr {
+  height: 14%;
+}
+
+.sidebar tr img {
+  height: 50%;
+  width: 50%;
+}
+
+.logo {
+  height: 75%;
+  width: 75%;
+}
+
+.event-container {
+  width: 86%;
+}
+
+.header {
+  height: 5%;
+}
+
+.title {
+  width: 80%;
+}
+
+.title span {
+  font-size: 2em;
+}
+
+.search-bar {
+  width: 16%;
+}
+
+.search-bar input {
+  width: 100%;
+  height: 40px;
+  border: none;
+  border-radius: 20px;
+}
+
+.profile-picture {
+  width: 4%;
+  background-color: #DED7FD;
+  border-radius: 50%;
+  overflow: hidden;
+  text-align: center;
+}
+
+.profile-picture img {
+  width: 40px;
+  height: 40px;
+}
