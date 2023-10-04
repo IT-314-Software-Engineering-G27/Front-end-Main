@@ -47,7 +47,7 @@ export default function PostCard({ id, isLoadingData }) {
             
             <CardActions sx={{ marginTop: "auto", display: 'flex', justifyContent: 'center' }}>
   <Button variant="contained" color="primary" sx={{ width: '30%' }}>
-    <Link to={`/post/${id}`}> Read more</Link>
+    <Link to={`/posts/${id}`}> Read more</Link>
   </Button>
 </CardActions>
         </Card>
