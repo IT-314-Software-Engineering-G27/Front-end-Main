@@ -5,9 +5,14 @@ import document from './document.png';
 import Logo from './Logo.png';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import axios from 'axios';
 
 const Login = () => {
-    const [regi, setRegi] = useState();
+    const [regi, setRegi] = useState('Individual');
+    const [user, setUser] = useState({
+        email: '',
+        password: ''
+    });
     const handleEventChange = (evnt) => {
         setRegi(evnt.target.value);
     }
@@ -62,9 +67,7 @@ const Login = () => {
                         <p className='adjust'>
                             Email or phone number
                         </p>
-                        <input type='text' className='inbox' id='email'>
-                        </input>
-
+                        <input type='text' className='inbox' id='email' onChange={(e) => setUser({ ...user, email: e.target.value })} />
                     </div>
 
                     <div>
@@ -72,16 +75,19 @@ const Login = () => {
                             Password
                         </p>
                         <div>
-                            <input type='password' className='inbox' id='pswd' />
+                            <input type='password' className='inbox' id='pswd' onChange={(e) => setUser({ ...user, password: e.target.value })} />
                         </div>
                     </div>
 
                     <div id='snBtn'>
 
-                        <button id='signInbtn' >
-                            <Link to='/'>
-                                Sign in
-                            </Link>
+                        <button id='signInbtn' onClick={(e) => {
+                            e.preventDefault();
+                            handleSubmit(user, regi).then((data) => {
+                                console.log(data);
+                            });
+                        }}>
+                            Sign in
                         </button>
 
                     </div>
@@ -120,6 +126,26 @@ const Login = () => {
             </div>
         </div>
     )
+}
+
+async function handleSubmit(user, regi) {
+    try {
+        const response = await fetch('http://localhost:8000/login/', {
+            method: "POST",
+            headers: {
+                "Content-Type" : "application/json"
+            },
+            body: JSON.stringify({
+                email: user.email,
+                password: user.password,
+            })
+        });
+        const data = await response.json();
+        return data;
+    }
+    catch (e) {
+        return e;
+    }
 }
 
 export default Login;
