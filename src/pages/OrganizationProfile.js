@@ -1,10 +1,10 @@
 
 import { Container,Grid, Paper,Box, colors } from '@mui/material';
 import './App.css';
-import OrgProfCard1 from './Component/OrgProfCard1'
-import OrgProfCard2 from './Component/OrgProfCard2';
-import OrgProfCard3 from './Component/OrgProfCard3';
-import SearchAppBar from './Component/SearchAppBar';
+import OrgProfCard1 from '../Component/OrgProfCard1'
+import OrgProfCard2 from '../Component/OrgProfCard2';
+import OrgProfCard3 from '../Component/OrgProfCard3';
+import SearchAppBar from '../Component/SearchAppBar';
 
 
 
