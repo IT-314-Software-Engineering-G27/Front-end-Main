@@ -1,6 +1,6 @@
 import React from 'react';
 import IndividualForm from '../components/IndividualForm';
-import Logo from '../components/Logo';
+import Logo from '../icons/Logo';
 import '../components/main.css'
 import { Link } from 'react-router-dom';
 

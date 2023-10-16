@@ -5,7 +5,6 @@ import document from './document.png';
 import Logo from './Logo.png';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
-import axios from 'axios';
 
 const Login = () => {
     const [regi, setRegi] = useState('Individual');

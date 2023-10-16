@@ -18,7 +18,8 @@ import JobList from "./pages/JobList";
 import JobDetails from "./pages/JobDetails";
 import EventList from "./pages/EventList";
 import EventDetails from "./pages/EventDetails";
-
+import IndividualDetails from "./pages/IndividualDetails";
+import OrganizationDetails from "./pages/OrganizationDetails";
 
 function Root() {
     return (
@@ -42,7 +43,9 @@ function Root() {
                             <Route path="/events" element={<EventList />}></Route>
                             <Route path="/events/:eventId" element={<EventDetails />}></Route>
                             <Route path="/individuals" element={<IndividualList />} />
+                            <Route path="/individuals/:individualId" element={<IndividualDetails />} />
                             <Route path="/organizations" element={<OrganizationList />} />
+                            <Route path="/organizations/:organizationId" element={<OrganizationDetails />} />
                             <Route path="/test" element={<Test />} />
                             <Route path="/temp" element={<Temp />} />
                         </Routes>
