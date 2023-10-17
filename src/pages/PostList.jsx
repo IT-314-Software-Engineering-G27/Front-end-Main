@@ -3,8 +3,9 @@ import PostCard from "../components/PostCard";
 import PostsData from "../database/post";
 import { useDeferredValue } from "react";
 import { useInfiniteQuery } from "@tanstack/react-query";
-import { Box, Button, CircularProgress, Container, Grid, Paper, Skeleton, TextField, Typography } from "@mui/material";
-import ClearIcon from "@mui/icons-material/Clear";
+import {  Container, Grid, Paper, Skeleton,  Typography } from "@mui/material";
+import ListSearchBar from "../components/ListSearchBar";
+import FetchMoreButton from "../components/FetchMoreButton";
 const { asyncFetchPosts } = PostsData;
 
 export default function PostList() {
@@ -13,10 +14,6 @@ export default function PostList() {
     useEffect(() => {
         setQuery("");
     }, []);
-
-    const handleClear = () => {
-        setQuery("");
-    };
 
     const { data, fetchNextPage, hasNextPage, isFetching, isFetchingNextPage, isLoading, isError, error } = useInfiniteQuery({
         queryKey: ["Posts", deferredQuery],
@@ -47,63 +44,7 @@ export default function PostList() {
             }}
         >
             <Typography variant="h1">Posts</Typography>
-            <Box
-                p={2}
-                borderRadius={2}
-                sx={{
-                    display: "flex",
-                    flexDirection: "row",
-                    alignItems: "center",
-                    gap: "1rem",
-                    background: "#f0f4f8",
-                    width: "80rem",
-                }}
-            >
-                <Box
-                    p={2}
-                    borderRadius={2}
-                    sx={{
-                        display: "flex",
-                        flexDirection: "row",
-                        alignItems: "center",
-                        gap: "1rem",
-                        background: "#fff",
-                        padding: "0.5rem",
-                        width: "100%",
-                    }}
-                >
-                    <TextField
-                        placeholder="Search here..."
-                        variant="outlined"
-                        value={query}
-                        onChange={(e) => setQuery(e.target.value)}
-                        focused
-                        fullWidth
-                        InputProps={{
-                            endAdornment: query && (
-                                <ClearIcon
-                                    onClick={handleClear}
-                                    style={{ cursor: "pointer" }}
-                                />
-                            ),
-                            sx: {
-                                "& .MuiOutlinedInput-notchedOutline": {
-                                    border: "none",
-                                },
-                                "& .MuiInputBase-input": {
-                                    background: "white",
-                                },
-                            },
-                        }}
-                    />
-                    {isFetching && (
-                        <CircularProgress
-                            color="secondary"
-                            sx={{ marginLeft: "auto" }}
-                        />
-                    )}
-                </Box>
-            </Box>
+            <ListSearchBar isFetching={isFetching} query={query} setQuery={setQuery} />
             <Paper
                 elevation={3}
                 style={{
@@ -126,44 +67,7 @@ export default function PostList() {
                         </Grid>
                     ))}
                 </Grid>
-
-
-
-                <Button
-                    onClick={() => fetchNextPage()}
-                    disabled={!hasNextPage || isFetchingNextPage}
-                    variant="contained"
-                    color="primary"
-                    fullWidth={true}
-                    sx={{
-                        marginTop: "1rem",
-                        background: "#007bff",
-                        color: "#fff",
-                        padding: "5px 15px",
-                        border: "none",
-                        borderRadius: "5px",
-                        cursor: "pointer",
-                        transition: "background-color 0.3s ease",
-                        "&:hover": {
-                            backgroundColor: "#0056b3",
-                        },
-                        display: "flex",
-                        justifyContent: "center",
-                    }}
-                >
-                    {isFetchingNextPage ? (
-                        <Typography variant="h5" color="info.main">
-                            Loading more...
-                        </Typography>
-                    ) : hasNextPage ? (
-                        <Typography variant="h6">Load More</Typography>
-                    ) : (
-                        <Typography variant="h6">Nothing more to load</Typography>
-                    )}
-                </Button>
-
-
-
+                <FetchMoreButton isFetchingNextPage={isFetchingNextPage} hasNextPage={hasNextPage} fetchNextPage={fetchNextPage} />
             </Paper>
         </Container>
     );
