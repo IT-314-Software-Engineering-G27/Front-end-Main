@@ -3,7 +3,7 @@ import PostCard from "../components/PostCard";
 import PostsData from "../database/post";
 import { useDeferredValue } from "react";
 import { useInfiniteQuery } from "@tanstack/react-query";
-import {  Container, Grid, Paper, Skeleton,  Typography } from "@mui/material";
+import { Container, Grid, Paper, Skeleton, Typography } from "@mui/material";
 import ListSearchBar from "../components/ListSearchBar";
 import FetchMoreButton from "../components/FetchMoreButton";
 const { asyncFetchPosts } = PostsData;
@@ -52,9 +52,10 @@ export default function PostList() {
                     background: "rgba(255, 255, 255, 0.9)",
                     borderRadius: "8px",
                     boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+                    width: "80vw"
                 }}
             >
-                {isLoading && !data && <Skeleton variant="rectangular" height={600} />}
+                {isLoading && !data && <Skeleton variant="rectangular" height={600} width="100%" />}
                 {isError && (
                     <Typography variant="h2" color="error">
                         Error: {error.message}
@@ -62,7 +63,7 @@ export default function PostList() {
                 )}
                 <Grid container spacing={3} justifyContent='center'>
                     {Posts.map((id) => (
-                        <Grid item key={id} xs={10}  >
+                        <Grid item key={id} xs={12}>
                             <PostCard id={id} isLoadingData={isLoading} />
                         </Grid>
                     ))}

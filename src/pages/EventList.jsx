@@ -3,7 +3,7 @@ import EventCard from "../components/EventCard";
 import EventsData from "../database/event";
 import { useDeferredValue } from "react";
 import { useInfiniteQuery } from "@tanstack/react-query";
-import {  Container, Grid, Paper, Skeleton,Typography } from "@mui/material";
+import { Container, Grid, Paper, Skeleton, Typography } from "@mui/material";
 import ListSearchBar from "../components/ListSearchBar";
 import FetchMoreButton from "../components/FetchMoreButton";
 
@@ -50,9 +50,13 @@ export default function EventList() {
                 elevation={3}
                 style={{
                     padding: "2rem",
+                    background: "rgba(255, 255, 255, 0.9)",
+                    borderRadius: "8px",
+                    boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+                    width: "80vw"
                 }}
             >
-                {isLoading && !data && <Skeleton variant="rectangular" height={600} />}
+                {isLoading && !data && <Skeleton variant="rectangular" height={600} width="100%" />}
                 {isError && (
                     <Typography variant="h2" color="error">
                         Error: {error.message}

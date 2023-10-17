@@ -52,9 +52,10 @@ export default function IndividualList() {
                 background: "rgba(255, 255, 255, 0.9)",
                 borderRadius: "8px",
                 boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+                width: "80vw"
             }}
         >
-            {isLoading && !data && <Skeleton variant="rectangular" height={600} />}
+            {isLoading && !data && <Skeleton variant="rectangular" height={600} width="100%" />}
             {isError && (
                 <Typography variant="h2" color="error">
                     Error: {error.message}
