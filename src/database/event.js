@@ -4,27 +4,22 @@ const EventsData = (() => {
 
     function generateEvent() {
         return {
-
-            event_name : faker.company.name(),
-            event_types : faker.helpers.arrayElement(['yearly', 'weekly', 'monthly']),
-            event_date: faker.date.past(),
-            event_last_registration_date : faker.date.past(),
-            event_organized_by : faker.company.name(),
-            event_location : faker.address.city(),
-
-            event_description : faker.lorem.paragraph(),
-            event_logo : faker.image.avatar(),
-           
-            event_img : faker.image.url(),
-            event_registration_fees : faker.number.int(10000, 1000000),
-           
-           
+            name: faker.company.name(),
+            types: faker.helpers.arrayElement(['yearly', 'weekly', 'monthly']),
+            date: faker.date.past(),
+            last_registration_date: faker.date.past(),
+            organized_by: faker.company.name(),
+            location: faker.location.city(),
+            description: faker.lorem.paragraph(),
+            logo: faker.image.avatar(),
+            img: faker.image.url(),
+            registration_fees: faker.number.int(10000, 1000000),
         };
     }
 
     const Events = [];
 
-  
+
 
     async function generateEvents(count) {
         return await new Promise(async (resolve, reject) => {
@@ -38,7 +33,7 @@ const EventsData = (() => {
 
     function queryEvent(Event, query) {
         if (query.length === 0) return true;
-        return (Event.event_name + Event.event_organized_by + Event.event_date + Event.event_location ).toLowerCase().includes(query.toLowerCase());
+        return (Event.name + Event.organized_by + Event.date + Event.location).toLowerCase().includes(query.toLowerCase());
     }
 
     async function asyncFetchEvents({ query, page }) {

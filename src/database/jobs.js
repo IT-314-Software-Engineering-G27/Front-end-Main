@@ -6,27 +6,27 @@ const JobsData = (() => {
         return {
 
             //  id: faker.number.int(),
-           // company_id :faker.string.uuid(),
-            company :faker.company.name(),
-            company_logo : faker.image.avatar(),
-            title : faker.name.jobTitle(),		
-            duration:faker.helpers.arrayElement(['full-time', 'internship', 'part-time']),
+            // company_id :faker.string.uuid(),
+            company: faker.company.name(),
+            company_logo: faker.image.avatar(),
+            title: faker.person.jobTitle(),
+            duration: faker.helpers.arrayElement(['full-time', 'internship', 'part-time']),
             salary: faker.number.int(10000, 1000000),
-            location : faker.address.city(),
-          //  posted_on_time: faker.number.int(1, 15),
-            
+            location: faker.location.city(),
+            //  posted_on_time: faker.number.int(1, 15),
+
             posted_on_time: faker.date.past(),
-            job_description : faker.lorem.paragraph(),
-            qualifications_paragraph : faker.lorem.paragraph(),
+            job_description: faker.lorem.paragraph(),
+            qualifications_paragraph: faker.lorem.paragraph(),
             number_of_seats: faker.number.int(1, 10),
-            last_date_to_apply : faker.number.int(20, 30)
-           
+            last_date_to_apply: faker.number.int(20, 30)
+
         };
     }
 
     const jobs = [];
 
-  
+
 
     async function generateJobs(count) {
         return await new Promise(async (resolve, reject) => {
