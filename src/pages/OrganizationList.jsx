@@ -64,7 +64,7 @@ export default function IndividualList() {
                 )}
                 <Grid container spacing={3}>
                     {organizations.map((id) => (
-                        <Grid item key={id} xs={12} sm={6} >
+                        <Grid item key={id} xs={12} sm={6} sx={{ padding: "auto" }} >
                             <OrganizationCard id={id} isLoadingData={isLoading} />
                         </Grid>
                     ))}

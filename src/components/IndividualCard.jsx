@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import IndividualData from "../database/individual";
-import { Card, CardContent, CardHeader, Skeleton, Typography, IconButton } from "@mui/material";
+import { Card, CardActions, CardContent, CardHeader, Skeleton, Typography, Button } from "@mui/material";
 import EmailIcon from "@mui/icons-material/Email";
 import PublicIcon from '@mui/icons-material/Public';
+import { Link } from "react-router-dom";
 
 const { fetchIndividual } = IndividualData;
 
@@ -37,6 +38,13 @@ export default function IndividualCard({ id, isLoadingData }) {
                         <PublicIcon sx={{ marginRight: "0.5rem" }} /> Country: {individual.country}
                     </Typography>
                 </CardContent>
+                <CardActions sx={{ marginTop: "auto", display: 'flex', justifyContent: 'center' }}>
+                    <Link to={`/individuals/${id}`} style={{ width: '80%' }}>
+                        <Button variant="contained" color="primary" sx={{ width: '100%' }}>
+                            Visit Profile
+                        </Button>
+                    </Link>
+                </CardActions>
             </Card>
         </>
     );

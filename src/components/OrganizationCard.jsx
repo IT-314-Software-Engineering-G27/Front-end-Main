@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import organizationData from "../database/organization";
-import { Card, CardContent, CardHeader, Skeleton, Typography, IconButton } from "@mui/material";
+import { Card, CardContent, CardHeader, Skeleton, Typography, CardActions, Button } from "@mui/material";
 import EmailIcon from "@mui/icons-material/Email";
 import WebIcon from '@mui/icons-material/Web';
+import { Link } from "react-router-dom";
 
 const { fetchOrganization } = organizationData;
 
@@ -41,6 +42,17 @@ export default function OrganizationCard({ id, isLoadingData }) {
                         <WebIcon sx={{ marginRight: "0.5rem" }} /> Website: {organization.website}
                     </Typography>
                 </CardContent>
+                <CardActions sx={{
+                    marginTop: "auto", display: 'flex', justifyContent: 'center',
+                    borderTop: '1px solid',
+                    borderTopColor: isLoadingData ? 'grey' : 'black',
+                }}>
+                    <Link to={`/organizations/${id}`} style={{ width: '80%' }}>
+                        <Button variant="contained" color="primary" sx={{ width: '100%' }}>
+                            Visit Page
+                        </Button>
+                    </Link>
+                </CardActions>
             </Card>
         </>
     );
