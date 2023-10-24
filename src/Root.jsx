@@ -20,6 +20,7 @@ import EventList from "./pages/EventList";
 import EventDetails from "./pages/EventDetails";
 import IndividualDetails from "./pages/IndividualDetails";
 import OrganizationDetails from "./pages/OrganizationDetails";
+import RegAsJobSeek from "./RegAsJobseek/RegAsJobSeek";
 
 function Root() {
     return (
@@ -33,6 +34,7 @@ function Root() {
                             <Route path='/register'>
                                 <Route path="/register/individual" element={<RegisterIndividual />} />
                                 <Route path="/register/organization" element={<RegisterOrganization />} />
+                                <Route path="/register/jobseeker" element={<RegAsJobSeek />} />
                                 <Route path="/register" element={<Register />} />
                             </Route>
                             <Route exact path="/login" element={<Login />} />
