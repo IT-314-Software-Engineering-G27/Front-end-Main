@@ -53,7 +53,7 @@ const IndividualSocial = () => {
                     </Paper>
                 </Grid>
 
-                <Grid item xs={10} marginY={5}>
+                {/* <Grid item xs={10} marginY={5}>
                     <Paper elevation={3}>
                         <Box paddingX={2}>
                             <Typography variant="body" component="h3" paddingY={2} style={{color: '#2F1263'}}>
@@ -77,7 +77,7 @@ const IndividualSocial = () => {
                             </Box>
                         </Box>
                     </Paper>
-                </Grid>
+                </Grid> */}
 
             </Grid>
        

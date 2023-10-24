@@ -15,13 +15,8 @@ const IndividualMenu = () => {
 
         <Box>
 
-            <Box paddingY={1.5} paddingLeft={1}>
-                <img src={Object1} alt="" className="img" />
-            </Box>
-
-
             <Box paddingY={1.5} >
-                <Box paddingLeft={1}>
+                <Box paddingLeft={1.75}>
                     <img src={Object2} alt="" className="img" />
                 </Box>
 
@@ -33,7 +28,7 @@ const IndividualMenu = () => {
             </Box>
 
             <Box paddingY={1.5}>
-                <Box paddingLeft={1}>
+                <Box paddingLeft={1.25}>
                     <img src={Object3} alt="" className="img" />
                 </Box>
                 <Button variant="text" Link to='' size='small'>
@@ -44,7 +39,7 @@ const IndividualMenu = () => {
             </Box>
 
             <Box paddingY={1.5} >
-                <Box paddingLeft={1}>
+                <Box paddingLeft={1.5}>
                     <img src={Object4} alt="" className="img" />
                 </Box>
                 <Button variant="text" Link to='' size='small'>
@@ -55,7 +50,7 @@ const IndividualMenu = () => {
             </Box>
 
             <Box paddingY={1.5}>
-                <Box paddingLeft={1}>
+                <Box paddingLeft={2}>
                     <img src={Object5} alt="" className="img" />
                 </Box>
                 <Button variant="text" Link to='' size='small'>
@@ -66,7 +61,7 @@ const IndividualMenu = () => {
             </Box>
 
             <Box paddingY={1.5}>
-                <Box paddingLeft={1}>
+                <Box paddingLeft={1.25}>
                     <img src={Object6} alt="" className="img" />
                 </Box>
                 <Button variant="text" Link to='' size='small'>
@@ -77,7 +72,7 @@ const IndividualMenu = () => {
             </Box>
 
             <Box paddingY={1.5}>
-                <Box paddingLeft={1}>
+                <Box paddingLeft={1.5}>
                     <img src={Object7} alt="" className="img" />
                 </Box>
                 <Button variant="text" Link to='' size='small'>

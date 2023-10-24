@@ -4,16 +4,20 @@ import IndividualMenu from '../components/IndividualMenu'
 import IndividualProfile from '../components/IndividualProfileSection';
 import IndividualSocial from '../components/IndividualSocial';
 import SearchAppBar from '../components/IndividualSearchBar';
+import PostCard from '../components/PostCard';
 
 function IndividualDetails() {
 
     return (
         <div>
 
-            <Container>
-                <Box backgroundColor='blue'>
+            
+                <Box margin={2} paddingX={7}>
                     <Paper >
-                        <SearchAppBar />
+                        <Box backgroundColor='#000085'> 
+                            <SearchAppBar />
+                        </Box>
+                        
 
                         <Grid container spacing={4}>
 
@@ -33,12 +37,13 @@ function IndividualDetails() {
 
                             <Grid item xs={6.5}>
                                 <IndividualSocial />
+                                {/* <PostCard/> */}
                             </Grid>
 
                         </Grid>
                     </Paper>
                 </Box>
-            </Container>
+            
 
         </div>
     );
