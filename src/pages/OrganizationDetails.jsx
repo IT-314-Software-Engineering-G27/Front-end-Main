@@ -1,9 +1,13 @@
 
-import { Container, Grid, Paper, Box, colors } from '@mui/material';
+import { Container, Grid, Paper, Box, colors, Stack } from '@mui/material';
 import OrganizationMenu from '../components/OrganizationMenu';
 import OrganizationProfile from '../components/OrganizationProfile';
 import OrganizationSocial from '../components/OrganizationSocial';
 import OrganizationSearchBar from '../components/OrganizationSearchBar';
+import PostCard from '../components/PostCard';
+
+
+const post_ids = [1, 2, 3];
 
 function App() {
 
@@ -33,6 +37,11 @@ function App() {
 
                             <Grid item xs={6.5}>
                                 <OrganizationSocial />
+                                <Stack container padding={2} gap={2}>
+                                    {post_ids.map((id) => (
+                                        <PostCard id={id} />
+                                    ))}
+                                </Stack>
                             </Grid>
 
                         </Grid>
