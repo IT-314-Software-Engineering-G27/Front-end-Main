@@ -1,9 +1,9 @@
-
+import { faker } from "@faker-js/faker";
 const messages = [];
 
 function generateMessage() {
     return {
-        content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec amet tincidunt tincidunt, justo est vulputate nisi, non alique",
+        content: faker.commerce.productDescription(),
         contact: "",
         timestamp: new Date(Date.now() - Math.random() * 100000000),
         read: Math.random() > 0.5 ? new Date() : null,
@@ -11,13 +11,21 @@ function generateMessage() {
     };
 }
 
-export function addMessages(contact) {
+export function addMessages(setMessages) {
     for (let i = 0; i < 10; i++) {
         setTimeout(() => {
-            contact.incoming.push(generateMessage());
+            setMessages((messages) => [...messages, generateMessage()]);
         }, Math.random() * 10000);
     }
 }
+
+function generateMessages() {
+    for (let i = 0; i < 100; i++) {
+        messages.push(generateMessage());
+    }
+};
+
+generateMessages();
 
 export async function asyncFetchMessages({ page }) {
     return await new Promise((resolve, reject) => {
@@ -29,7 +37,7 @@ export async function asyncFetchMessages({ page }) {
 }
 
 function syncFetchMessages(page) {
-    return messages.slice((page - 1) * 10, page * 10).map((message, index) => (index));
+    return messages.map((message, index) => (index)).slice(page * 10, (page + 1) * 10);
 }
 
 export async function fetchMessage(id) {
