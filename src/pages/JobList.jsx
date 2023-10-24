@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useMemo, useState } from "react";
 import JobCard from "../components/JobCard";
 import JobData from "../database/jobs";
 import { useDeferredValue } from "react";
@@ -16,11 +16,8 @@ import FetchMoreButton from "../components/FetchMoreButton";
 const { asyncFetchJobs } = JobData;
 
 export default function JobList() {
-    const [query, setQuery] = useState(" ");
+    const [query, setQuery] = useState("");
     const deferredQuery = useDeferredValue(query, { timeoutMs: 1000 });
-    useEffect(() => {
-        setQuery("");
-    }, []);
 
     const {
         data,

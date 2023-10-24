@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import {  useMemo, useState } from "react";
 import PostCard from "../components/PostCard";
 import PostsData from "../database/post";
 import { useDeferredValue } from "react";
@@ -11,9 +11,6 @@ const { asyncFetchPosts } = PostsData;
 export default function PostList() {
     const [query, setQuery] = useState("");
     const deferredQuery = useDeferredValue(query, { timeoutMs: 1000 });
-    useEffect(() => {
-        setQuery("");
-    }, []);
 
     const { data, fetchNextPage, hasNextPage, isFetching, isFetchingNextPage, isLoading, isError, error } = useInfiniteQuery({
         queryKey: ["Posts", deferredQuery],

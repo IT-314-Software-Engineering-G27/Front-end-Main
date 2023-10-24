@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import EventCard from "../components/EventCard";
 import EventsData from "../database/event";
 import { useDeferredValue } from "react";
@@ -12,9 +12,6 @@ const { asyncFetchEvents } = EventsData;
 export default function EventList() {
     const [query, setQuery] = useState(" ");
     const deferredQuery = useDeferredValue(query, { timeoutMs: 1000 });
-    useEffect(() => {
-        setQuery("");
-    }, []);
 
     const { data, fetchNextPage, hasNextPage, isFetching, isFetchingNextPage, isLoading, isError, error } = useInfiniteQuery({
         queryKey: ["Events", deferredQuery],
