@@ -1,11 +1,9 @@
 import { useEffect, useState } from "react";
-import IndividualData from "../database/individual";
+import { fetchIndividual } from "../database/individual";
 import { Card, CardActions, CardContent, CardHeader, Skeleton, Typography, Button } from "@mui/material";
 import EmailIcon from "@mui/icons-material/Email";
 import PublicIcon from '@mui/icons-material/Public';
 import { Link } from "react-router-dom";
-
-const { fetchIndividual } = IndividualData;
 
 export default function IndividualCard({ id, isLoadingData }) {
     const [individual, setIndividual] = useState({});

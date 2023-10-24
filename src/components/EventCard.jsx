@@ -16,12 +16,12 @@ import { EventAvailable, LocationOn, Category } from "@mui/icons-material"; // I
 const { fetchEvent } = EventData;
 
 export default function EventCard({ id, isLoadingData }) {
-    const [Event, setEvent] = useState({});
+    const [event, setEvent] = useState({});
     const [isLoading, setIsLoading] = useState(true);
     useEffect(() => {
         setIsLoading(true);
-        fetchEvent(id).then((Event) => {
-            setEvent(Event);
+        fetchEvent(id).then((event) => {
+            setEvent(event);
             setIsLoading(false);
         });
     }, [id]);
@@ -53,7 +53,7 @@ export default function EventCard({ id, isLoadingData }) {
                         }}
                     >
                         <img
-                            src={`${Event.img}`}
+                            src={`${event.img}`}
                             alt="Event"
                             style={{
                                 maxWidth: "100%",
@@ -79,7 +79,7 @@ export default function EventCard({ id, isLoadingData }) {
 
                     <CardHeader
                         titleTypographyProps={{ variant: "h6" }}
-                        title={`${Event.organized_by}`}
+                        title={`${event.organized_by}`}
                         sx={{ color: isLoadingData ? "grey" : "black", pt: 0, pb: 0, }}
                     />
                     <CardContent
@@ -87,7 +87,7 @@ export default function EventCard({ id, isLoadingData }) {
                             pt: "10px",
                         }}>
                         <Typography variant="h5" gutterBottom>
-                            Title : {`${Event.name}`}
+                            Title : {`${event.name}`}
                         </Typography>
                         <Grid container spacing={1} alignItems="center">
                             <Grid item>
@@ -95,7 +95,7 @@ export default function EventCard({ id, isLoadingData }) {
                             </Grid>
                             <Grid item xs>
                                 <Typography variant="body1" gutterBottom>
-                                    Event date: {`${Event.date}`}
+                                    Event date: {`${event.date}`}
                                 </Typography>
                             </Grid>
                         </Grid>
@@ -105,7 +105,7 @@ export default function EventCard({ id, isLoadingData }) {
                             </Grid>
                             <Grid item xs>
                                 <Typography variant="body1" gutterBottom>
-                                    Location: {`${Event.location}`}{" "}
+                                    Location: {`${event.location}`}{" "}
                                 </Typography>
                             </Grid>
                         </Grid>
@@ -115,7 +115,7 @@ export default function EventCard({ id, isLoadingData }) {
                             </Grid>
                             <Grid item xs>
                                 <Typography variant="body1" gutterBottom>
-                                    Type: {`${Event.types}`}
+                                    Type: {`${event.types}`}
                                 </Typography>
                             </Grid>
                         </Grid>
