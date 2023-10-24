@@ -26,10 +26,10 @@ const Login = () => {
             >
                 <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '2rem' }}>
                     <Link to=''>
-                        <img src={DocumentImage} alt="legal section" style={{ width: '40px', height: '40px' }} />
+                        <img src={DocumentImage} alt="legal section" style={{ maxWidth: '40px' }} />
                     </Link>
                     <Link to=''>
-                        <img src={PhoneImage} alt="contact us" style={{ width: '40px', height: '40px' }} />
+                        <img src={PhoneImage} alt="contact us" style={{ maxWidth: '40px' }} />
                     </Link>
                 </Box>
                 <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'flex-end', padding: '15px', width: '100%', maxWidth: '60vh' }}>
@@ -42,12 +42,14 @@ const Login = () => {
                 display: 'flex', flexDirection: {
                     xs: 'column', sm: 'row'
                 },
-                width: '100%', justifyContent: 'space-between'
+                justifyContent: 'space-between'
             }}>
                 <Paper elevation={3} sx={{ padding: '3vh', width: '100%', display: 'flex', flexDirection: 'column', gap: '2rem' }}>
                     <Typography variant="h4">Sign in</Typography>
                     <RadioGroup name="regi" value={regi} onChange={handleEventChange}>
-                        <Stack direction="row" spacing={2}>
+                        <Stack direction={{
+                            xs: 'column', sm: 'row'
+                        }} spacing={2}>
                             <FormControlLabel value="Individual" control={<Radio />} label="Individual" />
                             <FormControlLabel value="Organisation" control={<Radio />} label="Organisation" />
                         </Stack>
@@ -79,11 +81,10 @@ const Login = () => {
                         <Link to="/register" >  <Typography component="span" variant='inherit' sx={{ color: 'primary.dark' }} >Sign Up  </Typography> </Link>
                     </Typography>
                 </Paper>
-                <Container sx={{ width: '100%', textAlign: 'center' }}>
-                    <img src={LogoImage} alt="startApp logo" style={{ width: '60ex', height: '70ex' }} />
+                <Container sx={{ textAlign: 'center' }}>
+                    <img src={LogoImage} alt="startApp logo" style={{ maxWidth: '40vw', aspectRatio: 1 }} />
                 </Container>
             </Container>
-
         </>
     );
 };
