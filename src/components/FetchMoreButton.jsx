@@ -11,7 +11,7 @@ export default function FetchMoreButton({ isFetchingNextPage, hasNextPage, fetch
             fullWidth={true}
             sx={{
                 marginTop: "1rem",
-                background: "#007bff",
+                background: "info.main",
                 color: "#fff",
                 padding: "5px 15px",
                 border: "none",
@@ -21,12 +21,14 @@ export default function FetchMoreButton({ isFetchingNextPage, hasNextPage, fetch
                 "&:hover": {
                     backgroundColor: "#0056b3",
                 },
-                display: "flex",
-                justifyContent: "center",
+                "&.Mui-disabled": {
+                    background: "info.dark",
+                },
+                textAlign: "center"
             }}
         >
             {isFetchingNextPage ? (
-                <Typography variant="h5" color="info.main">  Loading more...</Typography>
+                <Typography variant="h6">  Loading more...</Typography>
             ) : hasNextPage ? (
                 <Typography variant="h6">Load More</Typography>
             ) : (

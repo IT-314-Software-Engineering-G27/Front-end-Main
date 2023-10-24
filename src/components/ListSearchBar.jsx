@@ -59,7 +59,6 @@ export default function ListSearchBar({ isFetching, setQuery, query }) {
                     />
                 )}
             </Box>
-
         </Box >
     );
 }
