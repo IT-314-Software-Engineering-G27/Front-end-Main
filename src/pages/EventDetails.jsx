@@ -4,7 +4,6 @@ import EventsData from '../database/event';
 import {
     Avatar,
     Box,
-    Button,
     CircularProgress,
     Container,
     Paper,
@@ -49,8 +48,21 @@ function EventDetail() {
     }
 
     return (
-        <Container maxWidth="xl">
-            <Paper elevation={3} style={{ padding: '2rem' }}>
+        <Container 
+        style={{
+            position : "relative",
+            top  : "3rem",
+            padding: "3rem",
+            background: "rgba(92, 36, 179, 0.2)",
+            borderRadius: "10px",
+            boxShadow: " 7px 7px rgba(0, 0 , 0, 0.1)",
+          }}>
+        <Paper  style={{
+            padding: '2rem', backgroundColor: '#f5f5f5',
+            border : "1px solid rgb(0 ,0, 0, 1 )",
+            boxShadow: " 7px 7px rgba(163, 23, 205, 0.1)",
+        
+        }}>
 
                 <Typography variant="subtitle1">
                     {"Organized by "}
