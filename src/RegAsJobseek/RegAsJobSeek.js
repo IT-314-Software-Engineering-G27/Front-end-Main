@@ -42,15 +42,16 @@ const RegAsJobSeek = ()=>{
                     </Box>
                     
                     <Paper elevation={0} sx={{display:"flex" ,height:"91vh"}} id='papr'>   
-                        <Box sx={{width:"50%",}} id="lbox">
-                            <Typography variant="h4" component="h5" sx={{paddingY:"7%", paddingX:"5%"}}>
-                               Sign Up as Jobseeker
-                                </Typography>
+                        <Box sx={{width:"50%"}} id="lbox">
+                            {/* <Typography variant="h4" component="h5" sx={{paddingY:"7%", paddingX:"5%"}}> */}
+                             <h1 id='h1'>Sign Up as Jobseeker</h1>  
+                                {/* </Typography> */}
                          
                                 <Box sx={{paddingX:"5%",
                                 display:"flex",
                                 flexDirection:"column",
-                            }}>    
+                                
+                            }} id='inbox'>    
                                  
                                     <TextField  className="Tfield" sx={{ paddingY:"1%"}}
                                      placeholder="Phone Number" type='number' InputProps={{
@@ -99,8 +100,8 @@ const RegAsJobSeek = ()=>{
                                         </Link>
                                         </button>
                                         <Box id='txt'>
-                                        <p id='txt'>
-                                            <Link to=''>
+                                        <p id='txt' >
+                                            <Link to='' style={{color:"black"}}>
                                             Need help?
                                             </Link>
                                         </p>
@@ -109,7 +110,7 @@ const RegAsJobSeek = ()=>{
                             {/* </Box> */}
                         </Box>
 
-                        <Box sx={{ width:"50%", display:"flex", justifyContent:"center" }} id='rbox'>
+                        <Box sx={{width:"50%", display:"flex", justifyContent:"center" }} id='rbox'>
                             <img src={Logo} id='logoI'/>
                         </Box>
                     </Paper>

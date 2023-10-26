@@ -1,5 +1,7 @@
 
-
+#h1{
+    padding-left: 40px;
+}
 #logoI{
     padding-top: 6%;
     height:80%;
@@ -43,24 +45,75 @@
     padding-right: 11%;
 }
 
+#rbox{
+    /* background: url('./Logo.png') no-repeat; */
+
+}
+
 @media (max-width:1085px) {
+
+    #h1{
+        padding: 0%;
+    }
     #papr{
         display: flex;
-        flex-direction: column;
+        /* flex-direction: column; */
         align-items: center;
+      
+        /* justify-content: center; */
+       
     }
 
     #lbox{
-        width:80%;
-        
+        width:100%;
+        display: flex;
+       flex-direction: column;
+      /* justify-content: center; */
+      align-items: center;
+      background: url('../images/OBJECT9.png') no-repeat;
+      background-size:800px;
+      background-position: 50%;
+      /* background-color: rgb(64, 12, 113,0.6); */
+      
+        }
+
+        #inbox{
+            
+        }
+        .css-n8hq40{
+            width: 70%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .Tfiled{
+            width:100%;
+            padding: 0%;
+            margin: 0%;
         }
 
         #rbox{
-            width:90%;
-          height: fit-content;
-          
-
+            /* width:70%; */
+           height: fit-content;
+           
+            display: none;
+        /*  justify-content: center;  */ 
+          /* background: url('./Logo.png') no-repeat; */
+          /* opacity: 40%; */
+            
         }
+        #logoI{
+            width:100%;
+        }
+        #jobNav{
+            display: flex;
+            justify-content: center;
+        }
+
+        #txt{
+            padding-right: 0%;
+        }
+
 }
 
 a{
@@ -68,7 +121,12 @@ a{
 }
 
 @media (max-width:755px){
-    #logoI{
-        width: 80%;
+   
+    .css-n8hq40{
+        width: 70%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
+
 }
