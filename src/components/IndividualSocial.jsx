@@ -53,31 +53,7 @@ const IndividualSocial = () => {
                     </Paper>
                 </Grid>
 
-                {/* <Grid item xs={10} marginY={5}>
-                    <Paper elevation={3}>
-                        <Box paddingX={2}>
-                            <Typography variant="body" component="h3" paddingY={2} style={{color: '#2F1263'}}>
-                                My Post
-                            </Typography>
-                            <Box>
-                                <Typography variant="h6" component="h2" style={{color: '#2F1263'}}>
-                                    Subtitle/Heading
-                                </Typography> 
-                                <Typography variant="subtitle2" component="h1" paddingY={1}>
-                                 {body  }
-                                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                                Lorem Ipsum has been the industry's standard dummy text ever since the
-                                1500s, when an unknown printer took a galley of type
-                                and scrambled it to make a type specimen book. It has survived
-                                not only five centuries, but also the leap into electronic typesetting, remaining
-                                essentially unchanged. It was popularised in the 1960s with the release of Letraset
-                                
-               
-                                </Typography> 
-                            </Box>
-                        </Box>
-                    </Paper>
-                </Grid> */}
+                
 
             </Grid>
        

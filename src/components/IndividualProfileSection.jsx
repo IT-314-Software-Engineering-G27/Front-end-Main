@@ -23,53 +23,64 @@ const IndividualProfileSection = () => {
         <div>
             <Box marginY={2}>
                 <Paper elevation={3} >
-                    <Box paddingX={18} paddingTop={3} paddingBottom={1}>
-                        <img src={OBJ1} alt="" className="img" />
+                    <Box display="flex"
+                            justifyContent="center"
+                            alignItems="center"
+                            paddingTop={2}>
+                        <img src={OBJ1} alt="" className="img" align='center'/>
                     </Box>
-
+                    <Box>
                     <Typography style={{ color: '#2F1263' }} align="center" variant="h7" component="h3">
                         {UserName}
                     </Typography>
+                    </Box>
 
+                   
                     <Box textAlign="center" padding={2}>
                         <Button variant="contained" Link to='' >
                             Edit Profile
                         </Button>
                     </Box>
+                   
 
                     <Box paddingX={3} >
                         <Box paddingBottom={2}>
                             <Paper elevation={2} >
-
+                               <Box>
                                 <Typography style={{ color: '#2F1263' }} paddingLeft={1}>
                                     User Name
                                 </Typography>
                                 <Typography style={{ color: '#2F1263' }} paddingLeft={1} paddingBottom={1} variant="body" component="h3">
                                     {UserName}
                                 </Typography>
+                                </Box>
                             </Paper>
                         </Box>
 
                         <Box paddingBottom={2}>
                             <Paper elevation={2} >
+                                <Box>
                                 <Typography style={{ color: '#2F1263' }} paddingLeft={1} >
                                     Email
                                 </Typography>
                                 <Typography style={{ color: '#2F1263' }} paddingBottom={1} paddingLeft={1} variant="body" component="h3">
                                     {Email}
                                 </Typography>
+                                </Box>
                             </Paper>
                         </Box>
 
 
                         <Box paddingBottom={2}>
                             <Paper elevation={2} >
+                                <Box>
                                 <Typography style={{ color: '#2F1263' }} paddingLeft={1} >
                                     Country
                                 </Typography>
                                 <Typography style={{ color: '#2F1263' }} paddingBottom={1} paddingLeft={1} variant="body" component="h3">
                                     {Country}
                                 </Typography>
+                                </Box>
                             </Paper>
                         </Box>
                     </Box>
