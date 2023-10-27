@@ -1,5 +1,5 @@
 import { Button, Container, Paper, Skeleton, Stack, Typography } from '@mui/material';
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import MessageCard from '../components/ContactMessage';
 import { asyncFetchMessages } from '../database/message';
 import { fetchContact } from '../database/contact';
@@ -33,13 +33,19 @@ function ContactDetails() {
     }, [data]);
 
     return (
-        <Container maxWidth="xl" sx={{ textAlign: 'center' }}>
-            <Container maxWidth="xl" sx={{ display: "flex", flexDirection: "row", justifyContent: "space-between" }}>
+        <Container maxWidth="lg" sx={{ textAlign: 'center' }}>
+            <Paper sx={{
+                display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "center", padding: "2rem", backgroundColor: "primary.light",
+                border: "3px solid black",
+                margin: "1rem",
+            }}>
                 <Typography variant="h2">{contact.individual && contact.individual.username} </Typography>
                 <Typography variant="h5">last seen: {contact.individual && contact.last_seen.toLocaleTimeString()} </Typography>
-            </Container>
-            <Paper sx={{ padding: '10px', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', alignContent: 'center', gap: '2vh', minHeight: "80vh" }}>
-                <Button onClick={() => {
+            </Paper>
+            <Paper sx={{
+                padding: '10px', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', alignContent: 'center', gap: '2vh', minHeight: "80vh",
+                border: "3px solid black", }}>
+                <Button id="load-more-button" onClick={() => {
                     fetchNextPage();
                 }} disabled={!hasNextPage || isFetchingNextPage}>
                     {isFetchingNextPage
