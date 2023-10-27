@@ -6,7 +6,7 @@ import { Container, Grid, Paper, Skeleton, Typography } from "@mui/material";
 import FetchMoreButton from "../components/FetchMoreButton";
 
 export default function ContactList() {
-    const { data, fetchNextPage, hasNextPage, isFetching, isFetchingNextPage, isLoading, isError, error } = useInfiniteQuery({
+    const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading, isError, error } = useInfiniteQuery({
         queryKey: ["contacts"],
         queryFn: ({ pageParam }) => asyncFetchContacts({ page: pageParam || 1 }),
         getNextPageParam: (lastPage, pages) => {

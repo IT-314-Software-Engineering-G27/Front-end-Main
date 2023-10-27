@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { fetchMessage } from '../database/message';
 import { Box, Typography } from '@mui/material';
+import { purple } from '@mui/material/colors';
 
 function MessageCard({ id, isLoadingData }) {
     const [message, setMessage] = useState({});
@@ -30,12 +31,12 @@ function MessageCard({ id, isLoadingData }) {
                 textAlign: "left",
                 border: "2px solid black",
                 padding: "5px", borderRadius: "5px",
-                backgroundColor: `${message.type === "incoming" ? "white" : "lightblue"}`,
+                backgroundColor: `${message.type === "incoming" ? purple[50] : purple[200]}`,
             }}>
-                <Typography variant="h6" sx={{ wordWrap: "break-word" }}>
+                <Typography variant="caption1" sx={{ wordWrap: "break-word" }}>
                     {isLoadingData || isLoading ? "Loading..." : message.content}
                 </Typography>
-                <Typography variant="h6" sx={{ color: "black", minWidth: "10vw", textAlign: "end" }}>
+                <Typography variant="caption1" sx={{ color: "black", minWidth: "10vw", textAlign: "end" }}>
                     {isLoadingData || isLoading ? "Loading..." : message.type === "incoming" ?
                         message.timestamp.toLocaleTimeString() : (
                             message.read ? message.read.toLocaleTimeString() : "..."

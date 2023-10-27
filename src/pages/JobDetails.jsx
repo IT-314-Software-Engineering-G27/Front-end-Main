@@ -57,16 +57,22 @@ function JobDetail() {
   }
 
   return (
-    <Container className='Jobdetails' maxWidth="md"
+    <Container className='Jobdetails' 
     style={{
-      padding: '2rem',
-      backgroundColor: '#f5f5f5',
-      backgroundImage: 'radial-gradient(2px 2px at 50px 200px, #eee, rgba(0, 0, 0, 0)), radial-gradient(2px 2px at 40px 70px, #fff, rgba(0, 0, 0, 0)), radial-gradient(3px 4px at 120px 40px, #ddd, rgba(0, 0, 0, 0))', // Background image
-      backgroundRepeat: 'repeat, repeat, repeat',
-      backgroundSize: '200px 200px, 200px 200px, 200px 200px',
-      height: '100%',
+      
+      position : "relative",
+      top  : "3rem",
+      padding: "3rem",
+      background: "rgba(92, 36, 179, 0.2)",
+      borderRadius: "10px",
+      boxShadow: " 7px 7px rgba(0, 0 , 0, 0.1)",
     }}>
-      <Paper elevation={3} style={{ padding: '2rem', backgroundColor: '#f5f5f5' }}>
+      <Paper  style={{ 
+        padding: '2rem', backgroundColor: '#f5f5f5',
+        border : "1px solid rgb(0 ,0, 0, 1 )",
+        boxShadow: " 7px 7px rgba(163, 23, 205, 0.1)",
+        
+        }}>
      
         <Typography variant="h4" color="primary">
           {job.title}
@@ -108,19 +114,20 @@ function JobDetail() {
         </Typography>
         <Box display="flex" justifyContent="center">
         <Button
-  variant="contained"
-  color="primary"
-  size="large"
-  sx={{
-    width: '50%',
-    margin: '.8rem',
-    transition: 'background-color 0.3s, transform 0.3s',
-    '&:hover': {
-      backgroundColor: '#1976D2', 
-      transform: 'scale(1.05)', 
-    },
-  }}
->
+            variant="contained"
+            color= "primary"
+            size="large"
+            sx={{
+                  width: '50%',
+                  margin: '.8rem',
+                  transition: 'background-color 0.3s, transform 0.3s',
+                  boxShadow: " 5px 5px rgba(163, 23, 205, 0.1)",
+                  '&:hover': {
+                                backgroundColor: '#1976D2', 
+                                transform: 'scale(1.05)', 
+                              },
+                }}
+          >
   Apply Now
 </Button>
         </Box>

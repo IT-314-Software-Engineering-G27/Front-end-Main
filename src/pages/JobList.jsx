@@ -55,6 +55,7 @@ export default function JobList() {
                 flexDirection: "column",
                 alignItems: "center",
                 gap: "2rem",
+               
             }}
         >
             <Typography variant="h1">Jobs</Typography>
@@ -62,11 +63,12 @@ export default function JobList() {
             <Paper
                 elevation={3}
                 style={{
-                    padding: "2rem",
-                    background: "rgba(255, 255, 255, 0.9)",
-                    borderRadius: "8px",
-                    boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
-                    width: "80vw"
+                    padding: "3rem",
+                    background: "rgba(92, 36, 179, 0.2)",
+                    borderRadius: "25px",
+                    boxShadow: " 15px 15px rgba(0, 0, 0, 0.1) ",
+                    width: "90vw",
+                    marginBottom : "3rem"
                 }}
             >
                 {isLoading && !data && <Skeleton variant="rectangular" height={600} width="100%" />}
@@ -77,7 +79,7 @@ export default function JobList() {
                 )}
                 <Grid container spacing={3}>
                     {jobs.map((id) => (
-                        <Grid item key={id} xs={12} sm={6} md={4}>
+                        <Grid item key={id} xs={12} sm={10} md={4}>
                             <JobCard id={id} isLoadingData={isLoading} />
                         </Grid>
                     ))}
