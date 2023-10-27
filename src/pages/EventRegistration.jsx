@@ -1,14 +1,14 @@
 import React from 'react';
 import './EventRegistration.css';
-import Logo from '../components/Logo';
-import Profile from '../components/Profile';
-import Chat from '../components/Chat';
-import Post from '../components/Post';
-import IdeaSharing from '../components/IdeaSharing';
-import Updates from '../components/Updates';
-import Settings from '../components/Settings';
-import ProfilePicture from '../components/ProfilePicture';
-import OrganizerLogo from '../components/OrganizerLogo';
+import Logo from '../icons/Logo';
+import Profile from '../icons/Profile';
+import Chat from '../icons/Chat';
+import Post from '../icons/Post';
+import IdeaSharing from '../icons/IdeaSharing';
+import Updates from '../icons/Updates';
+import Settings from '../icons/Settings';
+import ProfilePicture from '../icons/ProfilePicture';
+import OrganizerLogo from '../icons/OrganizerLogo';
 
 function EventRegistration() {
   return (
