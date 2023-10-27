@@ -23,7 +23,7 @@ import OrganizationDetails from "./pages/OrganizationDetails";
 import RegAsJobSeek from "./RegAsJobseek/RegAsJobSeek";
 import ContactList from "./pages/ContactList";
 import ContactDetails from "./pages/ContactDetails";
-import EventRegistration from "./components/EventRegistration";
+import EventRegistration from "./components/EventRegistrationForm";
 
 function Root() {
     return (

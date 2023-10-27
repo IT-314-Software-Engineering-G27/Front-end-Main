@@ -92,7 +92,7 @@ export default function EventRegistration(){
                 onClick ={handleImageClick1}
                 >
                  {/* <img src="https://cdn2.iconfinder.com/data/icons/design-development-7/512/022-add_image-512.png" style={{width:"100%"}}/> */}
-                 {image1 ?(<img src={URL.createObjectURL(image1)} style={{height:"250px" , width:"250px"}}/>):(<img src="https://cdn2.iconfinder.com/data/icons/design-development-7/512/022-add_image-512.png" style={{width:"100%"}}/>)}
+                 {image1 ?(<img src={URL.createObjectURL(image1)} style={{height:"100%" , width:"100%" , paddingLeft: "3%", paddingRight: "3%"}}/>):(<img src="https://cdn2.iconfinder.com/data/icons/design-development-7/512/022-add_image-512.png" style={{width:"100%"}}/>)}
                  <input type="file" ref={inputRef1} onChange={handleImageChange1} style={{display:"none"}}></input>
                 </Grid>
 
@@ -102,7 +102,7 @@ export default function EventRegistration(){
                 onClick ={handleImageClick2}
                 >
                     {/* <img src="https://cdn2.iconfinder.com/data/icons/design-development-7/512/022-add_image-512.png" style={{width:"100%"}}></img> */}
-                    {image2 ?(<img src={URL.createObjectURL(image2)} style={{height:"250px" , width:"250px"}}/>):(<img src="https://cdn2.iconfinder.com/data/icons/design-development-7/512/022-add_image-512.png" style={{width:"100%"}}/>)}
+                    {image2 ?(<img src={URL.createObjectURL(image2)} style={{height:"100%" , width:"100%" , paddingLeft: "3%", paddingRight: "3%"}}/>):(<img src="https://cdn2.iconfinder.com/data/icons/design-development-7/512/022-add_image-512.png" style={{width:"100%"}}/>)}
                     <input type="file" ref={inputRef2} onChange={handleImageChange2} style={{display:"none"}}></input>
                 </Grid>
 
@@ -112,7 +112,7 @@ export default function EventRegistration(){
                 onClick ={handleImageClick3}
                 >
                     {/* <img src="https://cdn2.iconfinder.com/data/icons/design-development-7/512/022-add_image-512.png" style={{width:"100%"}}></img> */}
-                    {image3 ?(<img src={URL.createObjectURL(image3)} style={{height:"250px" , width:"250px"}}/>):(<img src="https://cdn2.iconfinder.com/data/icons/design-development-7/512/022-add_image-512.png" style={{width:"100%"}}/>)}
+                    {image3 ?(<img src={URL.createObjectURL(image3)} style={{height:"100%" , width:"100%" , paddingLeft: "3%", paddingRight: "3%"}}/>):(<img src="https://cdn2.iconfinder.com/data/icons/design-development-7/512/022-add_image-512.png" style={{width:"100%"}}/>)}
                     <input type="file" ref={inputRef3} onChange={handleImageChange3} style={{display:"none"}}></input>
                 </Grid>
             </Grid>
