@@ -24,6 +24,7 @@ import RegAsJobSeek from "./RegAsJobseek/RegAsJobSeek";
 import ContactList from "./pages/ContactList";
 import EventRegistration from "./pages/EventRegistration";
 import ContactDetails from "./pages/ContactDetails";
+import MakePost from "./pages/MakePost"
 
 function Root() {
     return (
@@ -42,6 +43,7 @@ function Root() {
                             </Route>
                             <Route exact path="/login" element={<Login />} />
                             <Route path="/posts" element={<PostList />}></Route>
+                            <Route path="/makePost" element={<MakePost/>}></Route>
                             <Route path="/posts/:postId" element={<PostDetails />}></Route>
                             <Route path="/jobs" element={<JobList />}></Route>
                             <Route path="/jobs/:jobId" element={<JobDetails />}></Route>
