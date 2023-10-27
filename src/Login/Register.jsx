@@ -7,6 +7,7 @@ const Register = () => {
     return (
         <div className='register'>
             <div id='top'>
+                <div id='ttl'>Sign Up</div>
                 <button id='btn'>
                     <Link to='/login'>
                         Sign in
@@ -34,7 +35,7 @@ const Register = () => {
                 </div>
                 <div id='org'>
 
-                    <h2 id='OrgTitle'>For organisation</h2>
+                    <h2>For organisation</h2>
                     <p>
                         Lorem ipsum dolor sit amet consectetur adipisicing elit.
                         Hic obcaecati nostrum perspiciatis dolore excepturi veniam laboriosam

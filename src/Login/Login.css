@@ -1,15 +1,18 @@
-.log{
-    /* width: 100vw; */
+.log {
     width: fit-content;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
 }
 
 #contact {
-    height: 30px;
+    height: 50px;
     padding: 10px;
 }
 
 #legal {
-    height: 30px;
+    height: 50px;
     padding: 10px;
 }
 
@@ -22,19 +25,17 @@
     width: 170ex;
     justify-content: space-between;
 }
+
 #leftnav {
-    /* width: 50%; */
     width: 15ex;
+    margin-left: 12.5ex;
 }
 
 #rightnav {
-    /* width: 50%; */
-    /* width: 15ex; */
     display: flex;
     flex-direction: row;
     justify-content: right;
     padding: 15px;
-
 }
 
 #bdy {
@@ -46,26 +47,26 @@
 }
 
 #form {
-    padding-left: 30px;
+    padding-left: 9ex;
     margin-right: 45ex;
     width: 50ex;
-
 }
 
 #lg {
-
-    width:min-content;
-    
+    width: min-content;
 }
+
 #SAlogo {
     width: 60ex;
-    /* height: 80%; */
-    /* padding-left: 100px; */
-    height: 70ex;
+    height: 60ex;
     justify-content: center;
     margin-right: 0;
-    padding-right: 0;
+    padding-right: 20px;
+    padding-left: 20px;
+    margin-top:30px;
 }
+
+
 
 #check {
     display: flex;
@@ -75,14 +76,25 @@
 
 #radio1 {
     width: 50%;
+    margin-left: 0;
+}
 
+#radio1 label,
+#radio2 label {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+}
+
+#radio1 input,
+#radio2 input {
+    width: 2.5ex;
+    margin-right: 1ex;
 }
 
 #radio2 {
     width: 50%;
-    display: flex;
-    flex-direction: row;
-    justify-content: right;
 }
 
 .inbox {
@@ -91,51 +103,10 @@
     border-radius: 1.5ex;
 }
 
-#SAlogo {
-    width: 60ex;
-    /* height: 80%; */
-    /* padding-left: 100px; */
-    height: 70ex;
-    justify-content: center;
-    margin-right: 0;
-    padding-right: 0;
-}
-
-#check {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-}
-
-#radio1 {
-    width: 50%;
-
-}
-
-#radio2 {
-    width: 50%;
-    display: flex;
-    flex-direction: row;
-    justify-content: right;
-}
-
-.inbox {
-    width: 100%;
-    height: 30px;
-    border-radius: 1.5ex;
-}
-
-/* #pswd{
-     background: url("./view.png") no-repeat right;  
-     background-size: 3ex; 
-     background-position: 99%; 
-        
-} */
-
-#email{
+#email {
     background: url("./human.png") no-repeat;
-    background-size: 3ex;
-    background-position: 99%;
+    background-size: 2ex;
+    background-position: 98%;
 }
 
 .adjust {
@@ -144,12 +115,11 @@
 }
 
 #signInbtn {
-
     width: 100%;
     height: 35px;
-    background-color:#2f1263 ;
+    background-color: #2f1263;
     color: white;
-    border-radius:2em ;
+    border-radius: 2em;
 }
 
 #snBtn {
@@ -168,6 +138,17 @@
     width: 20ex;
 }
 
+#remember label{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#remember input{
+    width: 2.5ex;
+    margin-right: 1ex;
+}
+
 #help {
     width: 11ex;
     display: flex;
@@ -175,61 +156,86 @@
     justify-content: right;
 }
 
-#help a{
-    color:black;
+#help a {
+    color: black;
 }
 
 #lastLine {
-    margin-top: 35px;
-    padding-top: 35px;
+    margin-top: 20px;
+    padding-top: 30px;
     width: 40ex;
 }
 
-#lastLine a{
+#lastLine a {
     color: #2f1263;
     font-weight: bold;
+    margin-left: 1ex;
 }
 
-#snup{
-    width:150px;
+#snup {
+    width: 150px;
     height: 30px;
     background-color: #2f1263;
-    border-radius:2em;
-    margin-right:50px; 
+    border-radius: 2em;
+    margin-right: 50px;
 }
 
 @media (max-width:1023px) {
+
+    .log{
+        width:100vw;    
+    }
+
+    #SAlogo{
+        width:50ex;
+        height:50ex;
+        justify-content: center;
+        align-items: center;  
+        
+    }
+
     #form {
-        padding-left: 30px;
+        /* padding-left: 30px; */
         margin-right: 10ex;
         width: 50ex;
-    
+        margin-top:15ex;
+        justify-content: center;
+        align-items: center;    
     }
 
-    #bdy {
-        flex-direction:column-reverse;
+    #form h1{
+        text-align: center;
     }
 
-    #footer{
+    #bdy{
+        display:contents;
+        justify-content: center;
+        align-items: center;   
+    }
+
+    #lg {
+        position: absolute;
+        justify-content: center;
+        align-items: center;
+        opacity:25%;
+    }
+
+    #footer {
         flex-direction: column;
     }
 
-    #nav{
+    #nav {
         width: 50ex;
     }
 
-    #SAlogo {
-        width: 40ex;
-        /* height: 80%; */
-        /* padding-left: 100px; */
-        height: 45ex;
-        padding-left:12ex;
+    #leftnav{
+        margin-left:5ex;
     }
 }
 
-@media (min-width:541px) and (max-width:1022px){
+@media (min-width:250px) and (max-width:415px){
 
     .log{
-         margin-left:10em;
-}
+        width:fit-content;
+    }
 }

@@ -20,11 +20,7 @@
     justify-content: center;*/
 }
 
-
-
 .register {
-
-    /* display: flex; */
     background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('\Logo.png');
     background-position: center;
     background-repeat: no-repeat;
@@ -50,7 +46,6 @@
     padding: 0 10ex;
     width: 100vw;
 
-
 }
 
 p {
@@ -59,8 +54,8 @@ p {
 
 #org {
     background-color: rgba(255, 255, 255, 0.6);
-
 }
+
 #indi button,
 #org button {
     background-color: #2f1263;
@@ -68,11 +63,9 @@ p {
     width: 60%;
     height: 35px;
     border-radius: 2em;
-    margin-top: 4ex;
-    /* margin:0 8em; */
 }
 
-a {
+    a {
     text-decoration: none;
     color: white;
 }
@@ -91,12 +84,20 @@ a {
     margin-top: 10px;
 }
 
-@media (max-width: 582px) {
-    .register {
+#ttl{
+    display:none;
+}
 
+@media (max-width: 582px) {
+
+    #top{
+        padding:0.2ex;
+        margin:0.5ex;
+        /* padding-right:0%; */
+    }
+    .register {
         /* Fit the background as content */
           width: fit-content; 
-      
         }
 
         #maintext{
@@ -104,12 +105,50 @@ a {
         }
 
         #indi{
-            padding-top: 15ex;
+            /* padding-top: 8ex; */
             height:50%;
+            width: fit-content; 
+            padding-left: 1ex;
+            padding-right: 1ex;
+            font-size: smaller;
         }
 
         #org{
-            /* padding-top: 15ex; */
+            position: relative;
             height:50%;
+            width: fit-content; 
+            padding-left: 1ex;
+            padding-right: 1ex;
+            font-size: smaller;
         }
+
+        #indi button,
+        #org button {
+            margin-top: 0.5ex;
+        }
+
+        .topsn{
+            display:none;
+        }  
+        #ttl{
+            display: flex;
+            justify-content: left;
+            margin-left:0;
+            margin-right:8ex;
+            font-weight: bold;
+            margin-top:2ex;
+            font-size:large;
+            width:100%;
+            
+        }  
+
+        #top {
+           
+            position: fixed;
+            margin: 0;
+           width: 100%;
+        }
+
 }
+
+
