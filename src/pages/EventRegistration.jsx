@@ -1,188 +1,124 @@
-import React from 'react';
-import './EventRegistration.css';
-import Logo from '../icons/Logo';
-import Profile from '../icons/Profile';
-import Chat from '../icons/Chat';
-import Post from '../icons/Post';
-import IdeaSharing from '../icons/IdeaSharing';
-import Updates from '../icons/Updates';
-import Settings from '../icons/Settings';
-import ProfilePicture from '../icons/ProfilePicture';
-import OrganizerLogo from '../icons/OrganizerLogo';
+import { Paper,TextField,Grid ,Button} from "@mui/material";
+import {useRef , useState} from "react";
 
-function EventRegistration() {
-  return (
-    <div>
-      <table className="main-container" style={{ width: '100%', height: '100%' }}>
-        <tbody>
-          <tr>
-            <td className="sidebar-container">
-              <table className="sidebar">
-                <tbody>
-                  <tr>
-                    <td>
-                      <Logo />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <a href="#">
-                        <Profile /> <br /> Profile
-                      </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <a href="#">
-                        <Chat /> <br /> Chat
-                      </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <a href="#">
-                        <Post /> <br /> Post
-                      </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <a href="#">
-                        <IdeaSharing /> <br /> Idea Sharing
-                      </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <a href="#">
-                        <Updates /> <br /> Updates
-                      </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <a href="#">
-                        <Settings /> <br /> Settings
-                      </a>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </td>
-            <td style={{ width: '2%' }}></td>
-            <td className="event-container">
-              <table style={{ width: '100%', height: '100%' }}>
-                <tbody>
-                  <tr className="header">
-                    <td className="title">
-                      <span>Event Registration</span>
-                    </td>
-                    <td className="search-bar">
-                      <input type="text" />
-                    </td>
-                    <td style = {{ width: '2px' }}></td>
-                    <td className="profile-picture">
-                      <a href="#">
-                        <ProfilePicture />
-                      </a>
-                    </td>
-                  </tr>
-                  <tr style={{ height: '93%', padding: '20%' }}>
-                    <td colSpan="4" style={{ backgroundColor: 'white', borderRadius: '30px' }}>
-                      <table style={{ width: '100%', height: '100%' }}>
-                        <tbody>
-                          <tr style={{ width: '70%' }}>
-                            <td>
-                              <table>
-                                <tbody>
-                                  <tr>
-                                    <td style={{ width: '40%', height: '40%', backgroundColor: '#DED7FD', borderRadius: '50%', overflow: 'hidden', textAlign: 'center' }}>
-                                      <a href="#">
-                                        <OrganizerLogo />
-                                      </a>
-                                    </td>
-                                    <td style={{ width: '60%', marginLeft: '10px' }}>
-                                      <table>
-                                        <tbody>
-                                          <tr>
-                                            <td rowspan="2" style={{ width: '10px' }}></td>
-                                            <td>
-                                              <span style={{ fontWeight: 'bold', fontSize: '28px' }}>Title of the Event</span>
-                                            </td>
-                                          </tr>
-                                          <tr>
-                                            <td>
-                                              <span>Event Organizer</span>
-                                            </td>
-                                          </tr>
-                                        </tbody>
-                                      </table>
-                                    </td>
-                                  </tr>
-                                  <tr style={{ height: '10px' }}></tr>
-                                  <tr>
-                                    <td style={{ width: '50%', textAlign: 'center' }}>
-                                      <div style={{ height: '30px', backgroundColor: '#EDE9FE', border: '1px solid', borderColor: '#C5B7FB', borderRadius: '10px' }}>
-                                        <span style={{ fontWeight: 'bold' }}>Event Date</span>
-                                      </div>
-                                      <span>1 January 2001</span>
-                                    </td>
-                                    <td style={{ width: '50%', textAlign: 'center' }}>
-                                      <div style={{ height: '30px', backgroundColor: '#EDE9FE', border: '1px solid', borderColor: '#C5B7FB', borderRadius: '10px' }}>
-                                        <span style={{ fontWeight: 'bold' }}>Last Date</span>
-                                      </div>
-                                      <span>1 January 2001</span>
-                                    </td>
-                                  </tr>
-                                </tbody>
-                              </table>
-                            </td>
-                            <td style={{ width: '20%' }}></td>
-                            <td style={{ width: '10%' }}>
-                              <div style={{ width: '120px', height: '30px', backgroundColor: '#C5B7FB', borderRadius: '10px', textAlign: 'center' }}>Event Category</div>
-                            </td>
-                          </tr>
-                          <tr style={{ height: '50%' }}>
-                            <td colSpan="3" style={{ width: '100%', border: '1px solid', borderColor: '#C5B7FB', borderRadius: '30px', textAlign: 'center', verticalAlign: 'top', margin: '0 auto' }}>
-                              <span>About the Event</span>
-                            </td>
-                          </tr>
-                          <tr style={{ height: '10%' }}>
-                            <td colSpan="3">
-                              <table style={{ width: '100%', height: '100%' }}>
-                                <tbody>
-                                  <tr>
-                                    <td style={{ width: '30%' }}></td>
-                                    <td style={{ width: '20%', alignContent: 'right' }}>
-                                      <a href="#">
-                                        <div style={{ width: '200px', height: '30px', backgroundColor: '#C5B7FB', borderRadius: '10px', textAlign: 'center' }}>Register Individually</div>
-                                      </a>
-                                    </td>
-                                    <td style={{ width: '20%' }}>
-                                      <a href="#">
-                                        <div style={{ width: '200px', height: '30px', backgroundColor: '#C5B7FB', borderRadius: '10px', textAlign: 'center' }}>Register Organization</div>
-                                      </a>
-                                    </td>
-                                    <td style={{ width: '30%' }}></td>
-                                  </tr>
-                                </tbody>
-                              </table>
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </td>
-                  </tr>
-                  <tr style={{ height: '2%' }}></tr>
-                </tbody>
-              </table>
-            </td>
-            <td style={{ width: '2%' }}></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  );
+export default function EventRegistration(){
+   const inputRef1= useRef(null);
+   const inputRef2= useRef(null);
+   const inputRef3= useRef(null);
+   const [image1,setImage1] = useState("");
+   const [image2,setImage2] = useState("");
+   const [image3,setImage3] = useState("");
+
+   const handleImageClick1= () =>{
+       inputRef1.current.click();
+   }
+   const handleImageClick2 = () =>{
+       inputRef2.current.click();
+   }
+   const handleImageClick3 = () =>{
+       inputRef3.current.click();
+   }
+
+   const handleImageChange1= (event) =>{
+       const file1= event.target.files[0];
+       setImage1(file1);
+       }
+
+   const handleImageChange2= (event) =>{
+       const file2= event.target.files[0];
+       setImage2(file2);
+       }
+   const handleImageChange3= (event) =>{
+       const file3= event.target.files[0];
+       setImage3(file3);
+        }
+
+   return(
+       <div style={{display:"flex",
+           flexDirection:"column",
+           justifyContent:"center",
+           alignItems:"center"
+       }}>
+       <h1>Event Registration</h1>
+       <Paper elevation={10} 
+       style ={{
+           margin: "30px",
+           marginTop:" 15px",
+           width: "80vw",
+           display:"flex",
+           flexDirection:"column",
+           alignItems:"center",
+           
+          // height:"78vh",
+           padding:"30px",
+           gap:"15px"
+       }}>
+               
+               <TextField
+               required
+               id="outlined-required"
+               label="Startup Idea"
+               defaultValue="Type the Idea here.."
+               style={{margin: "5px", width:"75%"}}
+               />
+           <TextField
+               id="outlined-multiline-static"
+               label="Idea Description"
+               multiline
+               rows={6}
+               defaultValue="Write the description here.."
+               style={{margin: "5px", width:"75%"}}
+           />
+
+           <h4>Click on the image to add a new image</h4>
+           <div style={{width:"75%",
+               display:"flex",
+               justifyContent:"center"
+           }}>
+           
+           <Grid container spacing={11}  style={{
+               margin: "5px", 
+               width:"100%" , 
+               display:"flex",
+               alignItems:"center",
+              
+               }}>
+
+               <Grid xs={4} style={{
+               display:"flex",
+               justifyContent:"center",
+               //  margin:"30px"
+               }}
+               onClick ={handleImageClick1}
+               >
+                {/* <img src="https://cdn2.iconfinder.com/data/icons/design-development-7/512/022-add_image-512.png" style={{width:"100%"}}/> */}
+                {image1 ?(<img src={URL.createObjectURL(image1)} style={{height:"250px" , width:"250px"}}/>):(<img src="https://cdn2.iconfinder.com/data/icons/design-development-7/512/022-add_image-512.png" style={{width:"100%"}}/>)}
+                <input type="file" ref={inputRef1} onChange={handleImageChange1} style={{display:"none"}}></input>
+               </Grid>
+
+               <Grid xs={4} style={{
+               display:"flex",
+               justifyContent:"center"}}
+               onClick ={handleImageClick2}
+               >
+                   {/* <img src="https://cdn2.iconfinder.com/data/icons/design-development-7/512/022-add_image-512.png" style={{width:"100%"}}></img> */}
+                   {image2 ?(<img src={URL.createObjectURL(image2)} style={{height:"250px" , width:"250px"}}/>):(<img src="https://cdn2.iconfinder.com/data/icons/design-development-7/512/022-add_image-512.png" style={{width:"100%"}}/>)}
+                   <input type="file" ref={inputRef2} onChange={handleImageChange2} style={{display:"none"}}></input>
+               </Grid>
+
+               <Grid xs={4} style={{
+               display:"flex",
+               justifyContent:"center"}}
+               onClick ={handleImageClick3}
+               >
+                   {/* <img src="https://cdn2.iconfinder.com/data/icons/design-development-7/512/022-add_image-512.png" style={{width:"100%"}}></img> */}
+                   {image3 ?(<img src={URL.createObjectURL(image3)} style={{height:"250px" , width:"250px"}}/>):(<img src="https://cdn2.iconfinder.com/data/icons/design-development-7/512/022-add_image-512.png" style={{width:"100%"}}/>)}
+                   <input type="file" ref={inputRef3} onChange={handleImageChange3} style={{display:"none"}}></input>
+               </Grid>
+           </Grid>
+           </div>
+           <Button variant="contained" style={{width:" 200px",border:"solid white 1px", borderRadius:"5px"}}>Submit</Button>
+       </Paper>
+       </div>
+   )
 }
-
-export default EventRegistration;

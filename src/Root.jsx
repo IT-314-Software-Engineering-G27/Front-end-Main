@@ -48,7 +48,6 @@ function Root() {
                             <Route path="/events" element={<EventList />}></Route>
                             <Route path="/events/register" element={<EventRegistration />}></Route>
                             <Route path="/events/:eventId" element={<EventDetails />}></Route>
-                            <Route path="events/Registration"  element={<EventRegistration/>}/>
                             <Route path="/individuals" element={<IndividualList />} />
                             <Route path="/individuals/:individualId" element={<IndividualDetails />} />
                             <Route path="/organizations" element={<OrganizationList />} />
