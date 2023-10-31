@@ -14,8 +14,7 @@ export default function EventList() {
     const deferredQuery = useDeferredValue(query, { timeoutMs: 1000 });
 
     
-    const [selectedButtonIndex, setSelectedButtonIndex] = useState(1); // Initialize with the index of the initially selected button (0 for "Past Events", 1 for "Ongoing Events", 2 for "Future Events")
-
+    const [selectedButtonIndex, setSelectedButtonIndex] = useState(1); 
 
     const { data, fetchNextPage, hasNextPage, isFetching, isFetchingNextPage, isLoading, isError, error } = useInfiniteQuery({
         queryKey: ["Events", deferredQuery],
@@ -36,11 +35,6 @@ export default function EventList() {
     }, [data]);
 
 
-    // const buttons = [
-    //     <Button sx={{width:'200px', border:'none', borderRadius:'10px',borderBottomRightRadius:'20px', mr:2}}>Past Events</Button >,
-    //     <Button sx={{width:'200px', border:'none', borderRadius:'10px'}}>Ongoing Events</Button>,
-    //     <Button sx={{width:'200px', border:'none', borderRadius:'10px'}}>Future Events</Button>,
-    //   ];
 
   
 
