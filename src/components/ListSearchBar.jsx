@@ -12,7 +12,7 @@ export default function ListSearchBar({ isFetching, setQuery, query }) {
                 alignItems: "center",
                 gap: "1rem",
                 background: "#f0f4f8",
-                width: "80rem",
+                width: "100%",
             }}
         >
             <Box

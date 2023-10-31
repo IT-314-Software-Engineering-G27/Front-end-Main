@@ -44,7 +44,7 @@ export default function EventCard({ id, isLoadingData }) {
             }}
         >
             <Grid container spacing={2}>
-                <Grid item xs={4}>
+                <Grid item xs={12} md={4}>
                     {/* Left side: Image */}
                     <div
                         style={{
@@ -61,14 +61,15 @@ export default function EventCard({ id, isLoadingData }) {
                             alt="Event"
                             style={{
                                 maxWidth: "100%",
-                                maxHeight: "100%",
+                                maxHeight: "auto",
                                 objectFit: "contain",
                                 borderRadius: "16px",
                             }}
                         />
+                   
                     </div>
                 </Grid>
-                <Grid item xs={8} sx={{ padding: "0px" }}>
+                <Grid item xs={12} md={8} sx={{ padding: "0px" }}>
                     {/* Right side: Event Details */}
 
                     <CardHeader

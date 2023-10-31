@@ -60,9 +60,9 @@ export default function EventList() {
                         Error: {error.message}
                     </Typography>
                 )}
-                <Grid container spacing={3}>
+                <Grid container spacing={3}> 
                     {Events.map((id) => (
-                        <Grid item key={id} xs={12} >
+                        <Grid item key={id} xs={12}> 
                             <EventCard id={id} isLoadingData={isLoading} />
                         </Grid>
                     ))}

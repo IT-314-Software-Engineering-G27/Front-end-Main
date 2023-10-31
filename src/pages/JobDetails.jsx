@@ -118,7 +118,7 @@ function JobDetail() {
             color= "primary"
             size="large"
             sx={{
-                  width: '50%',
+                  width: '100%',
                   margin: '.8rem',
                   transition: 'background-color 0.3s, transform 0.3s',
                   boxShadow: " 5px 5px rgba(163, 23, 205, 0.1)",
@@ -137,7 +137,7 @@ function JobDetail() {
     color="primary"
     startIcon={<CheckCircleOutlineIcon />}
     sx={{
-      width: '50%',
+      width: '100%',
       transition: 'border-color 0.3s, transform 0.3s',
       '&:hover': {
         borderColor: '#1976D2', 
