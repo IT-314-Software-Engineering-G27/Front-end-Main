@@ -45,12 +45,12 @@ export default function EventList() {
   
 
     const buttons = [
-      <Button sx={{mr:2, width: '200px', borderRadius: '10px',  fontSize: selectedButtonIndex === 0 ? '16px' : '14px',  fontWeight: selectedButtonIndex === 0 ? 'bold' : 'normal',
+      <Button sx={{mr:{lg:2,md:2,sm:0}, width: '200px', borderRadius: '10px',  fontSize: selectedButtonIndex === 0 ? '16px' : '14px',  fontWeight: selectedButtonIndex === 0 ? 'bold' : 'normal',
          backgroundColor: selectedButtonIndex === 0 ? 'white' : 'transparent', border: 'none',
          ':hover': { color:'black', fontWeight: 'bold', backgroundColor: 'white', border: 'none', borderRadius: '10px', },}}
          onClick={() => setSelectedButtonIndex(0)}> 
          Past Events</Button>,
-           <Button sx={{mr:2, width: '200px', borderRadius: '10px', fontSize: selectedButtonIndex === 1 ? '16px' : '14px',  fontWeight: selectedButtonIndex === 1 ? 'bold' : 'normal', 
+           <Button sx={{mr:{lg:2,md:2,sm:0}, width: '200px', borderRadius: '10px', fontSize: selectedButtonIndex === 1 ? '16px' : '14px',  fontWeight: selectedButtonIndex === 1 ? 'bold' : 'normal', 
             backgroundColor: selectedButtonIndex === 1 ? 'white' : 'transparent', border: 'none',
             ':hover': { color:'black', fontWeight: 'bold', backgroundColor: 'white', border: 'none', borderRadius: '10px', },}}
             onClick={() => setSelectedButtonIndex(1)}>   
@@ -76,8 +76,8 @@ export default function EventList() {
 
             <Box sx={{ alignItems: 'center',backgroundColor:'rgba(0,0,0,.2)', borderRadius:'10px' , px:2, py:1, }}>
       
-                <Box sx={{width:'100%'}}>     
-                    {buttons}
+                <Box sx={{width:'100%', display:'flex', flexDirection:{xs:'column',sm:'row',md:'row', lg:'row'} }}>
+                   {buttons}
                 </Box>
             </Box>
 
