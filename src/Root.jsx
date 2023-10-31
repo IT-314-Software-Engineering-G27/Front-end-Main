@@ -27,7 +27,7 @@ import EventRegistrationForm from "./components/EventRegistrationForm";
 import ContactDetails from "./pages/ContactDetails";
 import MakePost from "./pages/MakePost";
 import CompanyJobRegistration from "./pages/CompanyJobRegistration";
-
+import ContactUs from "./pages/ContactUs";
 function Root() {
     return (
         <>
