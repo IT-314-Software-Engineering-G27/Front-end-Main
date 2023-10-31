@@ -52,9 +52,9 @@ export default function IndividualCard({ id, isLoadingData }) {
                 />
                 <CardContent
                     sx={{
-                        width: "100%", // Ensure the content width takes the full width
-                        maxHeight: "50vh", // Set a max height for small screens
-                        overflowY: "auto", // Enable vertical scrolling when content exceeds max height
+                        width: "100%", 
+                        maxHeight: "50vh", 
+                        overflowY: "auto", 
                     }}
                 >
                     <Typography variant="h6" gutterBottom sx={{ display: "flex", alignItems: "center" }}>
@@ -68,7 +68,7 @@ export default function IndividualCard({ id, isLoadingData }) {
                             gutterBottom
                             sx={{
                                 fontsize : "1rem",
-                                whiteSpace: "nowrap", // Prevent email from breaking into multiple lines
+                                whiteSpace: "nowrap", 
                             }}
                         >
                          {individual.email}

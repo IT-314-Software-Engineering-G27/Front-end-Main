@@ -67,7 +67,7 @@ export default function IndividualList() {
             
             <Grid container spacing={3}>
                 {individuals.map((id) => (
-                    <Grid item key={id} xs={12} md={6}>
+                    <Grid item key={id} xs={12} sm={6}>
                         <IndividualCard id={id} isLoadingData={isLoading} />
                     </Grid>
                 ))}
