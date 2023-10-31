@@ -99,7 +99,7 @@ const ContactUs = () => {
      <iframe width='100%' height='270px' title="DA-IICT Location" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14669.989595290104!2d72.6289155!3d23.188537!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395c2a3c9618d2c5%3A0xc54de484f986b1fa!2sDA-IICT!5e0!3m2!1sen!2sin!4v1678437146026!5m2!1sen!2sin" allowfullscreen="" loading="lazy" ></iframe>
                           
     </Box>
-     <Box sx={{ fontSize: { xs: '12px', md: 'sm' }, marginTop: 3,marginBottom: 3,}}>
+     <Box sx={{ fontSize: { xs: '16px', md: 'sm' }, marginTop: 3,marginBottom: 3,}}>
             Dhirubhai Ambani Institute Of Information And Communication Technology<br/>
             Near Indroda Circle<br/>
             Gandhinagar - 382007<br/>

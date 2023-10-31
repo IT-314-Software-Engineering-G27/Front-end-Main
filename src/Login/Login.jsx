@@ -21,9 +21,7 @@ const Login = () => {
             <div id='nav'>
 
                 <div id='leftnav'>
-                    <Link to=''>
-                        <img src={document} alt="legal section" id='legal' />
-                    </Link>
+                   
                     <Link to=''>
                         <img src={Phone} alt="contact us" id='contact' />
                     </Link>
