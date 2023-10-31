@@ -44,6 +44,7 @@ function Root() {
                                 <Route path="/register" element={<Register />} />
                             </Route>
                             <Route exact path="/login" element={<Login />} />
+                            <Route path="/contact-us" element={<ContactUs />} />
                             <Route path="/posts" element={<PostList />}></Route>
                             <Route path="/makePost" element={<MakePost/>}></Route>
                             <Route path="/posts/:postId" element={<PostDetails />}></Route>
