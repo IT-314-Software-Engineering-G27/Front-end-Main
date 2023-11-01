@@ -13,6 +13,10 @@ export default function EventList() {
     const [query, setQuery] = useState(" ");
     const deferredQuery = useDeferredValue(query, { timeoutMs: 1000 });
 
+    
+    const [selectedButtonIndex, setSelectedButtonIndex] = useState(1); // Initialize with the index of the initially selected button (0 for "Past Events", 1 for "Ongoing Events", 2 for "Future Events")
+
+
     const { data, fetchNextPage, hasNextPage, isFetching, isFetchingNextPage, isLoading, isError, error } = useInfiniteQuery({
         queryKey: ["Events", deferredQuery],
         queryFn: ({ pageParam }) => asyncFetchEvents({ query: deferredQuery, page: pageParam + 1 || 1 }),
@@ -30,6 +34,33 @@ export default function EventList() {
         }
         return [];
     }, [data]);
+
+
+    // const buttons = [
+    //     <Button sx={{width:'200px', border:'none', borderRadius:'10px',borderBottomRightRadius:'20px', mr:2}}>Past Events</Button >,
+    //     <Button sx={{width:'200px', border:'none', borderRadius:'10px'}}>Ongoing Events</Button>,
+    //     <Button sx={{width:'200px', border:'none', borderRadius:'10px'}}>Future Events</Button>,
+    //   ];
+
+  
+
+    const buttons = [
+      <Button sx={{mr:{lg:2,md:2,sm:0}, width: '200px', borderRadius: '10px',  fontSize: selectedButtonIndex === 0 ? '16px' : '14px',  fontWeight: selectedButtonIndex === 0 ? 'bold' : 'normal',
+         backgroundColor: selectedButtonIndex === 0 ? 'white' : 'transparent', border: 'none',
+         ':hover': { color:'black', fontWeight: 'bold', backgroundColor: 'white', border: 'none', borderRadius: '10px', },}}
+         onClick={() => setSelectedButtonIndex(0)}> 
+         Past Events</Button>,
+           <Button sx={{mr:{lg:2,md:2,sm:0}, width: '200px', borderRadius: '10px', fontSize: selectedButtonIndex === 1 ? '16px' : '14px',  fontWeight: selectedButtonIndex === 1 ? 'bold' : 'normal', 
+            backgroundColor: selectedButtonIndex === 1 ? 'white' : 'transparent', border: 'none',
+            ':hover': { color:'black', fontWeight: 'bold', backgroundColor: 'white', border: 'none', borderRadius: '10px', },}}
+            onClick={() => setSelectedButtonIndex(1)}>   
+            Ongoing Events</Button>,
+            
+            <Button sx={{ width: '200px', borderRadius: '10px', fontSize: selectedButtonIndex === 2 ? '16px' : '14px',fontWeight: selectedButtonIndex === 2 ? 'bold' : 'normal', 
+             backgroundColor: selectedButtonIndex === 2 ? 'white' : 'transparent', border: 'none',
+            ':hover': {color:'black',fontWeight: 'bold', backgroundColor: 'white', border: 'none', borderRadius: '10px', },}}
+            onClick={() => setSelectedButtonIndex(2)}>     
+            Future Events</Button>, ];
 
     return (
         <Container
