@@ -100,7 +100,7 @@ export default function EventCard({ id, isLoadingData }) {
                             </Grid>
                             <Grid item xs>
                                 <Typography variant="body1" gutterBottom>
-                                    Event date: {`${event.date}`}
+                                    Event date: {`${event.date.toDateString()}`}
                                 </Typography>
                             </Grid>
                         </Grid>
