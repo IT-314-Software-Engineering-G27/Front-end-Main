@@ -48,8 +48,12 @@ export default function IndividualList() {
         <ListSearchBar isFetching={isFetching} query={query} setQuery={setQuery} />
         <Paper
             elevation={3}
-            style={{
-                padding: "2rem",
+            sx={{
+                padding:{
+                    xs:"1rem",
+                    sm:"1.5rem",
+                    md:"2rem",
+                },
                 background: "rgba(92, 36, 179, 0.2)",
                 borderRadius: "25px",
                 alignItems: "center",

@@ -1,7 +1,6 @@
 import React from 'react';
 import './Login.css';
 import Phone from './Phone.png';
-import document from './document.png';
 import Logo from './Logo.png';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';

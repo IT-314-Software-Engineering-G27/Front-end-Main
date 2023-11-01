@@ -62,13 +62,17 @@ export default function JobList() {
             <ListSearchBar isFetching={isFetching} setQuery={setQuery} query={query} />
             <Paper
                 elevation={3}
-                style={{
-                    padding: "3rem",
-                    background: "rgba(92, 36, 179, 0.2)",
+                sx={{
+                    p:{
+                        xs:"1rem",
+                        sm:"1.5rem",
+                        md:"2rem",
+                    },
                     borderRadius: "25px",
                     alignItems: "center",
+                    background: "rgba(92, 36, 179, 0.2)",
                     boxShadow: " 15px 15px rgba(0, 0, 0, 0.1) ",
-                    width: "110%",
+                    width: "100%",
                     marginBottom : "3rem"
                 }}
             >

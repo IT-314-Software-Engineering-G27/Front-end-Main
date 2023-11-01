@@ -13,6 +13,8 @@ export default function ListSearchBar({ isFetching, setQuery, query }) {
                 gap: "1rem",
                 background: "#f0f4f8",
                 width: "100%",
+                background: "rgba(92, 36, 179, 0.2)",
+                boxShadow: " 15px 15px rgba(0, 0, 0, 0.1) ",
             }}
         >
             <Box
