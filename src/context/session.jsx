@@ -1,6 +1,6 @@
 "use client";
 import { createContext, useContext, useEffect, useState } from "react";
-import { Navigate } from "react-router";
+import { useNavigate } from "react-router";
 
 const SessionContext = createContext({
     session: {},
@@ -32,12 +32,14 @@ export default function SessionProvider({ children }) {
 
 export function useAuth() {
     const { session, setSession } = useContext(SessionContext);
+    const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState("");
-    const login = async ({ username, password }) => {
+    const login = async ({ email, password }) => {
         const { session, message } = {} //
         setIsLoading(false);
         if (session) {
+            navigate("/profile", { replace: true });
             setError("");
             setSession(session);
         }
@@ -54,7 +56,7 @@ export function useAuth() {
     const logout = async () => {
         setSession({});
         localStorage.removeItem("session");
-        <Navigate to='/login' replace={true} />
+        navigate("/", { replace: true });
     };
 
 
