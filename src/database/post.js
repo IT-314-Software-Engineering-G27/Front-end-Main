@@ -51,7 +51,6 @@ const PostsData = (() => {
     }
 
     async function fetchPost(id) {
-        console.log(Posts.length);
         return await new Promise((resolve, reject) => {
             setTimeout(() => {
                 resolve(Posts[id]);

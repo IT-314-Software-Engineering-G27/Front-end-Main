@@ -50,7 +50,6 @@ const EventsData = (() => {
     }
 
     async function fetchEvent(id) {
-        console.log(Events.length);
         return await new Promise((resolve, reject) => {
             setTimeout(() => {
                 resolve(Events[id]);

@@ -57,7 +57,6 @@ const JobsData = (() => {
     }
 
     async function fetchJob(id) {
-        console.log(jobs.length);
         return await new Promise((resolve, reject) => {
             setTimeout(() => {
                 resolve(jobs[id]);

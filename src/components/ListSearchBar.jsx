@@ -1,7 +1,8 @@
-import { Box, CircularProgress, TextField } from "@mui/material";
+import { Box, CircularProgress, TextField, ToggleButton } from "@mui/material";
 import ClearIcon from "@mui/icons-material/Clear";
+import { useState } from "react";
 
-export default function ListSearchBar({ isFetching, setQuery, query }) {
+export default function ListSearchBar({ isFetching, setQuery, query,deep,setDeep }) {
     return (
         <Box
             p={2}
@@ -60,6 +61,15 @@ export default function ListSearchBar({ isFetching, setQuery, query }) {
                         sx={{ marginLeft: "auto" }}
                     />
                 )}
+                <ToggleButton
+                    value="check"
+                    selected={deep}
+                    onChange={() => {
+                        setDeep(!deep);
+                    }}
+                >
+                    Deep
+                </ToggleButton>
             </Box>
         </Box >
     );
