@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { Button, Card, CardActions, CardContent, CardHeader, Skeleton, Typography, } from "@mui/material";
 import EmailIcon from "@mui/icons-material/Email";
 import PublicIcon from '@mui/icons-material/Public';
@@ -7,7 +6,7 @@ import { API_URL } from "../constants.js";
 import { useQuery } from "@tanstack/react-query";
 
 export default function IndividualCard({ id }) {
-    const { data: individual, isLoading, isFetching } = useQuery({
+    const { data: individual, } = useQuery({
         queryKey: ["individual", { id }],
         queryFn: () => fetchIndividual({ id }),
     });
@@ -29,7 +28,7 @@ export default function IndividualCard({ id }) {
                     padding: "1rem",
                 }}
             >
-                {(isLoading || isFetching) ? <Skeleton variant="rectangular" animation="pulse" height={250} /> :
+                {(!individual) ? <Skeleton variant="rectangular" animation="pulse" height={250} /> :
                     <>
                         <CardHeader
                             titleTypographyProps={{ variant: "h5" }}

@@ -4,16 +4,12 @@ const JobsData = (() => {
 
     function generateJob() {
         return {
-
-            //  id: faker.number.int(),
-            // company_id :faker.string.uuid(),
             company: faker.company.name(),
             company_logo: faker.image.avatar(),
             title: faker.person.jobTitle(),
             duration: faker.helpers.arrayElement(['full-time', 'internship', 'part-time']),
             salary: faker.number.int(10000, 1000000),
             location: faker.location.city(),
-            //  posted_on_time: faker.number.int(1, 15),
 
             posted_on_time: faker.date.past(),
             job_description: faker.lorem.paragraph(),

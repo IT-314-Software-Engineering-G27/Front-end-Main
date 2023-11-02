@@ -60,11 +60,7 @@ export default function IndividualList() {
             <Typography variant="h1">Individuals</Typography>
             <ListSearchBar isFetching={isFetching} query={query} setQuery={setQuery} deep={deep} setDeep={setDeep} />
         </Paper>
-        <Box sx={{ textAlign: "center" }}>
-            {(isLoading || isFetching) && <Skeleton variant="rectangular" height="100vh" />}
-            {isError && <Typography variant="h3" color="danger">{error.message}</Typography>}
-            {!isLoading && individuals.length === 0 && <Typography variant="h3" color="InfoText">No results found</Typography>}
-        </Box>
+
         <Paper
             elevation={3}
             style={{
@@ -77,6 +73,11 @@ export default function IndividualList() {
                 marginBottom: "3rem"
             }}
         >
+            <Box sx={{ textAlign: "center" }}>
+                {(isLoading || isFetching) && <Skeleton variant="rectangular" height="100vh" />}
+                {isError && <Typography variant="h3" color="danger">{error.message}</Typography>}
+                {!isLoading && individuals.length === 0 && <Typography variant="h3" color="InfoText">No results found</Typography>}
+            </Box>
             <Grid container spacing={3}>
                 {individuals.map((id) => (
                     <Grid item key={id} xs={12} sm={6}>
