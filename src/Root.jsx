@@ -26,7 +26,7 @@ import ContactList from "./pages/ContactList";
 import EventRegistrationForm from "./components/EventRegistrationForm";
 import ContactDetails from "./pages/ContactDetails";
 // import EventRegistration from "./components/EventRegistrationForm";
-//import CandidateList from "./pages/CandidateList";
+import CandidateList from "./pages/CandidateList";
 import MakePost from "./pages/MakePost";
 import CompanyJobRegistration from "./pages/CompanyJobRegistration";
 import ContactUs from "./pages/ContactUs";
@@ -46,7 +46,7 @@ function Root() {
                                 <Route path="/register" element={<Register />} />
                             </Route>
                             <Route exact path="/login" element={<Login />} />
-                            {/* <Route path="/candidates" element={<CandidateList/>}></Route> */}
+                            { <Route path="/candidates" element={<CandidateList/>}></Route> }
 
                             <Route path="/contact-us" element={<ContactUs />} />
                             <Route path="/posts" element={<PostList />}></Route>
