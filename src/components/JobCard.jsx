@@ -13,6 +13,7 @@ import {
 } from "@mui/material";
 import { Link } from "react-router-dom";
 import {
+  LocationOnOutlined as LocationOnOutlinedIcon,
   MonetizationOn as MonetizationOnIcon,
   Event as EventIcon,
 } from "@mui/icons-material";
@@ -62,27 +63,44 @@ export default function JobCard({ id, isLoadingData }) {
           }
           titleTypographyProps={{ variant: "h7" }}
           title={`${job.company}`}
-          subheader={`${job.location}`}
+          subheader={"2 hours ago"}
           sx={{ color: isLoadingData ? "grey" : "black" }}
         />
         <CardHeader
-          titleTypographyProps={{ variant: "h6" }}
-          title={`${job.title}`}
-          subheader={  <>
+           
+          title={<>
+          <Typography sx={{fontSize:"1.3rem",mb:1,pt:0, fontWeight:550}}>{job.title}</Typography>
+          
+          </>}
+          subheader={  <> 
             <EventIcon
               sx={{
-                fontSize: "1rem",
+                fontSize: "1.3rem",
                 verticalAlign: "middle",
                 marginRight: "0.5rem",
               }}
             />
             {job.duration} 
-            
+           
           </>}
-          sx={{ color: isLoadingData ? "grey" : "black" }}
         />
+        <CardHeader sx={{color: isLoadingData ? "grey" : "black",py:0,}}
+           
+           
+           subheader={  <>
+             <LocationOnOutlinedIcon
+               sx={{
+                 fontSize: "1.3rem",
+                 verticalAlign: "middle",
+                 marginRight: "0.5rem",
+               }}
+             />
+             {job.location} 
+             
+           </>}
+         />
         <CardContent>
-          <Typography variant="h6" gutterBottom>
+          <Typography variant="h6" gutterBottom >
             <MonetizationOnIcon
               sx={{
                 fontSize: 20,
@@ -90,14 +108,14 @@ export default function JobCard({ id, isLoadingData }) {
                 marginRight: "0.5rem",
               }}
             />
-            {job.salary}$ /month
+            {job.salary}$ per month
           </Typography>
           
         </CardContent>
         <Divider />
         <CardActions
-          sx={{
-            marginTop: "auto",
+          sx={{ pb:0,
+            pt:2,
             display: "flex",
             justifyContent: "space-between",
           }}
@@ -111,7 +129,6 @@ export default function JobCard({ id, isLoadingData }) {
             to={`/jobs/${id}`}
             sx={{
                   width: '100%',
-                  margin: 'auto',
                   transition: 'background-color 0.3s, transform 0.3s',
                   boxShadow: " 5px 5px rgba(163, 23, 205, 0.1)",
                   '&:hover': {
