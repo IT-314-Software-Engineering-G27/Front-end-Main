@@ -46,8 +46,7 @@ function Root() {
                                 <Route path="/register" element={<Register />} />
                             </Route>
                             <Route exact path="/login" element={<Login />} />
-                            { <Route path="/candidates" element={<CandidateList/>}></Route> }
-
+                            <Route path="/candidates" element={<CandidateList/>} />
                             <Route path="/contact-us" element={<ContactUs />} />
                             <Route path="/posts" element={<PostList />}></Route>
                             <Route path="/makePost" element={<MakePost/>}></Route>
