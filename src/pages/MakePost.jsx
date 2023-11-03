@@ -1,5 +1,6 @@
 import { Paper,TextField,Grid ,Button} from "@mui/material";
 import {useRef , useState} from "react";
+import  "./EventRegistration.css";
 
 export default function EventRegistration(){
    const inputRef1= useRef(null);
@@ -39,7 +40,7 @@ export default function EventRegistration(){
            justifyContent:"center",
            alignItems:"center"
        }}>
-       <h1>Event Registration</h1>
+       <h1>Make Post</h1>
        <Paper elevation={10} 
        style ={{
            margin: "30px",
@@ -54,16 +55,10 @@ export default function EventRegistration(){
            gap:"15px"
        }}>
                
-               <TextField
-               required
-               id="outlined-required"
-               label="Startup Idea"
-               defaultValue="Type the Idea here.."
-               style={{margin: "5px", width:"75%"}}
-               />
+             
            <TextField
                id="outlined-multiline-static"
-               label="Idea Description"
+               label="Post Description"
                multiline
                rows={6}
                defaultValue="Write the description here.."

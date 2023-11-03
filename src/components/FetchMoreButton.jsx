@@ -28,9 +28,9 @@ export default function FetchMoreButton({ isFetchingNextPage, hasNextPage, fetch
             }}
         >
             {isFetchingNextPage ? (
-                <Typography variant="h6">  Loading more...</Typography>
+                <Typography variant="h6" >  Loading more...</Typography>
             ) : hasNextPage ? (
-                <Typography variant="h6">Load More</Typography>
+                <Typography variant="h6" color="white">Load More</Typography>
             ) : (
                 <Typography variant="h6">Nothing more to load</Typography>
             )}

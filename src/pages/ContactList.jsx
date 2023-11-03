@@ -37,12 +37,17 @@ export default function ContactList() {
             <Typography variant="h1">Contacts</Typography>
             <Paper
                 elevation={3}
-                style={{
-                    padding: "2rem",
-                    background: "rgba(255, 255, 255, 0.9)",
-                    borderRadius: "8px",
-                    boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
-                    width: "80vw"
+                sx={{
+                    padding:{
+                        xs:"1rem",
+                        sm:"1.5rem",
+                        md:"2rem",
+                    },
+                    background: "rgba(92, 36, 179, 0.2)",
+                    borderRadius: "25px",
+                    boxShadow: " 10px 10px rgba(0, 0, 0, 0.1) ",
+                    width: "100%",
+                    marginBottom : "3rem"
                 }}
             >
                 {isLoading && !data && <Skeleton variant="rectangular" height={600} width="100%" />}
@@ -53,7 +58,7 @@ export default function ContactList() {
                 )}
                 <Grid container spacing={1}>
                     {contacts.map((id) => (
-                        <Grid item key={id} xs={12} >
+                        <Grid item key={id} xs={12} sm={6} md={4} >
                             <ContactCard id={id} isLoadingData={isLoading} />
                         </Grid>
                     ))}

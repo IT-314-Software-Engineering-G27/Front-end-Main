@@ -1,5 +1,5 @@
 import React from 'react';
-import Image from '../assets/images/post.svg';
+import Image from '../assets/images/Post.svg';
 
 function Post() {
     return (

@@ -49,12 +49,12 @@ export default function JobList() {
 
     return (
         <Container
-            maxWidth="lg"
             sx={{
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
-                gap: "2rem",
+                width : "100%",
+                gap: "1rem",
                
             }}
         >
@@ -62,12 +62,17 @@ export default function JobList() {
             <ListSearchBar isFetching={isFetching} setQuery={setQuery} query={query} />
             <Paper
                 elevation={3}
-                style={{
-                    padding: "3rem",
-                    background: "rgba(92, 36, 179, 0.2)",
+                sx={{
+                    p:{
+                        xs:"1rem",
+                        sm:"1.5rem",
+                        md:"2rem",
+                    },
                     borderRadius: "25px",
+                    alignItems: "center",
+                    background: "rgba(92, 36, 179, 0.2)",
                     boxShadow: " 15px 15px rgba(0, 0, 0, 0.1) ",
-                    width: "90vw",
+                    width: "100%",
                     marginBottom : "3rem"
                 }}
             >
@@ -77,13 +82,16 @@ export default function JobList() {
                         Error: {error.message}
                     </Typography>
                 )}
-                <Grid container spacing={3}>
+                <Grid container spacing={3}> 
                     {jobs.map((id) => (
-                        <Grid item key={id} xs={12} sm={10} md={4}>
+                        <Grid item key={id} xs={12} sm={6} md={4}> 
                             <JobCard id={id} isLoadingData={isLoading} />
                         </Grid>
                     ))}
                 </Grid>
+                <Grid paper xs={10} sm={6} md={4}> 
+                </Grid>
+                
                 <FetchMoreButton isFetchingNextPage={isFetchingNextPage} hasNextPage={hasNextPage} fetchNextPage={fetchNextPage} />
             </Paper>
         </Container>

@@ -1,7 +1,6 @@
 import React from 'react';
 import './Login.css';
 import Phone from './Phone.png';
-import document from './document.png';
 import Logo from './Logo.png';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
@@ -21,9 +20,7 @@ const Login = () => {
             <div id='nav'>
 
                 <div id='leftnav'>
-                    <Link to=''>
-                        <img src={document} alt="legal section" id='legal' />
-                    </Link>
+                   
                     <Link to=''>
                         <img src={Phone} alt="contact us" id='contact' />
                     </Link>

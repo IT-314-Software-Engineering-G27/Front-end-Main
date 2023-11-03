@@ -23,11 +23,11 @@ const TourCard2 = () => {
         <div>
             <Box marginY={2}>
                 <Paper elevation={3} >
-                    {/* <Box sx={{ display: 'flex', justifyContent: 'center' }} >
-                        <Box sx={{ ...commonStyles, borderRadius: '50%' }} >     
-                        </Box>
-                    </Box> */}
-                    <Box paddingX={18} paddingTop={3} paddingBottom={1}>
+                    
+                    <Box paddingTop={3} display="flex"
+                            justifyContent="center"
+                            alignItems="center"
+                            >
                         <img src={OBJ1} alt="" className="img" />
                     </Box>
 

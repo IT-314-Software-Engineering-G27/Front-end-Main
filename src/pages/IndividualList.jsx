@@ -1,23 +1,20 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import IndividualCard from "../components/IndividualCard";
-import { asyncFetchIndividuals } from "../database/individual";
 import { useDeferredValue } from "react";
 import { useInfiniteQuery } from "@tanstack/react-query";
-import { Container, Grid, Paper, Skeleton, Typography } from "@mui/material";
+import { Box, Container, Grid, Paper, Skeleton, Typography } from "@mui/material";
 import ListSearchBar from "../components/ListSearchBar";
 import FetchMoreButton from "../components/FetchMoreButton";
-
+import { API_URL } from "../constants.js";
 
 export default function IndividualList() {
-    const [query, setQuery] = useState(" ");
+    const [query, setQuery] = useState("");
+    const [deep, setDeep] = useState(false);
     const deferredQuery = useDeferredValue(query, { timeoutMs: 1000 });
-    useEffect(() => {
-        setQuery("");
-    }, []);
 
     const { data, fetchNextPage, hasNextPage, isFetching, isFetchingNextPage, isLoading, isError, error } = useInfiniteQuery({
-        queryKey: ["organizations", deferredQuery],
-        queryFn: ({ pageParam }) => asyncFetchIndividuals({ query: deferredQuery, page: pageParam + 1 || 1 }),
+        queryKey: ["individuals", deferredQuery, deep],
+        queryFn: ({ pageParam }) => fetchIndividuals({ query: deferredQuery, page: pageParam || 0, deep }),
         getNextPageParam: (lastPage, pages) => {
             if (lastPage.length < 10) {
                 return null;
@@ -39,36 +36,64 @@ export default function IndividualList() {
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            gap: "2rem",
+            width: "100%",
+            gap: "1rem",
+
         }}
     >
-        <Typography variant="h1">Individuals</Typography>
-        <ListSearchBar isFetching={isFetching} query={query} setQuery={setQuery} />
+        <Paper
+            elevation={3}
+            sx={{
+                padding: {
+                    xs: "1rem",
+                    sm: "1.5rem",
+                    md: "2rem",
+                },
+                background: "rgba(92, 36, 179, 0.2)",
+                borderRadius: "25px",
+                alignItems: "center",
+                width: "100%",
+                gap: "1rem",
+                textAlign: "center",
+            }}
+        >
+            <Typography variant="h1">Individuals</Typography>
+            <ListSearchBar isFetching={isFetching} query={query} setQuery={setQuery} deep={deep} setDeep={setDeep} />
+        </Paper>
+
         <Paper
             elevation={3}
             style={{
                 padding: "2rem",
-                background: "rgba(255, 255, 255, 0.9)",
-                borderRadius: "8px",
-                boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
-                width: "80vw"
+                background: "rgba(92, 36, 179, 0.2)",
+                borderRadius: "25px",
+                alignItems: "center",
+                boxShadow: " 15px 15px rgba(0, 0, 0, 0.1) ",
+                width: "100%",
+                marginBottom: "3rem"
             }}
         >
-            {isLoading && !data && <Skeleton variant="rectangular" height={600} width="100%" />}
-            {isError && (
-                <Typography variant="h2" color="error">
-                    Error: {error.message}
-                </Typography>
-            )}
+            <Box sx={{ textAlign: "center" }}>
+                {(isLoading || isFetching) && <Skeleton variant="rectangular" height="100vh" />}
+                {isError && <Typography variant="h3" color="danger">{error.message}</Typography>}
+                {!isLoading && individuals.length === 0 && <Typography variant="h3" color="InfoText">No results found</Typography>}
+            </Box>
             <Grid container spacing={3}>
                 {individuals.map((id) => (
-                    <Grid item key={id} xs={12} sm={6} >
-                        <IndividualCard id={id} isLoadingData={isLoading} />
+                    <Grid item key={id} xs={12} sm={6}>
+                        <IndividualCard id={id} />
                     </Grid>
                 ))}
             </Grid>
             <FetchMoreButton isFetchingNextPage={isFetchingNextPage} hasNextPage={hasNextPage} fetchNextPage={fetchNextPage} />
         </Paper>
-    </Container>
+    </Container >
     );
+}
+
+async function fetchIndividuals({ query, page, deep }) {
+    query = query.replace(/\s/g, "");
+    const response = await fetch(`${API_URL}/individuals?query=${query}&page=${page}&deep=${deep}`);
+    const data = await response.json();
+    return data.payload.individuals;
 }

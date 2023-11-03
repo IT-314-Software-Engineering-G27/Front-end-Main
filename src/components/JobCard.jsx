@@ -71,7 +71,7 @@ export default function JobCard({ id, isLoadingData }) {
           subheader={  <>
             <EventIcon
               sx={{
-                fontSize: 20,
+                fontSize: "1rem",
                 verticalAlign: "middle",
                 marginRight: "0.5rem",
               }}
@@ -110,7 +110,7 @@ export default function JobCard({ id, isLoadingData }) {
             component={Link}
             to={`/jobs/${id}`}
             sx={{
-                  width: '50%',
+                  width: '100%',
                   margin: 'auto',
                   transition: 'background-color 0.3s, transform 0.3s',
                   boxShadow: " 5px 5px rgba(163, 23, 205, 0.1)",

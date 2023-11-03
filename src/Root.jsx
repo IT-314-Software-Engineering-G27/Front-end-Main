@@ -22,10 +22,14 @@ import IndividualDetails from "./pages/IndividualDetails";
 import OrganizationDetails from "./pages/OrganizationDetails";
 import RegAsJobSeek from "./RegAsJobseek/RegAsJobSeek";
 import ContactList from "./pages/ContactList";
+// import EventRegistration from "./pages/EventRegistration";
+import EventRegistrationForm from "./components/EventRegistrationForm";
 import ContactDetails from "./pages/ContactDetails";
-import EventRegistration from "./components/EventRegistrationForm";
-import CandidateList from "./pages/CandidateList";
-
+// import EventRegistration from "./components/EventRegistrationForm";
+//import CandidateList from "./pages/CandidateList";
+import MakePost from "./pages/MakePost";
+import CompanyJobRegistration from "./pages/CompanyJobRegistration";
+import ContactUs from "./pages/ContactUs";
 function Root() {
     return (
         <>
@@ -42,18 +46,22 @@ function Root() {
                                 <Route path="/register" element={<Register />} />
                             </Route>
                             <Route exact path="/login" element={<Login />} />
-                            <Route path="/candidates" element={<CandidateList/>}></Route>
+                            {/* <Route path="/candidates" element={<CandidateList/>}></Route> */}
+
+                            <Route path="/contact-us" element={<ContactUs />} />
                             <Route path="/posts" element={<PostList />}></Route>
+                            <Route path="/makePost" element={<MakePost/>}></Route>
                             <Route path="/posts/:postId" element={<PostDetails />}></Route>
                             <Route path="/jobs" element={<JobList />}></Route>
                             <Route path="/jobs/:jobId" element={<JobDetails />}></Route>
                             <Route path="/events" element={<EventList />}></Route>
+                            <Route path="/events/register" element={<EventRegistrationForm />}></Route>
                             <Route path="/events/:eventId" element={<EventDetails />}></Route>
-                            <Route path="events/Registration"  element={<EventRegistration/>}/>
                             <Route path="/individuals" element={<IndividualList />} />
                             <Route path="/individuals/:individualId" element={<IndividualDetails />} />
                             <Route path="/organizations" element={<OrganizationList />} />
                             <Route path="/organizations/:organizationId" element={<OrganizationDetails />} />
+                            <Route path="/organizations/JobRegistration" element={<CompanyJobRegistration/>}/>
                             <Route path="/contacts">
                                 <Route path="/contacts" element={<ContactList />} />
                                 <Route path="/contacts/:contactId" element={<ContactDetails />} />

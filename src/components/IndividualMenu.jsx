@@ -8,14 +8,16 @@ import Object5 from '../images/OBJECT5.png';
 import Object6 from '../images/OBJECT6.png';
 import Object7 from '../images/OBJECT7.png';
 import Typography from "@mui/material/Typography";
-import { Button } from "@mui/material";
+import { Button, Paper } from "@mui/material";
 
 const IndividualMenu = () => {
     return (
+    <Paper>
+        <Box >
 
-        <Box>
+            <Box paddingY={1.5} 
+                            paddingTop={2}>
 
-            <Box paddingY={1.5} >
                 <Box paddingLeft={1.75}>
                     <img src={Object2} alt="" className="img" />
                 </Box>
@@ -82,6 +84,7 @@ const IndividualMenu = () => {
                 </Button>
             </Box>
         </Box>
+        </Paper>
 
     );
 };

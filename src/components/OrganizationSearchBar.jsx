@@ -64,7 +64,7 @@ export default function SearchAppBar() {
                         component="div"
                         sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
                     >
-                        Client Profile
+                      Profile
                     </Typography>
                     <Search>
                         <SearchIconWrapper>

@@ -1,8 +1,16 @@
-
-import { generateIndividual } from "./individual";
+import { faker } from '@faker-js/faker';
 function generateContact() {
     return {
-        individual: generateIndividual(),
+        individual: {
+            first_name: faker.person.firstName(),
+            last_name: faker.person.lastName(),
+            user: {
+                email: faker.internet.email(),
+                username: faker.internet.userName(),
+            },
+            country: faker.location.country(),
+        },
+
         last_seen: new Date(),
         messages: [],
     };

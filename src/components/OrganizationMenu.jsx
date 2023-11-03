@@ -8,20 +8,17 @@ import Object5 from '../images/OBJECT5.png';
 import Object6 from '../images/OBJECT6.png';
 import Object7 from '../images/OBJECT7.png';
 import Typography from "@mui/material/Typography";
-import { Button } from "@mui/material";
+import { Button, Paper } from "@mui/material";
 
-const TourCard = () => {
+const IndividualMenu = () => {
     return (
+    <Paper>
+        <Box >
 
-        <Box>
+            <Box paddingY={1.5} 
+                            paddingTop={2}>
 
-            <Box paddingY={1.5} paddingLeft={1}>
-                <img src={Object1} alt="" className="img" />
-            </Box>
-
-
-            <Box paddingY={1.5} >
-                <Box paddingLeft={1}>
+                <Box paddingLeft={1.75}>
                     <img src={Object2} alt="" className="img" />
                 </Box>
 
@@ -33,7 +30,7 @@ const TourCard = () => {
             </Box>
 
             <Box paddingY={1.5}>
-                <Box paddingLeft={1}>
+                <Box paddingLeft={1.25}>
                     <img src={Object3} alt="" className="img" />
                 </Box>
                 <Button variant="text" Link to='' size='small'>
@@ -44,7 +41,7 @@ const TourCard = () => {
             </Box>
 
             <Box paddingY={1.5} >
-                <Box paddingLeft={1}>
+                <Box paddingLeft={1.5}>
                     <img src={Object4} alt="" className="img" />
                 </Box>
                 <Button variant="text" Link to='' size='small'>
@@ -55,7 +52,7 @@ const TourCard = () => {
             </Box>
 
             <Box paddingY={1.5}>
-                <Box paddingLeft={1}>
+                <Box paddingLeft={2}>
                     <img src={Object5} alt="" className="img" />
                 </Box>
                 <Button variant="text" Link to='' size='small'>
@@ -66,7 +63,7 @@ const TourCard = () => {
             </Box>
 
             <Box paddingY={1.5}>
-                <Box paddingLeft={1}>
+                <Box paddingLeft={1.25}>
                     <img src={Object6} alt="" className="img" />
                 </Box>
                 <Button variant="text" Link to='' size='small'>
@@ -77,7 +74,7 @@ const TourCard = () => {
             </Box>
 
             <Box paddingY={1.5}>
-                <Box paddingLeft={1}>
+                <Box paddingLeft={1.5}>
                     <img src={Object7} alt="" className="img" />
                 </Box>
                 <Button variant="text" Link to='' size='small'>
@@ -87,8 +84,9 @@ const TourCard = () => {
                 </Button>
             </Box>
         </Box>
+        </Paper>
 
     );
 };
 
-export default TourCard;
+export default IndividualMenu;
