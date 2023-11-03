@@ -4,23 +4,24 @@ import Phone from './Phone.png';
 import Logo from './Logo.png';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import { useAuth } from '../context/session';
+import { Typography } from '@mui/material';
 
 const Login = () => {
-    const [regi, setRegi] = useState('Individual');
+    const [type, setType] = useState('Individual');
+    const auth = useAuth();
     const [user, setUser] = useState({
         email: '',
         password: ''
     });
-    const handleEventChange = (evnt) => {
-        setRegi(evnt.target.value);
-    }
+
 
     return (
-        <div class='log'>
+        <div className='log'>
             <div id='nav'>
 
                 <div id='leftnav'>
-                   
+
                     <Link to=''>
                         <img src={Phone} alt="contact us" id='contact' />
                     </Link>
@@ -33,26 +34,20 @@ const Login = () => {
                         </Link>
                     </button>
                 </div>
-
             </div>
-
             <div id='bdy'>
                 <div id='form'>
-
                     <h1>Sign in</h1>
-
                     <div id='check'>
-
                         <div id='radio1'>
                             <label>
-                                <input type="radio" name='regi' value='Individual' onChange={handleEventChange} />
+                                <input type="radio" name='regi' value='Individual' onChange={(e) => setType(e.target.value)} checked />
                                 Individual
                             </label>
                         </div>
-
                         <div id='radio2'>
                             <label>
-                                <input type="radio" name='regi' value='Organisation' onChange={handleEventChange} />
+                                <input type="radio" name='regi' value='Organization' onChange={(e) => setType(e.target.value)} />
                                 Organisation
                             </label>
                         </div>
@@ -61,7 +56,7 @@ const Login = () => {
 
                     <div>
                         <p className='adjust'>
-                            Email or phone number
+                            Email
                         </p>
                         <input type='text' className='inbox' id='email' onChange={(e) => setUser({ ...user, email: e.target.value })} />
                     </div>
@@ -79,15 +74,14 @@ const Login = () => {
 
                         <button id='signInbtn' onClick={(e) => {
                             e.preventDefault();
-                            handleSubmit(user, regi).then((data) => {
-                                console.log(data);
-                            });
+                            auth.login({ email: user.email, password: user.password });
                         }}>
                             Sign in
                         </button>
 
                     </div>
-
+                    <Typography variant="h5" color="info" align="center"> {auth.isLoading && "Loading..."} </Typography>
+                    <Typography variant="h5" color="error" align="center"> {auth.error} </Typography>
                     <div id='footer'>
 
                         <div id='remember'>
@@ -98,12 +92,8 @@ const Login = () => {
                         </div>
 
                         <div id='help'>
-                            <Link to=''>
-                                Need help?
-                            </Link>
+                            <Link to='/contact-us'>Need help?</Link>
                         </div>
-
-
                     </div>
 
                     <div id='lastLine'>
@@ -122,26 +112,6 @@ const Login = () => {
             </div>
         </div>
     )
-}
-
-async function handleSubmit(user, regi) {
-    try {
-        const response = await fetch('http://localhost:8000/login/', {
-            method: "POST",
-            headers: {
-                "Content-Type" : "application/json"
-            },
-            body: JSON.stringify({
-                email: user.email,
-                password: user.password,
-            })
-        });
-        const data = await response.json();
-        return data;
-    }
-    catch (e) {
-        return e;
-    }
 }
 
 export default Login;

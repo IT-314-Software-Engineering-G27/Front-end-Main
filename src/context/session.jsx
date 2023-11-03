@@ -32,19 +32,20 @@ export default function SessionProvider({ children }) {
 export function useAuth() {
     const { session, setSession } = useContext(SessionContext);
     const navigate = useNavigate();
-    const [isLoading, setIsLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState("");
 
     const login = async ({ email, password }) => {
+        setIsLoading(true);
         const response = await fetch(`${API_URL}/auth`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({ auth: { email} }),
+            body: JSON.stringify({ auth: { email, password } }),
         });
         const data = await response.json();
-        const token = data.payload?.token;
+        const token = data?.payload?.token;
         const message = data.message;
         setIsLoading(false);
         if (token) {
