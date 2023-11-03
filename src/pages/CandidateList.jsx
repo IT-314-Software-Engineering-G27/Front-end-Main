@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import CandidateCard from "../components/CandidateCard";
 import { asyncFetchIndividuals } from "../database/individual";
 import { useDeferredValue } from "react";
@@ -8,14 +8,11 @@ import ListSearchBar from "../components/ListSearchBar";
 import FetchMoreButton from "../components/FetchMoreButton";
 
 export default function CandidateList() {
-    const [query, setQuery] = useState(" ");
+    const [query, setQuery] = useState("");
     const deferredQuery = useDeferredValue(query, { timeoutMs: 1000 });
-    useEffect(() => {
-        setQuery("");
-    }, []);
 
     const { data, fetchNextPage, hasNextPage, isFetching, isFetchingNextPage, isLoading, isError, error } = useInfiniteQuery({
-        queryKey: ["individuals", deferredQuery],
+        queryKey: ["candidates", deferredQuery],
         queryFn: ({ pageParam }) => asyncFetchIndividuals({ query: deferredQuery, page: pageParam + 1 || 1 }),
         getNextPageParam: (lastPage, pages) => {
             if (lastPage.length < 10) {

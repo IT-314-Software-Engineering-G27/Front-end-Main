@@ -45,13 +45,15 @@ function Root() {
                                     <Route path="/register" element={<Register />} />
                                 </Route>
                                 <Route exact path="/login" element={<Login />} />
-                                <Route path="/candidates" element={<CandidateList />} />
                                 <Route path="/contact-us" element={<ContactUs />} />
                                 <Route path="/posts" element={<PostList />}></Route>
                                 <Route path="/makePost" element={<MakePost />}></Route>
                                 <Route path="/posts/:postId" element={<PostDetails />}></Route>
                                 <Route path="/jobs" element={<JobList />}></Route>
-                                <Route path="/jobs/:jobId" element={<JobDetails />}></Route>
+                                <Route path="/jobs/:jobId">
+                                    <Route path="/jobs/:jobId" element={<JobDetails />}></Route>
+                                    <Route path="/jobs/:jobId/candidates" element={<CandidateList />} />
+                                </Route>
                                 <Route path="/events" element={<EventList />}></Route>
                                 <Route path="/events/register" element={<EventRegistrationForm />}></Route>
                                 <Route path="/events/:eventId" element={<EventDetails />}></Route>
