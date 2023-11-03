@@ -62,16 +62,20 @@ function JobDetail() {
                 {" "} {job.title}
               </Typography>
 
-              <Typography
-                sx={{ textAlign: "center", mx: 14, color: "#484B62", fontFamily: "sans-serif", fontSize: "15px", fontStyle: " normal",fontWeight: 400, lineHeight: "26px",}}>
-                {" "}  Lorem ipsum dolor sit amet consectetur adipisicing elit.  Laboriosam impedit recusandae necessitatibus aspernatur quisquam in.
-              </Typography>
-
+              <Box display={'flex'} flexDirection={'row'} justifyContent={'space-between'} sx={{mx:4 }}>
               <Box sx={{ justifyContent: "center", display: "flex", flexDirection: "row",mt: 3, }}>
                 <CalendarTodayOutlinedIcon sx={{ width: "20px", height: "20px", mt: "1px" }} />{" "}
                 <Typography sx={{ pb: 1, px: 1.5 }}>
                   Posted on: Jan 01, 2001
                 </Typography>
+              </Box>
+             
+              <Box sx={{ justifyContent: "center", display: "flex", flexDirection: "row",mt: 3}}>
+                <CalendarTodayOutlinedIcon sx={{ width: "20px", height: "20px", mt: "1px" }} />{" "}
+                <Typography sx={{ pb: 1, px: 1.5 }}>
+                  Last Date: Jan 01, 2001
+                </Typography>
+              </Box>
               </Box>
             </Box>
 
