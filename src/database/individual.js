@@ -3,6 +3,7 @@ import { faker } from "@faker-js/faker";
 export function generateIndividual(id) {
     return {
         id: id,
+        profile_img:faker.image.avatar(),
         first_name: faker.person.firstName(),
         last_name: faker.person.lastName(),
         email: faker.internet.email(),

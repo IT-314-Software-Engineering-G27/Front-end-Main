@@ -24,6 +24,7 @@ import RegAsJobSeek from "./RegAsJobseek/RegAsJobSeek";
 import ContactList from "./pages/ContactList";
 import ContactDetails from "./pages/ContactDetails";
 import EventRegistration from "./components/EventRegistrationForm";
+import CandidateList from "./pages/CandidateList";
 
 function Root() {
     return (
@@ -41,6 +42,7 @@ function Root() {
                                 <Route path="/register" element={<Register />} />
                             </Route>
                             <Route exact path="/login" element={<Login />} />
+                            <Route path="/candidates" element={<CandidateList/>}></Route>
                             <Route path="/posts" element={<PostList />}></Route>
                             <Route path="/posts/:postId" element={<PostDetails />}></Route>
                             <Route path="/jobs" element={<JobList />}></Route>
