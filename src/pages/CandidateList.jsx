@@ -15,7 +15,7 @@ export default function CandidateList() {
     }, []);
 
     const { data, fetchNextPage, hasNextPage, isFetching, isFetchingNextPage, isLoading, isError, error } = useInfiniteQuery({
-        queryKey: ["organizations", deferredQuery],
+        queryKey: ["individuals", deferredQuery],
         queryFn: ({ pageParam }) => asyncFetchIndividuals({ query: deferredQuery, page: pageParam + 1 || 1 }),
         getNextPageParam: (lastPage, pages) => {
             if (lastPage.length < 10) {
