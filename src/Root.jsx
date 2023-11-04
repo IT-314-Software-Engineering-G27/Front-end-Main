@@ -66,6 +66,9 @@ function Root() {
                                     <Route path="/contacts" element={<ContactList />} />
                                     <Route path="/contacts/:contactId" element={<ContactDetails />} />
                                 </Route>
+                                <Route path="/startups" element={<StartupList/>}></Route>
+                                <Route path="/startups/:startupId" element={<StartupDetails />}></Route>
+                                
                                 <Route path="*" element={<h1>NOT FOUND </h1>} />
                             </Routes>
                         </BrowserRouter>
