@@ -129,7 +129,6 @@ async function submitForm({ individual }) {
     body: JSON.stringify({ individual }),
   });
   const data = await response.json();
-  console.log(data.message);
   return response.ok;
 }
 
