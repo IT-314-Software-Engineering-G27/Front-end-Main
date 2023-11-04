@@ -1,93 +1,30 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './main.css'
+import { useNavigate } from 'react-router';
+import { Button, TextField } from '@mui/material';
+import { API_URL } from '../constants';
 
 function Form() {
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-    const [headquarter, setHeadquarter] = useState('');
-    const [CEO, setCEO] = useState('');
-    const [number, setNumber] = useState('');
-    const [year, setYear] = useState('');
+    const [organization, setOrganization] = useState({
+        user: {
+            username: '',
+            email: '',
+            password: '',
+            phone_number: '',
+        },
+        company_name: '',
+        CEOname: '',
+        description: '',
+        headquarter_location: '',
+        year_of_establishment: '',
+    });
+    const [confirmPassword, setConfirmPassword] = useState('');
+    const [error, setError] = useState([]);
+    const navigate = useNavigate();
 
-    const [submitted, setSubmitted] = useState(false);
-    const [error, setError] = useState(false);
-
-    const handleName = (e) => {
-        setName(e.target.value);
-        setSubmitted(false);
-    };
-
-    const handleEmail = (e) => {
-        setEmail(e.target.value);
-        setSubmitted(false);
-    };
-
-    const handleUsername = (e) => {
-        setUsername(e.target.value);
-        setSubmitted(false);
-    };
-
-    const handlePassword = (e) => {
-        setPassword(e.target.value);
-        setSubmitted(false);
-    };
-
-    const handleHeadquarter = (e) => {
-        setHeadquarter(e.target.value);
-        setSubmitted(false);
-    };
-
-    const handleCEO = (e) => {
-        setCEO(e.target.value);
-        setSubmitted(false);
-    };
-
-    const handleNumber = (e) => {
-        setNumber(e.target.value);
-        setSubmitted(false);
-    };
-
-    const handleYear = (e) => {
-        setYear(e.target.value);
-        setSubmitted(false);
-    };
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        if (name === '' || email === '' || password === '') {
-            setError(true);
-        } else {
-            setSubmitted(true);
-            setError(false);
-        }
-    };
-
-    const successMessage = () => {
-        return (
-            <div
-                className="success"
-                style={{
-                    display: submitted ? '' : 'none',
-                }}>
-                <p>User {name} successfully registered.</p>
-            </div>
-        );
-    };
-
-    const errorMessage = () => {
-        return (
-            <div
-                className="error"
-                style={{
-                    display: error ? '' : 'none',
-                }}>
-                <p>Please enter all the fields.</p>
-            </div>
-        );
-    };
+    useEffect(() => {
+        setError((error) => (error));
+    }, [organization, confirmPassword]);
 
     return (
         <form>
@@ -95,58 +32,79 @@ function Form() {
                 <tbody>
                     <tr>
                         <td style={{ paddingBottom: '10px' }}>
-                            <input onChange={handleName} type="text" id="name" placeholder="Company's Legal Name" />
+                            <input type="text" id="name" placeholder="Company's Legal Name" onChange={(e) => setOrganization({ ...organization, company_name: e.target.value })} value={organization.company_name} />
                         </td>
                     </tr>
                     <tr>
                         <td style={{ paddingBottom: '10px' }}>
-                            <input onChange={handleEmail} type="text" id="email" placeholder="Company's Email" />
+                            <input type="text" id="email" placeholder="Company's Email" onChange={(e) => setOrganization({ ...organization, user: { ...organization.user, email: e.target.value } })} value={organization.user.email} />
                         </td>
                     </tr>
                     <tr>
                         <td style={{ paddingBottom: '10px' }}>
-                            <input onChange={handleUsername} type="text" id="username" placeholder="Username" />
+                            <input type="text" id="username" placeholder="Username" onChange={(e) => setOrganization({ ...organization, user: { ...organization.user, username: e.target.value } })} value={organization.user.username} />
                         </td>
                     </tr>
                     <tr>
                         <td style={{ paddingBottom: '10px' }}>
-                            <input onChange={handlePassword} type="password" id="password" placeholder="Password" />
+                            <input type="password" id="password" placeholder="Password" onChange={(e) => setOrganization({ ...organization, user: { ...organization.user, password: e.target.value } })} value={organization.user.password} />
                         </td>
                     </tr>
                     <tr>
                         <td style={{ paddingBottom: '10px' }}>
-                            <input type="password" id="confirm-password" placeholder="Confirm Password" />
+                            <input type="password" id="confirm-password" placeholder="Confirm Password" onChange={(e) => setConfirmPassword(e.target.value)} value={confirmPassword} />
                         </td>
                     </tr>
                     <tr>
                         <td style={{ paddingBottom: '10px' }}>
-                            <input onChange={handleHeadquarter} type="text" id="headquarter" placeholder="Headquarter's Location" />
+                            <input type="text" id="headquarter" placeholder="Headquarter's Location" onChange={(e) => setOrganization({ ...organization, headquarter_location: e.target.value })} value={organization.headquarter_location} />
                         </td>
                     </tr>
                     <tr>
                         <td style={{ paddingBottom: '10px' }}>
-                            <input onChange={handleCEO} type="text" id="CEO" placeholder="Name of CEO" />
+                            <input type="text" id="CEO" placeholder="Name of CEO" onChange={(e) => setOrganization({ ...organization, CEOname: e.target.value })} value={organization.CEOname} />
                         </td>
                     </tr>
                     <tr>
                         <td style={{ paddingBottom: '10px' }}>
-                            <input onChange={handleNumber} type="text" id="number" placeholder="Phone Number" />
+                            <input type="text" id="number" placeholder="Phone Number" onChange={(e) => setOrganization({ ...organization, user: { ...organization.user, phone_number: e.target.value } })} value={organization.user.phone_number} />
                         </td>
                     </tr>
                     <tr>
                         <td style={{ paddingBottom: '10px' }}>
-                            <input onChange={handleYear} type="text" id="year" placeholder="Year of Establishment" />
+                            <input type="text" id="year" placeholder="Year of Establishment" onChange={(e) => setOrganization({ ...organization, year_of_establishment: e.target.value })} value={organization.year_of_establishment} />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style={{ paddingBottom: '10px' }}>
+                            <TextField id="outlined-multiline-static" label="Description" multiline rows={4} onChange={(e) => setOrganization({ ...organization, description: organization.description })} value={organization.description} focused sx={{ width: "100%" }} />
                         </td>
                     </tr>
                     <tr>
                         <td style={{ paddingBottom: '10px', textAlign: 'center' }}>
-                            <input onChange={handleSubmit} type="submit" id="submit" value="Submit" />
+                            <Button variant="contained" color="primary" onClick={(e) => {
+                                e.preventDefault(); submitForm({ organization }).then((value) => {
+                                    if (value) navigate('/login');
+                                })
+                            }} disabled={!!error.length} type="submit">Submit</Button>
                         </td>
                     </tr>
                 </tbody>
             </table>
         </form>
     );
+}
+
+async function submitForm({ individual }) {
+    const response = await fetch(`${API_URL}/individuals`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ individual }),
+    });
+    const data = await response.json();
+    return response.ok;
 }
 
 export default Form;
