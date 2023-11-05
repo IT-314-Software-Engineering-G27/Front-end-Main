@@ -2,7 +2,7 @@ import { Button, Card, CardActions, CardContent, CardHeader, Skeleton, Typograph
 import EmailIcon from "@mui/icons-material/Email";
 import PublicIcon from '@mui/icons-material/Public';
 import { Link } from "react-router-dom";
-import { API_URL } from "../constants.js";
+import { API_URL } from "../config";
 import { useQuery } from "@tanstack/react-query";
 
 export default function IndividualCard({ id }) {

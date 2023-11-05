@@ -7,9 +7,9 @@ import Login from './Login/Login';
 import Register from './Login/Register';
 import RegisterIndividual from './pages/RegisterIndividual';
 import RegisterOrganization from './pages/RegisterOrganization';
-import ThemeContextProvider from './context/theme';
+import ThemeContextProvider from './contexts/theme';
 import { CssBaseline } from "@mui/material";
-import QueryContextProvider from "./context/query";
+import QueryContextProvider from "./contexts/query";
 import PostList from "./pages/PostList";
 import PostDetails from "./pages/PostDetails";
 import JobList from "./pages/JobList";
@@ -26,7 +26,7 @@ import CandidateList from "./pages/CandidateList";
 import MakePost from "./pages/MakePost";
 import CompanyJobRegistration from "./pages/CompanyJobRegistration";
 import ContactUs from "./pages/ContactUs";
-import SessionProvider from "./context/session";
+import SessionProvider from "./contexts/session";
 
 function Root() {
     return (

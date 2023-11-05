@@ -6,8 +6,11 @@ import { useInfiniteQuery } from "@tanstack/react-query";
 import { Container, Grid, Paper, Skeleton, Typography } from "@mui/material";
 import ListSearchBar from "../components/ListSearchBar";
 import FetchMoreButton from "../components/FetchMoreButton";
+import { API_URL } from "../config";
+import { useAuth } from "../contexts/session";
 
 export default function CandidateList() {
+    const auth = useAuth();
     const [query, setQuery] = useState("");
     const deferredQuery = useDeferredValue(query, { timeoutMs: 1000 });
 

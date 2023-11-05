@@ -4,7 +4,7 @@ import { ArrowBackRounded as ArrowBackRoundedIcon, CalendarTodayOutlined as Cale
 import Image from "../assets/images/back.png";
 import { Divider, Avatar, Box, CircularProgress, Container, Paper, Typography, ListItem, } from "@mui/material";
 import ApplicationComponent from "../components/ApplicationComponent";
-import { API_URL } from "../constants";
+import { API_URL } from "../config";
 import { useQuery } from "@tanstack/react-query";
 import CompanyComponent from "../components/CompanyComponent";
 
@@ -108,7 +108,7 @@ function JobDetail() {
   );
 }
 
-function ParagraphTypography({description}) {
+function ParagraphTypography({ description }) {
   return <Typography sx={{ textAlign: "left", color: "#484B62", fontFamily: "sans-serif", fontSize: "16px", fontStyle: " normal", fontWeight: 400, lineHeight: "26px", }}>
     {description}
   </Typography>;

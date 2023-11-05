@@ -2,7 +2,7 @@ import { Card, CardContent, CardHeader, Skeleton, Typography, CardActions, Butto
 import EmailIcon from "@mui/icons-material/Email";
 import WebIcon from '@mui/icons-material/Web';
 import { Link } from "react-router-dom";
-import { API_URL } from "../constants.js";
+import { API_URL } from "../config";
 import { useQuery } from "@tanstack/react-query";
 
 export default function OrganizationCard({ id }) {

@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Box, Button, Typography, Avatar, Container, Paper, CircularProgress, } from "@mui/material";
 import { useQuery } from "@tanstack/react-query";
-import { API_URL } from "../constants";
+import { API_URL } from "../config";
 
 export default function CompanyComponent({ id }) {
 

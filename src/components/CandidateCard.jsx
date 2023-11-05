@@ -9,8 +9,6 @@ import {Avatar,
     Skeleton,
     Typography,
 } from "@mui/material";
-import EmailIcon from "@mui/icons-material/Email";
-import PublicIcon from '@mui/icons-material/Public';
 import { Link } from "react-router-dom";
 import { School as SchoolIcon,AccountCircleRounded as AccountCircleRoundedIcon } from "@mui/icons-material";
 

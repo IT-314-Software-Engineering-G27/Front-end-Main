@@ -1,7 +1,7 @@
 import React from "react";
 import { AccessTimeRounded as AccessTimeRoundedIcon, MonetizationOnOutlined as MonetizationOnOutlinedIcon, LocationOnOutlined as LocationOnOutlinedIcon, } from "@mui/icons-material";
 import { Box, Button, CircularProgress, Container, Paper, Typography, } from "@mui/material";
-import { useAuth } from "../context/session";
+import { useAuth } from "../contexts/session";
 import { Link } from "react-router-dom";
 
 

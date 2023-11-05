@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { API_URL } from '../constants';
+import { API_URL } from '../config';
 import './main.css'
 import { Button, TextField, Typography } from '@mui/material';
 import { useNavigate } from 'react-router';

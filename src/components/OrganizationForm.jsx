@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './main.css'
 import { useNavigate } from 'react-router';
 import { Button, TextField } from '@mui/material';
-import { API_URL } from '../constants';
+import { API_URL } from '../config';
 
 function Form() {
     const [organization, setOrganization] = useState({

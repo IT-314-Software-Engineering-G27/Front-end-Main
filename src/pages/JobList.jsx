@@ -5,7 +5,7 @@ import { useInfiniteQuery } from "@tanstack/react-query";
 import { Box, Container, Grid, Paper, Skeleton, Typography, } from "@mui/material";
 import ListSearchBar from "../components/ListSearchBar";
 import FetchMoreButton from "../components/FetchMoreButton";
-import { API_URL } from "../constants.js";
+import { API_URL } from "../config";
 
 
 export default function JobList() {

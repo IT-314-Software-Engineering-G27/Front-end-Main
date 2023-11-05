@@ -2,7 +2,7 @@ import React from "react";
 import { Avatar, Button, Card, CardActions, CardContent, CardHeader, Divider, Skeleton, Typography, } from "@mui/material";
 import { Link } from "react-router-dom";
 import { LocationOnOutlined as LocationOnOutlinedIcon, MonetizationOn as MonetizationOnIcon, Event as EventIcon, } from "@mui/icons-material";
-import { API_URL } from "../constants.js";
+import { API_URL } from "../config";
 import { useQuery } from "@tanstack/react-query";
 
 export default function JobCard({ id }) {
@@ -17,7 +17,7 @@ export default function JobCard({ id }) {
         {(!job) ?
           <Skeleton variant="rectangular" animation="pulse" height={250} /> :
           <>
-            <OrganizationHeader id={job.organization} subheader={(new Date(job.posted)).toDateString()}/>
+            <OrganizationHeader id={job.organization} subheader={(new Date(job.posted)).toDateString()} />
             <CardHeader title={<>
               <Typography sx={{ fontSize: "1.3rem", mb: 1, pt: 0, fontWeight: 550 }}>{job.title}</Typography>
             </>} subheader={<>

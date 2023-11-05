@@ -4,7 +4,7 @@ import Phone from './Phone.png';
 import Logo from './Logo.png';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
-import { useAuth } from '../context/session';
+import { useAuth } from '../contexts/session';
 import { Typography } from '@mui/material';
 
 const Login = () => {
