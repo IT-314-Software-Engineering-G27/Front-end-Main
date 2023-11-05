@@ -1,6 +1,5 @@
 import { useMemo, useState } from "react";
 import CandidateCard from "../components/CandidateCard";
-import { asyncFetchIndividuals } from "../database/individual";
 import { useDeferredValue } from "react";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { Container, Grid, Paper, Skeleton, Typography } from "@mui/material";
@@ -8,15 +7,18 @@ import ListSearchBar from "../components/ListSearchBar";
 import FetchMoreButton from "../components/FetchMoreButton";
 import { API_URL } from "../config";
 import { useAuth } from "../contexts/session";
+import { useParams } from "react-router";
 
 export default function CandidateList() {
     const auth = useAuth();
+    const { jobId } = useParams();
+    const [deep, setDeep] = useState(false);
     const [query, setQuery] = useState("");
     const deferredQuery = useDeferredValue(query, { timeoutMs: 1000 });
 
     const { data, fetchNextPage, hasNextPage, isFetching, isFetchingNextPage, isLoading, isError, error } = useInfiniteQuery({
         queryKey: ["candidates", deferredQuery],
-        queryFn: ({ pageParam }) => asyncFetchIndividuals({ query: deferredQuery, page: pageParam + 1 || 1 }),
+        queryFn: ({ pageParam }) => fetchCandidates({ id: jobId, query: deferredQuery, page: pageParam || 0 }),
         getNextPageParam: (lastPage, pages) => {
             if (lastPage.length < 10) {
                 return null;
@@ -42,7 +44,7 @@ export default function CandidateList() {
         }}
     >
         <Typography variant="h1">Candidates</Typography>
-        <ListSearchBar isFetching={isFetching} query={query} setQuery={setQuery} />
+        <ListSearchBar isFetching={isFetching} query={query} setQuery={setQuery} deep={deep} setDeep={setDeep} />
         <Paper
             elevation={3}
             style={{
@@ -72,3 +74,11 @@ export default function CandidateList() {
     );
 }
 
+async function fetchCandidates({ id, query, page }) {
+    const response = await fetch(`${API_URL}/${id}/applications/?query=${query}&page=${page}`);
+    const data = await response.json();
+    if (!data?.payload?.applications) {
+        return [];
+    }
+    return data.payload.applications;
+};
