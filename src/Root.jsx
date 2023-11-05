@@ -27,6 +27,8 @@ import MakePost from "./pages/MakePost";
 import CompanyJobRegistration from "./pages/CompanyJobRegistration";
 import ContactUs from "./pages/ContactUs";
 import SessionProvider from "./contexts/session";
+import StartupList from "./pages/StartupList";
+import StartupDetails from "./pages/StartupDetails";
 
 function Root() {
     return (
@@ -68,7 +70,6 @@ function Root() {
                                 </Route>
                                 <Route path="/startups" element={<StartupList/>}></Route>
                                 <Route path="/startups/:startupId" element={<StartupDetails />}></Route>
-                                
                                 <Route path="*" element={<h1>NOT FOUND </h1>} />
                             </Routes>
                         </BrowserRouter>
