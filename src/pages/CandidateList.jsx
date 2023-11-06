@@ -75,7 +75,7 @@ export default function CandidateList() {
 }
 
 async function fetchCandidates({ id, query, page }) {
-    const response = await fetch(`${API_URL}/${id}/applications/?query=${query}&page=${page}`);
+    const response = await fetch(`${API_URL}/job-profiles/${id}/applications/?query=${query}&page=${page}`);
     const data = await response.json();
     if (!data?.payload?.jobApplications) {
         return [];

@@ -19,12 +19,12 @@ function ApplicationButton({ id }) {
         });
     }, [auth.session.token, id]);
 
-
-    if (!auth?.session?.user?.individual)
-        return <Button variant="contained" sx={{ ...buttonStyle, background: "linear-gradient(180deg, #376FFF 0%, #5E5BFF 100%)", }} LinkComponent={Link} to="/login"> Login to apply </Button>;
-
     if (status === "none")
         return <Button variant="contained" sx={{ ...buttonStyle, background: "linear-gradient(180deg, #376FFF 0%, #5E5BFF 100%)", }}> Loading...  </Button>;
+
+    if (status === "not-logged-in")
+        return <Button variant="contained" sx={{ ...buttonStyle, background: "linear-gradient(180deg, #376FFF 0%, #5E5BFF 100%)", }} LinkComponent={Link} to="/login"> Login to apply </Button>;
+
 
     if (status === "pending")
         return (<>
@@ -81,6 +81,9 @@ function ApplicationModal({ open, handleClose, id, application, edit }) {
 }
 
 async function fetchApplicationStatus({ id, token }) {
+    if (!token) return {
+        status: "not-logged-in",
+    };
     const response = await fetch(`${API_URL}/job-profiles/${id}/status`, {
         method: "GET",
         headers: {
@@ -89,6 +92,9 @@ async function fetchApplicationStatus({ id, token }) {
         },
     });
     const data = await response.json();
+    if (!data.payload.jobApplication) return {
+        status: "not-logged-in",
+    };
     return data.payload.jobApplication;
 }
 
