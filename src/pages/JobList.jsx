@@ -16,9 +16,8 @@ export default function JobList() {
         queryKey: ["jobs", { deferredQuery, deep }],
         queryFn: ({ pageParam }) => fetchJobProfiles({ query: deferredQuery, page: pageParam || 0, deep }),
         getNextPageParam: (lastPage, pages) => {
-            if (lastPage.length < 10) {
+            if (lastPage.length < 10)
                 return null;
-            }
             return pages.length;
         },
     });

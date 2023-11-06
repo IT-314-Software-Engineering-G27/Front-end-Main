@@ -17,8 +17,8 @@ export default function CandidateList() {
     const deferredQuery = useDeferredValue(query, { timeoutMs: 1000 });
 
     const { data, fetchNextPage, hasNextPage, isFetching, isFetchingNextPage, isLoading, isError, error } = useInfiniteQuery({
-        queryKey: ["candidates", deferredQuery],
-        queryFn: ({ pageParam }) => fetchCandidates({ id: jobId, query: deferredQuery, page: pageParam || 0 }),
+        queryKey: ["candidates", { id: jobId, query: deferredQuery, token: auth.session.token }],
+        queryFn: ({ pageParam }) => fetchCandidates({ id: jobId, query: deferredQuery, page: pageParam || 0, token: auth.session.token }),
         getNextPageParam: (lastPage, pages) => {
             if (lastPage.length < 10) {
                 return null;
@@ -74,8 +74,13 @@ export default function CandidateList() {
     );
 }
 
-async function fetchCandidates({ id, query, page }) {
-    const response = await fetch(`${API_URL}/job-profiles/${id}/applications/?query=${query}&page=${page}`);
+async function fetchCandidates({ id, query, page, token }) {
+    const response = await fetch(`${API_URL}/job-profiles/${id}/applications/?query=${query}&page=${page}`, {
+        method: "GET",
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+    });
     const data = await response.json();
     if (!data?.payload?.jobApplications) {
         return [];

@@ -3,12 +3,13 @@ import { Link } from "react-router-dom";
 import { School as SchoolIcon, AccountCircleRounded as AccountCircleRoundedIcon, EngineeringRounded as EngineeringRoundedIcon } from "@mui/icons-material";
 import { useQuery } from "@tanstack/react-query";
 import { API_URL } from "../config";
+import { useAuth } from "../contexts/session";
 
 export default function CandidateCard({ id, isLoadingData }) {
-
+    const auth = useAuth();
     const { data: candidate, isLoading } = useQuery({
-        queryKey: ["candidate", { id }],
-        queryFn: () => fetchCandidate({ id }),
+        queryKey: ["candidate", { id, token: auth.session.token }],
+        queryFn: () => fetchCandidate({ id, token: auth.session.token }),
     });
 
     if (isLoading) return (<Skeleton height={4} />);
@@ -74,7 +75,7 @@ export default function CandidateCard({ id, isLoadingData }) {
                         </Typography>
                     </Box>
 
-                    <Box gutterBottom sx={{ display: "flex", alignItems: "center" }}>
+                    <Box sx={{ display: "flex", alignItems: "center" }}>
                         <SchoolIcon sx={{
                             fontSize: 20,
                             width: "2rem",
@@ -122,8 +123,13 @@ export default function CandidateCard({ id, isLoadingData }) {
     );
 }
 
-async function fetchCandidate({ id }) {
-    const response = await fetch(`${API_URL}/job-applications/${id}/basic`);
+async function fetchCandidate({ id, token }) {
+    const response = await fetch(`${API_URL}/job-applications/${id}/basic`, {
+        method: "GET",
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+    });
     const data = await response.json();
     return data.payload.jobApplication;
 }
