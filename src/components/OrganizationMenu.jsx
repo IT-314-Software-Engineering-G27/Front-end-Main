@@ -10,16 +10,19 @@ import Object7 from '../images/OBJECT7.png';
 import Typography from "@mui/material/Typography";
 import { Button, Grid, Paper } from "@mui/material";
 
-const IndividualMenu = () => {
+
+  
+const OrganizationMenu = () => {
     return (
-     <Grid>  
-    <Paper>
+      
+   
+      
         <Box  paddingBottom={1}>
 
             <Box paddingY={1.5} 
                             paddingTop={2}>
 
-                <Box paddingLeft={1.75}>
+                <Box paddingLeft={1}>
                     <img src={Object2} alt="" className="img" />
                 </Box>
 
@@ -31,7 +34,7 @@ const IndividualMenu = () => {
             </Box>
 
             <Box paddingY={1.5} >
-                <Box paddingLeft={1.5}>
+                <Box paddingLeft={1}>
                     <img src={Object4} alt="" className="img" />
                 </Box>
                 <Button variant="text" href='/posts' size='small'>
@@ -77,10 +80,11 @@ const IndividualMenu = () => {
             </Box>
 
         </Box>
-        </Paper>
-        </Grid> 
+      
+       
+       
 
     );
 };
 
-export default IndividualMenu;
+export default OrganizationMenu;
