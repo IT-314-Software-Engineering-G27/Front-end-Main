@@ -14,13 +14,13 @@ import { Link } from 'react-router-dom';
 
 const IndividualMenu = () => {
     return (
-    <Paper>
+   
         <Box paddingBottom={1}>
 
             <Box paddingY={1.5} 
                             paddingTop={2}>
 
-                <Box paddingLeft={1.75}>
+                <Box paddingLeft={1}>
                     <img src={Object2} alt="" className="img" />
                 </Box>
 
@@ -33,7 +33,7 @@ const IndividualMenu = () => {
 
 
             <Box paddingY={1.5} >
-                <Box paddingLeft={1.5}>
+                <Box paddingLeft={1}>
                     <img src={Object4} alt="" className="img" />
                 </Box>
                 <Button variant="text" href='/posts' size='small'>
@@ -45,27 +45,28 @@ const IndividualMenu = () => {
 
            
             <Box paddingLeft={1}>
-                <Button  href="/jobs"  variant="outlined">
+                <Button  href="/jobs"  variant="outlined" style={{maxWidth: '55px', maxHeight: '80px', 
+                                                                minWidth: '30px', minHeight: '30px',fontSize: '8px', textAlign : "center"}}>
                         JOBS
                     </Button>
             </Box>
 
             
             <Box paddingTop={2} paddingLeft={1}>
-                <Button  href="" variant="outlined" style={{maxWidth: '75px', maxHeight: '60px', 
-                                                                minWidth: '30px', minHeight: '30px',fontSize: '10px', textAlign : "center"}}>
+                <Button  href="" variant="outlined" style={{maxWidth: '60px', maxHeight: '80px', 
+                                                                minWidth: '30px', minHeight: '30px',fontSize: '8px', textAlign : "center"}}>
                       job Application
                 </Button>
             </Box>
 
             <Box paddingTop={2} paddingLeft={0.75}>
-                <Button  href="" variant="outlined" style={{maxWidth: '75px', maxHeight: '60px', 
-                                                                minWidth: '30px', minHeight: '30px',fontSize: '10px', textAlign : "center"}}>
+                <Button  href="" variant="outlined" style={{maxWidth: '55px', maxHeight: '80px', 
+                                                                minWidth: '30px', minHeight: '30px',fontSize: '8px', textAlign : "center"}}>
                     Contact us
                 </Button>
             </Box>
         </Box>
-        </Paper>
+      
 
     );
 };
