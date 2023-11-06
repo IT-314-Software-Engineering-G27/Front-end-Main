@@ -76,7 +76,6 @@ const Login = () => {
                         <button id='signInbtn' onClick={(e) => {
                             e.preventDefault();
                             auth.login({ email: user.email, password: user.password }).then(() => {
-                                console.log(auth.session);
                                 navigate('/profile');
                             });
                             
