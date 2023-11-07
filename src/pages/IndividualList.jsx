@@ -57,7 +57,10 @@ export default function IndividualList() {
                 textAlign: "center",
             }}
         >
-            <Typography variant="h1">Individuals</Typography>
+            <Typography variant="h1"
+            sx={{
+                    FontSize: { xs: '0.5rem', sm: '2rem', md: '2.5rem', lg: '3rem' }
+                }}>Individuals</Typography>
             <ListSearchBar isFetching={isFetching} query={query} setQuery={setQuery} deep={deep} setDeep={setDeep} />
         </Paper>
 
