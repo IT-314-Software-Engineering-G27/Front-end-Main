@@ -33,34 +33,39 @@ export default function IndividualList() {
     return (<Container
         maxWidth="lg"
         sx={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          width: "100%",
+          gap: "1rem",
+        }}
+      >
+        <Paper
+          elevation={3}
+          sx={{
+            padding: {
+              xs: "1rem",
+              sm: "1.5rem",
+              md: "2rem",
+            },
+            background: "rgba(92, 36, 179, 0.2)",
+            borderRadius: "25px",
             display: "flex",
-            flexDirection: "column",
             alignItems: "center",
             width: "100%",
             gap: "1rem",
-
-        }}
-    >
-        <Paper
-            elevation={3}
-            sx={{
-                padding: {
-                    xs: "1rem",
-                    sm: "1.5rem",
-                    md: "2rem",
-                },
-                background: "rgba(92, 36, 179, 0.2)",
-                borderRadius: "25px",
-                alignItems: "center",
-                width: "100%",
-                gap: "1rem",
-                textAlign: "center",
-            }}
+          //   background: `url(${Image})`,
+          }}
         >
-            <Typography variant="h1"
+          <Typography
+            variant="h1"
             sx={{
-                    FontSize: { xs: '0.5rem', sm: '2rem', md: '2.5rem', lg: '3rem' }
-                }}>Individuals</Typography>
+              fontSize: { xs: "1.5rem", sm: "2rem", md: "2.5rem", lg: "3rem" },
+              flex: 1,
+            }}
+          >
+            Individual
+          </Typography>
             <ListSearchBar isFetching={isFetching} query={query} setQuery={setQuery} deep={deep} setDeep={setDeep} />
         </Paper>
 

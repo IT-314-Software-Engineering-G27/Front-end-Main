@@ -66,7 +66,8 @@ export default function EventRegistration(){
                label="Idea Description"
                multiline
                rows={6}
-               defaultValue="Write the description here.."
+               value="text"
+               placeholder=""
                style={{margin: "5px", width:"75%"}}
            />
 
