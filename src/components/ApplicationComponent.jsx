@@ -1,9 +1,7 @@
 import React from "react";
 import { AccessTimeRounded as AccessTimeRoundedIcon, MonetizationOnOutlined as MonetizationOnOutlinedIcon, LocationOnOutlined as LocationOnOutlinedIcon, } from "@mui/icons-material";
-import { Box, Button, CircularProgress, Container, Paper, Typography, } from "@mui/material";
-import { useAuth } from "../contexts/session";
-import { Link } from "react-router-dom";
-
+import { Box, CircularProgress, Container, Paper, Typography, } from "@mui/material";
+import ApplicationButton from "./ApplicationModal";
 
 const ApplicationComponent = ({ job }) => {
 
@@ -49,7 +47,7 @@ const ApplicationComponent = ({ job }) => {
         </Box>
       </Box>
       <Box sx={{ textAlign: "centre" }}>
-        <ApplicationButton />
+        <ApplicationButton id={job._id} />
       </Box>
     </Box>
   );
@@ -57,10 +55,3 @@ const ApplicationComponent = ({ job }) => {
 
 export default ApplicationComponent;
 
-function ApplicationButton() {
-  const auth = useAuth();
-
-  if (!auth?.user?.individual)
-    return <Button variant="contained" sx={{ width: "85%", m: 2, textTransform: "none", fontFamily: "sans-serif", border: "1px solid #376FFF", borderRadius: "5px", background: "linear-gradient(180deg, #376FFF 0%, #5E5BFF 100%)", fontSize: "14px", boxShadow: "0px 3px 6px 0px rgba(55, 111, 255, 0.16);", }} LinkComponent={Link} to="/login"> Login to apply </Button>
-  return <Button variant="contained" sx={{ width: "85%", m: 2, textTransform: "none", fontFamily: "sans-serif", border: "1px solid #376FFF", borderRadius: "5px", background: "linear-gradient(180deg, #376FFF 0%, #5E5BFF 100%)", fontSize: "14px", boxShadow: "0px 3px 6px 0px rgba(55, 111, 255, 0.16);", }}> Apply Now  </Button>;
-}

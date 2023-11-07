@@ -1,29 +1,30 @@
-import { Button, Container, Paper, Skeleton, Stack, Typography } from '@mui/material';
-import React, { useEffect, useMemo, useState } from 'react';
+import { Box, Button, Skeleton, Stack, Typography } from '@mui/material';
+import React, { useMemo, } from 'react';
 import MessageCard from '../components/ContactMessage';
-import { asyncFetchMessages } from '../database/message';
-import { fetchContact } from '../database/contact';
-import { useInfiniteQuery } from '@tanstack/react-query';
+import { useInfiniteQuery, useQuery } from '@tanstack/react-query';
 import ContactInput from '../components/ContactInput';
+import { useParams } from 'react-router';
+import { useAuth } from '../contexts/session';
+import { API_URL } from "../config";
 
 function ContactDetails() {
-    const [contact, setContact] = useState({});
+    const { contactId } = useParams();
+    const auth = useAuth();
+    const { data: contact, isLoading } = useQuery({
+        queryKey: ["contact", { id: contactId, token: auth.session.token }],
+        queryFn: () => fetchContact({ id: contactId, token: auth.session.token }),
+        enabled: !!(contactId && auth.session.token),
+    });
 
-    useEffect(() => {
-        fetchContact(0).then((contact) => {
-            setContact(contact);
-        });
-    }, []);
-
-    const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading } = useInfiniteQuery({
-        queryKey: ["messages"],
-        queryFn: ({ pageParam }) => asyncFetchMessages({ page: pageParam || 0 }),
+    const { data, fetchNextPage, hasNextPage, isFetchingNextPage } = useInfiniteQuery({
+        queryKey: ["messages", { id: contactId, token: auth.session.token }],
+        queryFn: ({ pageParam = 0 }) => fetchMessages({ id: contactId, page: pageParam || 0, token: auth.session.token }),
         getNextPageParam: (lastPage, pages) => {
             if (lastPage.length < 10)
                 return null;
             return pages.length;
         },
-        retryOnMount: true,
+        enabled: !!(contactId && auth.session.token),
     });
 
     const messages = useMemo(() => {
@@ -32,19 +33,23 @@ function ContactDetails() {
         return data.pages.flatMap((page) => page);
     }, [data]);
 
+    if (!contactId) return (<></>);
+
+    if (!contact || !messages) return (
+        <Skeleton variant="rectangular" height={600} width="100%" />
+    );
+
     return (
-        <Container maxWidth="lg" sx={{ textAlign: 'center' }}>
-            <Paper sx={{
-                display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "center", padding: "2rem", backgroundColor: "primary.light",
-                border: "3px solid black",
-                margin: "1rem",
+        <Box sx={{ width: "100%" }}>
+            <Box sx={{
+                display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "center", p: 3, borderBottom: 1
             }}>
-                <Typography variant="h2">{contact.individual && contact.individual.username} </Typography>
-                <Typography variant="h5">last seen: {contact.individual && contact.last_seen.toLocaleTimeString()} </Typography>
-            </Paper>
-            <Paper sx={{
-                padding: '10px', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', alignContent: 'center', gap: '2vh', minHeight: "80vh",
-                border: "3px solid black", }}>
+                <Typography variant="h4">{contact.recipient.username} </Typography>
+                <Typography variant="h5">last seen: {contact?.last_seen?.toLocaleString() || "Never"} </Typography>
+            </Box>
+            <Box sx={{
+                padding: '10px', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', alignContent: 'center', gap: '2vh', height: '85vh',
+            }}>
                 <Button id="load-more-button" onClick={() => {
                     fetchNextPage();
                 }} disabled={!hasNextPage || isFetchingNextPage}>
@@ -57,13 +62,36 @@ function ContactDetails() {
                 {isLoading && !data && <Skeleton variant="rectangular" height={600} width="100%" />}
                 <Stack gap={2} sx={{ display: 'flex', flexDirection: "column-reverse", justifyContent: "flex-end" }}>
                     {messages.map((id) => (
-                        <MessageCard key={id} id={id} isLoadingData={isLoading} />
+                        <MessageCard key={id} id={id} />
                     ))}
                 </Stack>
                 <ContactInput />
-            </Paper>
-        </Container >
+            </Box>
+        </Box>
     );
 }
+
+async function fetchContact({ id, token }) {
+    const response = await fetch(`${API_URL}/connections/${id}`, {
+        method: "GET",
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+    });
+    const data = await response.json();
+    return data.payload.connection;
+}
+
+async function fetchMessages({ id, page, token }) {
+    const response = await fetch(`${API_URL}/connections/${id}/messages?page=${page}`, {
+        method: "GET",
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+    });
+    const data = await response.json();
+    console.log(data);
+    return data.payload.messages;
+};
 
 export default ContactDetails;

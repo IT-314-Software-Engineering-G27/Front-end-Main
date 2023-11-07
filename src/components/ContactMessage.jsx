@@ -1,20 +1,17 @@
-import React, { useEffect, useState } from 'react';
-import { fetchMessage } from '../database/message';
-import { Box, Typography } from '@mui/material';
-import { purple } from '@mui/material/colors';
+import React from 'react';
+import { Box, Skeleton, Typography } from '@mui/material';
+import { useQuery } from '@tanstack/react-query';
+import { useAuth } from '../contexts/session';
 
-function MessageCard({ id, isLoadingData }) {
-    const [message, setMessage] = useState({});
-    const [isLoading, setIsLoading] = useState(true);
+function MessageCard({ id }) {
+    const auth = useAuth();
+    const { data: message, isLoading } = useQuery({
+        queryKey: ["message", { id, token: auth.session.token }],
+        queryFn: () => fetchMessage({ id, token: auth.session.token }),
+        enabled: !!(id && auth.session.token)
+    });
 
-    useEffect(() => {
-        setIsLoading(true);
-        fetchMessage(id).then((message) => {
-            setMessage(message);
-            setIsLoading(false);
-        });
-    }, [id]);
-
+    if (!message) return (<Skeleton variant="rectangular" height={50} width="50%" />);
 
     return (
         <Box sx={{
@@ -31,20 +28,29 @@ function MessageCard({ id, isLoadingData }) {
                 textAlign: "left",
                 border: "2px solid black",
                 padding: "5px", borderRadius: "5px",
-                backgroundColor: `${message.type === "incoming" ? purple[50] : purple[200]}`,
             }}>
                 <Typography variant="caption1" sx={{ wordWrap: "break-word" }}>
-                    {isLoadingData || isLoading ? "Loading..." : message.content}
+                    {isLoading ? "Loading..." : message.content}
                 </Typography>
                 <Typography variant="caption1" sx={{ color: "black", minWidth: "10vw", textAlign: "end" }}>
-                    {isLoadingData || isLoading ? "Loading..." : message.type === "incoming" ?
-                        message.timestamp.toLocaleTimeString() : (
-                            message.read ? message.read.toLocaleTimeString() : "..."
-                        )}
+                    {isLoading ? "Loading..." : message.type === "incoming" ?
+                        (new Date(message?.read_timestamp).toLocaleTimeString() || "...") :
+                        (new Date(message?.sent_timestamp).toLocaleTimeString() || "...")}
                 </Typography>
             </Box>
-        </Box >
+        </Box>
     );
 }
+
+async function fetchMessage({ id, token }) {
+    const response = await fetch(`http://localhost:5000/messages/${id}`, {
+        method: "GET",
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+    });
+    const data = await response.json();
+    return data.payload.message;
+};
 
 export default MessageCard;

@@ -57,19 +57,25 @@ function Root() {
                                     <Route path="/jobs/:jobId/candidates" element={<CandidateList />} />
                                 </Route>
                                 <Route path="/events" element={<EventList />}></Route>
-                                <Route path="/events/register" element={<EventRegistrationForm />}></Route>
-                                <Route path="/events/:eventId" element={<EventDetails />}></Route>
+                                <Route path="/events/:eventId">
+                                    <Route path="/events/:eventId" element={<EventDetails />} />
+                                    <Route path="/events/:eventId/register" element={<EventRegistrationForm />} />
+                                    <Route path="/events/:eventId/startups" element={<StartupList />} />
+                                    <Route path="/events/:eventId/startups/:startupId" element={<StartupDetails />} />
+                                </Route>
                                 <Route path="/individuals" element={<IndividualList />} />
                                 <Route path="/individuals/:individualId" element={<IndividualDetails />} />
                                 <Route path="/organizations" element={<OrganizationList />} />
                                 <Route path="/organizations/:organizationId" element={<OrganizationDetails />} />
                                 <Route path="/organizations/JobRegistration" element={<CompanyJobRegistration />} />
-                                <Route path="/contacts">
-                                    <Route path="/contacts" element={<ContactList />} />
+                                <Route path="/contacts" element={<ContactList />}>
                                     <Route path="/contacts/:contactId" element={<ContactDetails />} />
                                 </Route>
+<<<<<<< HEAD
                                 <Route path="/startups" element={<StartupList/>}></Route>
                                 <Route path="/startups/:startupId" element={<StartupDetails />}></Route>
+=======
+>>>>>>> e3471ad09fd145b896fded95e81b9be7d94e8d82
                                 <Route path="*" element={<h1>NOT FOUND </h1>} />
                             </Routes>
                         </BrowserRouter>

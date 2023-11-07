@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { useAuth } from '../contexts/session';
 import { Typography } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
     const [type, setType] = useState('Individual');
@@ -14,7 +15,7 @@ const Login = () => {
         email: '',
         password: ''
     });
-
+    const navigate = useNavigate();
 
     return (
         <div className='log'>
@@ -74,7 +75,10 @@ const Login = () => {
 
                         <button id='signInbtn' onClick={(e) => {
                             e.preventDefault();
-                            auth.login({ email: user.email, password: user.password });
+                            auth.login({ email: user.email, password: user.password }).then(() => {
+                                navigate('/profile');
+                            });
+                            
                         }}>
                             Sign in
                         </button>

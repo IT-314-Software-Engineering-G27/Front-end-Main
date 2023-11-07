@@ -1,7 +1,7 @@
 import React from "react";
-import { Avatar, Button, Card, CardActions, CardContent, CardHeader, Divider, Skeleton, Typography, } from "@mui/material";
+import { Avatar, Box, Button, Card, CardActions, CardContent, CardHeader, Divider, Skeleton, Typography, } from "@mui/material";
 import { Link } from "react-router-dom";
-import { LocationOnOutlined as LocationOnOutlinedIcon, MonetizationOn as MonetizationOnIcon, Event as EventIcon, } from "@mui/icons-material";
+import { LocationOnOutlined as LocationOnOutlinedIcon, MonetizationOn as MonetizationOnIcon, Event as EventIcon, LockClockRounded, } from "@mui/icons-material";
 import { API_URL } from "../config";
 import { useQuery } from "@tanstack/react-query";
 
@@ -18,15 +18,17 @@ export default function JobCard({ id }) {
           <Skeleton variant="rectangular" animation="pulse" height={250} /> :
           <>
             <OrganizationHeader id={job.organization} subheader={(new Date(job.posted)).toDateString()} />
-            <CardHeader title={<>
-              <Typography sx={{ fontSize: "1.3rem", mb: 1, pt: 0, fontWeight: 550 }}>{job.title}</Typography>
-            </>} subheader={<>
-              <EventIcon sx={{ fontSize: "1.3rem", verticalAlign: "middle", marginRight: "0.5rem", }} />
-            </>
-            } />
-            <CardHeader sx={{ color: "black", py: 0, }} subheader={<>   <LocationOnOutlinedIcon sx={{ fontSize: "1.3rem", verticalAlign: "middle", marginRight: "0.5rem", }} />   {job.posting_location} </>} />   <CardContent>
-              <Typography variant="h6" gutterBottom >
-                <MonetizationOnIcon sx={{ fontSize: 20, verticalAlign: "middle", marginRight: "0.5rem", }} />   {Number(job.salary / 1000).toFixed(1)}k $ per month </Typography>
+            <CardHeader title={<><Typography sx={{ fontSize: "1.3rem", mb: 1, pt: 0, fontWeight: 550 }}>{job.title}</Typography></>} subheader={<><EventIcon sx={{ fontSize: "1.3rem", verticalAlign: "middle", marginRight: "0.5rem", }} /> {new Date(job.posted).toDateString()}</>} />
+            <CardHeader sx={{ color: "black", py: 0, }} subheader={<>   <LocationOnOutlinedIcon sx={{ fontSize: "1.3rem", verticalAlign: "middle", marginRight: "0.5rem", }} />   {job.posting_location} </>} />
+            <CardContent>
+              <Box sx={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', }}>
+                <LockClockRounded sx={{ fontSize: 20, verticalAlign: "middle", marginRight: "0.5rem", }} />
+                <Typography variant="h6" sx={{ mt: 2, mb: 2, }}> {job.duration} </Typography>
+              </Box>
+              <Box sx={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', }}>
+                <MonetizationOnIcon sx={{ fontSize: 20, verticalAlign: "middle", marginRight: "0.5rem", }} />
+                <Typography variant="h6" gutterBottom >  {Number(job.salary / 1000).toFixed(1)}k $ per month </Typography>
+              </Box>
             </CardContent>
             <Divider />
             <CardActions sx={{ pb: 0, pt: 2, display: "flex", justifyContent: "space-between", }}>
@@ -52,6 +54,7 @@ function OrganizationHeader({ id, subheader }) {
 }
 
 async function fetchJobProfile({ id }) {
+
   const response = await fetch(`${API_URL}/job-profiles/${id}/basic`);
   const data = await response.json();
   return data.payload.jobProfile;

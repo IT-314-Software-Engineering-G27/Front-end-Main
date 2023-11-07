@@ -9,16 +9,18 @@ import Object6 from '../images/OBJECT6.png';
 import Object7 from '../images/OBJECT7.png';
 import Typography from "@mui/material/Typography";
 import { Button, Paper } from "@mui/material";
+import { Link } from 'react-router-dom';
+
 
 const IndividualMenu = () => {
     return (
-    <Paper>
-        <Box >
+   
+        <Box paddingBottom={1}>
 
             <Box paddingY={1.5} 
                             paddingTop={2}>
 
-                <Box paddingLeft={1.75}>
+                <Box paddingLeft={1}>
                     <img src={Object2} alt="" className="img" />
                 </Box>
 
@@ -29,62 +31,42 @@ const IndividualMenu = () => {
                 </Button>
             </Box>
 
-            <Box paddingY={1.5}>
-                <Box paddingLeft={1.25}>
-                    <img src={Object3} alt="" className="img" />
-                </Box>
-                <Button variant="text" Link to='' size='small'>
-                    <Typography variant="body" component="h5">
-                        Chat
-                    </Typography>
-                </Button>
-            </Box>
 
             <Box paddingY={1.5} >
-                <Box paddingLeft={1.5}>
+                <Box paddingLeft={1}>
                     <img src={Object4} alt="" className="img" />
                 </Box>
-                <Button variant="text" Link to='' size='small'>
+                <Button variant="text" href='/posts' size='small'>
                     <Typography variant="body" component="h5">
                         Post
                     </Typography>
                 </Button>
             </Box>
 
-            <Box paddingY={1.5}>
-                <Box paddingLeft={2}>
-                    <img src={Object5} alt="" className="img" />
-                </Box>
-                <Button variant="text" Link to='' size='small'>
-                    <Typography variant="body" component="h5">
-                        Idea <br /> Sharing
-                    </Typography>
+           
+            <Box paddingLeft={1}>
+                <Button  href="/jobs"  variant="outlined" style={{maxWidth: '55px', maxHeight: '80px', 
+                                                                minWidth: '30px', minHeight: '30px',fontSize: '8px', textAlign : "center"}}>
+                        JOBS
+                    </Button>
+            </Box>
+
+            
+            <Box paddingTop={2} paddingLeft={1}>
+                <Button  href="" variant="outlined" style={{maxWidth: '60px', maxHeight: '80px', 
+                                                                minWidth: '30px', minHeight: '30px',fontSize: '8px', textAlign : "center"}}>
+                      job Application
                 </Button>
             </Box>
 
-            <Box paddingY={1.5}>
-                <Box paddingLeft={1.25}>
-                    <img src={Object6} alt="" className="img" />
-                </Box>
-                <Button variant="text" Link to='' size='small'>
-                    <Typography variant="body" component="h5">
-                        Updates
-                    </Typography>
-                </Button>
-            </Box>
-
-            <Box paddingY={1.5}>
-                <Box paddingLeft={1.5}>
-                    <img src={Object7} alt="" className="img" />
-                </Box>
-                <Button variant="text" Link to='' size='small'>
-                    <Typography variant="body" component="h5">
-                        Setting
-                    </Typography>
+            <Box paddingTop={2} paddingLeft={0.75}>
+                <Button  href="" variant="outlined" style={{maxWidth: '55px', maxHeight: '80px', 
+                                                                minWidth: '30px', minHeight: '30px',fontSize: '8px', textAlign : "center"}}>
+                    Contact us
                 </Button>
             </Box>
         </Box>
-        </Paper>
+      
 
     );
 };

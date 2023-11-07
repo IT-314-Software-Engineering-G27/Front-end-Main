@@ -1,84 +1,70 @@
-
-import { Container, Grid, Paper, Box, Stack,Divider,Typography,Card } from '@mui/material';
-import IndividualMenu from '../components/IndividualMenu'
+import { Container, Grid, Paper, Box, Stack, Card, Divider, Typography } from '@mui/material';
+import IndividualMenu from '../components/IndividualMenu';
 import IndividualProfile from '../components/IndividualProfileSection';
 import IndividualSocial from '../components/IndividualSocial';
-import SearchAppBar from '../components/IndividualSearchBar';
+import IndividualSearchBar from '../components/IndividualSearchBar';
 import PostCard from '../components/PostCard';
-
+import { AppBar, IconButton, Toolbar, Drawer } from '@mui/material';
+import MenuIcon from '@mui/icons-material/Menu';
 
 const post_ids = [1, 2, 3];
 
-function IndividualDetails() {
-
+function App() {
     return (
+        <Container maxWidth="xl">
+            <Paper>
+                <Box backgroundColor='#000085'>
+                    <IndividualSearchBar />
+                </Box>
 
-        
-        <div>
-
-
-            <Box margin={2} >
-                <Paper >
-                    <Box backgroundColor='#000085'>
-                        <SearchAppBar />
-                    </Box>
-
-
-                    <Grid container spacing={4}>
-
-                        <Grid item xs={1}>
-                            <Box marginY={2}>
-                                    <IndividualMenu />
-                            </Box>
-                        </Grid>
-
-                        <Grid item xs={4}>
-                            <Box margin={2}>
-                                <IndividualProfile />
-                            </Box>
-                        </Grid>
-
-                        <Grid item xs={6.5}>
-                            <IndividualSocial />
-
-  
-                            <Card style={{ height: "calc(77vh - 200px)" }}>
-                                        <Box>
-                                        <Divider />
-                                        <Box display="flex" alignItems="center">
-                                            <Typography style={{ color: '#2F1263' }}  variant="body" component="h3">
-                                            My Post
-                                            </Typography>
-                                        </Box>
-                                        <Divider />
-                                        <Box
-                                        // bgcolor="green"
-                                            style={{
-                                            overflowY: "auto",
-                                            maxHeight: "350px",
-                                            display: "flex",
-                                            flexGrow: 1,
-                                            flexDirection: "column"
-                                            }}>
-                                        
-                                       
-                                        <Stack container padding={2} gap={2}>
-                                            {post_ids.map((id) => (
-                                                <PostCard id={id} />
-                                            ))}
-                                        </Stack>
-                                        </Box>
-                                        </Box>
-                                    </Card>
-                        </Grid>
-
+                <Grid container spacing={4}>
+                    <Grid item xs={1.5} md={0.5}>
+                        <Box paddingY={2}>
+                            
+                                <IndividualMenu />
+                            
+                        </Box>
                     </Grid>
-                </Paper>
-            </Box>
 
+                    <Grid item xs={10} md={3}>
+                        <Box margin={5}>
+                            <IndividualProfile />
+                        </Box>
+                    </Grid>
 
-        </div>
+                    <Grid item xs={12} md={7}>
+                        <IndividualSocial />
+
+                        <Card style={{ minHeight: "calc(77vh - 200px)" }}>
+                            <Box>
+                                <Divider />
+                                <Box display="flex" alignItems="center">
+                                    <Typography style={{ color: '#2F1263' }} variant="body1" component="h3">
+                                        My Post
+                                    </Typography>
+                                </Box>
+                                <Divider />
+                                <Box
+                                    style={{
+                                        overflowY: "auto",
+                                        maxHeight: "350px",
+                                        display: "flex",
+                                        flexGrow: 1,
+                                        flexDirection: "column"
+                                    }}>
+                                    <Stack container spacing={2}>
+                                        {post_ids.map((id) => (
+                                            <PostCard id={id} />
+                                        ))}
+                                    </Stack>
+                                </Box>
+                            </Box>
+                        </Card>
+                    </Grid>
+                </Grid>
+            </Paper>
+        </Container>
     );
 }
 
-export default IndividualDetails;
+export default App;

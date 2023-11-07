@@ -1,87 +1,100 @@
-import { useEffect, useState } from "react";
-import { fetchIndividual } from "../database/individual";
-import {Avatar,
-    Button,
-    Card,
-    CardActions,
-    CardContent,
-    CardHeader,
-    Skeleton,
-    Typography,
-} from "@mui/material";
+import { Avatar, Box, Button, Card, CardActions, CardContent, CardHeader, Skeleton, Typography, } from "@mui/material";
 import { Link } from "react-router-dom";
-import { School as SchoolIcon,AccountCircleRounded as AccountCircleRoundedIcon } from "@mui/icons-material";
+import { School as SchoolIcon, AccountCircleRounded as AccountCircleRoundedIcon, EngineeringRounded as EngineeringRoundedIcon } from "@mui/icons-material";
+import { useQuery } from "@tanstack/react-query";
+import { API_URL } from "../config";
+import { useAuth } from "../contexts/session";
 
-export default function IndividualCard({ id, isLoadingData }) {
-    const [individual, setIndividual] = useState({});
-    const [isLoading, setIsLoading] = useState(true);
-
-    useEffect(() => {
-        setIsLoading(true);
-        fetchIndividual(id).then((individual) => {
-            setIndividual(individual);
-            setIsLoading(false);
-        });
-    }, [id]);
+export default function CandidateCard({ id, isLoadingData }) {
+    const auth = useAuth();
+    const { data: candidate, isLoading } = useQuery({
+        queryKey: ["candidate", { id, token: auth.session.token }],
+        queryFn: () => fetchCandidate({ id, token: auth.session.token }),
+    });
 
     if (isLoading) return (<Skeleton height={4} />);
 
     return (
         <>
             <Card
-                sx={{border: `1px solid ${isLoadingData ? "grey" : "black"}`,height: "100%", width: "100%",overflow: "clip", display: "flex",backgroundColor: 'white',
-                    borderRadius: "10px",flexDirection: "column",justifyContent: "space-between", boxShadow: "7px 7px rgba(0, 0, 0, 0.15)", padding: "1rem",}}>
+                sx={{
+                    border: `1px solid ${isLoadingData ? "grey" : "black"}`, height: "100%", width: "100%", overflow: "clip", display: "flex", backgroundColor: 'white',
+                    borderRadius: "10px", flexDirection: "column", justifyContent: "space-between", boxShadow: "7px 7px rgba(0, 0, 0, 0.15)", padding: "1rem",
+                }}>
                 <CardHeader
-                avatar={ <Avatar src={individual.profile_img} sx={{ width: 60, height: 60 }} variant="rounded" />}
+                    avatar={<Avatar src={candidate.profile_img} sx={{ width: 60, height: 60 }} variant="rounded" />}
                     titleTypographyProps={{ variant: "h5" }}
-                    title={`${individual.first_name}`}
-                    subheader={`${individual.last_name}`}
+                    title={`${candidate.individual.first_name} ${candidate.individual.last_name}`}
+                    subheader={`${candidate.individual.country}`}
                     sx={{ color: isLoadingData ? "grey" : "black" }} />
                 <CardContent
                     sx={{
-                        width: "100%", 
-                        maxHeight: "50vh", 
-                        overflowY: "auto", 
+                        width: "100%",
+                        maxHeight: "50vh",
+                        overflowY: "auto",
                     }}
-                >
-                    <Typography variant="h6" gutterBottom sx={{ display: "flex", alignItems: "center" }}>
-                        <AccountCircleRoundedIcon sx={{
+                ><Box gutterBottom sx={{ display: "flex", alignItems: "center" }}>
+                        <EngineeringRoundedIcon sx={{
                             fontSize: 20,
                             width: "2rem",
                             height: "2rem",
                             verticalAlign: "right",
-                            mb:1,
+                            mb: 1,
                             marginRight: "0.5rem",
                         }} />
                         <Typography
                             variant="body1"
                             gutterBottom
                             sx={{
-                                fontsize : "1rem",
-                                whiteSpace: "nowrap", 
+                                fontsize: "1rem",
+                                whiteSpace: "nowrap",
                             }}
                         >
-                     Username :    {individual.username}
+                            Skills:  {candidate.individual.skills.join(", ")}
                         </Typography>
-                    </Typography>
-                    <Typography variant="h6" gutterBottom sx={{ display: "flex", alignItems: "center" }}>
-                        <SchoolIcon sx={{   fontSize: 20,
+                    </Box>
+
+                    <Box gutterBottom sx={{ display: "flex", alignItems: "center" }}>
+                        <AccountCircleRoundedIcon sx={{
+                            fontSize: 20,
                             width: "2rem",
                             height: "2rem",
                             verticalAlign: "right",
-                            mb:1,
-                            marginRight: "0.5rem",}} /> 
-                             <Typography
+                            mb: 1,
+                            marginRight: "0.5rem",
+                        }} />
+                        <Typography
                             variant="body1"
                             gutterBottom
                             sx={{
-                                fontsize : "1rem",
-                                whiteSpace: "nowrap", 
+                                fontsize: "1rem",
+                                whiteSpace: "nowrap",
                             }}
                         >
-                     Qualifications :    {individual.college}
+                            Qualification:  {candidate.individual.degree}
                         </Typography>
-                    </Typography>
+                    </Box>
+
+                    <Box sx={{ display: "flex", alignItems: "center" }}>
+                        <SchoolIcon sx={{
+                            fontSize: 20,
+                            width: "2rem",
+                            height: "2rem",
+                            verticalAlign: "right",
+                            mb: 1,
+                            marginRight: "0.5rem",
+                        }} />
+                        <Typography
+                            variant="body1"
+                            gutterBottom
+                            sx={{
+                                fontsize: "1rem",
+                                whiteSpace: "nowrap",
+                            }}
+                        >
+                            Education:  {candidate.individual.college}
+                        </Typography>
+                    </Box>
                 </CardContent>
                 <CardActions sx={{ marginTop: "auto", display: 'flex', justifyContent: 'center' }}>
                     <Button
@@ -108,4 +121,15 @@ export default function IndividualCard({ id, isLoadingData }) {
             </Card>
         </>
     );
+}
+
+async function fetchCandidate({ id, token }) {
+    const response = await fetch(`${API_URL}/job-applications/${id}/basic`, {
+        method: "GET",
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+    });
+    const data = await response.json();
+    return data.payload.jobApplication;
 }
