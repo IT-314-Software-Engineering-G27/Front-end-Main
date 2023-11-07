@@ -1,6 +1,6 @@
 import React from "react";
 import { AccessTimeRounded as AccessTimeRoundedIcon, MonetizationOnOutlined as MonetizationOnOutlinedIcon, LocationOnOutlined as LocationOnOutlinedIcon, } from "@mui/icons-material";
-import { Box, CircularProgress, Container, Paper, Typography, } from "@mui/material";
+import { Box, CircularProgress, Container, Paper, Typography,Button,Link } from "@mui/material";
 import ApplicationButton from "./ApplicationModal";
 
 const ApplicationComponent = ({ job }) => {
@@ -17,9 +17,9 @@ const ApplicationComponent = ({ job }) => {
 
 
   return (
-    <Box sx={{ mb: 2, p: 2, position: "sticky", mt: 2, pt: 3, borderRadius: "6px", border: "1px solid #EAEBF3", background: "#FFF", boxShadow: "0px 1px 6px 0px rgba(156, 159, 181, 0.15);", }}>
+    <Box sx={{ mb: 2, p: 2,position: "sticky", mt: 2, pt: 3, borderRadius: "6px", border: "1px solid black", background: "#FFF", boxShadow: "0px 1px 6px 0px rgba(156, 159, 181, 0.15);", }}>
       <Box sx={{ ml: 2 }}>
-        <Typography sx={{ textAlign: "left", color: "#232535", fontFamily: "sans-serif", fontSize: "20px", fontStyle: "WidthNormal", fontWeight: 600, lineHeight: "24px", mb: 1, }}>
+        <Typography sx={{ textAlign: "Cebnter", color: "#232535", fontFamily: "sans-serif", fontSize: "20px", fontStyle: "WidthNormal", fontWeight: 600, lineHeight: "24px", mb: 1, }}>
           Apply now
         </Typography>
 
@@ -46,8 +46,8 @@ const ApplicationComponent = ({ job }) => {
           </Box>
         </Box>
       </Box>
-      <Box sx={{ textAlign: "centre" }}>
-        <ApplicationButton id={job._id} />
+      <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+        <ApplicationButton  id={job._id} />
       </Box>
     </Box>
   );
