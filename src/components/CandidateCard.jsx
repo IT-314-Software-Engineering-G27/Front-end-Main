@@ -35,8 +35,7 @@ export default function CandidateCard({ id, isLoadingData }) {
                         overflowY:"auto",
                         
                     }}
-                >
-                    <Box gutterBottom sx={{ display: "flex", alignItems: "center" }}>
+                ><Box gutterBottom sx={{ display: "flex", alignItems: "center" }}>
                         <EngineeringRoundedIcon sx={{
                             fontSize: 20,
                             width: "2rem",
