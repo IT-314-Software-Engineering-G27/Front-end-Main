@@ -9,29 +9,19 @@ import { API_URL } from "../config";
 import Image from "../images/bg.svg";
 
 export default function JobList() {
-  const [query, setQuery] = useState("");
-  const deferredQuery = useDeferredValue(query, { timeoutMs: 1000 });
-  const [deep, setDeep] = useState(false);
-  const {
-    data,
-    fetchNextPage,
-    hasNextPage,
-    isFetching,
-    isFetchingNextPage,
-    isLoading,
-    isError,
-    error,
-  } = useInfiniteQuery({
-    queryKey: ["jobs", { deferredQuery, deep }],
-    queryFn: ({ pageParam }) =>
-      fetchJobProfiles({ query: deferredQuery, page: pageParam || 0, deep }),
-    getNextPageParam: (lastPage, pages) => {
-      if (lastPage.length < 10) {
-        return null;
-      }
-      return pages.length;
-    },
-  });
+    const [query, setQuery] = useState("");
+    const deferredQuery = useDeferredValue(query, { timeoutMs: 1000 });
+    const [deep, setDeep] = useState(false);
+    const { data, fetchNextPage, hasNextPage, isFetching, isFetchingNextPage, isLoading, isError, error, } = useInfiniteQuery({
+        queryKey: ["jobs", { deferredQuery, deep }],
+        queryFn: ({ pageParam }) => fetchJobProfiles({ query: deferredQuery, page: pageParam || 0, deep }),
+        getNextPageParam: (lastPage, pages) => {
+            if (lastPage.length < 10) {
+                return null;
+            }
+            return pages.length;
+        },
+    });
 
   const jobs = useMemo(() => {
     if (data) {

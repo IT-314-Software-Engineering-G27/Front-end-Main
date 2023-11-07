@@ -68,8 +68,7 @@ function Root() {
                                 <Route path="/organizations" element={<OrganizationList />} />
                                 <Route path="/organizations/:organizationId" element={<OrganizationDetails />} />
                                 <Route path="/organizations/JobRegistration" element={<CompanyJobRegistration />} />
-                                <Route path="/contacts">
-                                    <Route path="/contacts" element={<ContactList />} />
+                                <Route path="/contacts" element={<ContactList />}>
                                     <Route path="/contacts/:contactId" element={<ContactDetails />} />
                                 </Route>
                                 <Route path="*" element={<h1>NOT FOUND </h1>} />
