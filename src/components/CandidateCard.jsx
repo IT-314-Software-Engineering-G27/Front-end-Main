@@ -18,10 +18,11 @@ export default function CandidateCard({ id, isLoadingData }) {
         <>
             <Card
                 sx={{
-                    border: `1px solid ${isLoadingData ? "grey" : "black"}`, height: "100%", width: "100%", overflow: "clip", display: "flex", backgroundColor: 'white',
+                    border: `1px solid ${isLoadingData ? "grey" : "black"}`, height: "100%", width: "100%",overflowX: "scroll", display: "flex", backgroundColor: 'white',
                     borderRadius: "10px", flexDirection: "column", justifyContent: "space-between", boxShadow: "7px 7px rgba(0, 0, 0, 0.15)", padding: "1rem",
                 }}>
                 <CardHeader
+                
                     avatar={<Avatar src={candidate.profile_img} sx={{ width: 60, height: 60 }} variant="rounded" />}
                     titleTypographyProps={{ variant: "h5" }}
                     title={`${candidate.individual.first_name} ${candidate.individual.last_name}`}
@@ -31,7 +32,8 @@ export default function CandidateCard({ id, isLoadingData }) {
                     sx={{
                         width: "100%",
                         maxHeight: "50vh",
-                        overflowY: "auto",
+                        overflowY:"auto",
+                        
                     }}
                 ><Box gutterBottom sx={{ display: "flex", alignItems: "center" }}>
                         <EngineeringRoundedIcon sx={{

@@ -62,7 +62,7 @@ function ApplicationModal({ open, handleClose, id, application, edit }) {
         }}
     >
         <FormControl sx={{ width: "100%", backgroundColor: 'white', padding: "20px" }}>
-            <TextField multiline label="Write a letter" rows={12} variant="outlined" sx={{ width: "100%", mb: 2 }} focused onChange={(e) => setContent(e.target.value)} value={content} />
+            <TextField multiline label="cover letter" rows={12} variant="outlined" sx={{ width: "100%", mb: 2 }} focused onChange={(e) => setContent(e.target.value)} value={content} placeholder="write about your skills, qualifications and achivements"/>
             <FormGroup sx={{ display: "flex", justifyContent: "flex-end", flexDirection: "row", gap: "10px" }}>
                 <Button variant="contained" sx={{ ...buttonStyle, background: "linear-gradient(180deg, #73F673 0%,#5BFF5C 100%)", }} onClick={() => {
                     if (edit)
