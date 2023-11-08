@@ -31,7 +31,7 @@ import StartupList from "./pages/StartupList";
 import StartupDetails from "./pages/StartupDetails";
 import EditIndividualProfile from "./pages/EditIndividualProfile";
 import EditOrganizationProfile from "./pages/EditOrganizationProfile";
-
+import NotFound from "./pages/NotFound";
 function Root() {
     return (
         <>
@@ -77,7 +77,7 @@ function Root() {
                                 <Route path="/startups/:startupId" element={<StartupDetails />}></Route>
                                 <Route path="/editIndividualProfile/:individualId" element={<EditIndividualProfile/>} />
                                 <Route path="/editOrganizationProfile/:organizationId" element={<EditOrganizationProfile/>} />
-                                <Route path="*" element={<h1>NOT FOUND </h1>} />
+                                <Route path="*" element={<NotFound/>} />
                             </Routes>
                         </BrowserRouter>
                     </SessionProvider>
