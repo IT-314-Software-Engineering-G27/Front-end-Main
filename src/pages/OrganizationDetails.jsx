@@ -11,15 +11,15 @@ const post_ids = [1, 2, 3];
 
 function App() {
     return (
-        <Container maxWidth="xl">
-            <Paper>
-                <Box backgroundColor='#000085'>
+        <Container maxWidth="xl" style={{ height: "100vh" }}>
+            <Paper style={{ height: "100%" }}>
+                <Box  backgroundColor='#000085'>
                     <OrganizationSearchBar />
                 </Box>
 
-                <Grid container spacing={4}>
-                    <Grid item xs={1} md={0.5}>
-                        <Box paddingY={2}>
+                <Grid container spacing={4} >
+                    <Grid item xs={1} md={0.5} >
+                        <Box paddingY={2} >
                             
                                 <OrganizationMenu />
                             
@@ -32,7 +32,7 @@ function App() {
                         </Box>
                     </Grid>
 
-                    <Grid item xs={12} md={7}>
+                    <Grid item xs={12} md={7} >
                         <OrganizationSocial />
 
                         <Card style={{ minHeight: "calc(77vh - 200px)" }}>
@@ -47,7 +47,7 @@ function App() {
                                 <Box
                                     style={{
                                         overflowY: "auto",
-                                        maxHeight: "350px",
+                                        maxHeight: "410px",
                                         display: "flex",
                                         flexGrow: 1,
                                         flexDirection: "column"
