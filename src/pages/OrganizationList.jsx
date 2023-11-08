@@ -12,7 +12,7 @@ export default function IndividualList() {
     const deferredQuery = useDeferredValue(query, { timeoutMs: 1000 });
 
     const { data, fetchNextPage, hasNextPage, isFetching, isFetchingNextPage, isLoading, isError, error } = useInfiniteQuery({
-        queryKey: ["organizations", deferredQuery, deep],
+        queryKey: ["organizations", { query: deferredQuery, deep }],
         queryFn: ({ pageParam }) => fetchOrganizations({ query: deferredQuery, page: pageParam || 0, deep }),
         getNextPageParam: (lastPage, pages) => {
             if (lastPage.length < 10) {
