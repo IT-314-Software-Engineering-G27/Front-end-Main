@@ -142,7 +142,7 @@ export default function EventCard({ id, isLoadingData }) {
                   transition: 'background-color 0.3s, transform 0.3s',
                   boxShadow: " 5px 5px rgba(163, 23, 205, 0.1)",
                   '&:hover': {
-                                backgroundColor: '#1976D2', 
+                                backgroundColor: 'secondary.main', 
                                 transform: 'scale(1.05)', 
                               },
                 }}
