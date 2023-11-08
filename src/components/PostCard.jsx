@@ -1,6 +1,7 @@
 import { Divider, Avatar, Button, Card, CardActions, CardContent, CardHeader, Skeleton, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
+import { API_URL } from "../config";
 
 export default function PostCard({ id }) {
     const { data: post, isLoading } = useQuery({
@@ -67,7 +68,7 @@ export default function PostCard({ id }) {
 }
 
 async function fetchPost({ id }) {
-    const response = await fetch(`http://localhost:5000/posts/${id}/basic`);
+    const response = await fetch(`${API_URL}/posts/${id}/basic`);
     const data = await response.json();
     console.log(data);
     return data.payload.post;

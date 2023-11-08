@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import PostCard from "../components/PostCard";
-import PostsData from "../database/post";
+import { API_URL } from "../config";
 import { useDeferredValue } from "react";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { Container, Grid, Paper, Skeleton, Typography } from "@mui/material";
@@ -77,7 +77,7 @@ export default function PostList() {
 }
 
 async function fetchPosts({ query, page, deep }) {
-    const response = await fetch(`http://localhost:5000/posts?query=${query}&page=${page}&deep=${deep}`);
+    const response = await fetch(`${API_URL}/posts?query=${query}&page=${page}&deep=${deep}`);
     const data = await response.json();
     console.log(data);
     return data.payload.posts;
