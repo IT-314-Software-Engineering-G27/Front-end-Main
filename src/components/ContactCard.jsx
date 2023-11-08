@@ -1,10 +1,10 @@
 import { Typography, Box, Avatar, Skeleton } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { API_URL } from "../config";
 
 export default function ContactCard({ id, token }) {
-
+    const { contactId } = useParams();
     const { data: contact } = useQuery({
         queryKey: ["contact", { id, token }],
         queryFn: () => fetchContact({ id, token }),
@@ -13,23 +13,23 @@ export default function ContactCard({ id, token }) {
 
     return (
         <>
-            <Box sx={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", width: "100%", borderRadius: "5px", boxShadow: " 5px 5px rgba(0, 0, 0, 0.15)", border: "1px solid black", padding: "0.8rem" }}>
-                {!contact ? 
+            <Box sx={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", width: "100%", borderBottom: "0.5px solid black", padding: "0.5rem", backgroundColor: contactId === contact?._id ? "whitesmoke" : "white" }}>
+                {!contact ?
                     <>
-                        <Skeleton variant="circular" width={40} height={40} sx={{marginRight: "20px"}} />
+                        <Skeleton variant="circular" width={40} height={40} sx={{ marginRight: "20px" }} />
                         <Skeleton variant="rectangular" width={200} height={40} />
-                </>
-                 : <>
-                    <Box sx={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
-                        <Avatar sx={{ marginRight: "0.5rem" }} src={contact.recipient.profile_image} />
-                    </Box>
-                    <Box sx={{ display: "flex", flexDirection: "column", width: "100%" }} component={Link} to={`/contacts/${contact._id}`}>
-                        <Typography variant="body1">{contact.recipient.username}</Typography>
-                        <Typography variant="body2" sx={{ display: "flex", alignItems: "center" }}>
-                            Last seen: {contact?.last_seen?.toLocaleString() || "Never"}
-                        </Typography>
-                    </Box>
-                </>}
+                    </>
+                    : <>
+                        <Box sx={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
+                            <Avatar sx={{ marginRight: "0.5rem" }} src={contact.recipient.profile_image} />
+                        </Box>
+                        <Box sx={{ display: "flex", flexDirection: "column", width: "100%" }} component={Link} to={`/contacts/${contact._id}`}>
+                            <Typography variant="body1">{contact.recipient.username}</Typography>
+                            <Typography variant="body2" sx={{ display: "flex", alignItems: "center" }}>
+                                Last seen: {new Date(contact?.last_seen).toLocaleString() || "Never"}
+                            </Typography>
+                        </Box>
+                    </>}
             </Box>
 
         </>

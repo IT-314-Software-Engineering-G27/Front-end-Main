@@ -17,7 +17,7 @@ export default function CandidateList() {
     const deferredQuery = useDeferredValue(query, { timeoutMs: 1000 });
 
     const { data, fetchNextPage, hasNextPage, isFetching, isFetchingNextPage, isLoading, isError, error } = useInfiniteQuery({
-        queryKey: ["candidates", { id: jobId, query: deferredQuery, token: auth.session.token }],
+        queryKey: ["candidates", { id: jobId, query: deferredQuery, token: auth.session.token, deep }],
         queryFn: ({ pageParam }) => fetchCandidates({ id: jobId, query: deferredQuery, page: pageParam || 0, token: auth.session.token }),
         getNextPageParam: (lastPage, pages) => {
             if (lastPage.length < 10) {

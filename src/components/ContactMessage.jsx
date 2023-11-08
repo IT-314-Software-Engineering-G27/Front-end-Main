@@ -2,6 +2,7 @@ import React from 'react';
 import { Box, Skeleton, Typography } from '@mui/material';
 import { useQuery } from '@tanstack/react-query';
 import { useAuth } from '../contexts/session';
+import { API_URL } from "../config";
 
 function MessageCard({ id }) {
     const auth = useAuth();
@@ -18,7 +19,7 @@ function MessageCard({ id }) {
             width: "100%",
             display: "flex",
             flexDirection: "row",
-            justifyContent: `${message.type === "incoming" ? "flex-start" : "flex-end"}`,
+            justifyContent: `${message.direction === "incoming" ? "flex-start" : "flex-end"}`,
         }}>
             <Box sx={{
                 display: 'flex',
@@ -33,7 +34,7 @@ function MessageCard({ id }) {
                     {isLoading ? "Loading..." : message.content}
                 </Typography>
                 <Typography variant="caption1" sx={{ color: "black", minWidth: "10vw", textAlign: "end" }}>
-                    {isLoading ? "Loading..." : message.type === "incoming" ?
+                    {isLoading ? "Loading..." : message.direction === "incoming" ?
                         (new Date(message?.read_timestamp).toLocaleTimeString() || "...") :
                         (new Date(message?.sent_timestamp).toLocaleTimeString() || "...")}
                 </Typography>
@@ -43,7 +44,7 @@ function MessageCard({ id }) {
 }
 
 async function fetchMessage({ id, token }) {
-    const response = await fetch(`http://localhost:5000/messages/${id}`, {
+    const response = await fetch(`${API_URL}/messages/${id}`, {
         method: "GET",
         headers: {
             Authorization: `Bearer ${token}`,
