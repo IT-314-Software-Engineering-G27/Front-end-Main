@@ -21,7 +21,7 @@ const IndividualProfileSection = () => {
     return (
 
         <div>
-            <Box marginY={2}>
+            <Box marginY={3}>
                 <Paper elevation={3} >
                     <Box display="flex"
                             justifyContent="center"
