@@ -40,14 +40,14 @@ export default function EventList() {
     const buttons = [
         <Button sx={{
             mr: { lg: 2, md: 2, sm: 0 }, borderRadius: '10px', fontSize: selectedButtonIndex === 0 ? '16px' : '14px', fontWeight: selectedButtonIndex === 0 ? 'bold' : 'normal',
-            backgroundColor: selectedButtonIndex === 0 ? 'white' : 'transparent', border: 'none',
+            backgroundColor: selectedButtonIndex === 0 ? 'white' : 'transparent', border: 'none',width:'170px',
             ':hover': { color: 'black', fontWeight: 'bold', backgroundColor: 'white', border: 'none', borderRadius: '10px', },
         }}
             onClick={() => setSelectedButtonIndex(0)}>
             Past Events</Button>,
         <Button sx={{
             mr: { lg: 2, md: 2, sm: 0 }, borderRadius: '10px', fontSize: selectedButtonIndex === 1 ? '16px' : '14px', fontWeight: selectedButtonIndex === 1 ? 'bold' : 'normal',
-            backgroundColor: selectedButtonIndex === 1 ? 'white' : 'transparent', border: 'none',
+            backgroundColor: selectedButtonIndex === 1 ? 'white' : 'transparent', border: 'none',width:'170px',
             ':hover': { color: 'black', fontWeight: 'bold', backgroundColor: 'white', border: 'none', borderRadius: '10px', },
         }}
             onClick={() => setSelectedButtonIndex(1)}>
@@ -55,7 +55,7 @@ export default function EventList() {
 
         <Button sx={{
             borderRadius: '10px', fontSize: selectedButtonIndex === 2 ? '16px' : '14px', fontWeight: selectedButtonIndex === 2 ? 'bold' : 'normal',
-            backgroundColor: selectedButtonIndex === 2 ? 'white' : 'transparent', border: 'none',
+            backgroundColor: selectedButtonIndex === 2 ? 'white' : 'transparent', border: 'none',width:'170px',
             ':hover': { color: 'black', fontWeight: 'bold', backgroundColor: 'white', border: 'none', borderRadius: '10px', },
         }}
             onClick={() => setSelectedButtonIndex(2)}>

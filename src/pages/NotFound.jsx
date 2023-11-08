@@ -8,7 +8,7 @@ const NotFound = () => {
                 404  
             </Typography>
             <Typography sx={{ textAlign:'center',fontSize:{sm:'30px',md:'50px',lg:'70px'},color:'white'}}>
-              Opps! Page not found 
+              Oops! Page not found 
             </Typography>
 
          
