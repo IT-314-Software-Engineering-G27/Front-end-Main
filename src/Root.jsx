@@ -29,6 +29,8 @@ import ContactUs from "./pages/ContactUs";
 import SessionProvider from "./contexts/session";
 import StartupList from "./pages/StartupList";
 import StartupDetails from "./pages/StartupDetails";
+import EditIndividualProfile from "./pages/EditIndividualProfile";
+import EditOrganizationProfile from "./pages/EditOrganizationProfile";
 
 function Root() {
     return (
@@ -73,6 +75,8 @@ function Root() {
                                 </Route>
                                 <Route path="/startups" element={<StartupList/>}></Route>
                                 <Route path="/startups/:startupId" element={<StartupDetails />}></Route>
+                                <Route path="/editIndividualProfile/:individualId" element={<EditIndividualProfile/>} />
+                                <Route path="/editOrganizationProfile/:organizationId" element={<EditOrganizationProfile/>} />
                                 <Route path="*" element={<h1>NOT FOUND </h1>} />
                             </Routes>
                         </BrowserRouter>
