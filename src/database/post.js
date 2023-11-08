@@ -10,7 +10,7 @@ const PostsData = (() => {
             posted_on: faker.date.past(),
             img: faker.image.url(),
             description: faker.lorem.paragraph(),
-
+            title : faker.lorem.sentence(),
             ap: faker.helpers.arrayElement(['P.M', 'A.M']),
             min: faker.number.int(0, 60),
             hour: faker.number.int(1, 12),

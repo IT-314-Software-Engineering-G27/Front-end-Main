@@ -44,17 +44,18 @@ export default function PostCard({ id, isLoadingData }) {
             <CardContent>
 
                 <Typography variant="h6" gutterBottom>
-                    {post.description}
+                  Title : Lorem ipsum dolor sit amet.
                 </Typography>
-                <Typography variant="h4" gutterBottom>
-                    <image src={`${post.img}`}
+                <Typography variant="h6" gutterBottom>
+                    Subject : Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae ut velit blanditiis temporibus eligendi nesciunt in voluptas. Ipsa, commodi quibusdam?
+                    {/* <image src={`${post.img}`}
                         alt="Fake Image"
                         style={{
                             display: 'block',
                             margin: '0 auto',
                             maxWidth: '100%',
                             textAlign: 'center',
-                        }} />
+                        }} /> */}
                 </Typography>
 
             </CardContent>
