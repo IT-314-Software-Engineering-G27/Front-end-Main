@@ -32,6 +32,10 @@ import StartupDetails from "./pages/StartupDetails";
 import EditIndividualProfile from "./pages/EditIndividualProfile";
 import EditOrganizationProfile from "./pages/EditOrganizationProfile";
 import NotFound from "./pages/NotFound";
+import PasswordResetEmail from "./pages/PasswordResetEmail";
+import PasswordResetOTP from "./pages/PasswordResetOTP";
+
+
 function Root() {
     return (
         <>
@@ -73,11 +77,13 @@ function Root() {
                                 <Route path="/contacts" element={<ContactList />}>
                                     <Route path="/contacts/:contactId" element={<ContactDetails />} />
                                 </Route>
-                                <Route path="/startups" element={<StartupList/>}></Route>
+                                <Route path="/startups" element={<StartupList />}></Route>
                                 <Route path="/startups/:startupId" element={<StartupDetails />}></Route>
-                                <Route path="/editIndividualProfile/:individualId" element={<EditIndividualProfile/>} />
-                                <Route path="/editOrganizationProfile/:organizationId" element={<EditOrganizationProfile/>} />
-                                <Route path="*" element={<NotFound/>} />
+                                <Route path="/editIndividualProfile/:individualId" element={<EditIndividualProfile />} />
+                                <Route path="/editOrganizationProfile/:organizationId" element={<EditOrganizationProfile />} />
+                                <Route path="/password-reset" element={<PasswordResetEmail />} />
+                                <Route path="/password-reset/:resetId" element={<PasswordResetOTP />} />
+                                <Route path="*" element={<NotFound />} />
                             </Routes>
                         </BrowserRouter>
                     </SessionProvider>

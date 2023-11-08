@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
 import { Button, TextField, Container, Typography, Grid } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import PasswordResetOTP from './PasswordResetOTP';
 
-export default function PasswordReset1() {
-  const [step, setStep] = useState(1);
+export default function PasswordResetEmail() {
   const [email, setEmail] = useState('');
   const [emailError, setEmailError] = useState('');
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
 
   const handleStep1Submit = () => {
     if (!validateEmail(email)) {
@@ -15,8 +13,8 @@ export default function PasswordReset1() {
       return;
     }
     else {
-        setEmailError('');
-        navigate('PasswordResetOTP');
+      setEmailError('');
+      navigate('PasswordResetOTP');
     }
   };
   const validateEmail = (email) => {
@@ -28,39 +26,37 @@ export default function PasswordReset1() {
     <Container maxWidth="md">
       <Grid container justifyContent="center" alignItems="center" style={{ minHeight: '60 vh' }}>
         <Grid item xs={188}>
-          <Typography variant="h4" align="center" sx={{ marginTop: 25  }}>
+          <Typography variant="h4" align="center" sx={{ marginTop: 25 }}>
             Password Reset
           </Typography>
         </Grid>
-        {step === 1 && (
-          <Grid item xs={12}>
-            <form>
-              <TextField
-                label="Email"
-                variant="outlined"
-                fullWidth
-                value={email}
-                onChange={(e) => {
-                  setEmail(e.target.value);
-                  setEmailError(''); 
-                }}
-                error={Boolean(emailError)} 
-                helperText={emailError} 
-                sx={{ marginTop:2}} 
-              />
-              <Button
-                variant="contained"
-                color="primary"
-                onClick={handleStep1Submit}
-                fullWidth
-                sx={{ marginTop: 2 }} 
-              >
+        <Grid item xs={12}>
+          <form>
+            <TextField
+              label="Email"
+              variant="outlined"
+              fullWidth
+              value={email}
+              onChange={(e) => {
+                setEmail(e.target.value);
+                setEmailError('');
+              }}
+              error={Boolean(emailError)}
+              helperText={emailError}
+              sx={{ marginTop: 2 }}
+            />
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={handleStep1Submit}
+              fullWidth
+              sx={{ marginTop: 2 }}
+            >
               SUBMIT
-              </Button>
-            </form>
-          </Grid>
-        )}
-    </Grid>
-</Container>
+            </Button>
+          </form>
+        </Grid>
+      </Grid>
+    </Container>
   )
 }
