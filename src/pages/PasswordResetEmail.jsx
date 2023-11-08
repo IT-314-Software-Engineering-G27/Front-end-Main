@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Button, TextField, Container, Typography, Grid } from '@mui/material';
+import { API_URL } from '../config';
 
 export default function PasswordResetEmail() {
   const [email, setEmail] = useState('');
@@ -71,7 +72,7 @@ function validateEmail(email) {
 };
 
 async function submitPasswordResetRequest(email) {
-  const response = await fetch('http://localhost:5000/reset', {
+  const response = await fetch(`${API_URL}/reset`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'

@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Button, TextField, Container, Typography, Grid } from '@mui/material';
 import { useNavigate, useParams } from 'react-router-dom';
+import { API_URL } from '../config';
+
 export default function PasswordResetOTP() {
   const { resetId } = useParams();
   const navigate = useNavigate();
@@ -78,7 +80,7 @@ function validatePassword(password) {
 };
 
 async function submitNewPassword({ resetId, otp, password }) {
-  const response = await fetch(`http://localhost:5000/reset/${resetId}`, {
+  const response = await fetch(`${API_URL}/reset/${resetId}`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'

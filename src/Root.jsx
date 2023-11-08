@@ -47,42 +47,40 @@ function Root() {
                             <Routes>
                                 <Route exact path="/" element={<Navigate to={"/login"} />} />
                                 <Route path='/register'>
-                                    <Route path="/register/individual" element={<RegisterIndividual />} />
-                                    <Route path="/register/organization" element={<RegisterOrganization />} />
-                                    <Route path="/register/jobseeker" element={<RegAsJobSeek />} />
-                                    <Route path="/register" element={<Register />} />
+                                    <Route path="/register/individual" element={<RegisterIndividual />} />  {/* TODO  link to backend */}
+                                    <Route path="/register/organization" element={<RegisterOrganization />} /> {/* TODO  link to backend */}
+                                    <Route path="/register/jobseeker" element={<RegAsJobSeek />} /> {/* TODO  link to backend */}
+                                    <Route path="/register" element={<Register />} /> 
                                 </Route>
                                 <Route exact path="/login" element={<Login />} />
                                 <Route path="/contact-us" element={<ContactUs />} />
-                                <Route path="/posts" element={<PostList />}></Route>
-                                <Route path="/makePost" element={<MakePost />}></Route>
-                                <Route path="/posts/:postId" element={<PostDetails />}></Route>
-                                <Route path="/jobs" element={<JobList />}></Route>
+                                <Route path="/posts" element={<PostList />}></Route>   {/* TODO  link to backend */}
+                                <Route path="/makePost" element={<MakePost />}></Route> {/* TODO  link to backend */}
+                                <Route path="/posts/:postId" element={<PostDetails />}></Route>   {/* TODO  link to backend */}
+                                <Route path="/jobs" element={<JobList />}></Route> 
                                 <Route path="/jobs/:jobId">
-                                    <Route path="/jobs/:jobId" element={<JobDetails />}></Route>
-                                    <Route path="/jobs/:jobId/candidates" element={<CandidateList />} />
+                                    <Route path="/jobs/:jobId" element={<JobDetails />}></Route>  
+                                    <Route path="/jobs/:jobId/candidates" element={<CandidateList />} /> 
                                 </Route>
-                                <Route path="/events" element={<EventList />}></Route>
+                                <Route path="/events" element={<EventList />}></Route> {/* TODO  link to backend */}
                                 <Route path="/events/:eventId">
-                                    <Route path="/events/:eventId" element={<EventDetails />} />
-                                    <Route path="/events/:eventId/register" element={<EventRegistrationForm />} />
-                                    <Route path="/events/:eventId/startups" element={<StartupList />} />
-                                    <Route path="/events/:eventId/startups/:startupId" element={<StartupDetails />} />
+                                    <Route path="/events/:eventId" element={<EventDetails />} /> {/* TODO  link to backend */}
+                                    <Route path="/events/:eventId/register" element={<EventRegistrationForm />} /> {/* TODO  link to backend */}
+                                    <Route path="/events/:eventId/startups" element={<StartupList />} /> {/* TODO  link to backend */}
+                                    <Route path="/events/:eventId/startups/:startupId" element={<StartupDetails />} /> {/* TODO  link to backend */}
                                 </Route>
-                                <Route path="/individuals" element={<IndividualList />} />
-                                <Route path="/individuals/:individualId" element={<IndividualDetails />} />
-                                <Route path="/organizations" element={<OrganizationList />} />
-                                <Route path="/organizations/:organizationId" element={<OrganizationDetails />} />
-                                <Route path="/organizations/JobRegistration" element={<CompanyJobRegistration />} />
-                                <Route path="/contacts" element={<ContactList />}>
+                                <Route path="/individuals" element={<IndividualList />} /> 
+                                <Route path="/individuals/:individualId" element={<IndividualDetails />} /> {/* TODO  link to backend */}
+                                <Route path="/organizations" element={<OrganizationList />} /> 
+                                <Route path="/organizations/:organizationId" element={<OrganizationDetails />} /> {/* TODO  link to backend */}
+                                <Route path="/organizations/JobRegistration" element={<CompanyJobRegistration />} /> {/* TODO  link to backend */}
+                                <Route path="/contacts" element={<ContactList />}> 
                                     <Route path="/contacts/:contactId" element={<ContactDetails />} />
                                 </Route>
-                                <Route path="/startups" element={<StartupList />}></Route>
-                                <Route path="/startups/:startupId" element={<StartupDetails />}></Route>
-                                <Route path="/editIndividualProfile/:individualId" element={<EditIndividualProfile />} />
-                                <Route path="/editOrganizationProfile/:organizationId" element={<EditOrganizationProfile />} />
-                                <Route path="/password-reset" element={<PasswordResetEmail />} />
-                                <Route path="/password-reset/:resetId" element={<PasswordResetOTP />} />
+                                <Route path="/editIndividualProfile/:individualId" element={<EditIndividualProfile />} /> {/* TODO  link to backend */}
+                                <Route path="/editOrganizationProfile/:organizationId" element={<EditOrganizationProfile />} /> {/* TODO  link to backend */}
+                                <Route path="/password-reset" element={<PasswordResetEmail />} /> 
+                                <Route path="/password-reset/:resetId" element={<PasswordResetOTP />} /> 
                                 <Route path="*" element={<NotFound />} />
                             </Routes>
                         </BrowserRouter>
