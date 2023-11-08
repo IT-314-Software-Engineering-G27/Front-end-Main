@@ -7,7 +7,7 @@ import { useQuery } from "@tanstack/react-query";
 
 export default function OrganizationCard({ id }) {
     const { data: organization } = useQuery({
-        queryKey: ["organization", { id }],
+        queryKey: ["organization-card", { id }],
         queryFn: () => fetchOrganization({ id }),
     });
 

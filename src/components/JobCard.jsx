@@ -1,13 +1,13 @@
 import React from "react";
 import { Avatar, Box, Button, Card, CardActions, CardContent, CardHeader, Divider, Skeleton, Typography, } from "@mui/material";
 import { Link } from "react-router-dom";
-import { LocationOnOutlined as LocationOnOutlinedIcon, MonetizationOn as MonetizationOnIcon, Event as EventIcon, LockClockRounded, } from "@mui/icons-material";
+import { LocationOnOutlined as LocationOnOutlinedIcon, MonetizationOn as MonetizationOnIcon, LockClockRounded, } from "@mui/icons-material";
 import { API_URL } from "../config";
 import { useQuery } from "@tanstack/react-query";
 
 export default function JobCard({ id }) {
   const { data: job, } = useQuery({
-    queryKey: ["job", { id }],
+    queryKey: ["job-card", { id }],
     queryFn: () => fetchJobProfile({ id }),
   });
 
