@@ -60,12 +60,12 @@ export default function EventRegistration(){
             disabled
           id="outlined-disabled-2"
           label="Email"
-          defaultValue="Enail"
+          defaultValue="Email"
           style={{margin: "5px", width:"75%"}}
           />
            <TextField
                id="outlined-multiline-static"
-               label="Frist Name"
+               label="First Name"
              
                defaultValue="Enter first name"
                style={{margin: "5px", width:"75%"}}
@@ -87,9 +87,9 @@ export default function EventRegistration(){
            />
             <TextField
                id="outlined-multiline-static"
-               label="Collage"
+               label="College"
              
-               defaultValue="Collage"
+               defaultValue="College"
                style={{margin: "5px", width:"75%"}}
            />
 
