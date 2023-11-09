@@ -71,12 +71,9 @@ function Root() {
                                 <Route path="/contacts" element={<ContactList />}>
                                     <Route path="/contacts/:contactId" element={<ContactDetails />} />
                                 </Route>
-<<<<<<< HEAD
                                 <Route path="/startups" element={<StartupList/>}></Route>
-                                <Route path="/startups/:startupId" element={<StartupDetails />}></Route>
-=======
->>>>>>> e3471ad09fd145b896fded95e81b9be7d94e8d82
                                 <Route path="*" element={<h1>NOT FOUND </h1>} />
+
                             </Routes>
                         </BrowserRouter>
                     </SessionProvider>
