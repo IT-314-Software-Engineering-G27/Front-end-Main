@@ -49,7 +49,7 @@ function OrganizationDetails() {
                             {organization.user.posts.length > 0 ? <>
                                 <Typography sx={{ textAlign: "center" }} variant="h5"> Posts</Typography>
                                 <Divider />
-                                <Stack container spacing={2} padding={4} sx={{ overflowY: "scroll" }}>
+                                <Stack container spacing={2} padding={4} sx={{ overflowY: "scroll", maxHeight: "60vh" }}>
                                     {organization.user.posts.map((post) => (
                                         <Grid item key={post}>
                                             <PostCard id={post} />

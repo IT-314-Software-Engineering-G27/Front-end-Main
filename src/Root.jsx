@@ -34,7 +34,7 @@ import EditOrganizationProfile from "./pages/EditOrganizationProfile";
 import NotFound from "./pages/NotFound";
 import PasswordResetEmail from "./pages/PasswordResetEmail";
 import PasswordResetOTP from "./pages/PasswordResetOTP";
-
+import Profile from "./pages/Profile";
 
 function Root() {
     return (
@@ -54,9 +54,9 @@ function Root() {
                                 </Route>
                                 <Route exact path="/login" element={<Login />} />
                                 <Route path="/contact-us" element={<ContactUs />} />
-                                <Route path="/posts" element={<PostList />}></Route>  
+                                <Route path="/posts" element={<PostList />}></Route>
                                 <Route path="/makePost" element={<MakePost />}></Route> {/* TODO  link to backend */}
-                                <Route path="/posts/:postId" element={<PostDetails />}></Route> 
+                                <Route path="/posts/:postId" element={<PostDetails />}></Route>
                                 <Route path="/jobs" element={<JobList />}></Route>
                                 <Route path="/jobs/:jobId">
                                     <Route path="/jobs/:jobId" element={<JobDetails />}></Route>
@@ -77,17 +77,12 @@ function Root() {
                                 <Route path="/contacts" element={<ContactList />}>
                                     <Route path="/contacts/:contactId" element={<ContactDetails />} />
                                 </Route>
-
-                                <Route path="/startups" element={<StartupList/>}></Route>
-                                <Route path="*" element={<h1>NOT FOUND </h1>} />
-
-
+                                <Route path="/profile" element={<Profile />} />
                                 <Route path="/editIndividualProfile/:individualId" element={<EditIndividualProfile />} /> {/* TODO  link to backend */}
                                 <Route path="/editOrganizationProfile/:organizationId" element={<EditOrganizationProfile />} /> {/* TODO  link to backend */}
                                 <Route path="/password-reset" element={<PasswordResetEmail />} />
                                 <Route path="/password-reset/:resetId" element={<PasswordResetOTP />} />
                                 <Route path="*" element={<NotFound />} />
-
                             </Routes>
                         </BrowserRouter>
                     </SessionProvider>
