@@ -77,17 +77,17 @@ function Root() {
                                 <Route path="/contacts" element={<ContactList />}>
                                     <Route path="/contacts/:contactId" element={<ContactDetails />} />
                                 </Route>
-<<<<<<< HEAD
+
                                 <Route path="/startups" element={<StartupList/>}></Route>
                                 <Route path="*" element={<h1>NOT FOUND </h1>} />
 
-=======
+
                                 <Route path="/editIndividualProfile/:individualId" element={<EditIndividualProfile />} /> {/* TODO  link to backend */}
                                 <Route path="/editOrganizationProfile/:organizationId" element={<EditOrganizationProfile />} /> {/* TODO  link to backend */}
                                 <Route path="/password-reset" element={<PasswordResetEmail />} />
                                 <Route path="/password-reset/:resetId" element={<PasswordResetOTP />} />
                                 <Route path="*" element={<NotFound />} />
->>>>>>> 6c2264b21de778a188d79962531fbae9a16a4f67
+
                             </Routes>
                         </BrowserRouter>
                     </SessionProvider>
