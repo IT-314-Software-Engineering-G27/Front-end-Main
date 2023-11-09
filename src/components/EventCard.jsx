@@ -1,155 +1,106 @@
-import React, { useEffect, useState } from "react";
-import EventData from "../database/event";
-import {
-    Button,
-    Card,
-    CardActions,
-    CardContent,
-    CardHeader,
-    Divider,
-    Grid,
-    Skeleton,
-    Typography,
-} from "@mui/material";
+import React from "react";
+import { Button, Card, CardActions, CardContent, CardHeader, Divider, Grid, Skeleton, Typography, } from "@mui/material";
 import { Link } from "react-router-dom";
-import { EventAvailable, LocationOn, Category } from "@mui/icons-material"; // Import icons
-const { fetchEvent } = EventData;
+import { EventAvailable, Category, AccessTimeFilled } from "@mui/icons-material";
+import { useQuery } from "@tanstack/react-query";
+import { API_URL } from "../config";
 
-export default function EventCard({ id, isLoadingData }) {
-    const [event, setEvent] = useState({});
-    const [isLoading, setIsLoading] = useState(true);
-    useEffect(() => {
-        setIsLoading(true);
-        fetchEvent(id).then((event) => {
-            setEvent(event);
-            setIsLoading(false);
-        });
-    }, [id]);
+export default function EventCard({ id }) {
 
-    if (isLoading) return <Skeleton height={4} />;
+    const { data: event } = useQuery({
+        queryKey: ["event-card", id],
+        queryFn: () => fetchEvent({ id }),
+    });
+
+    if (!event) return <Skeleton height={4} />;
     return (
         <Card
             sx={{
-          border: `1px solid ${isLoadingData ? "grey" : "black"}`,
-          height: "100%",
-          width: "100%",
-          overflow: "clip",
-          display: "flex",
-          backgroundColor :  'white',
-          borderRadius: "10px",
-          flexDirection: "column",
-          justifyContent: "space-between",
-          boxShadow : " 7px 7px rgba(0, 0, 0, 0.15)",
-          padding: "1rem",
+                border: `1px solid black`,
+                height: "100%",
+                width: "100%",
+                overflow: "clip",
+                display: "flex",
+                backgroundColor: 'white',
+                borderRadius: "10px",
+                flexDirection: "column",
+                justifyContent: "space-between",
+                boxShadow: " 7px 7px rgba(0, 0, 0, 0.15)",
+                padding: "1rem",
             }}
         >
-            <Grid container spacing={2}>
-                <Grid item xs={12} md={4}>
-                    {/* Left side: Image */}
-                    <div
-                        style={{
-                            maxWidth: "100%",
-                            maxHeight: "100%",
-                            display: "flex",
-                            justifyContent: "center",
-                            alignItems: "center",
-                            padding: "1rem",
-                        }}
-                    >
-                        <img
-                            src={`${event.img}`}
-                            alt="Event"
-                            style={{
-                                maxWidth: "100%",
-                                maxHeight: "auto",
-                                objectFit: "contain",
-                                borderRadius: "16px",
-                            }}
-                        />
-                   
-                    </div>
-                </Grid>
-                <Grid item xs={12} md={8} sx={{ padding: "0px" }}>
-                    {/* Right side: Event Details */}
 
-                    <CardHeader
-                        titleTypographyProps={{ variant: "subtitle1" }}
-                        subheader={"Organized by"}
-                        sx={{
-                            color: isLoadingData ? "grey" : "black",
-                            pb: 0,
-                            pt: "24px",
-                        }}
-                    />
-
-                    <CardHeader
-                        titleTypographyProps={{ variant: "h6" }}
-                        title={`${event.organized_by}`}
-                        sx={{ color: isLoadingData ? "grey" : "black", pt: 0, pb: 0, }}
-                    />
-                    <CardContent
-                        sx={{
-                            pt: "10px",
-                        }}>
-                        <Typography variant="h5" gutterBottom>
-                            Title : {`${event.name}`}
-                        </Typography>
-                        <Grid container spacing={1} alignItems="center">
-                            <Grid item>
-                                <EventAvailable />
-                            </Grid>
-                            <Grid item xs>
-                                <Typography variant="body1" gutterBottom>
-                                    Event date: {`${event.date.toDateString()}`}
-                                </Typography>
-                            </Grid>
+            <Grid item xs={12} md={8} sx={{ padding: "0px" }}>
+                <CardHeader
+                    titleTypographyProps={{ variant: "h6" }}
+                    title={`${event.title}`}
+                    sx={{ color: "black", pt: 0, pb: 0, }}
+                />
+                <CardContent
+                    sx={{
+                        pt: "10px",
+                    }}>
+                    <Grid container spacing={1} alignItems="center">
+                        <Grid item>
+                            <EventAvailable />
                         </Grid>
-                        <Grid container spacing={1} alignItems="center">
-                            <Grid item>
-                                <LocationOn />
-                            </Grid>
-                            <Grid item xs>
-                                <Typography variant="body1" gutterBottom>
-                                    Location: {`${event.location}`}{" "}
-                                </Typography>
-                            </Grid>
+                        <Grid item xs>
+                            <Typography variant="body1" gutterBottom>
+                                From {`${new Date(event.start_time).toLocaleString()}`} to {`${new Date(event.end_time).toLocaleString()}`}
+                            </Typography>
                         </Grid>
-                        <Grid container spacing={1} alignItems="center">
-                            <Grid item>
-                                <Category />
-                            </Grid>
-                            <Grid item xs>
-                                <Typography variant="body1" gutterBottom>
-                                    Type: {`${event.types}`}
-                                </Typography>
-                            </Grid>
+                    </Grid>
+                    <Grid container spacing={1} alignItems="center">
+                        <Grid item>
+                            <AccessTimeFilled />
                         </Grid>
-                    </CardContent>
-                </Grid>
+                        <Grid item xs>
+                            <Typography variant="body1" gutterBottom>
+                                Registration deadline: {`${new Date(event.last_registration_date).toLocaleString()}`}
+                            </Typography>
+                        </Grid>
+                    </Grid>
+                    <Grid container spacing={1} alignItems="center">
+                        <Grid item>
+                            <Category />
+                        </Grid>
+                        <Grid item xs>
+                            <Typography variant="body1" gutterBottom>
+                                {`${event.frequency}`}
+                            </Typography>
+                        </Grid>
+                    </Grid>
+                </CardContent>
             </Grid>
             <Divider />
             <CardActions sx={{ marginTop: "auto", display: "flex", justifyContent: "center" }}>
-            <Button
-            variant="contained"
-            color= "primary"
-            size="large"
-            fullWidth
-            component={Link}
-            to={`/events/${id}`} 
-            sx={{
-                  width: '50%',
-                  margin: 'auto',
-                  transition: 'background-color 0.3s, transform 0.3s',
-                  boxShadow: " 5px 5px rgba(163, 23, 205, 0.1)",
-                  '&:hover': {
-                                backgroundColor: 'secondary.main', 
-                                transform: 'scale(1.05)', 
-                              },
-                }}
-          >
-            Read more
-          </Button>
+                <Button
+                    variant="contained"
+                    color="primary"
+                    size="large"
+                    fullWidth
+                    component={Link}
+                    to={`/events/${id}`}
+                    sx={{
+                        width: '50%',
+                        margin: 'auto',
+                        transition: 'background-color 0.3s, transform 0.3s',
+                        boxShadow: " 5px 5px rgba(163, 23, 205, 0.1)",
+                        '&:hover': {
+                            backgroundColor: 'secondary.main',
+                            transform: 'scale(1.05)',
+                        },
+                    }}
+                >
+                    Read more
+                </Button>
             </CardActions>
         </Card>
     );
+}
+
+async function fetchEvent({ id }) {
+    const response = await fetch(`${API_URL}/events/${id}/basic`);
+    const data = await response.json();
+    return data.payload.event;
 }

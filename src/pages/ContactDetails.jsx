@@ -83,7 +83,6 @@ async function fetchContact({ id, token }) {
 }
 
 async function fetchMessages({ id, page, token }) {
-    console.log(page);
     const response = await fetch(`${API_URL}/connections/${id}/messages?page=${page}`, {
         method: "GET",
         headers: {

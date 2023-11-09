@@ -47,8 +47,8 @@ function Root() {
                             <Routes>
                                 <Route exact path="/" element={<Navigate to={"/login"} />} />
                                 <Route path='/register'>
-                                    <Route path="/register/individual" element={<RegisterIndividual />} />  {/* TODO  link to backend */}
-                                    <Route path="/register/organization" element={<RegisterOrganization />} /> {/* TODO  link to backend */}
+                                    <Route path="/register/individual" element={<RegisterIndividual />} />  
+                                    <Route path="/register/organization" element={<RegisterOrganization />} /> 
                                     <Route path="/register/jobseeker" element={<RegAsJobSeek />} /> {/* TODO  link to backend */}
                                     <Route path="/register" element={<Register />} />
                                 </Route>
@@ -62,20 +62,20 @@ function Root() {
                                     <Route path="/jobs/:jobId" element={<JobDetails />}></Route>
                                     <Route path="/jobs/:jobId/candidates" element={<CandidateList />} />
                                 </Route>
-                                <Route path="/events" element={<EventList />}></Route> {/* TODO  link to backend */}
-                                <Route path="/events/:eventId">
-                                    <Route path="/events/:eventId" element={<EventDetails />} /> {/* TODO  link to backend */}
+                                <Route path="/events">
+                                    <Route path="/events" element={<EventList />}></Route> 
+                                    <Route path="/events/:eventId" element={<EventDetails />} />
                                     <Route path="/events/:eventId/register" element={<EventRegistrationForm />} /> {/* TODO  link to backend */}
                                     <Route path="/events/:eventId/startups" element={<StartupList />} /> {/* TODO  link to backend */}
                                     <Route path="/events/:eventId/startups/:startupId" element={<StartupDetails />} /> {/* TODO  link to backend */}
                                 </Route>
                                 <Route path="/individuals" element={<IndividualList />} />
-                                <Route path="/individuals/:individualId" element={<IndividualDetails />} /> {/* TODO  link to backend */}
+                                <Route path="/individuals/:individualId" element={<IndividualDetails />} />
                                 <Route path="/organizations" element={<OrganizationList />} />
-                                <Route path="/organizations/:organizationId" element={<OrganizationDetails />} /> {/* TODO  link to backend */}
+                                <Route path="/organizations/:organizationId" element={<OrganizationDetails />} />
                                 <Route path="/organizations/JobRegistration" element={<CompanyJobRegistration />} /> {/* TODO  link to backend */}
-                                <Route path="/contacts" element={<ContactList />}>
-                                    <Route path="/contacts/:contactId" element={<ContactDetails />} />
+                                <Route path="/contacts" element={<ContactList />}> 
+                                    <Route path="/contacts/:contactId" element={<ContactDetails />} /> 
                                 </Route>
                                 <Route path="/profile" element={<Profile />} />
                                 <Route path="/editIndividualProfile/:individualId" element={<EditIndividualProfile />} /> {/* TODO  link to backend */}

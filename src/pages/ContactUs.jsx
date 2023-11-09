@@ -3,11 +3,6 @@ import { Divider,TextField,Button,Box,Link,InputLabel } from '@mui/material';
 
 
 const ContactUs = () => {
-
-
-    // const handleSubmit = (e) => {
-    //     console.log("submitted");
-    //   }
     
     return ( 
 
