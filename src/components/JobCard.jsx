@@ -19,15 +19,15 @@ export default function JobCard({ id }) {
           <>
             <OrganizationHeader id={job.organization} subheader={(new Date(job.posted)).toDateString()} />
             <CardHeader title={<><Typography sx={{ fontSize: "1.3rem", mb: 1, pt: 0, fontWeight: 550 }}>{job.title}</Typography></>} />
-            <CardHeader sx={{py:0}}  subheader={<>  <Box sx={{ color: "black", display:'flex', flexDirection:'row'}}> <LocationOnOutlinedIcon sx={{ fontSize: "1.3rem", verticalAlign: "middle", marginRight: "0.5rem" }} /> <Typography> {job.posting_location} </Typography> </Box> </>} />
-            <CardContent sx={{px:2,pb:2,pt:0}}>
+            <CardHeader sx={{ py: 0 }} subheader={<>  <Box sx={{ color: "black", display: 'flex', flexDirection: 'row' }}> <LocationOnOutlinedIcon sx={{ fontSize: "1.3rem", verticalAlign: "middle", marginRight: "0.5rem" }} /> <Typography> {job.posting_location} </Typography> </Box> </>} />
+            <CardContent sx={{ px: 2, pb: 2, pt: 0 }}>
               <Box sx={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', }}>
                 <LockClockRounded sx={{ fontSize: 20, verticalAlign: "middle", marginRight: "0.5rem", }} />
                 <Typography variant="h6" sx={{ mt: 2, mb: 2, }}> {job.duration} </Typography>
               </Box>
               <Box sx={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', }}>
                 <MonetizationOnIcon sx={{ fontSize: 20, verticalAlign: "middle", marginRight: "0.5rem", }} />
-                <Typography variant="h6" gutterBottom sx={{pt:1.25}}>  {Number(job.salary / 1000).toFixed(1)}k $ per month </Typography>
+                <Typography variant="h6" gutterBottom sx={{ pt: 1.25 }}>  {Number(job.salary / 1000).toFixed(1)}k $ per month </Typography>
               </Box>
             </CardContent>
             <Divider />

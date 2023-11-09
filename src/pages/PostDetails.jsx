@@ -1,9 +1,11 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { Avatar, Box, CircularProgress, Container, Paper, Typography, Divider, Button, } from '@mui/material';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { useAuth } from '../contexts/session';
 import { API_URL } from '../config';
+import CorporateFareIcon from '@mui/icons-material/CorporateFare';
+import PersonIcon from '@mui/icons-material/Person';
 
 function PostDetail() {
     const { postId } = useParams();
@@ -34,7 +36,6 @@ function PostDetail() {
         <Container maxWidth="md">
             <Box
                 style={{
-
                     position: "relative",
                     top: "3rem",
                     padding: "3rem",
@@ -46,14 +47,32 @@ function PostDetail() {
                     padding: '2rem', backgroundColor: '#f5f5f5',
                     border: "1px solid rgb(0 ,0, 0, 1 )",
                     boxShadow: " 7px 7px rgba(163, 23, 205, 0.1)",
-
                 }}>
                     <Box display="flex" alignItems="center">
                         <Avatar src={post.user.profile_image} sx={{ width: 70, height: 70 }} variant="rounded" />
                         <Box marginLeft="1rem">
-                            <Typography variant="h6">
-                                {post.user.username} ({post.user.role})
-                            </Typography>
+                            <Box display="flex" alignItems="center" flexDirection="row">
+                                {post.user.individual && (
+                                    <>
+                                        <Typography variant="h6">
+                                            <Link to={`/individuals/${post.user.individual}`} style={{ textDecoration: 'none', color: '#2F1263' }} >
+                                                {post.user.username}
+                                            </Link>
+                                        </Typography>
+                                        <PersonIcon sx={{ fontSize: 30, verticalAlign: "middle", marginLeft: "0.5rem" }} color='primary' />
+                                    </>
+                                )}
+                                {post.user.organization && (
+                                    <>
+                                        <Typography variant="h6">
+                                            <Link to={`/organizations/${post.user.organization}`} style={{ textDecoration: 'none', color: '#2F1263' }}>
+                                                {post.user.username}
+                                            </Link>
+                                        </Typography>
+                                        <CorporateFareIcon sx={{ fontSize: 30, verticalAlign: "middle", marginLeft: "0.5rem" }} color='primary' />
+                                    </>
+                                )}
+                            </Box>
                             <Typography variant="subtitle1">
                                 {`${new Date(post.time).toLocaleString()}`}
                             </Typography>

@@ -9,7 +9,8 @@ export default function PostCard({ id }) {
         queryFn: () => fetchPost({ id }),
     });
 
-    if (isLoading) return (<Skeleton height={4} />);
+    if (!post) return (<Skeleton height={400} />);
+    
     return (<>
         <Card sx={{
             border: `1px solid black`,
@@ -70,6 +71,5 @@ export default function PostCard({ id }) {
 async function fetchPost({ id }) {
     const response = await fetch(`${API_URL}/posts/${id}/basic`);
     const data = await response.json();
-    console.log(data);
     return data.payload.post;
 }
