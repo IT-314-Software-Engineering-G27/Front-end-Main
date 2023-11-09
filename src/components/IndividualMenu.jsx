@@ -14,51 +14,67 @@ import { Link } from 'react-router-dom';
 
 const IndividualMenu = () => {
     return (
-   
+
         <Box paddingBottom={1}>
 
-            <Box paddingY={1} paddingLeft={1}> 
-                <Button href="/jobs"  variant="outlined" style={{maxWidth: '60px', maxHeight: '80px', 
-                                                                minWidth: '30px', minHeight: '30px',fontSize: '10px', textAlign : "center"}}>
-                   
-                        Profile
-                  
+            <Box paddingY={1} paddingLeft={1}>
+                <Button href="/profile" variant="outlined" style={{
+                    maxHeight: '80px',
+                    width: "100%", minHeight: '30px', fontSize: '10px', textAlign: "center"
+                }}>
+                    Profile
                 </Button>
             </Box>
 
 
             <Box paddingY={1.5} paddingLeft={1} >
-              
-            <Button  href="/jobs"  variant="outlined" style={{maxWidth: '60px', maxHeight: '80px', 
-                                                                minWidth: '30px', minHeight: '30px',fontSize: '10px', textAlign : "center"}}>
-                        POST
-                    </Button>
+                <Button href="/makePost" variant="outlined" style={{
+                    maxHeight: '80px',
+                    width: "100%", minHeight: '30px', fontSize: '10px', textAlign: "center"
+                }}>
+                    POST
+                </Button>
             </Box>
 
-           
+
             <Box paddingLeft={1}>
-                <Button  href="/jobs"  variant="outlined" style={{maxWidth: '60px', maxHeight: '80px', 
-                                                                minWidth: '30px', minHeight: '30px',fontSize: '10px', textAlign : "center"}}>
-                        JOBS
-                    </Button>
+                <Button href="/jobs" variant="outlined" style={{
+                    maxHeight: '80px',
+                    width: "100%", minHeight: '30px', fontSize: '10px', textAlign: "center"
+                }}>
+                    JOBS
+                </Button>
             </Box>
 
-            
+
             <Box paddingTop={2} paddingLeft={1}>
-                <Button  href="" variant="outlined" style={{maxWidth: '60px', maxHeight: '80px', 
-                                                                minWidth: '30px', minHeight: '30px',fontSize: '7px', textAlign : "center"}}>
-                      job Application
+                <Button href="" variant="outlined" style={{
+                    maxHeight: '80px',
+                    width: "100%", minHeight: '30px', fontSize: '7px', textAlign: "center"
+                }}>
+                    job Application
                 </Button>
             </Box>
 
             <Box paddingTop={2} paddingLeft={0.75}>
-                <Button  href="" variant="outlined" style={{maxWidth: '60px', maxHeight: '80px', 
-                                                                minWidth: '30px', minHeight: '30px',fontSize: '7px', textAlign : "center"}}>
+                <Button href="/contact-us" variant="outlined" style={{
+                    maxHeight: '80px',
+                    width: "100%", minHeight: '30px', fontSize: '7px', textAlign: "center"
+                }}>
                     Contact us
                 </Button>
             </Box>
+
+            <Box paddingTop={2} paddingLeft={0.75}>
+                <Button href="/edit-profile" variant="outlined" style={{
+                    maxHeight: '80px',
+                    width: "100%", minHeight: '30px', fontSize: '7px', textAlign: "center"
+                }}>
+                    Edit profile
+                </Button>
+            </Box>
         </Box>
-      
+
 
     );
 };
