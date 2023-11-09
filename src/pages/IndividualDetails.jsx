@@ -67,7 +67,6 @@ function IndividualDetails() {
 async function fetchIndividual({ id }) {
     const response = await fetch(`${API_URL}/individuals/${id}`);
     const data = await response.json();
-    console.log(data);
     return data.payload.individual;
 }
 

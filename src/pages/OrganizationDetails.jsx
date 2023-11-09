@@ -69,7 +69,6 @@ function OrganizationDetails() {
 async function fetchOrganization({ id }) {
     const response = await fetch(`${API_URL}/organizations/${id}`);
     const data = await response.json();
-    console.log(data);
     return data.payload.organization;
 }
 

@@ -79,6 +79,5 @@ export default function PostList() {
 async function fetchPosts({ query, page, deep }) {
     const response = await fetch(`${API_URL}/posts?query=${query}&page=${page}&deep=${deep}`);
     const data = await response.json();
-    console.log(data);
     return data.payload.posts;
 }

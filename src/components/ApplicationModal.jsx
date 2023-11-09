@@ -121,7 +121,6 @@ async function editApplication({ id, token, cover_letter }) {
         body: JSON.stringify({ cover_letter }),
     });
     const data = await response.json();
-    console.log(data);
     return data.payload.jobApplication;
 }
 
