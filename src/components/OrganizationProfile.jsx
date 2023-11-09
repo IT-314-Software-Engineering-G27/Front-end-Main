@@ -42,38 +42,53 @@ const TourCard2 = () => {
                     </Box>
 
                     <Box paddingX={3} >
-                        <Box paddingBottom={2}>
+                        <Box sx={{
+                            paddingBottom:2,
+                        }}>
                             <Paper elevation={2} >
-
+                               <Box sx={{
+                            overflowX:"scroll",
+                        }}
+                               >
                                 <Typography style={{ color: '#2F1263' }} paddingLeft={1}>
                                     User Name
                                 </Typography>
                                 <Typography style={{ color: '#2F1263' }} paddingLeft={1} paddingBottom={1} variant="body" component="h3">
                                     {UserName}
                                 </Typography>
+                                </Box>
                             </Paper>
                         </Box>
 
                         <Box paddingBottom={2}>
                             <Paper elevation={2} >
+                                <Box sx={{
+                            overflowX:"scroll",
+                            }}
+                                >
                                 <Typography style={{ color: '#2F1263' }} paddingLeft={1} >
                                     Email
                                 </Typography>
                                 <Typography style={{ color: '#2F1263' }} paddingBottom={1} paddingLeft={1} variant="body" component="h3">
                                     {Email}
                                 </Typography>
+                                </Box>
                             </Paper>
                         </Box>
 
 
                         <Box paddingBottom={2}>
                             <Paper elevation={2} >
+                                <Box sx={{
+                            overflowX:"scroll",
+                            }}>
                                 <Typography style={{ color: '#2F1263' }} paddingLeft={1} >
                                     Country
                                 </Typography>
                                 <Typography style={{ color: '#2F1263' }} paddingBottom={1} paddingLeft={1} variant="body" component="h3">
                                     {Country}
                                 </Typography>
+                                </Box>
                             </Paper>
                         </Box>
                     </Box>

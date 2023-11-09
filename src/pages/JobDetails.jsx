@@ -278,7 +278,7 @@ function JobDetail() {
               Back to job list
             </Button>
           )}
-          <ApplicationComponent job={job} />
+          <ApplicationComponent  job={job} />
           <CompanyComponent id={job.organization} />
         </Box>
       </Box>

@@ -2,10 +2,12 @@ import { Box, Button, CircularProgress, TextField } from '@mui/material';
 import React, { useState } from 'react';
 import ClearIcon from "@mui/icons-material/Clear";
 import { Send } from '@mui/icons-material';
-import { addMessages } from '../database/message';
+import { useQueryClient } from '@tanstack/react-query';
+import { API_URL } from "../config";
 
-function ContactInput(setMessages) {
+function ContactInput({ id, token }) {
     const [input, setInput] = useState("");
+    const queryClient = useQueryClient();
     const [isLoading, setIsLoading] = useState(false);
 
     return (
@@ -16,7 +18,6 @@ function ContactInput(setMessages) {
                 display: "flex",
                 flexDirection: "row",
                 alignItems: "center",
-                gap: "1rem",
                 background: "#f0f4f8",
                 width: "100%",
             }}
@@ -68,8 +69,10 @@ function ContactInput(setMessages) {
                         onClick={() => {
                             setIsLoading(true);
                             setInput("");
-                            addMessages(setMessages);
-                            setTimeout(() => setIsLoading(false), 7000);
+                            postMessage({ id, token, content: input }).then(() => {
+                                queryClient.invalidateQueries(["messages", { id, token }]);
+                                setIsLoading(false);
+                            });
                         }}
                         sx={{ marginLeft: "auto" }}
                         disabled={!input.length}
@@ -78,6 +81,19 @@ function ContactInput(setMessages) {
             </Box>
         </Box >
     );
+}
+
+async function postMessage({ id, token, content }) {
+    const response = await fetch(`${API_URL}/connections/${id}/messages`, {
+        method: "POST",
+        headers: {
+            "Authorization": `Bearer ${token}`,
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ content }),
+    });
+    const data = await response.json();
+    return data;
 }
 
 export default ContactInput;

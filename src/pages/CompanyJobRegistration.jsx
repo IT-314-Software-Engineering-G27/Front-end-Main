@@ -30,9 +30,10 @@ export default function CompanyJobRegistration() {
                     gap: "15px"
                 }}>
                 <TextField
+                    required
                     id="outlined-required"
                     label="Job profile"
-                    placeholder="Enter the job profile"
+                    defaultValue="Enter the job profile "
                     style={{ margin: "5px", width: "75%" }}
                 />
 
@@ -41,8 +42,7 @@ export default function CompanyJobRegistration() {
                     label="Job description"
                     multiline
                     rows={6}
-                    
-                    placeholder="Enter the job description"
+                    defaultValue="Enter the job description"
                     style={{ margin: "5px", width: "75%" }}
                 />
 
@@ -51,7 +51,7 @@ export default function CompanyJobRegistration() {
                     label="Requirements"
                     multiline
                     rows={6}
-                    placeholder="Enter the job requirements"
+                    defaultValue="Enter the job requirements"
                     style={{ margin: "5px", width: "75%" }}
                 />
 
@@ -60,14 +60,13 @@ export default function CompanyJobRegistration() {
                     label="Compensations"
                     multiline
                     rows={6}
-                    
-                    placeholder="Enter the compensations provided by the company"
+                    defaultValue="Enter the compensations provided by the company"
                     style={{ margin: "5px", width: "75%" }}
                 />
 
                 <FormControl fullWidth sx={{ m: 1 }} style={{ width: "75%" }}>
                     <InputLabel htmlFor="outlined-adornment-amount" >Salary</InputLabel>
-                    <OutlinedInput type='number'
+                    <OutlinedInput
                         id="outlined-adornment-amount"
                         startAdornment={<InputAdornment position="start">$</InputAdornment>}
                         label="Amount" />
@@ -76,24 +75,21 @@ export default function CompanyJobRegistration() {
                 <TextField
                     id="outlined-required"
                     label="Timings"
-                    
-                    placeholder="Enter the timings of your job"
+                    defaultValue="Enter the timings of your job"
                     style={{ margin: "5px", width: "75%" }}
                 />
 
                 <TextField
                     id="outlined-required"
                     label="Location"
-                 
-                    placeholder="Enter the location"
+                    defaultValue="Enter the location"
                     style={{ margin: "5px", width: "75%" }}
                 />
 
                 <TextField
                     id="outlined-required"
                     label="Last date to apply"
-                   
-                    placeholder="Enter the dead-line for accepting applications"
+                    defaultValue="Enter the dead-line for accepting applications"
                     style={{ margin: "5px", width: "75%" }}
                 />
                 

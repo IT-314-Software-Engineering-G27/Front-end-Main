@@ -21,7 +21,7 @@ const IndividualProfileSection = () => {
     return (
 
         <div>
-            <Box marginY={2}>
+            <Box marginY={3}>
                 <Paper elevation={3} >
                     <Box display="flex"
                             justifyContent="center"
@@ -44,9 +44,14 @@ const IndividualProfileSection = () => {
                    
 
                     <Box paddingX={3} >
-                        <Box paddingBottom={2}>
+                        <Box sx={{
+                            paddingBottom:2,
+                        }}>
                             <Paper elevation={2} >
-                               <Box>
+                               <Box sx={{
+                            overflowX:"scroll",
+                        }}
+                               >
                                 <Typography style={{ color: '#2F1263' }} paddingLeft={1}>
                                     User Name
                                 </Typography>
@@ -59,7 +64,10 @@ const IndividualProfileSection = () => {
 
                         <Box paddingBottom={2}>
                             <Paper elevation={2} >
-                                <Box>
+                                <Box sx={{
+                            overflowX:"scroll",
+                            }}
+                                >
                                 <Typography style={{ color: '#2F1263' }} paddingLeft={1} >
                                     Email
                                 </Typography>
@@ -73,7 +81,9 @@ const IndividualProfileSection = () => {
 
                         <Box paddingBottom={2}>
                             <Paper elevation={2} >
-                                <Box>
+                                <Box sx={{
+                            overflowX:"scroll",
+                            }}>
                                 <Typography style={{ color: '#2F1263' }} paddingLeft={1} >
                                     Country
                                 </Typography>

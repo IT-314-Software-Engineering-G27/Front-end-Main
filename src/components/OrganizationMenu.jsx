@@ -19,30 +19,21 @@ const OrganizationMenu = () => {
       
         <Box  paddingBottom={1}>
 
-            <Box paddingY={1.5} 
-                            paddingTop={2}>
 
-                <Box paddingLeft={1}>
-                    <img src={Object2} alt="" className="img" />
-                </Box>
-
-                <Button variant="text" Link to='' size='small'>
-                    <Typography variant="body" component="h5">
-                        Profile
-                    </Typography>
+            
+            <Box paddingTop={2} paddingLeft={0.75}>
+                <Button  href="/events" variant="outlined" style={{maxWidth: '60px', maxHeight: '50px', 
+                                                                minWidth: '30px', minHeight: '30px',fontSize: '10px', textAlign : "center",color: '#2F1263'}}>
+                      Profile
                 </Button>
-            </Box>
-
-            <Box paddingY={1.5} >
-                <Box paddingLeft={1}>
-                    <img src={Object4} alt="" className="img" />
-                </Box>
-                <Button variant="text" href='/posts' size='small'>
-                    <Typography variant="body" component="h5">
-                        Post
-                    </Typography>
+            </Box> 
+            
+            <Box paddingTop={2} paddingLeft={0.75}>
+                <Button  href="/events" variant="outlined" style={{maxWidth: '60px', maxHeight: '50px', 
+                                                                minWidth: '30px', minHeight: '30px',fontSize: '10px', textAlign : "center"}}>
+                      Post
                 </Button>
-            </Box>
+            </Box> 
 
             <Box paddingTop={2} paddingLeft={0.75}>
                 <Button  href="/events" variant="outlined" style={{maxWidth: '60px', maxHeight: '50px', 
@@ -52,29 +43,29 @@ const OrganizationMenu = () => {
             </Box>
             
             <Box paddingTop={2} paddingLeft={0.75}>
-                <Button  href="/events" variant="outlined" style={{maxWidth: '60px', maxHeight: '60px', 
-                                                                minWidth: '30px', minHeight: '30px',fontSize: '10px', textAlign : "center"}}>
+                <Button  href="/events" variant="outlined" style={{maxWidth: '60px', maxHeight: '40px', 
+                                                                minWidth: '30px', minHeight: '30px',fontSize: '7px', textAlign : "center"}}>
                       Job Profile Post
                 </Button>
             </Box>
 
             <Box paddingTop={2} paddingLeft={0.75}>
-                <Button  href="/events" variant="outlined" style={{maxWidth: '60px', maxHeight: '50px', 
-                                                                minWidth: '30px', minHeight: '30px',fontSize: '10px', textAlign : "center"}}>
+                <Button  href="/events" variant="outlined" style={{maxWidth: '60px', maxHeight: '40px', 
+                                                                minWidth: '50px', minHeight: '30px',fontSize: '8px', textAlign : "center"}}>
                      Event List
                 </Button>
             </Box>
 
             <Box paddingTop={2} paddingLeft={0.75}>
-                <Button  href="/events" variant="outlined" style={{maxWidth: '60px', maxHeight: '60px', 
-                                                                minWidth: '30px', minHeight: '30px',fontSize: '10px', textAlign : "center"}}>
+                <Button  href="/events" variant="outlined" style={{maxWidth: '60px', maxHeight: '40px', 
+                                                                minWidth: '30px', minHeight: '30px',fontSize: '7px', textAlign : "center"}}>
                      Job Profile List
                 </Button>
             </Box>
 
             <Box paddingTop={2} paddingLeft={0.75}>
-                <Button  href="/events" variant="outlined" style={{maxWidth: '60px', maxHeight: '60px', 
-                                                                minWidth: '30px', minHeight: '30px',fontSize: '10px', textAlign : "center"}}>
+                <Button  href="/events" variant="outlined" style={{maxWidth: '60px', maxHeight: '40px', 
+                                                                minWidth: '30px', minHeight: '30px',fontSize: '7px', textAlign : "center"}}>
                     Contact us
                 </Button>
             </Box>

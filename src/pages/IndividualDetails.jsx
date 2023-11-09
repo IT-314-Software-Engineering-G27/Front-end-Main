@@ -11,8 +11,8 @@ const post_ids = [1, 2, 3];
 
 function App() {
     return (
-        <Container maxWidth="xl">
-            <Paper>
+        <Container maxWidth="xl"  style={{ height: "100vh" }}>
+            <Paper style={{ height: "100%" }}>
                 <Box backgroundColor='#000085'>
                     <IndividualSearchBar />
                 </Box>
@@ -27,7 +27,7 @@ function App() {
                     </Grid>
 
                     <Grid item xs={10} md={3}>
-                        <Box margin={5}>
+                        <Box marginX={5}>
                             <IndividualProfile />
                         </Box>
                     </Grid>
@@ -47,7 +47,7 @@ function App() {
                                 <Box
                                     style={{
                                         overflowY: "auto",
-                                        maxHeight: "350px",
+                                        maxHeight: "410px",
                                         display: "flex",
                                         flexGrow: 1,
                                         flexDirection: "column"

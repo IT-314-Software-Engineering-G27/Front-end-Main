@@ -3,7 +3,7 @@ import { Button, FormControl, FormGroup, Modal, TextField } from "@mui/material"
 import { useAuth } from "../contexts/session";
 import { Link } from "react-router-dom";
 import { API_URL } from "../config";
-const buttonStyle = { textTransform: "none", fontFamily: "sans-serif", border: "1px solid #376FFF", borderRadius: "5px", fontSize: "14px", boxShadow: "0px 3px 6px 0px rgba(55, 111, 255, 0.16);", color: "black" };
+const buttonStyle = { width: '80%',margin: 'auto', alignItems: 'center', transition: 'background-color 0.3s, transform 0.3s', boxShadow: " 5px 5px rgba(163, 23, 205, 0.1)", '&:hover': { backgroundColor: '#1976D2', transform: 'scale(1.05)', },};
 
 function ApplicationButton({ id }) {
     const [open, setOpen] = useState(false);
@@ -20,25 +20,25 @@ function ApplicationButton({ id }) {
     }, [auth.session.token, id]);
 
     if (status === "none")
-        return <Button variant="contained" sx={{ ...buttonStyle, background: "linear-gradient(180deg, #376FFF 0%, #5E5BFF 100%)", }}> Loading...  </Button>;
+        return <Button variant="contained"  sx={{ ...buttonStyle,  }}> Loading...  </Button>;
 
     if (status === "not-logged-in")
-        return <Button variant="contained" sx={{ ...buttonStyle, background: "linear-gradient(180deg, #376FFF 0%, #5E5BFF 100%)", }} LinkComponent={Link} to="/login"> Login to apply </Button>;
+        return <Button variant="contained"  sx={{ ...buttonStyle,  }} LinkComponent={Link} to="/login"> Login to apply </Button>;
 
 
     if (status === "pending")
         return (<>
             <ApplicationModal open={open} handleClose={handleClose} id={id} application={jobApplication} edit />
-            <Button variant="contained" sx={{ ...buttonStyle, background: "linear-gradient(180deg, #73F673 0%,#5BFF5C 100%)", }} onClick={handleOpen}> Edit Application </Button></>);
+            <Button variant="contained" sx={{ ...buttonStyle, }} onClick={handleOpen}> Edit Application </Button></>);
 
     if (status === "accepted")
-        return <Button variant="contained" sx={{ ...buttonStyle, background: "linear-gradient(180deg, #73F673 0%,#5BFF5C 100%)", }}> Accepted </Button>;
+        return <Button variant="contained" sx={{ ...buttonStyle, }}> Accepted </Button>;
 
     if (status === "rejected")
-        return <Button variant="contained" sx={{ ...buttonStyle, background: "linear-gradient(180deg, #F67373 0%,#FF5B5C 100%)", }}> Rejected </Button>;
+        return <Button variant="contained" sx={{ ...buttonStyle }}> Rejected </Button>;
 
     return <>
-        <Button variant="contained" sx={{ ...buttonStyle, background: "linear-gradient(180deg, #376FFF 0%, #5E5BFF 100%)", }} onClick={handleOpen}> Apply Now  </Button>
+        <Button variant="contained" sx={{ ...buttonStyle,  }} onClick={handleOpen}> Apply Now  </Button>
         <ApplicationModal open={open} handleClose={handleClose} id={id} />
     </>;
 }
@@ -64,7 +64,7 @@ function ApplicationModal({ open, handleClose, id, application, edit }) {
         <FormControl sx={{ width: "100%", backgroundColor: 'white', padding: "20px" }}>
             <TextField multiline label="cover letter" rows={12} variant="outlined" sx={{ width: "100%", mb: 2 }} focused onChange={(e) => setContent(e.target.value)} value={content} placeholder="write about your skills, qualifications and achivements"/>
             <FormGroup sx={{ display: "flex", justifyContent: "flex-end", flexDirection: "row", gap: "10px" }}>
-                <Button variant="contained" sx={{ ...buttonStyle, background: "linear-gradient(180deg, #73F673 0%,#5BFF5C 100%)", }} onClick={() => {
+                <Button variant="contained" sx={{ ...buttonStyle }} onClick={() => {
                     if (edit)
                         editApplication({ id: application._id, token: auth.session.token, cover_letter: content }).then(() => {
                             window.location.reload();
@@ -74,7 +74,7 @@ function ApplicationModal({ open, handleClose, id, application, edit }) {
                             window.location.reload();
                         })
                 }}> Submit </Button>
-                <Button variant="contained" sx={{ ...buttonStyle, background: "linear-gradient(180deg, #F67373 0%,#FF5B5C 100%)", }} onClick={handleClose}> Close </Button>
+                <Button variant="contained" sx={{ ...buttonStyle,}} onClick={handleClose}> Close </Button>
             </FormGroup>
         </FormControl>
     </Modal>;

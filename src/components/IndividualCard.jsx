@@ -7,7 +7,7 @@ import { useQuery } from "@tanstack/react-query";
 
 export default function IndividualCard({ id }) {
     const { data: individual, } = useQuery({
-        queryKey: ["individual", { id }],
+        queryKey: ["individual-card", { id }],
         queryFn: () => fetchIndividual({ id }),
     });
 
