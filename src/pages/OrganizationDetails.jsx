@@ -1,65 +1,63 @@
-import { Container, Grid, Paper, Box, Stack, Card, Divider, Typography } from '@mui/material';
+import { Container, Grid, Paper, Box, Stack, Divider, Typography, Skeleton } from '@mui/material';
 import OrganizationMenu from '../components/OrganizationMenu';
 import OrganizationProfile from '../components/OrganizationProfile';
 import OrganizationSocial from '../components/OrganizationSocial';
 import OrganizationSearchBar from '../components/OrganizationSearchBar';
 import PostCard from '../components/PostCard';
-import { AppBar, IconButton, Toolbar, Drawer } from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
+import { useParams } from 'react-router-dom';
+import { useQuery } from '@tanstack/react-query';
+import { API_URL } from '../config';
 
-const post_ids = [1, 2, 3];
 
-function App() {
+function OrganizationDetails() {
+    const { organizationId } = useParams();
+    const { data: organization } = useQuery({
+        queryKey: ["individual", { id: organizationId }],
+        queryFn: () => fetchOrganization({ id: organizationId })
+    });
+
+    if (!organization) {
+        return <Skeleton variant="rectangular" height="80vh" />;
+    };
+
     return (
         <Container maxWidth="xl" style={{ height: "100vh" }}>
             <Paper style={{ height: "100%" }}>
-                <Box  backgroundColor='#000085'>
+                <Box backgroundColor='#000085'>
                     <OrganizationSearchBar />
                 </Box>
 
                 <Grid container spacing={4} >
-                    <Grid item xs={1} md={0.5} >
+                    <Grid item xs={2} md={1} >
                         <Box paddingY={2} >
-                            
-                                <OrganizationMenu />
-                            
+                            <OrganizationMenu />
                         </Box>
                     </Grid>
 
-                    <Grid item xs={10} md={3}>
-                        <Box margin={5}>
-                            <OrganizationProfile />
-                        </Box>
+                    <Grid item xs={10} md={4}>
+                        <OrganizationProfile organization={organization} />
                     </Grid>
 
-                    <Grid item xs={12} md={7} >
-                        <OrganizationSocial />
-
-                        <Card style={{ minHeight: "calc(77vh - 200px)" }}>
-                            <Box>
+                    <Grid item xs={12} md={7} marginTop={2}>
+                        <OrganizationSocial id={organizationId} />
+                        <Paper sx={{ padding: "1rem" }}>
+                            <Typography sx={{ textAlign: "center" }} variant="h5">  Who we are?  </Typography>
+                            <Typography variant="body2">
+                                {"  "} {organization.description}
+                            </Typography>
+                            <Divider />
+                            {organization.user.posts.length > 0 ? <>
+                                <Typography sx={{ textAlign: "center" }} variant="h5"> Posts</Typography>
                                 <Divider />
-                                <Box display="flex" alignItems="center">
-                                    <Typography style={{ color: '#2F1263' }} variant="body1" component="h3">
-                                        My Post
-                                    </Typography>
-                                </Box>
-                                <Divider />
-                                <Box
-                                    style={{
-                                        overflowY: "auto",
-                                        maxHeight: "410px",
-                                        display: "flex",
-                                        flexGrow: 1,
-                                        flexDirection: "column"
-                                    }}>
-                                    <Stack container spacing={2}>
-                                        {post_ids.map((id) => (
-                                            <PostCard id={id} />
-                                        ))}
-                                    </Stack>
-                                </Box>
-                            </Box>
-                        </Card>
+                                <Stack container spacing={2} padding={4} sx={{ overflowY: "scroll" }}>
+                                    {organization.user.posts.map((post) => (
+                                        <Grid item key={post}>
+                                            <PostCard id={post} />
+                                        </Grid>
+                                    ))}
+                                </Stack>
+                            </> : <Typography sx={{ textAlign: "center" }} variant="h5"> No Posts</Typography>}
+                        </Paper>
                     </Grid>
                 </Grid>
             </Paper>
@@ -67,4 +65,12 @@ function App() {
     );
 }
 
-export default App;
+
+async function fetchOrganization({ id }) {
+    const response = await fetch(`${API_URL}/organizations/${id}`);
+    const data = await response.json();
+    console.log(data);
+    return data.payload.organization;
+}
+
+export default OrganizationDetails;

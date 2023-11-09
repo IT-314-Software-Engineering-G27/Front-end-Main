@@ -1,13 +1,17 @@
-import { Box, Container, Grid, Paper, Typography } from "@mui/material";
+import { Box, Grid, Paper, Typography } from "@mui/material";
 import { useState } from "react";
+import { useAuth } from "../contexts/session";
 
-
-const TourCard3 = () => {
-
+const Organizationsocial = ({ id }) => {
+    const auth = useAuth();
     const [Connection, setConnection] = useState(0);
     const [RegisterdComp, setRegisterdComp] = useState(0);
     const [body, setBody] = useState('Body');
-  
+
+    if (auth?.user?.organization !== id) {
+        return (<></>);
+    }
+
     return (
         <div>
             <Grid >
@@ -23,7 +27,7 @@ const TourCard3 = () => {
                                 <Typography variant="subtitle2" component="h1" style={{ color: '#2F1263' }}>
                                     Your Connection
                                 </Typography>
-                              
+
 
 
                             </Box>
@@ -40,15 +44,15 @@ const TourCard3 = () => {
                             </Typography>
                             <Box>
                                 <Typography variant="subtitle2" component="h1" style={{ color: '#2F1263' }}>
-                                    Company You Registerd
+                                    Open Positions
                                 </Typography>
-                            
+
                             </Box>
                         </Box>
                     </Paper>
                 </Grid>
 
-               
+
 
             </Grid>
 
@@ -56,4 +60,4 @@ const TourCard3 = () => {
     );
 }
 
-export default TourCard3;
+export default Organizationsocial;
