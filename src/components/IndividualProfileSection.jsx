@@ -47,7 +47,7 @@ const IndividualProfileSection = ({ individual }) => {
                                 Mail @ {individual.user.email}
                             </Typography>
                             <Typography style={{ color: '#2F1263' }} paddingBottom={1} paddingLeft={1} variant="body" component="h3">
-                                {individual.phone_number && `Phone ${individual.phone_number}`}
+                                {individual.user.phone_number && `Phone ${individual.user.phone_number}`}
                             </Typography>
                         </Paper>
                     </Box>

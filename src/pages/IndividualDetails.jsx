@@ -1,4 +1,4 @@
-import { Container, Grid, Paper, Box, Stack, Card, Divider, Typography, Skeleton } from '@mui/material';
+import { Container, Grid, Paper, Box, Stack, Divider, Typography, Skeleton } from '@mui/material';
 import IndividualMenu from '../components/IndividualMenu';
 import IndividualProfile from '../components/IndividualProfileSection';
 import IndividualSocial from '../components/IndividualSocial';
@@ -26,7 +26,7 @@ function IndividualDetails() {
                     <IndividualSearchBar />
                 </Box>
 
-                <Grid container spacing={4}>
+                <Grid container={true} spacing={4} >
                     <Grid item xs={2} md={1}>
                         <Box paddingY={2}>
                             <IndividualMenu />
@@ -37,17 +37,16 @@ function IndividualDetails() {
                         <IndividualProfile individual={individual} />
                     </Grid>
 
-                    <Grid item xs={12} md={7}>
+                    <Grid item xs={12} md={7} marginTop={2}>
                         <IndividualSocial id={individualId} />
-
-                        <Card style={{ minHeight: "calc(77vh - 200px)" }}>
-                            <Box>
-                                <Divider />
-                                <Box display="flex" alignItems="center">
-                                    <Typography style={{ color: '#2F1263' }} variant="h6">
-                                        Posts:
-                                    </Typography>
-                                </Box>
+                        <Paper sx={{ padding: "1rem" }}>
+                            <Typography sx={{ textAlign: "center" }} variant="h5">   Bio   </Typography>
+                            <Typography variant="body2">
+                                {"  "} {individual.bio}
+                            </Typography>
+                            <Divider />
+                            {individual.user.posts.length > 0 ? <>
+                                <Typography sx={{ textAlign: "center" }} variant="h5"> Posts</Typography>
                                 <Divider />
                                 <Stack container spacing={2} padding={4} sx={{ overflowY: "scroll" }}>
                                     {individual.user.posts.map((post) => (
@@ -56,8 +55,8 @@ function IndividualDetails() {
                                         </Grid>
                                     ))}
                                 </Stack>
-                            </Box>
-                        </Card>
+                            </> : <Typography sx={{ textAlign: "center" }} variant="h5"> No Posts</Typography>}
+                        </Paper>
                     </Grid>
                 </Grid>
             </Paper>
