@@ -4,9 +4,11 @@ import { ArrowBackRounded as ArrowBackRoundedIcon, CalendarTodayOutlined as Cale
 import { Button, Divider, Box, CircularProgress, Container, Paper, Typography, } from '@mui/material';
 import { useQuery } from '@tanstack/react-query';
 import { API_URL } from "../config";
+import { useAuth } from "../contexts/session";
 
-function EventDetail() {
+export default function EventDetails() {
   const { eventId } = useParams();
+  const auth = useAuth();
 
   const { data: event } = useQuery({
     queryKey: ['event', { id: eventId }],
@@ -25,8 +27,8 @@ function EventDetail() {
 
   return (
     <>
-      <Box sx={{ borderRadius: "40px", m: 2, display: "flex", flexDirection: "row", p: 2, width: "15%", justifyContent: "center", alignItems: "center", ml: 6, }}>
-        <ArrowBackRoundedIcon m={2} />
+      <Box sx={{ borderRadius: "40px", p: 2, display: "flex", flexDirection: "row", p: 2, width: "15%", justifyContent: "center", alignItems: "center", ml: 6, }}>
+        <ArrowBackRoundedIcon />
         <Link to="/events">
           <Typography sx={{ color: "#376FFF" }} variant='h6'>
             See all events
@@ -94,7 +96,8 @@ function EventDetail() {
             </Typography>
           </Box>
           <Divider variant="middle" sx={{ mt: 5 }} />
-          <Button variant="contained" sx={{ width: "85%", m: 2, textAlign: "center", boxShadow: "0px 3px 6px 0px rgba(55, 111, 255, 0.16);", }} LinkComponent={Link} to={`/events/${event._id}/register`} >Register Now</Button>
+          {auth?.session?.user?.organization &&
+            (<Button variant="contained" sx={{ width: "85%", m: 2, textAlign: "center", boxShadow: "0px 3px 6px 0px rgba(55, 111, 255, 0.16);", }} LinkComponent={Link} to={`/events/${event._id}/register`} >Register Now</Button>)}
           <Button variant="outlined" sx={{ width: "85%", m: 2, textAlign: "center" }} LinkComponent={Link} to={`/events/${event._id}/startups`} > See StartUps </Button>
         </Paper>
       </Box>
@@ -107,5 +110,3 @@ async function fetchEvent({ id }) {
   const data = await response.json();
   return data.payload.event;
 }
-
-export default EventDetail;

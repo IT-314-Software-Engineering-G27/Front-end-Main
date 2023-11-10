@@ -26,52 +26,46 @@ export default function EventCard({ id }) {
                 flexDirection: "column",
                 justifyContent: "space-between",
                 boxShadow: " 7px 7px rgba(0, 0, 0, 0.15)",
-                padding: "1rem",
+                padding: "0.5rem",
             }}
         >
-
-            <Grid item xs={12} md={8} sx={{ padding: "0px" }}>
-                <CardHeader
-                    titleTypographyProps={{ variant: "h6" }}
-                    title={`${event.title}`}
-                    sx={{ color: "black", pt: 0, pb: 0, }}
-                />
-                <CardContent
-                    sx={{
-                        pt: "10px",
-                    }}>
-                    <Grid container spacing={1} alignItems="center">
-                        <Grid item>
-                            <EventAvailable />
-                        </Grid>
-                        <Grid item xs>
-                            <Typography variant="body1" gutterBottom>
-                                From {`${new Date(event.start_time).toLocaleString()}`} to {`${new Date(event.end_time).toLocaleString()}`}
-                            </Typography>
-                        </Grid>
+            <CardHeader
+                titleTypographyProps={{ variant: "h6" }}
+                title={`${event.title}`}
+                sx={{ color: "black" }}
+            />
+            <CardContent>
+                <Grid container spacing={1} alignItems="center">
+                    <Grid item>
+                        <EventAvailable />
                     </Grid>
-                    <Grid container spacing={1} alignItems="center">
-                        <Grid item>
-                            <AccessTimeFilled />
-                        </Grid>
-                        <Grid item xs>
-                            <Typography variant="body1" gutterBottom>
-                                Registration deadline: {`${new Date(event.last_registration_date).toLocaleString()}`}
-                            </Typography>
-                        </Grid>
+                    <Grid item xs>
+                        <Typography variant="body1" gutterBottom>
+                            From {`${new Date(event.start_time).toLocaleString()}`} to {`${new Date(event.end_time).toLocaleString()}`}
+                        </Typography>
                     </Grid>
-                    <Grid container spacing={1} alignItems="center">
-                        <Grid item>
-                            <Category />
-                        </Grid>
-                        <Grid item xs>
-                            <Typography variant="body1" gutterBottom>
-                                {`${event.frequency}`}
-                            </Typography>
-                        </Grid>
+                </Grid>
+                <Grid container spacing={1} alignItems="center">
+                    <Grid item>
+                        <AccessTimeFilled />
                     </Grid>
-                </CardContent>
-            </Grid>
+                    <Grid item xs>
+                        <Typography variant="body1" gutterBottom>
+                            Registration deadline: {`${new Date(event.last_registration_date).toLocaleString()}`}
+                        </Typography>
+                    </Grid>
+                </Grid>
+                <Grid container spacing={1} alignItems="center">
+                    <Grid item>
+                        <Category />
+                    </Grid>
+                    <Grid item xs>
+                        <Typography variant="body1" gutterBottom>
+                            {`${event.frequency}`}
+                        </Typography>
+                    </Grid>
+                </Grid>
+            </CardContent>
             <Divider />
             <CardActions sx={{ marginTop: "auto", display: "flex", justifyContent: "center" }}>
                 <Button
@@ -82,7 +76,6 @@ export default function EventCard({ id }) {
                     component={Link}
                     to={`/events/${id}`}
                     sx={{
-                        width: '50%',
                         margin: 'auto',
                         transition: 'background-color 0.3s, transform 0.3s',
                         boxShadow: " 5px 5px rgba(163, 23, 205, 0.1)",
@@ -95,7 +88,7 @@ export default function EventCard({ id }) {
                     Read more
                 </Button>
             </CardActions>
-        </Card>
+        </Card >
     );
 }
 

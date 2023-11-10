@@ -68,7 +68,7 @@ export default function EventList() {
                 )}
                 <Grid container spacing={3}>
                     {events.map((id) => (
-                        <Grid item key={id} xs={12}>
+                        <Grid item key={id} xs={6}>
                             <EventCard id={id} />
                         </Grid>
                     ))}
