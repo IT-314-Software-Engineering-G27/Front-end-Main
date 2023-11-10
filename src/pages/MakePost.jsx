@@ -5,7 +5,7 @@ import { useAuth } from "../contexts/session";
 import { API_URL } from "../config";
 import { useNavigate } from "react-router-dom";
 
-export default function EventRegistration() {
+export default function PostForm() {
     const auth = useAuth();
     const navigate = useNavigate();
     const [post, setPost] = useState({
@@ -110,7 +110,6 @@ export default function EventRegistration() {
 }
 
 async function postPost({ post, file, token }) {
-    console.log(token);
     const data_response = await fetch(`${API_URL}/posts`, {
         method: "POST",
         headers: {

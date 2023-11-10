@@ -18,7 +18,6 @@ import EventList from "./pages/EventList";
 import EventDetails from "./pages/EventDetails";
 import IndividualDetails from "./pages/IndividualDetails";
 import OrganizationDetails from "./pages/OrganizationDetails";
-import RegAsJobSeek from "./RegAsJobseek/RegAsJobSeek";
 import ContactList from "./pages/ContactList";
 import EventRegistrationForm from "./components/EventRegistrationForm";
 import ContactDetails from "./pages/ContactDetails";
@@ -29,8 +28,7 @@ import ContactUs from "./pages/ContactUs";
 import SessionProvider from "./contexts/session";
 import StartupList from "./pages/StartupList";
 import StartupDetails from "./pages/StartupDetails";
-import EditIndividualProfile from "./pages/EditIndividualProfile";
-import EditOrganizationProfile from "./pages/EditOrganizationProfile";
+import EditProfile from "./pages/EditProfile";
 import NotFound from "./pages/NotFound";
 import PasswordResetEmail from "./pages/PasswordResetEmail";
 import PasswordResetOTP from "./pages/PasswordResetOTP";
@@ -47,15 +45,15 @@ function Root() {
                             <Routes>
                                 <Route exact path="/" element={<Navigate to={"/login"} />} />
                                 <Route path='/register'>
-                                    <Route path="/register/individual" element={<RegisterIndividual />} />  
-                                    <Route path="/register/organization" element={<RegisterOrganization />} /> 
+                                    <Route path="/register/individual" element={<RegisterIndividual />} />
+                                    <Route path="/register/organization" element={<RegisterOrganization />} />
                                     {/* <Route path="/register/jobseeker" element={<RegAsJobSeek />} />  */}
                                     <Route path="/register" element={<Register />} />
                                 </Route>
                                 <Route exact path="/login" element={<Login />} />
                                 <Route path="/contact-us" element={<ContactUs />} />
                                 <Route path="/posts" element={<PostList />}></Route>
-                                <Route path="/makePost" element={<MakePost />}></Route> 
+                                <Route path="/makePost" element={<MakePost />}></Route>
                                 <Route path="/posts/:postId" element={<PostDetails />}></Route>
                                 <Route path="/jobs" element={<JobList />}></Route>
                                 <Route path="/jobs/:jobId">
@@ -63,23 +61,22 @@ function Root() {
                                     <Route path="/jobs/:jobId/candidates" element={<CandidateList />} />
                                 </Route>
                                 <Route path="/events">
-                                    <Route path="/events" element={<EventList />}></Route> 
+                                    <Route path="/events" element={<EventList />}></Route>
                                     <Route path="/events/:eventId" element={<EventDetails />} />
                                     <Route path="/events/:eventId/register" element={<EventRegistrationForm />} /> {/* TODO  link to backend */}
-                                    <Route path="/events/:eventId/startups" element={<StartupList />} /> 
+                                    <Route path="/events/:eventId/startups" element={<StartupList />} />
                                 </Route>
-                                <Route path="/startups/:startupId" element={<StartupDetails />} /> 
+                                <Route path="/startups/:startupId" element={<StartupDetails />} />
                                 <Route path="/individuals" element={<IndividualList />} />
                                 <Route path="/individuals/:individualId" element={<IndividualDetails />} />
                                 <Route path="/organizations" element={<OrganizationList />} />
                                 <Route path="/organizations/:organizationId" element={<OrganizationDetails />} />
-                                <Route path="/organizations/JobRegistration" element={<CompanyJobRegistration />} /> 
-                                <Route path="/contacts" element={<ContactList />}> 
-                                    <Route path="/contacts/:contactId" element={<ContactDetails />} /> 
+                                <Route path="/organizations/JobRegistration" element={<CompanyJobRegistration />} />
+                                <Route path="/contacts" element={<ContactList />}>
+                                    <Route path="/contacts/:contactId" element={<ContactDetails />} />
                                 </Route>
                                 <Route path="/profile" element={<Profile />} />
-                                <Route path="/editIndividualProfile/:individualId" element={<EditIndividualProfile />} /> {/* TODO  link to backend */}
-                                <Route path="/editOrganizationProfile/:organizationId" element={<EditOrganizationProfile />} /> {/* TODO  link to backend */}
+                                <Route path="/profile/edit" element={<EditProfile />} />
                                 <Route path="/password-reset" element={<PasswordResetEmail />} />
                                 <Route path="/password-reset/:resetId" element={<PasswordResetOTP />} />
                                 <Route path="*" element={<NotFound />} />
