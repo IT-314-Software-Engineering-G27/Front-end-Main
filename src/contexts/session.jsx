@@ -44,6 +44,7 @@ export function useAuth() {
         }
         else {
             setError(message);
+            alert(message);
             setSession({});
         }
         setIsLoading(false);

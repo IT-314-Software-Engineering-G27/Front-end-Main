@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './Login.css';
 import Phone from './Phone.png';
 import Logo from './Logo.png';
@@ -16,6 +16,12 @@ const Login = () => {
         password: ''
     });
     const navigate = useNavigate();
+
+    useEffect(() => {
+        if (auth?.session?.user) {
+            navigate('/profile');
+        }
+    }, [auth?.session?.user]);
 
     return (
         <div className='log'>
@@ -75,10 +81,7 @@ const Login = () => {
 
                         <button id='signInbtn' onClick={(e) => {
                             e.preventDefault();
-                            auth.login({ email: user.email, password: user.password }).then(() => {
-                                navigate('/profile');
-                            });
-                            
+                            auth.login({ email: user.email, password: user.password });
                         }}>
                             Sign in
                         </button>
