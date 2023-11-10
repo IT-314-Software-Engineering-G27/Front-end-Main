@@ -1,7 +1,6 @@
 import { Container, Grid, Paper, Box, Stack, Divider, Typography, Skeleton } from '@mui/material';
 import IndividualMenu from '../components/IndividualMenu';
 import IndividualProfile from '../components/IndividualProfileSection';
-import IndividualSocial from '../components/IndividualSocial';
 import IndividualSearchBar from '../components/IndividualSearchBar';
 import PostCard from '../components/PostCard';
 import { useParams } from 'react-router-dom';
@@ -38,7 +37,6 @@ function IndividualDetails() {
                     </Grid>
 
                     <Grid item xs={12} md={7} marginTop={2}>
-                        <IndividualSocial id={individualId} />
                         <Paper sx={{ padding: "1rem" }}>
                             <Typography sx={{ textAlign: "center" }} variant="h5">   Bio   </Typography>
                             <Typography variant="body2">

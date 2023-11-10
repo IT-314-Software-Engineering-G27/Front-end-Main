@@ -1,7 +1,6 @@
 import { Container, Grid, Paper, Box, Stack, Divider, Typography, Skeleton } from '@mui/material';
 import OrganizationMenu from '../components/OrganizationMenu';
 import OrganizationProfile from '../components/OrganizationProfile';
-import OrganizationSocial from '../components/OrganizationSocial';
 import OrganizationSearchBar from '../components/OrganizationSearchBar';
 import PostCard from '../components/PostCard';
 import { useParams } from 'react-router-dom';
@@ -39,7 +38,6 @@ function OrganizationDetails() {
                     </Grid>
 
                     <Grid item xs={12} md={7} marginTop={2}>
-                        <OrganizationSocial id={organizationId} />
                         <Paper sx={{ padding: "1rem" }}>
                             <Typography sx={{ textAlign: "center" }} variant="h5">  Who we are?  </Typography>
                             <Typography variant="body2">
