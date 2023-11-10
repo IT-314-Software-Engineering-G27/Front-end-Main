@@ -31,7 +31,7 @@ export default function EditIndividual() {
 
 
     return (
-        <Box >
+        <Box>
             <Typography sx={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }} variant="h1" >Edit Profile</Typography>
             <Box sx={{
                 display: "flex",
@@ -188,7 +188,6 @@ async function editIndividual({ token, individual, file }) {
         body: JSON.stringify({ individual }),
     });
     const data = await data_response.json();
-    console.log(data);
     if (!data_response.ok) {
         return {
             error: data.message,
@@ -206,7 +205,6 @@ async function editIndividual({ token, individual, file }) {
             body: formData,
         });
         const image_data = await image_response.json();
-        console.log(image_data);
         if (!image_response.ok) {
             return {
                 error: image_data.message,
