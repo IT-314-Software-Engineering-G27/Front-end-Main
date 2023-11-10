@@ -79,7 +79,9 @@ function PostDetail() {
                         </Box>
                     </Box>
                     <Divider sx={{ margin: '1rem 0' }} />
-                    <Typography variant="h6">{post.description}</Typography>
+                    <Typography variant="h4" sx={{ wordBreak: "break-word" }}>{post.title}</Typography>
+                    <Typography variant="h5" sx={{ wordBreak: "break-word"}}>{post.subject}</Typography>
+                    <Typography variant="h6" sx={{ wordBreak: "break-word" }}>{post.description}</Typography>
                     <img
                         src={post.image}
                         alt="Post"
