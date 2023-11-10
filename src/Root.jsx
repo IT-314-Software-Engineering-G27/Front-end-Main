@@ -66,9 +66,9 @@ function Root() {
                                     <Route path="/events" element={<EventList />}></Route> 
                                     <Route path="/events/:eventId" element={<EventDetails />} />
                                     <Route path="/events/:eventId/register" element={<EventRegistrationForm />} /> {/* TODO  link to backend */}
-                                    <Route path="/events/:eventId/startups" element={<StartupList />} /> {/* TODO  link to backend */}
-                                    <Route path="/events/:eventId/startups/:startupId" element={<StartupDetails />} /> {/* TODO  link to backend */}
+                                    <Route path="/events/:eventId/startups" element={<StartupList />} /> 
                                 </Route>
+                                <Route path="/startups/:startupId" element={<StartupDetails />} /> 
                                 <Route path="/individuals" element={<IndividualList />} />
                                 <Route path="/individuals/:individualId" element={<IndividualDetails />} />
                                 <Route path="/organizations" element={<OrganizationList />} />

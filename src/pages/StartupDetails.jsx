@@ -1,43 +1,22 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useParams } from 'react-router-dom';
-import StartupsData from '../database/startup';
-import {
-    Avatar,
-    Box,
-    CircularProgress,
-    Container,
-    Paper,
-    Typography,
-    Divider,
-} from '@mui/material';
+import { CircularProgress, Container, Paper, Typography, Divider, Grid, ImageList, ImageListItem, Box, } from '@mui/material';
+import { API_URL } from '../config';
+import { useQuery } from '@tanstack/react-query';
+import OrganizationCard from '../components/OrganizationCard';
+import EventCard from '../components/EventCard';
 
-function StartupDetail() {
+export default function StartupDetails() {
     const { startupId } = useParams();
-    const [post, setPost] = useState(null);
-    const [error, setError] = useState(null);
 
-    useEffect(() => {
-        StartupsData.fetchPost(startupId)
-            .then((StartupsData) => {
-                setPost(StartupsData);
-            })
-            .catch((error) => {
-                setError(error);
-            });
-    }, [startupId]);
-    if (error) {
-        return (
-            <Container maxWidth="md">
-                <Paper elevation={3} style={{ padding: '2rem' }}>
-                    <Typography variant="h5" color="error">
-                        Error: {error.message}
-                    </Typography>
-                </Paper>
-            </Container>
-        );
-    }
+    const { data: startup } = useQuery({
+        queryKey: ["startup-basic", {
+            id: startupId,
+        }],
+        queryFn: () => fetchStartUp({ id: startupId, }),
+    });
 
-    if (!post) {
+    if (!startup) {
         return (
             <Container maxWidth="md">
                 <Paper elevation={3} style={{ padding: '2rem' }}>
@@ -48,70 +27,41 @@ function StartupDetail() {
     }
 
     return (
-        <Container maxWidth="md">
-            <Box
-                style={{
-      
-                    position : "relative",
-                    top  : "3rem",
-                    padding: "3rem",
-                    background: "rgba(92, 36, 179, 0.2)",
-                    borderRadius: "10px",
-                    boxShadow: " 7px 7px rgba(0, 0 , 0, 0.1)",
-                  }}>
-                <Paper  style={{ 
-        padding: '2rem', backgroundColor: '#f5f5f5',
-        border : "1px solid rgb(0 ,0, 0, 1 )",
-        boxShadow: " 7px 7px rgba(163, 23, 205, 0.1)",
-        
-        }}>
-                    <Box display="flex" alignItems="center">
-                        <Avatar src={post.logo} sx={{ width: 70, height: 70 }} variant="rounded" />
-                        <Box marginLeft="1rem">
-                            <Typography variant="h6">
-                                {post.first_name} {post.last_name}
-                            </Typography>
-                            <Typography variant="subtitle1">
-                                {`${post.posted_on.toLocaleDateString()} ${post.hour}:${post.min} ${post.ap}`}
-                            </Typography>
-                        </Box>
-                    </Box>
-                    <Divider sx={{ margin: '1rem 0' }} />
-                    <Typography variant="h6">{post.long_description}</Typography>
-                    <img
-                        src={post.img}
-                        alt="Post"
-                        style={{
-                            display: 'block',
-                            margin: '1rem auto',
-                            maxWidth: '100%',
-                            borderRadius: '8px',
-                        }}
-                    />
-                    <img
-                        src={post.img}
-                        alt="Post"
-                        style={{
-                            display: 'block',
-                            margin: '1rem auto',
-                            maxWidth: '100%',
-                            borderRadius: '8px',
-                        }}
-                    />
-                    <img
-                        src={post.img}
-                        alt="Post"
-                        style={{
-                            display: 'block',
-                            margin: '1rem auto',
-                            maxWidth: '100%',
-                            borderRadius: '8px',
-                        }}
-                    />
-                </Paper>
-            </Box>
-        </Container>
+        <Paper maxWidth="xl" sx={{ padding: "3rem" }}>
+            <Grid sx={{
+                borderRadius: "10px",
+                background: "rgba(92, 36, 179, 0.2)",
+                boxShadow: " 7px 7px rgba(0, 0 , 0, 0.1)",
+            }} spacing={3} container>
+                <Grid item xs={12} md={8} sx={{ padding: '2rem', }}>
+                    <Typography variant="h4" gutterBottom> {startup.title}</Typography>
+                    <Divider />
+                    <Typography variant="h6" gutterBottom> {startup.description}</Typography>
+                    <ImageList sx={{ display: "flex", justifyContent: "center", alignItems: "center", flexWrap: "wrap", gap: "1rem", padding: "1rem" }}>
+                        {startup.images.map((item) => (
+                            <ImageListItem key={item}>
+                                <img src={item} height={200} width={200} alt={item} />
+                            </ImageListItem>
+                        ))}
+                    </ImageList>
+                </Grid>
+                <Grid item xs={10} md={4} sx={{ padding: '3rem', display: 'flex', flexDirection: 'column', justifyContent: 'top', gap: '1rem' }}>
+                    <Divider sx={{ borderBottomWidth: '10px' }}>
+                        <Typography variant="h5" gutterBottom sx={{ textAlign: "center" }}> Organization </Typography>
+                    </Divider>
+                    <Box sx={{ maxHeight: "50vh" }} ><OrganizationCard id={startup.organization} /> </Box>
+                    <Divider sx={{ borderBottomWidth: '10px' }}>
+                        <Typography variant="h5" gutterBottom sx={{ textAlign: "center" }}>  Event </Typography>
+                    </Divider>
+                    <Box sx={{ maxHeight: "50vh" }} ><EventCard id={startup.event} /> </Box>
+                </Grid>
+            </Grid>
+        </Paper>
     );
 }
 
-export default StartupDetail;
+async function fetchStartUp({ id }) {
+    const response = await fetch(`${API_URL}/registrations/${id}`);
+    const data = await response.json();
+    return data.payload.registration;
+}
