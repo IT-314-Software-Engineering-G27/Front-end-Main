@@ -43,7 +43,7 @@ export default function OrganizationCard({ id }) {
                             maxHeight: "50vh",
                         }}
                     >
-                        <Box gutterBottom sx={{ display: "flex", alignItems: "center" }}>
+                        <Box sx={{ display: "flex", alignItems: "center" }}>
                             <EmailIcon sx={{
                                 fontSize: 20,
                                 verticalAlign: "right",
@@ -62,7 +62,7 @@ export default function OrganizationCard({ id }) {
                                 {organization.user.email}
                             </Typography>
                         </Box>
-                        <Box gutterBottom sx={{ display: "flex", alignItems: "center" }}>
+                        <Box sx={{ display: "flex", alignItems: "center" }}>
                             <WebIcon sx={{
                                 fontSize: 20,
                                 verticalAlign: "right",
@@ -70,7 +70,6 @@ export default function OrganizationCard({ id }) {
                             }} />
                             <Typography
                                 variant="body1"
-                                gutterBottom
                                 component="span"
                                 sx={{
                                     fontsize: "1rem",
