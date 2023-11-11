@@ -2,6 +2,7 @@ import { Typography, Box, Avatar, Skeleton } from "@mui/material";
 import { Link, useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { API_URL } from "../config";
+import ContactStatusButton from "./ContactStatusButton";
 
 export default function ContactCard({ id, token }) {
     const { contactId } = useParams();
@@ -10,6 +11,8 @@ export default function ContactCard({ id, token }) {
         queryFn: () => fetchContact({ id, token }),
         enabled: !!(id && token),
     });
+
+    if (contact?.status === "rejected") return (<></>);
 
     return (
         <>
@@ -23,18 +26,21 @@ export default function ContactCard({ id, token }) {
                         <Box sx={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
                             <Avatar sx={{ marginRight: "0.5rem" }} src={contact.recipient.profile_image} />
                         </Box>
-                        <Box sx={{ display: "flex", flexDirection: "column", width: "100%" }} component={Link} to={`/contacts/${contact._id}`}>
-                            <Typography variant="body1">{contact.recipient.username}</Typography>
+                        <Box sx={{ display: "flex", flexDirection: "column", width: "100%" }}>
+                            <Link to={`/contacts/${contact._id}`} style={{ textDecoration: "none", color: "black" }}>
+                                <Typography variant="body1">{contact.recipient.username}</Typography>
+                            </Link>
                             <Typography variant="body2" sx={{ display: "flex", alignItems: "center" }}>
                                 Last seen: {new Date(contact?.last_seen).toLocaleString() || "Never"}
                             </Typography>
+                            <ContactStatusButton connection={contact} />
                         </Box>
                     </>}
             </Box>
 
         </>
     );
-}
+};
 
 async function fetchContact({ id, token }) {
     const response = await fetch(`${API_URL}/connections/${id}`, {

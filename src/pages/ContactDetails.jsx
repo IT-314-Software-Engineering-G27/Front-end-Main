@@ -39,6 +39,22 @@ function ContactDetails() {
         <Skeleton variant="rectangular" height={600} width="100%" />
     );
 
+    if (contact.status === "pending") {
+        return (
+            <Box sx={{ width: "100%" }}>
+                <Box sx={{ display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "center", p: 3, borderBottom: 1, backgroundColor: "primary.light" }}>
+                    <Typography variant="h4">{contact.recipient.username} </Typography>
+                    <Typography variant="h5">last seen: {contact?.last_seen?.toLocaleString() || "Never"} </Typography>
+                </Box>
+                <Box sx={{
+                    padding: '10px', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', alignContent: 'center', gap: '2vh', height: '85vh',
+                }}>
+                    <Typography variant="h5">This contact request is pending.</Typography>
+                </Box>
+            </Box>
+        );
+    }
+
     return (
         <Box sx={{ width: "100%" }}>
             <Box sx={{ display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "center", p: 3, borderBottom: 1, backgroundColor: "primary.light" }}>
