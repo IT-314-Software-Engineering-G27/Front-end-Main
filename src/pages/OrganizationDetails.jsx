@@ -3,13 +3,16 @@ import OrganizationMenu from '../components/OrganizationMenu';
 import OrganizationProfile from '../components/OrganizationProfile';
 import OrganizationSearchBar from '../components/OrganizationSearchBar';
 import PostCard from '../components/PostCard';
-import { useParams } from 'react-router-dom';
+import { useParams, useSearchParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { API_URL } from '../config';
+import OrganizationJobList from '../components/OrganizationJobList';
 
 
 function OrganizationDetails() {
     const { organizationId } = useParams();
+    const [searchparams, setSearchParams] = useSearchParams();
+
     const { data: organization } = useQuery({
         queryKey: ["individual", { id: organizationId }],
         queryFn: () => fetchOrganization({ id: organizationId })
@@ -20,8 +23,8 @@ function OrganizationDetails() {
     };
 
     return (
-        <Container maxWidth="xl" style={{ height: "100vh" }}>
-            <Paper style={{ height: "100%" }}>
+        <Container maxWidth="xl">
+            <Paper sx={{ height: "100vh" }}>
                 <Box backgroundColor='#000085'>
                     <OrganizationSearchBar />
                 </Box>
@@ -58,6 +61,9 @@ function OrganizationDetails() {
                         </Paper>
                     </Grid>
                 </Grid>
+            </Paper>
+            <Paper sx={{ padding: "4rem" }}>
+                {searchparams.get("profile") && <OrganizationJobList />}
             </Paper>
         </Container>
     );
