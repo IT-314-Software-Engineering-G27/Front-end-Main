@@ -3,12 +3,14 @@ import IndividualMenu from '../components/IndividualMenu';
 import IndividualProfile from '../components/IndividualProfile';
 import IndividualSearchBar from '../components/IndividualSearchBar';
 import PostCard from '../components/PostCard';
-import { useParams } from 'react-router-dom';
+import { useParams, useSearchParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { API_URL } from '../config';
+import IndividualJobList from '../components/IndividualJobList';
 
 function IndividualDetails() {
     const { individualId } = useParams();
+    const [searchparams, setSearchParams] = useSearchParams();
     const { data: individual } = useQuery({
         queryKey: ["individual", { id: individualId }],
         queryFn: () => fetchIndividual({ id: individualId })
@@ -20,7 +22,7 @@ function IndividualDetails() {
 
     return (
         <Container maxWidth="xl" style={{ height: "100vh" }}>
-            <Paper style={{ height: "100%" }}>
+            <Paper sx={{ height: "100%" }}>
                 <Box backgroundColor='#000085'>
                     <IndividualSearchBar />
                 </Box>
@@ -57,6 +59,9 @@ function IndividualDetails() {
                         </Paper>
                     </Grid>
                 </Grid>
+            </Paper>
+            <Paper sx={{ padding: "4rem" }}>
+                {searchparams.get("profile") && <IndividualJobList />}
             </Paper>
         </Container>
     );
