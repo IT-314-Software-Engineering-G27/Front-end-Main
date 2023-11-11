@@ -1,6 +1,6 @@
 import { Container, Grid, Paper, Box, Stack, Divider, Typography, Skeleton } from '@mui/material';
 import IndividualMenu from '../components/IndividualMenu';
-import IndividualProfile from '../components/IndividualProfileSection';
+import IndividualProfile from '../components/IndividualProfile';
 import IndividualSearchBar from '../components/IndividualSearchBar';
 import PostCard from '../components/PostCard';
 import { useParams } from 'react-router-dom';

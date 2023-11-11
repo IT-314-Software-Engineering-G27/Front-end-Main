@@ -1,6 +1,5 @@
-import { Paper, Box, Typography, Grid, Button, Avatar, Link } from "@mui/material";
-import { useState } from "react";
-
+import { Paper, Box, Typography, Avatar } from "@mui/material";
+import ConnectionButton from "./ConnectionButton";
 const commonStyles = {
     bgcolor: 'C5B7FB',
     borderColor: '#2F1263',
@@ -19,6 +18,7 @@ const IndividualProfileSection = ({ individual }) => {
                     justifyContent="center"
                     alignItems="center">
                     <Avatar src={individual.user.profile_image} sx={commonStyles} />
+                    <ConnectionButton id={individual.user._id} />
                 </Box>
                 <Box>
                     <Typography style={{ color: '#2F1263' }} align="center" variant="h6" component="h3">

@@ -1,5 +1,5 @@
 import { Paper, Box, Typography,  Avatar } from "@mui/material";
-
+import ConnectionButton from "./ConnectionButton";
 const commonStyles = {
     bgcolor: 'C5B7FB',
     borderColor: '#2F1263',
@@ -9,7 +9,7 @@ const commonStyles = {
     height: '5rem',
 };
 
-const TourCard2 = ({ organization }) => {
+function OrganizationProfile({ organization }){
 
 
     return (
@@ -19,6 +19,7 @@ const TourCard2 = ({ organization }) => {
                     justifyContent="center"
                     alignItems="center">
                     <Avatar src={organization.user.profile_image} sx={commonStyles} />
+                    <ConnectionButton id={organization.user._id} />
                 </Box>
                 <Box>
                     <Typography style={{ color: '#2F1263' }} align="center" variant="h7" component="h3">
@@ -67,4 +68,4 @@ const TourCard2 = ({ organization }) => {
     );
 }
 
-export default TourCard2;
+export default OrganizationProfile;

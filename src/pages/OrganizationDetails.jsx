@@ -70,4 +70,6 @@ async function fetchOrganization({ id }) {
     return data.payload.organization;
 }
 
+
+
 export default OrganizationDetails;
