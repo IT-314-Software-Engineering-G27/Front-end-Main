@@ -14,9 +14,9 @@ export default function Profile() {
     }, [auth?.session?.user]);
 
     if (individual)
-        return <Navigate to={`/individuals/${individual}`} />;
+        return <Navigate to={`/individuals/${individual}?profile=true`} />;
     else if (organization)
-        return <Navigate to={`/organizations/${organization}`} />;
+        return <Navigate to={`/organizations/${organization}?profile=true`} />;
     else
         return <Typography variant="h3">Loading...</Typography>;
 };
