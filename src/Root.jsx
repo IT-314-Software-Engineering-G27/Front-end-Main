@@ -33,6 +33,7 @@ import NotFound from "./pages/NotFound";
 import PasswordResetEmail from "./pages/PasswordResetEmail";
 import PasswordResetOTP from "./pages/PasswordResetOTP";
 import Profile from "./pages/Profile";
+import SideBar from "./components/SideBar";
 
 function Root() {
     return (
@@ -42,6 +43,7 @@ function Root() {
                     <SessionProvider>
                         <CssBaseline />
                         <BrowserRouter>
+                        <SideBar />
                             <Routes>
                                 <Route exact path="/" element={<Navigate to={"/login"} />} />
                                 <Route path='/register'>
