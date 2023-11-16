@@ -55,7 +55,7 @@ const Login = () => {
                         <div id='radio2'>
                             <label>
                                 <input type="radio" name='regi' value='Organization' onChange={(e) => setType(e.target.value)} />
-                                Organisation
+                                Organization
                             </label>
                         </div>
                     </div>
@@ -99,7 +99,7 @@ const Login = () => {
                         </div>
 
                         <div id='help'>
-                            <Link to='/contact-us'>Need help?</Link>
+                            <Link to='/password-reset'>Forgot Password?</Link>
                         </div>
                     </div>
 
