@@ -43,7 +43,7 @@ function Root() {
                     <SessionProvider>
                         <CssBaseline />
                         <BrowserRouter>
-                        <SideBar />
+                            <SideBar />
                             <Routes>
                                 <Route exact path="/" element={<Navigate to={"/login"} />} />
                                 <Route path='/register'>
@@ -65,7 +65,7 @@ function Root() {
                                 <Route path="/events">
                                     <Route path="/events" element={<EventList />}></Route>
                                     <Route path="/events/:eventId" element={<EventDetails />} />
-                                    <Route path="/events/:eventId/register" element={<EventRegistrationForm />} /> 
+                                    <Route path="/events/:eventId/register" element={<EventRegistrationForm />} />
                                     <Route path="/events/:eventId/startups" element={<StartupList />} />
                                 </Route>
                                 <Route path="/startups/:startupId" element={<StartupDetails />} />
