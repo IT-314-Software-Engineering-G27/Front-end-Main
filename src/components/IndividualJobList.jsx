@@ -18,7 +18,7 @@ export default function IndividualJobList() {
 
     if (!auth?.session?.token) return <></>;
 
-    return <Grid container spacing={3} padding={4}>
+    return <Grid container spacing={3} padding={4} margin={4}>
         {jobApplications.map((jobApplication) => (
             <Grid item key={jobApplication._id} xs={12} sm={6} md={4}>
                 <JobApplicationCard id={jobApplication._id} />

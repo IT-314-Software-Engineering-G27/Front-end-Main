@@ -46,7 +46,7 @@ function OrganizationDetails() {
                             <Typography variant="body2">
                                 {"  "} {organization.description}
                             </Typography>
-                            <Divider />
+                            <Divider sx={{ marginY: "1rem" }} />
                             {organization.user.posts.length > 0 ? <>
                                 <Typography sx={{ textAlign: "center" }} variant="h5"> Posts</Typography>
                                 <Divider />
