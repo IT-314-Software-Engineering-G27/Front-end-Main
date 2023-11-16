@@ -18,7 +18,6 @@ export default function SessionProvider({ children }) {
     }, []);
 
     useEffect(() => {
-
         if (session.token) {
             localStorage.setItem("session", JSON.stringify(session));
             if (!session.user) {
@@ -63,8 +62,8 @@ export function useAuth() {
     }
 
     const logout = async () => {
-        setSession({});
         localStorage.removeItem("session");
+        setSession({});
         navigate("/", { replace: true });
     };
 
