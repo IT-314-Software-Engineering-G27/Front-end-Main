@@ -12,14 +12,21 @@ export default function SessionProvider({ children }) {
     useEffect(() => {
         const stored_session = JSON.parse(localStorage.getItem("session"));
         if (stored_session?.token)
-            setSession(stored_session);
+            setSession({ token: stored_session.token });
         else
             setSession({});
     }, []);
 
     useEffect(() => {
-        if (session.token)
+
+        if (session.token) {
             localStorage.setItem("session", JSON.stringify(session));
+            if (!session.user) {
+                getAuth(session.token).then(({ user }) => {
+                    setSession({ ...session, user });
+                });
+            }
+        }
     }, [session]);
 
     return (
@@ -37,7 +44,8 @@ export function useAuth() {
 
     const login = async ({ email, password }) => {
         setIsLoading(true);
-        const { token, user, message } = await postAuth(email, password);
+        const { token, message } = await postAuth(email, password);
+        const { user } = await getAuth(token);
         if (user) {
             setError("");
             setSession({ token, user });
@@ -81,7 +89,10 @@ async function postAuth(email, password) {
     const auth_data = await auth_response.json();
     const token = auth_data?.payload?.token;
     if (!token) { return { message: auth_data?.message }; };
+    return { token };
+}
 
+async function getAuth(token) {
     const profile_response = await fetch(`${API_URL}/auth`, {
         method: "GET",
         headers: {
@@ -92,8 +103,6 @@ async function postAuth(email, password) {
 
     const profile_data = await profile_response.json();
     const user = profile_data?.payload?.user;
-
     if (!user) { return { message: profile_data?.message }; };
-
-    return { token, user };
-}
+    return { user };
+};
