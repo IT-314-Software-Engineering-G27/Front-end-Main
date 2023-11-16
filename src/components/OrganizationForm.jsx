@@ -23,7 +23,12 @@ function Form() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        setError((error) => (error));
+        if (organization.user.password !== confirmPassword) {
+            setError(["Passwords don't match"]);
+        }
+        else {
+            setError([]);
+        }
     }, [organization, confirmPassword]);
 
     return (
@@ -84,7 +89,11 @@ function Form() {
                         <td style={{ paddingBottom: '10px', textAlign: 'center' }}>
                             <Button variant="contained" color="primary" onClick={(e) => {
                                 e.preventDefault(); submitForm({ organization }).then((value) => {
-                                    if (value) navigate('/login');
+                                    if (value.error) {
+                                        alert(value.error);
+                                    }
+                                    else
+                                        navigate('/login');
                                 })
                             }} disabled={!!error.length} type="submit">Submit</Button>
                         </td>
@@ -104,7 +113,12 @@ async function submitForm({ individual }) {
         body: JSON.stringify({ individual }),
     });
     const data = await response.json();
-    return response.ok;
+    if (!response.ok) {
+        return {
+            error: data.message
+        }
+    };
+    return data;
 }
 
 export default Form;
