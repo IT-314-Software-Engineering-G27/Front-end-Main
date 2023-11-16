@@ -12,13 +12,12 @@ export default function ConnectionButton({ id }) {
     });
 
     useEffect(() => {
-        if (!auth.session.token) {
+        if (!auth?.session?.token)
             return;
-        }
         fetchConnectionStatus({ id, token: auth.session.token }).then((connection) => {
             setConnection(connection);
         });
-    }, [auth, id]);
+    }, [auth?.session?.token, id]);
 
     if (!connection?.status) {
         return <></>;
