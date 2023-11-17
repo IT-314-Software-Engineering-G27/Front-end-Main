@@ -18,20 +18,20 @@ export default function ContactPage() {
     if (!connections) return <Typography variant="h4">Loading...</Typography>;
 
     return (
-        <Box sx={{ display: 'flex', flexDirection: 'row', height: '100vh' }}>
-            <Box sx={{ borderRight: 1, height: '100vh', width: "20%" }}>
-                <Box sx={{ p: 3, borderBottom: 1 }}>
+        <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, height: '100vh' }}>
+            <Box sx={{ borderRight: { xs: 0, md: 1 }, borderBottom: { xs: 1, md: 0 }, height: { xs: 'auto', md: '100vh' }, width: { xs: '100%', md: "20%" } }}>
+                <Box sx={{ p: 3, borderBottom: { xs: 1, md: 0 } }}>
                     <Typography variant="h4">
                         Chats
                     </Typography>
                 </Box>
-                <List sx={{ width: "100%", borderTop: "0.5px solid black" }}>
+                <List sx={{ width: "100%", borderTop: "0.5px solid black", maxHeight: 'calc(100vh - 120px)', overflowY: 'auto' }}>
                     {connections.map((connection) => (
                         <ContactCard key={connection} sx={{ width: "100%" }} id={connection} token={auth.session.token} />
                     ))}
                 </List>
             </Box>
-            <Box sx={{ width: "80%" }} >
+            <Box sx={{ width: "100%" }} >
                 <Outlet />
             </Box>
         </Box>

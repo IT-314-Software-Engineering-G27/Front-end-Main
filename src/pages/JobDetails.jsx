@@ -93,7 +93,7 @@ function JobDetail() {
             position: "fixed",
             background: "rgba(92, 36, 179, 0.5)",
             top: "0.15rem",
-            left: "0.15rem",
+            right: "0.15rem",
             color: "black",
             transition: 'background-color 0.3s, transform 0.3s',
           }}
@@ -271,7 +271,7 @@ function JobDetail() {
                 background: "rgba(92, 36, 179, 0.5)",
                 color: "black",
                 transition: 'background-color 0.3s, transform 0.3s',
-                left: "0.5rem",
+                right: "0.5rem",
                 zIndex: 0,
               }}
             >
