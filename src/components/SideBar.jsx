@@ -21,20 +21,23 @@ const organizationOptionList = [
   { text: 'Events', icon: <EventRoundedIcon />, link: '/events' },
   { text: 'Job Profile Post', icon: <CloudUploadRoundedIcon />, link: '/organizations/JobRegistration' },
   { text: 'Contacts', icon: <ContactsRoundedIcon />, link: '/contacts' },
+  { text: 'Posts', icon: <PostAddIcon />, link: '/posts' },
+  { text: 'Individuals', icon: <PersonRoundedIcon />, link: '/individuals' },
+  { text: 'Organizations', icon: <CorporateFareRoundedIcon />, link: '/organizations' },
 ];
 
 const individualOptionList = [
   { text: 'Profile', icon: <AccountBoxRoundedIcon />, link: '/profile' },
   { text: 'Edit Profile', icon: <SettingsAccessibilityRoundedIcon />, link: '/profile/edit' },
   { text: 'Jobs', icon: <WorkRoundedIcon />, link: '/jobs' },
-  { text: 'Contacts', icon: <ContactSupportRoundedIcon />, link: '/contacts' },
+  { text: 'Contacts', icon: <ContactSupportRoundedIcon />, link: '/contacts' }, 
+  { text: 'Posts', icon: <PostAddIcon />, link: '/posts' },
+  { text: 'Individuals', icon: <PersonRoundedIcon />, link: '/individuals' },
+  { text: 'Organizations', icon: <CorporateFareRoundedIcon />, link: '/organizations' },
 ];
 
 const commonOptionList = [
   { text: 'Home', icon: <img src={Logo} alt="Logo" style={{ width: '24px', height: '24px' }} />, link: '/' },
-  { text: 'Posts', icon: <PostAddIcon />, link: '/posts' },
-  { text: 'Individuals', icon: <PersonRoundedIcon />, link: '/individuals' },
-  { text: 'Organizations', icon: <CorporateFareRoundedIcon />, link: '/organizations' },
   { text: 'Contact Us', icon: <ContactSupportRoundedIcon />, link: '/contact-us' },
 ];
 
