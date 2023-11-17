@@ -23,16 +23,10 @@ function IndividualDetails() {
     return (
         <Container maxWidth="xl" style={{ height: "100vh" }}>
             <Paper sx={{ height: "100%" }}>
-                <Box backgroundColor='#000085'>
-                    <IndividualSearchBar />
-                </Box>
+                
 
                 <Grid container={true} spacing={4} >
-                    <Grid item xs={2} md={1}>
-                        <Box paddingY={2}>
-                            <IndividualMenu />
-                        </Box>
-                    </Grid>
+                   
 
                     <Grid item xs={10} md={4} >
                         <IndividualProfile individual={individual} />
@@ -59,10 +53,11 @@ function IndividualDetails() {
                         </Paper>
                     </Grid>
                 </Grid>
-            </Paper>
-            <Paper sx={{ padding: "4rem" }}>
+                <Paper sx={{ padding: "4rem" }}>
                 {searchparams.get("profile") && <IndividualJobList />}
             </Paper>
+            </Paper>
+           
         </Container>
     );
 }

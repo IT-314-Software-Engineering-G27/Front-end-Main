@@ -25,16 +25,10 @@ function OrganizationDetails() {
     return (
         <Container maxWidth="xl">
             <Paper sx={{ height: "100vh" }}>
-                <Box backgroundColor='#000085'>
-                    <OrganizationSearchBar />
-                </Box>
+              
 
                 <Grid container spacing={4} >
-                    <Grid item xs={2} md={1} >
-                        <Box paddingY={2} >
-                            <OrganizationMenu />
-                        </Box>
-                    </Grid>
+                    
 
                     <Grid item xs={10} md={4}>
                         <OrganizationProfile organization={organization} />
@@ -61,10 +55,11 @@ function OrganizationDetails() {
                         </Paper>
                     </Grid>
                 </Grid>
-            </Paper>
-            <Paper sx={{ padding: "4rem" }}>
+                <Paper sx={{ padding: "4rem" }}>
                 {searchparams.get("profile") && <OrganizationJobList />}
             </Paper>
+            </Paper>
+          
         </Container>
     );
 }
