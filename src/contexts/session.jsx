@@ -21,8 +21,13 @@ export default function SessionProvider({ children }) {
         if (session.token) {
             localStorage.setItem("session", JSON.stringify(session));
             if (!session.user) {
-                getAuth(session.token).then(({ user }) => {
-                    setSession({ ...session, user });
+                getAuth(session.token).then(({ user, message }) => {
+                    if (!user) {
+                        localStorage.removeItem("session");
+                        setSession({});
+                    }
+                    else
+                        setSession({ ...session, user });
                 });
             }
         }
