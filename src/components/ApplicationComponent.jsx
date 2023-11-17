@@ -17,7 +17,8 @@ const ApplicationComponent = ({ job }) => {
 
 
   return (
-    <Box sx={{ mb: 2, p: 2,position: "sticky", mt: 2, pt: 3, borderRadius: "6px", border: "1px solid black", background: "#FFF", boxShadow: "0px 1px 6px 0px rgba(156, 159, 181, 0.15);", }}>
+    
+    <Box sx={{ mb: 2,padding :"0.5rem",position: "sticky", mt: 2, pt: 3, borderRadius: "6px", border: "1px solid black", background: "#FFF", boxShadow: "3px 3px 3px rgba(156, 159, 181, 1);", }}>
       <Box sx={{ ml: 2 }}>
         <Typography sx={{ textAlign: "Cebnter", color: "#232535", fontFamily: "sans-serif", fontSize: "20px", fontStyle: "WidthNormal", fontWeight: 600, lineHeight: "24px", mb: 1, }}>
           Apply now
@@ -50,6 +51,7 @@ const ApplicationComponent = ({ job }) => {
         <ApplicationButton  id={job._id} />
       </Box>
     </Box>
+    
   );
 }
 
