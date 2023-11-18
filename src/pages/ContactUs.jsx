@@ -1,9 +1,9 @@
 import React from 'react';
-import { Divider,TextField,Button,Box,Link,InputLabel } from '@mui/material';
+import { Divider,Button,Box,Link} from '@mui/material';
 
 
 const ContactUs = () => {
-    
+   
     return ( 
 
         <>
@@ -22,74 +22,35 @@ const ContactUs = () => {
                     
                     sx={{ display: 'flex', flexDirection: { xs:'column',sm: 'column', md: 'row' }, backgroundColor: 'rgba(0, 0, 0, 0.5)', backdropFilter: 'blur(8px)', borderRadius: '20px', padding: 6, marginBottom: 20, fontSize: { xs: 'sm', md: 'base' }, }} >
                         
-                            <Box sx={{width:'100%'}}>
-                            <Box sx={{display: 'flex',flexWrap: 'wrap',pr: { md: 3 }}}>
-                            <Box sx={{display: {xs:'block',sm:'flex',md:'flex' },width: '100%',marginBottom: 2,}}>
+                            <Box sx={{width:{xs:'100%',sm:'100%',md:'40%'},pt:{md:20},pl:{sm:1,md:4,xl:6},pr:{md:10}, justifyItems:'center'}}>
+                           
+                            <Box sx={{display: {xs:'block',sm:'flex',md:'flex' },width: '100%',marginBottom: 2,justifyContent:'center',textAlign:'center'}}>
                                   
-
-         <InputLabel sx={{color:'white', display: 'flex', alignItems: 'center', width: {sm:2/5}, fontWeight: '700', marginBottom: '4px', }}>
-     Name 
-        </InputLabel>
-        <TextField  required variant="outlined" fullWidth
-          sx={{borderRadius: '10px', color:'white', backgroundColor: 'rgba(0, 0, 0, 0.3)', borderColor: 'gray', '&:hover': {borderColor: 'rgba(128, 128, 128, 0.5)',},
-            '&.Mui-focused': {borderColor: 'rgba(128, 128, 128, 0.5)',},}} 
-            inputProps = {{sx: {'&::placeholder': {color: 'rgba(255, 255, 255, 0.7)', opacity: 1, },},}}
-            type="text" placeholder='Enter your name'/>
+                            <a href="mailto:reset.startappforstartups@gmail.com">    <Button variant='contained' sx={{width:{xs:'190px',sm:'300px',md:'250px',xl:'300px'},height:{sm:'70px',xl:'70px'}, fontWeight:700,fontSize:{sm:'24px',xl:'20px'}}}>  Mail Us</Button></a> 
 
 
             </Box>
                            
-         <Box sx={{display: {xs:'block',sm:'flex',md:'flex' },width: '100%',marginBottom: 2,}}>
+           
+            <Box sx={{display: {xs:'block',sm:'flex',md:'flex' },width: '100%',justifyContent:'center',textAlign:'center'}}>
+                                  
+                      <Link href="https://github.com/IT-314-Software-Engineering-G27/Front-end-Main/issues"
+                       target='_blank'
+                       rel='noopener noreferrer'
+                       underline='none' 
+                      >
+                                     <Button variant='outlined' color="error" sx={{width:{xs:'190px',sm:'300px',md:'250px',xl:'300px'},height:{sm:'70px',xl:'70px'}, fontWeight:700,fontSize:{sm:'24px',md:'20px',xl:'20px'}}}>  Report an Issue </Button>
+                      </Link>
+                          
+                                      </Box>
 
 
-         <InputLabel sx={{color:'white', display: 'flex', alignItems: 'center', width: {sm:2/5}, fontWeight: '700', marginBottom: '4px', }}>
-     Email
-        </InputLabel>
-        <TextField  required variant="outlined" fullWidth
-          sx={{borderRadius: '10px', color:'white', backgroundColor: 'rgba(0, 0, 0, 0.3)', borderColor: 'gray', '&:hover': {borderColor: 'rgba(128, 128, 128, 0.5)',},
-            '&.Mui-focused': {borderColor: 'rgba(128, 128, 128, 0.5)',},}}
-            inputProps = {{sx: {'&::placeholder': {color: 'rgba(255, 255, 255, 0.7)', opacity: 1, },},}}
-            type="email" placeholder='Enter your email address'/>
 
-
-    </Box>
-    <Box sx={{display: {xs:'block',sm:'flex',md:'flex' },width: '100%',marginBottom: 2,}}>
-
-
-    <InputLabel sx={{color:'white', display: 'flex', alignItems: 'center', width: {sm:2/5}, fontWeight: '700', marginBottom: '4px', }}>
-     Contact No.
-    </InputLabel>
-    <TextField  required variant="outlined" fullWidth
-          sx={{borderRadius: '10px', color:'white', backgroundColor: 'rgba(0, 0, 0, 0.3)', borderColor: 'gray', '&:hover': {borderColor: 'rgba(128, 128, 128, 0.5)',},
-            '&.Mui-focused': {borderColor: 'rgba(128, 128, 128, 0.5)',},}}
-            inputProps = {{sx: {'&::placeholder': {color: 'rgba(255, 255, 255, 0.7)', opacity: 1, },},}}
-            type="contact" placeholder='Enter your contact number'/>
-
-    </Box>
-    
-    <Box sx={{ width: '100%', marginBottom: 2,}}>
-
-    <InputLabel sx={{color:'white', display: 'flex', alignItems: 'center', width: {sm:2/5}, fontWeight: '700', marginBottom: '8px', }}>
-     Message
-    </InputLabel>                           
-    <TextField  required multiline variant="outlined"  rows={6} fullWidth
-          sx={{mt:1.5,borderRadius: '10px', color:'white', backgroundColor: 'rgba(0, 0, 0, 0.3)', borderColor: 'gray', '&:hover': {borderColor: 'rgba(128, 128, 128, 0.5)',},
-            '&.Mui-focused': {borderColor: 'rgba(128, 128, 128, 0.5)',},}} 
-            inputProps = {{sx: {'&::placeholder': {color: 'rgba(255, 255, 255, 0.7)', opacity: 1, },},}}
-            type="text" placeholder='Drop us a message :)'/>                     
-    </Box>
-
-    <Box sx={{ width: '100%', my: 2,}}>
-            <Button variant='contained' sx={{borderRadius:'10px'}}  
-            // onClick={this.handleSubmit}
-            >Submit </Button>       
-    </Box>
-    </Box>
     </Box>
     
     
    <Divider sx={{ mx: 'auto', borderColor: 'white', my: 4 }} />
-    <Box sx={{width:{lg:3/5,md:3/5},marginBottom: 2}} >
+    <Box sx={{width:{lg:3/5,md:5/5},marginBottom: 2}} >
     <Box sx={{overflow:'hidden',borderRadius:'20px',height:'270px'}}>
      <iframe width='100%' height='270px' title="DA-IICT Location" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14669.989595290104!2d72.6289155!3d23.188537!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395c2a3c9618d2c5%3A0xc54de484f986b1fa!2sDA-IICT!5e0!3m2!1sen!2sin!4v1678437146026!5m2!1sen!2sin" allowfullscreen="" loading="lazy" ></iframe>
                           
