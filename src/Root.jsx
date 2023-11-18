@@ -34,6 +34,7 @@ import PasswordResetEmail from "./pages/PasswordResetEmail";
 import PasswordResetOTP from "./pages/PasswordResetOTP";
 import Profile from "./pages/Profile";
 import SideBar from "./components/SideBar";
+import LandingPage from "./pages/LandingPage";
 
 function Root() {
     return (
@@ -45,7 +46,7 @@ function Root() {
                         <BrowserRouter>
                             <SideBar />
                             <Routes>
-                                <Route exact path="/" element={<Navigate to={"/login"} />} />
+                                <Route exact path="/" element={<Navigate to={"/home"} />} />
                                 <Route path='/register'>
                                     <Route path="/register/individual" element={<RegisterIndividual />} />
                                     <Route path="/register/organization" element={<RegisterOrganization />} />
@@ -53,6 +54,7 @@ function Root() {
                                     <Route path="/register" element={<Register />} />
                                 </Route>
                                 <Route exact path="/login" element={<Login />} />
+                                <Route exact path="/home" element={<LandingPage />} />
                                 <Route path="/contact-us" element={<ContactUs />} />
                                 <Route path="/posts" element={<PostList />}></Route>
                                 <Route path="/makePost" element={<MakePost />}></Route>

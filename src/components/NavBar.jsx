@@ -7,13 +7,13 @@ import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
-
+import Logo from '../assets/images/Logo.svg';
 import Button from '@mui/material/Button';
 
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 
-const pages = ['Features', 'Jobs', 'Recruit','Events'];
+const pages = ['Features', 'Contact-Us'];
 
 
 function NavBar() {
@@ -32,18 +32,19 @@ function NavBar() {
  
   return (
     <AppBar className='Resp_app_bar' position="fixed"
-    sx={{ backgroundColor: 'transparent', borderBottom: '0.01px solid #ccc' ,
+    sx={{ backgroundColor: 'black', borderBottom: '0.01px solid #ccc' ,
           backdropFilter: 'blur(20px)',
     }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' , backgroundColor:'black'}, mr: 1 }} />
-          <Typography
+        <img src={Logo} alt="Logo" width="60" height="55" style={{ display: { xs: 'none', md: 'flex' }, mr: 1,backgroundColor: 'white', borderRadius:'170px',border:'2px solid wheat' }} />
+           <Typography
             variant="h6"
             noWrap
             component="a"
-            href="#app-bar-with-responsive-menu"
+            href="/home"
             sx={{
+                ml:2,
               mr: 2,
               display: { xs: 'none', md: 'flex' },
               fontFamily: 'monospace',
@@ -53,7 +54,7 @@ function NavBar() {
               textDecoration: 'none',
             }}
           >
-            LOGO
+            STARTAPP
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -109,7 +110,7 @@ function NavBar() {
               textDecoration: 'none',
             }}
           >
-            LOGO
+            STARTAPP
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex',justifyContent:'center' },
                      gap:'60px' }}>
@@ -127,7 +128,7 @@ function NavBar() {
           <Box sx={{ flexGrow: 0 }}>
             
             
-                <Button
+                <Button onClick={() => window.location.href = '/login'}
                 
                 sx={{color: 'gray',
                 fontWeight: '1000',
