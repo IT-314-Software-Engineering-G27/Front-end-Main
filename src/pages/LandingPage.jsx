@@ -1,4 +1,5 @@
 import '../styles/landing_page.css';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Button, Grid, Box, Typography } from "@mui/material";
 import laptop from "../assets/laptop.jpg"
 import intuit from "../assets/intuit.png";
@@ -32,6 +33,8 @@ const generateLogosSlider = (logosSets) => (
 
 const LandingPage = () => {
   return (
+
+    
     
     <div>
         <NavBar/>
@@ -80,8 +83,11 @@ const LandingPage = () => {
 
 
       </div>
-
+     
+     <div id="featuresSection">
+      <br/>
      <CustomGrid/>
+     </div>
 
 <div className="Home">
 <Grid container justifyContent="center" sx={{ mt: 10, textAlign: 'center', borderBottom: '1px solid white' }}>

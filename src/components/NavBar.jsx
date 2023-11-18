@@ -13,7 +13,7 @@ import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
 import MenuItem from '@mui/material/MenuItem';
 
-const pages = ['Features', 'Contact-Us'];
+const pages = ['Features', 'Contact - Us', 'Sign up'];
 
 
 function NavBar() {
@@ -42,7 +42,7 @@ function NavBar() {
 
 
         <Grid item xs={12} md={6} lg={3} sx={{ display: { xs: 'none', md: 'block' },mt:1 }}>
-              <img src={Logo} alt="Logo" width="60" height="55" style={{mr: 1,backgroundColor: 'white', borderRadius:'170px',border:'2px solid wheat'  }} />
+              <img src={Logo} alt="Logo" width="45" height="45" style={{mr: 1,backgroundColor: 'white', borderRadius:'170px',border:'2px solid wheat'  }} />
             </Grid>
 
 
@@ -130,8 +130,20 @@ function NavBar() {
             {pages.map((page) => (
               <Button
                 key={page}
-                onClick={handleCloseNavMenu}
+              
                 sx={{ my: 2, color: 'gray', display: 'block' ,fontWeight:'700',fontSize:'15px'}}
+                onClick={() => {
+                  if (page === 'Features') {
+                    const featuresSection = document.getElementById('featuresSection');
+                    if (featuresSection) {
+                      featuresSection.scrollIntoView({ behavior: 'smooth' });
+                    }
+                  } 
+                  if (page === 'Sign up') {window.location.href = "/register";}
+                  else {
+                    window.location.href = `/${page.toLowerCase()}`;
+                  }
+                }}
               >
                 {page}
               </Button>
