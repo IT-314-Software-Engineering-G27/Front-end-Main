@@ -5,13 +5,13 @@ import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
+import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Logo from '../assets/images/Logo.svg';
 import Button from '@mui/material/Button';
-
+import Grid from '@mui/material/Grid';
 import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
 
 const pages = ['Features', 'Contact-Us'];
 
@@ -37,7 +37,16 @@ function NavBar() {
     }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-        <img src={Logo} alt="Logo" width="60" height="55" style={{ display: { xs: 'none', md: 'flex' }, mr: 1,backgroundColor: 'white', borderRadius:'170px',border:'2px solid wheat' }} />
+
+
+
+
+        <Grid item xs={12} md={6} lg={3} sx={{ display: { xs: 'none', md: 'block' },mt:1 }}>
+              <img src={Logo} alt="Logo" width="60" height="55" style={{mr: 1,backgroundColor: 'white', borderRadius:'170px',border:'2px solid wheat'  }} />
+            </Grid>
+
+
+         
            <Typography
             variant="h6"
             noWrap
@@ -64,9 +73,9 @@ function NavBar() {
               aria-controls="menu-appbar"
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
-              color="inherit"
+              colorAdjust='unset'
             >
-              <MenuIcon />
+              <MenuRoundedIcon  sx={{color:"white",backgroundColor:"gray", borderRadius:'7px',}}/>
             </IconButton>
             <Menu
               id="menu-appbar"
@@ -93,8 +102,12 @@ function NavBar() {
               ))}
             </Menu>
           </Box>
-          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
-          <Typography
+        
+          <Grid item xs={12} md={6} lg={3} sx={{ display: { xs: 'block', md: 'none' },mt:1,mr:1.5 }}>
+              <img src={Logo} alt="Logo" width="28" height="28" style={{mr: 1,backgroundColor: 'white', borderRadius:'170px',border:'1px solid wheat'  }} />
+            </Grid>
+
+        <Typography
             variant="h5"
             noWrap
             component="a"
@@ -106,7 +119,7 @@ function NavBar() {
               fontFamily: 'monospace',
               fontWeight: 700,
               letterSpacing: '.3rem',
-              color: 'inherit',
+              color: 'white',
               textDecoration: 'none',
             }}
           >
