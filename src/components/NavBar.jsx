@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Navigate, useNavigate } from 'react-router';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -18,7 +19,7 @@ const pages = ['Features', 'Contact-Us', 'Sign up'];
 
 function NavBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
- 
+  const navigate = useNavigate();
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -139,9 +140,10 @@ function NavBar() {
                       featuresSection.scrollIntoView({ behavior: 'smooth' });
                     }
                   } 
-                  if (page === 'Sign up') {window.location.href = "/register";}
-                  else {
-                    window.location.href = `/${page.toLowerCase()}`;
+                  if (page === 'Sign up') {navigate("/register");}
+                if (page === 'Contact-Us'){
+                  navigate("/contact-us");
+                    
                   }
                 }}
               >
