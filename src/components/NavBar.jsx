@@ -13,7 +13,7 @@ import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
 import MenuItem from '@mui/material/MenuItem';
 
-const pages = ['Features', 'Contact - Us', 'Sign up'];
+const pages = ['Features', 'Contact-Us', 'Sign up'];
 
 
 function NavBar() {
