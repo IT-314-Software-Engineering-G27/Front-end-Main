@@ -28,10 +28,6 @@ const Login = () => {
             <div id='nav'>
 
                 <div id='leftnav'>
-
-                    <Link to=''>
-                        <img src={Phone} alt="contact us" id='contact' />
-                    </Link>
                 </div>
 
                 <div id='rightnav'>
@@ -45,20 +41,7 @@ const Login = () => {
             <div id='bdy'>
                 <div id='form'>
                     <h1>Sign in</h1>
-                    <div id='check'>
-                        <div id='radio1'>
-                            <label>
-                                <input type="radio" name='regi' value='Individual' onChange={(e) => setType(e.target.value)} checked />
-                                Individual
-                            </label>
-                        </div>
-                        <div id='radio2'>
-                            <label>
-                                <input type="radio" name='regi' value='Organization' onChange={(e) => setType(e.target.value)} />
-                                Organization
-                            </label>
-                        </div>
-                    </div>
+                    
 
 
                     <div>
