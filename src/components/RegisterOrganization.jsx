@@ -21,11 +21,13 @@ const RegisterOrganization = () => {
     legalName: '',
     email: '',
     phoneNumber: '',
+    username: '',
     password: '',
     confirmPassword: '',
     headquartersLocation: '',
     ceoName: '',
-    ageOfEstablishment: '',
+    age: '',
+    yearOfEstablishment: '',
   });
   const [openDialog, setOpenDialog] = useState(false);
   const [errorDialogText, setErrorDialogText] = useState('');
@@ -129,6 +131,14 @@ const RegisterOrganization = () => {
               />
               <TextField
                 style={textFieldStyle}
+                label="Username"
+                placeholder="Enter your username"
+                name="username"
+                value={formData.username}
+                onChange={handleChange}
+              />
+              <TextField
+                style={textFieldStyle}
                 label="Password"
                 placeholder="Enter your password"
                 type="password"
@@ -160,26 +170,34 @@ const RegisterOrganization = () => {
             <>
               <TextField
                 style={textFieldStyle}
-                label="Headquarters Location"
-                placeholder="Enter headquarters location"
+                label="Location of Headquarters"
+                placeholder="Enter location of heaquarters"
                 name="headquartersLocation"
                 value={formData.headquartersLocation}
                 onChange={handleChange}
               />
               <TextField
                 style={textFieldStyle}
-                label="CEO Name"
-                placeholder="Enter CEO name"
+                label="Name of CEO"
+                placeholder="Enter name of CEO"
                 name="ceoName"
                 value={formData.ceoName}
                 onChange={handleChange}
               />
               <TextField
                 style={textFieldStyle}
-                label="Age of Establishment"
-                placeholder="Enter age of establishment"
-                name="ageOfEstablishment"
-                value={formData.ageOfEstablishment}
+                label="Age"
+                placeholder="Enter age since establishment"
+                name="age"
+                value={formData.age}
+                onChange={handleChange}
+              />
+              <TextField
+                style={textFieldStyle}
+                label="Year of Establishment"
+                placeholder="Enter year of establishment"
+                name="yearOfEstablishment"
+                value={formData.yearOfEstablishment}
                 onChange={handleChange}
               />
               <Button
