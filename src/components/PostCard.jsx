@@ -26,7 +26,7 @@ export default function PostCard({ id }) {
             padding: "1rem",
         }}>
             <CardHeader
-                avatar={<Avatar src={`${post.logo}`} sx={{ width: 55, height: 55 }} variant="rounded" />}
+                avatar={<Avatar src={`${post.image}`} sx={{ width: 55, height: 55 }} variant="rounded" />}
                 titleTypographyProps={{ variant: "h7" }}
                 title={`${post.user.username}`}
                 subheader={`${new Date(post.time).toLocaleString()}`}
