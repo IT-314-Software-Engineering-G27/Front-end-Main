@@ -39,7 +39,7 @@ const ContactUs = () => {
                        rel='noopener noreferrer'
                        underline='none' 
                       >
-                                     <Button variant='outlined' color="error" sx={{width:{xs:'190px',sm:'300px',md:'250px',xl:'300px'},height:{sm:'70px',xl:'70px'}, fontWeight:700,fontSize:{sm:'24px',md:'20px',xl:'20px'}}}>  Report an Issue </Button>
+                                     <Button variant='contained' sx={{width:{xs:'190px',sm:'300px',md:'250px',xl:'300px'},bgcolor:'red',height:{sm:'70px',xl:'70px'}, fontWeight:700,fontSize:{sm:'24px',md:'20px',xl:'20px'}}}>  Report an Issue </Button>
                       </Link>
                           
                                       </Box>
