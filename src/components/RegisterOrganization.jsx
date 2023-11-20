@@ -56,11 +56,11 @@ const RegisterOrganization = () => {
     let newErrors = {};
 
     if (!emailRegex.test(formData.email.trim())) {
-      newErrors.email = 'Invalid email format';
+      newErrors.email = 'Email should be in this format: abc@xyz.com';
     }
 
     if (!phoneRegex.test(formData.phoneNumber.trim())) {
-      newErrors.phoneNumber = 'Invalid phone number format';
+      newErrors.phoneNumber = 'Phone number should be in this format: +(ISD code)(1-15 digits)';
     }
 
     if (!passwordRegex.test(formData.password)) {
