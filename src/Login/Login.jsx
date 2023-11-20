@@ -55,8 +55,8 @@ const Login = () => {
                         <p className='adjust'>
                             Password
                         </p>
-                        <div>
-                            <input type='password' className='inbox' id='pswd' onChange={(e) => setUser({ ...user, password: e.target.value })} />
+                        <div id='pwd'>
+                            <input type='password' className='inbox' id='pswd' onChange={(e) => setUser({ ...user, password: e.target.value })}  ></input>
                         </div>
                     </div>
 

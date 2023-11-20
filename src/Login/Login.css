@@ -184,6 +184,16 @@
     color: white;
 }
 
+#pswd{
+   
+    background:none;
+}
+
+#pwd{
+    /* opacity: 20%; */
+    border: black 4px;
+    border-radius: 1.5ex;
+}
 @media (max-width:1023px) {
 
     .log{
