@@ -98,7 +98,19 @@ function NavBar() {
             >
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                  <Typography textAlign="center"  onClick={() => {
+                  if (page === 'Features') {
+                    const featuresSection = document.getElementById('featuresSection');
+                    if (featuresSection) {
+                      featuresSection.scrollIntoView({ behavior: 'smooth' });
+                    }
+                  } 
+                  if (page === 'Sign up') {navigate("/register");}
+                if (page === 'Contact-Us'){
+                  navigate("/contact-us");
+                    
+                  }
+                }}>{page}</Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -155,7 +167,7 @@ function NavBar() {
           <Box sx={{ flexGrow: 0 }}>
             
             
-                <Button onClick={() => window.location.href = '/login'}
+                <Button onClick={() => navigate('/login')}
                 
                 sx={{color: 'gray',
                 fontWeight: '1000',
