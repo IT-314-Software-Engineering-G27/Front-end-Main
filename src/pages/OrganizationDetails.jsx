@@ -35,12 +35,13 @@ function OrganizationDetails() {
                     <Grid item xs={12} md={7} marginTop={2}>
                         <Paper sx={{ padding: "1rem" }}>
                             <Typography sx={{ textAlign: "center" }} variant="h5">  Who we are?  </Typography>
-                            <Typography variant="body2">
+                            <Divider sx={{ }} />
+                            <Typography sx={{fontSize: '16px',}} >
                                 {"  "} {organization.description}
                             </Typography>
-                            <Divider sx={{ marginY: "1rem" }} />
+                            {/* <Divider sx={{ marginY: "1rem" }} /> */}
                             {organization.user.posts.length > 0 ? <>
-                                <Typography sx={{ textAlign: "center" }} variant="h5"> Posts</Typography>
+                                <Typography sx={{ textAlign: "center",marginTop: "1rem"  }} variant="h5"> Posts</Typography>
                                 <Divider />
                                 <Stack container spacing={2} padding={4} sx={{ overflowY: "scroll", maxHeight: "60vh" }}>
                                     {organization.user.posts.map((post) => (
@@ -49,7 +50,7 @@ function OrganizationDetails() {
                                         </Grid>
                                     ))}
                                 </Stack>
-                            </> : <Typography sx={{ textAlign: "center" }} variant="h5"> No Posts</Typography>}
+                            </> : <Typography sx={{ textAlign: "center" , marginTop: "1rem" }} variant="h5"> No Posts</Typography>}
                         </Paper>
                     </Grid>
                 </Grid>

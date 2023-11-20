@@ -35,12 +35,13 @@ function IndividualDetails() {
                     <Grid item xs={12} md={7} marginTop={2}>
                         <Paper sx={{ padding: "1rem" }}>
                             <Typography sx={{ textAlign: "center" }} variant="h5">   Bio   </Typography>
-                            <Typography variant="body2">
+                            <Divider />
+                            <Typography sx={{fontSize : '16px'}}>
                                 {"  "} {individual.bio}
                             </Typography>
-                            <Divider />
+                           
                             {individual.user.posts.length > 0 ? <>
-                                <Typography sx={{ textAlign: "center" }} variant="h5"> Posts</Typography>
+                                <Typography sx={{ textAlign: "center", marginTop: "1rem" }} variant="h5"> Posts</Typography>
                                 <Divider />
                                 <Stack container spacing={2} padding={4} sx={{ overflowY: "scroll", maxHeight: "80vh" }}>
                                     {individual.user.posts.map((post) => (
@@ -49,7 +50,7 @@ function IndividualDetails() {
                                         </Grid>
                                     ))}
                                 </Stack>
-                            </> : <Typography sx={{ textAlign: "center" }} variant="h5"> No Posts</Typography>}
+                            </> : <Typography sx={{ textAlign: "center", marginTop: "1rem"  }} variant="h5"> No Posts</Typography>}
                         </Paper>
                     </Grid>
                 </Grid>
