@@ -1,6 +1,6 @@
 import { useAuth } from "../contexts/session";
 import { API_URL } from "../config";
-import { Card, CardHeader, Skeleton } from "@mui/material";
+import { Skeleton } from "@mui/material";
 import { useQuery } from "@tanstack/react-query";
 import JobCard from "./JobCard";
 export default function JobApplicationCard({ id }) {
@@ -12,19 +12,7 @@ export default function JobApplicationCard({ id }) {
 
     if (!jobApplication) return (<Skeleton height={400} />);
 
-    return (
-        <Card
-            sx={{
-                border: `1px solid black`, height: "100%", width: "100%", overflowX: "scroll", display: "flex", backgroundColor: 'white',
-                borderRadius: "10px", flexDirection: "column", justifyContent: "space-between", boxShadow: "7px 7px rgba(0, 0, 0, 0.15)", padding: "1rem",
-            }}>
-            <CardHeader
-                titleTypographyProps={{ variant: "h5" }}
-                title={`status: ${jobApplication.status}`}
-                sx={{ color: "black" }} />
-            <JobCard id={jobApplication.job_profile} />
-        </Card>
-    )
+    return <JobCard id={jobApplication.job_profile} />;
 };
 
 
