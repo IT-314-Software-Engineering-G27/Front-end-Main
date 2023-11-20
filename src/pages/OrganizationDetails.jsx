@@ -56,7 +56,7 @@ function OrganizationDetails() {
                     </Grid>
                 </Grid>
                 <Paper sx={{ padding: "4rem" }}>
-                {searchparams.get("profile") && <OrganizationJobList />}
+                <OrganizationJobList />
             </Paper>
             </Paper>
           
