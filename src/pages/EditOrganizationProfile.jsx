@@ -102,6 +102,7 @@ export default function EditOrganization() {
                     />
 
                     <TextField
+                        disabled
                         id="outlined-multiline-static"
                         label="Year establishment"
                         value={organization?.year_of_establishment || ''}
