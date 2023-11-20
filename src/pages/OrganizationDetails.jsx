@@ -1,13 +1,11 @@
-import { Container, Grid, Paper, Box, Stack, Divider, Typography, Skeleton } from '@mui/material';
-import OrganizationMenu from '../components/OrganizationMenu';
+import { Container, Grid, Paper, Stack, Divider, Typography, Skeleton } from '@mui/material';
 import OrganizationProfile from '../components/OrganizationProfile';
-import OrganizationSearchBar from '../components/OrganizationSearchBar';
 import PostCard from '../components/PostCard';
 import { useParams, useSearchParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { API_URL } from '../config';
 import OrganizationJobList from '../components/OrganizationJobList';
-
+import OrganizationEventList from '../components/OrganizationEventList';
 
 function OrganizationDetails() {
     const { organizationId } = useParams();
@@ -25,10 +23,10 @@ function OrganizationDetails() {
     return (
         <Container maxWidth="xl">
             <Paper sx={{ height: "100vh" }}>
-              
+
 
                 <Grid container spacing={4} >
-                    
+
 
                     <Grid item xs={10} md={4}>
                         <OrganizationProfile organization={organization} />
@@ -56,10 +54,13 @@ function OrganizationDetails() {
                     </Grid>
                 </Grid>
                 <Paper sx={{ padding: "4rem" }}>
-                <OrganizationJobList />
+                    {organization.job_profiles && <OrganizationJobList jobProfiles={organization.job_profiles} />}
+                </Paper>
+                <Paper sx={{ padding: "4rem" }}>
+                    {searchparams.get("profile") && <OrganizationEventList />}
+                </Paper>
             </Paper>
-            </Paper>
-          
+
         </Container>
     );
 }

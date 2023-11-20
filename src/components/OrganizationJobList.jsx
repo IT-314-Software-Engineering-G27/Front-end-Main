@@ -1,7 +1,7 @@
 import { Box, Grid, Typography } from "@mui/material";
 import JobCard from "./JobCard";
 
-export default function OrganizationJobList(jobProfiles) {
+export default function OrganizationJobList({ jobProfiles }) {
 
     return (<>
         <Box sx={{ display: 'flex', justifyContent: 'center' }}>
