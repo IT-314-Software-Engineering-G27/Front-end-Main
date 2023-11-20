@@ -60,7 +60,7 @@ function NavBar() {
               fontFamily: 'monospace',
               fontWeight: 700,
               letterSpacing: '.3rem',
-              color: 'gray',
+              color: 'white',
               textDecoration: 'none',
             }}
           >
@@ -144,7 +144,7 @@ function NavBar() {
               <Button
                 key={page}
               
-                sx={{ my: 2, color: 'gray', display: 'block' ,fontWeight:'700',fontSize:'15px'}}
+                sx={{ my: 2, color: 'white', display: 'block' ,fontWeight:'700',fontSize:'15px'}}
                 onClick={() => {
                   if (page === 'Features') {
                     const featuresSection = document.getElementById('featuresSection');
