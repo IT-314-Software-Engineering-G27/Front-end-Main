@@ -13,6 +13,7 @@ import {
   PersonRounded as PersonRoundedIcon,
   SettingsAccessibilityRounded as SettingsAccessibilityRoundedIcon,
   ContactsRounded as ContactsRoundedIcon,
+  NewspaperOutlined as NewspaperRoundedIcon,
 } from '@mui/icons-material';
 
 const organizationOptionList = [
@@ -21,7 +22,8 @@ const organizationOptionList = [
   { text: 'Events', icon: <EventRoundedIcon />, link: '/events' },
   { text: 'Job Profile Post', icon: <CloudUploadRoundedIcon />, link: '/organizations/JobRegistration' },
   { text: 'Contacts', icon: <ContactsRoundedIcon />, link: '/contacts' },
-  { text: 'Posts', icon: <PostAddIcon />, link: '/posts' },
+  { text: 'Posts', icon: <NewspaperRoundedIcon />, link: '/posts' },
+  { text: 'Make Post', icon: <PostAddIcon />, link: '/makepost' },
   { text: 'Individuals', icon: <PersonRoundedIcon />, link: '/individuals' },
   { text: 'Organizations', icon: <CorporateFareRoundedIcon />, link: '/organizations' },
 ];
@@ -31,7 +33,8 @@ const individualOptionList = [
   { text: 'Edit Profile', icon: <SettingsAccessibilityRoundedIcon />, link: '/profile/edit' },
   { text: 'Jobs', icon: <WorkRoundedIcon />, link: '/jobs' },
   { text: 'Contacts', icon: <ContactSupportRoundedIcon />, link: '/contacts' }, 
-  { text: 'Posts', icon: <PostAddIcon />, link: '/posts' },
+  { text: 'Posts', icon: <NewspaperRoundedIcon />, link: '/posts' },
+  { text: 'Make Post', icon: <PostAddIcon />, link: '/makepost' },
   { text: 'Individuals', icon: <PersonRoundedIcon />, link: '/individuals' },
   { text: 'Organizations', icon: <CorporateFareRoundedIcon />, link: '/organizations' },
 ];
