@@ -207,57 +207,34 @@ export default function EventDetails() {
         <Divider variant="middle" sx={{ mb: 2 }} />
 
       <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-       {auth?.session?.user?.organization &&  new Date(event.start_time) > new Date() && (
-     
-      <Button
-        variant="contained"
-        sx={{
-          width: isSmallScreen ? "100%" : "85%",
-          mb: 2,
-          textAlign: "center",
-          boxShadow: "0px 3px 6px 0px rgba(55, 111, 255, 0.16)",
-        }}
-        component={Link}
-        to={`/events/${event._id}/register`}
-      >
-        Register Now
-      </Button>
-    )}
+      {auth?.session?.user?.organization && (new Date(event.last_registration_date) >= new Date()) && (
+              <Button
+                variant="contained"
+                sx={{
+                  width: isSmallScreen ? "100%" : "85%",
+                  mb: 2,
+                  textAlign: "center",
+                  boxShadow: "0px 3px 6px 0px rgba(55, 111, 255, 0.16)",
+                }}
+                component={Link}
+                to={`events/${event._id}/register`}
+              >
+                Register Now
+              </Button>
+            )}
+            {auth?.session?.user?.organization && (new Date(event.start_time) <= new Date() && new Date(event.end_time) >= new Date()) && (
+              <Button
+                variant="contained"
+                sx={{
+                  width: isSmallScreen ? "100%" : "85%",
+                  mb: 2,
+                  textAlign: "center",
+                  boxShadow: "0px 3px 6px 0px rgba(55, 111, 255, 0.16)",
+                }}
+                component={Link}
+                to={`/events/${event._id}/register`}
+              >
 
-
-{auth?.session?.user?.organization && new Date(event.start_time) >new Date() &&(
-     
-     <Button
-       variant="contained"
-       sx={{
-         width: isSmallScreen ? "100%" : "85%",
-         mb: 2,
-         textAlign: "center",
-         boxShadow: "0px 3px 6px 0px rgba(55, 111, 255, 0.16)",
-       }}
-       component={Link}
-       to={`/events/${event._id}/register`}
-     >
-       Register Now
-     </Button>
-   )}
-    
-
-
-    
-{auth?.session?.user?.organization && new Date(event.start_time) < new Date() && (
-     
-     <Button
-       variant="contained"
-       sx={{
-         width: isSmallScreen ? "100%" : "85%",
-         mb: 2,
-         textAlign: "center",
-         boxShadow: "0px 3px 6px 0px rgba(55, 111, 255, 0.16)",
-       }}
-       component={Link}
-       to={`/events/${event._id}/register`}
-     >
        See Startups
      </Button>
    )}
