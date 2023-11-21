@@ -22,7 +22,7 @@ export default function CandidateCard({ id, isLoadingData }) {
                     borderRadius: "10px", flexDirection: "column", justifyContent: "space-between", boxShadow: "7px 7px rgba(0, 0, 0, 0.15)", padding: "1rem",
                 }}>
                 <CardHeader
-                    avatar={<Avatar src={candidate.profile_img} sx={{ width: 60, height: 60 }} variant="rounded" />}
+                    avatar={<Avatar src={candidate.individual.user.profile_image} sx={{ width: 60, height: 60 }} variant="rounded" />}
                     titleTypographyProps={{ variant: "h5" }}
                     title={`${candidate.individual.first_name} ${candidate.individual.last_name}`}
                     subheader={`${candidate.individual.country}`}
