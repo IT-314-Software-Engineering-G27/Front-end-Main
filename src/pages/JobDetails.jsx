@@ -123,7 +123,7 @@ function JobDetail() {
             border: "1px solid black",
             boxShadow: "5px 5px rgba(0, 0, 0, 0.1)",
             overflowY: "auto",
-            padding: "1rem", // Added padding
+            padding: "1rem",
           }}
         >
           <Box

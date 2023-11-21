@@ -1,10 +1,12 @@
 import React from "react";
 import { AccessTimeRounded as AccessTimeRoundedIcon, MonetizationOnOutlined as MonetizationOnOutlinedIcon, LocationOnOutlined as LocationOnOutlinedIcon, } from "@mui/icons-material";
-import { Box, CircularProgress, Container, Paper, Typography,Button,Link } from "@mui/material";
+import { Box, CircularProgress, Container, Paper, Typography, Button } from "@mui/material";
 import ApplicationButton from "./ApplicationModal";
+import { useAuth } from "../contexts/session";
+import { Link } from "react-router-dom";
 
 const ApplicationComponent = ({ job }) => {
-
+  const auth = useAuth();
   if (!job) {
     return (
       <Container maxWidth="md">
@@ -17,11 +19,11 @@ const ApplicationComponent = ({ job }) => {
 
 
   return (
-    
-    <Box sx={{ mb: 2,padding :"0.5rem",position: "sticky", mt: 2, pt: 3, borderRadius: "6px", border: "1px solid black", background: "#FFF", boxShadow: "3px 3px 3px rgba(156, 159, 181, 1);", }}>
+
+    <Box sx={{ mb: 2, padding: "0.5rem", position: "sticky", mt: 2, pt: 3, borderRadius: "6px", border: "1px solid black", background: "#FFF", boxShadow: "3px 3px 3px rgba(156, 159, 181, 1);", }}>
       <Box sx={{ ml: 2 }}>
-        <Typography sx={{ textAlign: "Cebnter", color: "#232535", fontFamily: "sans-serif", fontSize: "20px", fontStyle: "WidthNormal", fontWeight: 600, lineHeight: "24px", mb: 1, }}>
-          Apply now
+        <Typography sx={{ textAlign: "Center", color: "#232535", fontFamily: "sans-serif", fontSize: "20px", fontStyle: "WidthNormal", fontWeight: 600, lineHeight: "24px", mb: 1, }}>
+          {auth?.session?.user?.individual && "Apply now"}
         </Typography>
 
         <Box sx={{ my: 2 }}>
@@ -48,10 +50,31 @@ const ApplicationComponent = ({ job }) => {
         </Box>
       </Box>
       <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-        <ApplicationButton  id={job._id} />
+        <>
+          {auth?.session?.user?.individual && <ApplicationButton id={job._id} />}
+          {auth?.session?.user?.organization && auth.session.user.organization === job.organization && <Button
+            variant="contained"
+            color="primary"
+            size="large"
+            fullWidth
+            component={Link}
+            to={`/jobs/${job._id}/candidates`}
+            sx={{
+              width: '100%',
+              transition: 'background-color 0.3s, transform 0.3s',
+              boxShadow: "5px 5px rgba(163, 23, 205, 0.1)",
+              '&:hover': {
+                backgroundColor: '#1976D2',
+                transform: 'scale(1.05)',
+              },
+            }}
+          >
+            View Candidates
+          </Button>}
+        </>
       </Box>
     </Box>
-    
+
   );
 }
 
