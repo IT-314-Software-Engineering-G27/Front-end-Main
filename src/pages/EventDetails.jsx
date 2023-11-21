@@ -15,6 +15,7 @@ import {
   Container,
   Paper,
   Typography,
+  dividerClasses,
 } from '@mui/material';
 import { useQuery } from '@tanstack/react-query';
 import { API_URL } from "../config";
@@ -206,7 +207,8 @@ export default function EventDetails() {
         <Divider variant="middle" sx={{ mb: 2 }} />
 
       <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-        {auth?.session?.user?.organization && (
+       {auth?.session?.user?.organization &&  new Date(event.start_time) > new Date() && (
+     
       <Button
         variant="contained"
         sx={{
@@ -221,17 +223,45 @@ export default function EventDetails() {
         Register Now
       </Button>
     )}
-    <Button
-      variant="outlined"
-      sx={{
-        width: isSmallScreen ? "100%" : "85%",
-        textAlign: "center",
-      }}
-      component={Link}
-      to={`/events/${event._id}/startups`}
-    >
-      See StartUps
-    </Button>
+
+
+{auth?.session?.user?.organization && new Date(event.start_time) >new Date() (
+     
+     <Button
+       variant="contained"
+       sx={{
+         width: isSmallScreen ? "100%" : "85%",
+         mb: 2,
+         textAlign: "center",
+         boxShadow: "0px 3px 6px 0px rgba(55, 111, 255, 0.16)",
+       }}
+       component={Link}
+       to={`/events/${event._id}/register`}
+     >
+       Register Now
+     </Button>
+   )}
+    
+
+
+    
+{auth?.session?.user?.organization && new Date(event.start_time) < new Date() (
+     
+     <Button
+       variant="contained"
+       sx={{
+         width: isSmallScreen ? "100%" : "85%",
+         mb: 2,
+         textAlign: "center",
+         boxShadow: "0px 3px 6px 0px rgba(55, 111, 255, 0.16)",
+       }}
+       component={Link}
+       to={`/events/${event._id}/register`}
+     >
+       See Startups
+     </Button>
+   )}
+    
   </Box>
 </Paper>
 
