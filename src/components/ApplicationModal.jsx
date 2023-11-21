@@ -18,12 +18,17 @@ function ApplicationButton({ id }) {
             fetchApplicationStatus({ id, token: auth.session.token }).then((jobApplication) => {
                 setStatus(jobApplication.status);
                 setJobApplication(jobApplication);
+                if (jobApplication._id) {
+                    fetchApplication({ id: jobApplication._id, token: auth.session.token }).then((jobApplication) => {
+                        setJobApplication(jobApplication);
+                    });
+                }
             });
             fetchProfile({ id: auth.session.user.individual }).then((individual) => {
                 setIndividual(individual);
             });
         }
-    }, [auth, id]);
+    }, [auth?.session, id]);
 
     if (status === "none")
         return <Button variant="contained" sx={{ ...buttonStyle, }}> Loading...  </Button>;
@@ -52,7 +57,12 @@ function ApplicationButton({ id }) {
 
 function ApplicationModal({ open, handleClose, id, application, edit, individual }) {
     const auth = useAuth();
-    const [content, setContent] = useState(application?.cover_letter || "");
+    const [content, setContent] = useState(application?.cover_letter || createProfileFromData({ individual }));
+
+    useEffect(() => {
+        setContent(application?.cover_letter || createProfileFromData({ individual }));
+    }, [application?.cover_letter, individual]);
+
     return <Modal
         open={open}
         sx={{
@@ -69,16 +79,15 @@ function ApplicationModal({ open, handleClose, id, application, edit, individual
         }}
     >
         <FormControl sx={{ width: "100%", backgroundColor: 'white', padding: "20px" }}>
-            <TextField multiline label="profile" rows={8} variant="outlined" sx={{ width: "100%", mb: 2 }} focused disabled value={createProfileFromData({ individual })} />
             <TextField multiline label="cover letter" rows={12} variant="outlined" sx={{ width: "100%", mb: 2 }} focused onChange={(e) => setContent(e.target.value)} value={content} placeholder="Why should we hire you?" />
             <FormGroup sx={{ display: "flex", justifyContent: "flex-end", flexDirection: "row", gap: "10px" }}>
                 <Button variant="contained" sx={{ ...buttonStyle }} onClick={() => {
                     if (edit)
-                        editApplication({ id: application._id, token: auth.session.token, cover_letter: content + createProfileFromData({ individual }) }).then(() => {
+                        editApplication({ id: application._id, token: auth.session.token, cover_letter: content }).then(() => {
                             window.location.reload();
                         });
                     else
-                        submitApplication({ id, token: auth.session.token, cover_letter: content + createProfileFromData({ individual }) }).then(() => {
+                        submitApplication({ id, token: auth.session.token, cover_letter: content }).then(() => {
                             window.location.reload();
                         })
                 }}> Submit </Button>
@@ -97,6 +106,21 @@ async function fetchProfile({ id }) {
     });
     const data = await response.json();
     return data.payload.individual;
+}
+
+async function fetchApplication({ id, token }) {
+    if (!token) return {
+        status: "not-logged-in",
+    };
+    const response = await fetch(`${API_URL}/job-applications/${id}`, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`,
+        },
+    });
+    const data = await response.json();
+    return data.payload.jobApplication;
 }
 
 async function fetchApplicationStatus({ id, token }) {
