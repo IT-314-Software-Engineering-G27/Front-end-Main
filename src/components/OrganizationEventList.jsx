@@ -49,6 +49,5 @@ async function fetchEvents({ token }) {
         },
     });
     const data = await response.json();
-    console.log(data);
     return data.payload.registrations;
 };
