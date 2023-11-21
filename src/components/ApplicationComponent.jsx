@@ -3,10 +3,12 @@ import { AccessTimeRounded as AccessTimeRoundedIcon, MonetizationOnOutlined as M
 import { Box, CircularProgress, Container, Paper, Typography, Button } from "@mui/material";
 import ApplicationButton from "./ApplicationModal";
 import { useAuth } from "../contexts/session";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { API_URL } from "../config";
 
 const ApplicationComponent = ({ job }) => {
   const auth = useAuth();
+  const navigate = useNavigate();
   if (!job) {
     return (
       <Container maxWidth="md">
@@ -52,30 +54,58 @@ const ApplicationComponent = ({ job }) => {
       <Box sx={{ display: 'flex', justifyContent: 'center' }}>
         <>
           {auth?.session?.user?.individual && <ApplicationButton id={job._id} />}
-          {auth?.session?.user?.organization && auth.session.user.organization === job.organization && <Button
-            variant="contained"
-            color="primary"
-            size="large"
-            fullWidth
-            component={Link}
-            to={`/jobs/${job._id}/candidates`}
-            sx={{
-              width: '100%',
-              transition: 'background-color 0.3s, transform 0.3s',
-              boxShadow: "5px 5px rgba(163, 23, 205, 0.1)",
-              '&:hover': {
-                backgroundColor: '#1976D2',
-                transform: 'scale(1.05)',
-              },
-            }}
-          >
-            View Candidates
-          </Button>}
+          {auth?.session?.user?.organization && auth.session.user.organization === job.organization &&
+
+            <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', gap: "1rem", padding: "1rem" }}>
+              <Button
+                variant="contained"
+                color="primary"
+                size="large"
+                fullWidth
+                component={Link}
+                to={`/jobs/${job._id}/candidates`}
+                sx={{
+                  width: '100%',
+                  transition: 'background-color 0.3s, transform 0.3s',
+                  boxShadow: "5px 5px rgba(163, 23, 205, 0.1)",
+                  '&:hover': {
+                    backgroundColor: '#1976D2',
+                    transform: 'scale(1.05)',
+                  },
+                }}
+              >
+                View Candidates
+              </Button>
+              <Button
+                variant="contained"
+                color="error"
+                size="large"
+                fullWidth
+                onClick={() => {
+                  deleteJobProfile({ id: job._id, token: auth.session.token }).then(() => {
+                    navigate('/profile');
+                  });
+                }}>
+                Delete Job
+              </Button>
+            </Box>}
         </>
       </Box>
     </Box>
 
   );
+}
+
+async function deleteJobProfile({ id, token }) {
+  const res = await fetch(`${API_URL}/job-profiles/${id}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  const data = await res.json();
+  return data;
 }
 
 export default ApplicationComponent;
