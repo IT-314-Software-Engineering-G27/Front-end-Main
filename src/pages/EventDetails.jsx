@@ -21,6 +21,7 @@ import { useQuery } from '@tanstack/react-query';
 import { API_URL } from "../config";
 import { useAuth } from "../contexts/session";
 import Image from "../images/bg.svg";
+import EventRegistrationButton from "../components/EventRegistrationButton";
 
 export default function EventDetails() {
   const { eventId } = useParams();
@@ -114,7 +115,7 @@ export default function EventDetails() {
           background: "rgba(92, 36, 179, 0.2)",
           boxShadow: "5px 5px rgba(0, 0, 0, 0.1)",
           borderRadius: isSmallScreen ? "5px" : "15px",
-          padding: "1rem", 
+          padding: "1rem",
         }}
       >
         <Box
@@ -129,15 +130,15 @@ export default function EventDetails() {
             overflowY: "auto",
           }}
         >
-          <Box sx={{ padding : "1rem"}}>
+          <Box sx={{ padding: "1rem" }}>
             <Box
               sx={{
                 backgroundImage: `url(${Image})`,
-                padding :"1.5rem",
+                padding: "1.5rem",
                 backgroundSize: "cover",
                 textAlign: "center",
                 width: "100%",
-                height :"80%",
+                height: "80%",
                 borderRadius: "8px",
                 backgroundRepeat: "no-repeat",
               }}
@@ -193,34 +194,22 @@ export default function EventDetails() {
           <Box sx={{ my: 2 }}>
             <Box sx={{ display: "flex", flexDirection: "row", alignItems: "center", mb: 2 }}>
               <BarChartRoundedIcon />
-                <Typography sx={{ ml: 1, fontSize: "16px" }}>
+              <Typography sx={{ ml: 1, fontSize: "16px" }}>
                 {event.frequency}
-                </Typography>
+              </Typography>
             </Box>
             <Box sx={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
-            <AccessTimeRoundedIcon />
-            <Typography sx={{ ml: 1, fontSize: "16px" }}>
-              {new Date(event.last_registration_date).toLocaleString()}
-            </Typography>
+              <AccessTimeRoundedIcon />
+              <Typography sx={{ ml: 1, fontSize: "16px" }}>
+                {new Date(event.last_registration_date).toLocaleString()}
+              </Typography>
+            </Box>
           </Box>
-        </Box>
-        <Divider variant="middle" sx={{ mb: 2 }} />
+          <Divider variant="middle" sx={{ mb: 2 }} />
 
-      <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-      {auth?.session?.user?.organization && (new Date(event.last_registration_date) >= new Date()) && (
-              <Button
-                variant="contained"
-                sx={{
-                  width: isSmallScreen ? "100%" : "85%",
-                  mb: 2,
-                  textAlign: "center",
-                  boxShadow: "0px 3px 6px 0px rgba(55, 111, 255, 0.16)",
-                }}
-                component={Link}
-                to={`events/${event._id}/register`}
-              >
-                Register Now
-              </Button>
+          <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+            {auth?.session?.user?.organization && (new Date(event.last_registration_date) >= new Date()) && (
+              <EventRegistrationButton isSmallScreen={isSmallScreen} event={event} />
             )}
             {auth?.session?.user?.organization && (new Date(event.start_time) <= new Date() && new Date(event.end_time) >= new Date()) && (
               <Button
@@ -234,13 +223,12 @@ export default function EventDetails() {
                 component={Link}
                 to={`/events/${event._id}/register`}
               >
+                See Startups
+              </Button>
+            )}
 
-       See Startups
-     </Button>
-   )}
-    
-  </Box>
-</Paper>
+          </Box>
+        </Paper>
 
       </Box>
     </>
@@ -251,4 +239,4 @@ async function fetchEvent({ id }) {
   const response = await fetch(`${API_URL}/events/${id}`);
   const data = await response.json();
   return data.payload.event;
-}
+};
