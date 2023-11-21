@@ -225,7 +225,7 @@ export default function EventDetails() {
     )}
 
 
-{auth?.session?.user?.organization && new Date(event.start_time) >new Date() (
+{auth?.session?.user?.organization && new Date(event.start_time) >new Date() &&(
      
      <Button
        variant="contained"
@@ -245,7 +245,7 @@ export default function EventDetails() {
 
 
     
-{auth?.session?.user?.organization && new Date(event.start_time) < new Date() (
+{auth?.session?.user?.organization && new Date(event.start_time) < new Date() && (
      
      <Button
        variant="contained"
