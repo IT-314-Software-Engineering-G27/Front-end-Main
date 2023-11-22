@@ -29,21 +29,19 @@ const Login = () => {
 
                 <div id='leftnav'>
                 </div>
-
-                <div id='rightnav'>
-                    <button id='snup'>
-                        <Link to='/register'>
-                            Sign up
-                        </Link>
-                    </button>
-                </div>
+                {/* <div id='rightnav'>
+              <button id='snup'>
+                <Link to='/register'>
+                  Sign up
+                </Link>
+              </button>
+            </div> */}
             </div>
             <div id='bdy'>
                 <div id='form'>
                     <h1>Sign in</h1>
-                    
-
-
+                   
+                            
                     <div>
                         <p className='adjust'>
                             Email

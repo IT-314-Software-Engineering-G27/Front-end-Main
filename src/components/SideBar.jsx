@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useAuth } from '../contexts/session';
+import { useLocation } from 'react-router-dom';
 import Drawer from "./Drawer";
 import Logo from '../Login/Logo.png';
+import { Link } from "react-router-dom";
 import {
   Event as EventRoundedIcon,
   AccountBoxRounded as AccountBoxRoundedIcon,
@@ -45,7 +47,9 @@ const commonOptionList = [
 ];
 
 function SideBar() {
+  // const drawerWidth = 5;
   const auth = useAuth();
+  const location = useLocation();
   const [role, setRole] = useState("");
 
   useEffect(() => {
@@ -54,18 +58,35 @@ function SideBar() {
     }
   }, [auth?.session?.user]);
 
-
-  if (role === "organization")
-    return <Drawer optionList={commonOptionList.concat(organizationOptionList)} />;
-  else if (role === "individual")
-    return <Drawer optionList={commonOptionList.concat(individualOptionList)} />;
-  else
-    return <Drawer optionList={commonOptionList} />;
+  
+  if (role === "organization" || role === "individual") {
+    return (
+      
+        <Drawer optionList={commonOptionList.concat(role === "organization" ? organizationOptionList : individualOptionList)} />
+        
+    
+    );
+  } else {
+    return (
+      <div style={{ display: 'flex', flexDirection: 'row', height: '100%'}}>
+        <div id='drwr'>
+        <Drawer optionList={commonOptionList} />
+        </div>
+        {location.pathname === '/login' && (
+          // <div>
+            <div id='rightnav'>
+              <button id='snup'>
+                <Link to='/register'>
+                  Sign up
+                </Link>
+              </button>
+            </div>
+          // </div>
+        )}
+      </div>
+    );
+  }
 }
 
-
-
-
 export default SideBar;
-
 
