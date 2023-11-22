@@ -221,7 +221,7 @@ export default function EventDetails() {
                   boxShadow: "0px 3px 6px 0px rgba(55, 111, 255, 0.16)",
                 }}
                 component={Link}
-                to={`/events/${event._id}/register`}
+                to={`/events/${event._id}/startups`}
               >
                 See Startups
               </Button>
