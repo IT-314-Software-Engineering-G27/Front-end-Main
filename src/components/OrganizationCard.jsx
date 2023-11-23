@@ -27,7 +27,7 @@ export default function OrganizationCard({ id }) {
                     boxShadow: "7px 7px rgba(0, 0, 0, 0.15)",
                     padding: "1rem",
                 }}
-            >{(!organization) ? <Skeleton variant="rectangular" animation="pulse" height={250} /> :
+                >{(!organization) ? <Skeleton variant="rectangular" animation="pulse" height={250} /> :
                 <>
                     <CardHeader
                         titleTypographyProps={{ variant: 'h5' }}

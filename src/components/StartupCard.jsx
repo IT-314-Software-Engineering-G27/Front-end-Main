@@ -27,7 +27,7 @@ export default function StartUpCard({ id }) {
             justifyContent: "space-between",
             boxShadow: " 7px 7px rgba(0, 0, 0, 0.15)",
             padding: "1rem",
-        }}>
+            }}>
             <CardHeader title={startup.title} titleTypographyProps={{ variant: "h6" }} />
             <Divider />
             <CardContent sx={{ p: 2 }}>
@@ -35,7 +35,7 @@ export default function StartUpCard({ id }) {
             </CardContent>
             <Divider />
             <CardActions sx={{ display: "flex", justifyContent: "center", p: 3 }}>
-                <Button component={Link} to={`/startups/${startup._id}`} sx={{ minWidth: "50%" }} variant="contained" color="primary">View More Details</Button>
+                <Button fullWidth component={Link} to={`/startups/${startup._id}`} sx={{ minWidth: "50%" }} variant="contained" color="primary">View More Details</Button>
             </CardActions>
         </Card>
     </>);
