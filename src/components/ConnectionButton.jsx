@@ -19,7 +19,8 @@ export default function ConnectionButton({ id }) {
         });
     }, [auth?.session?.token, id]);
 
-    if (!connection?.status) {
+
+    if (!connection?.status || auth?.session?.user?._id === id) {
         return <></>;
     }
 

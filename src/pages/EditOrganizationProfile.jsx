@@ -143,7 +143,7 @@ export default function EditOrganization() {
                                 if (response.error)
                                     alert(response.error);
                                 else
-                                    navigate(`/organizations/${response._id}`);
+                                    navigate(`/profile`);
                             })
                         }}
                     >

@@ -152,7 +152,7 @@ export default function EditIndividual() {
                             if (response.error)
                                 alert(response.error);
                             else
-                                navigate(`/individuals/${response._id}`);
+                                navigate(`/profile`);
                         })
                     }}>
                         Save
