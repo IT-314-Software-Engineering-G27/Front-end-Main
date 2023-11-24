@@ -83,24 +83,7 @@ function JobDetail() {
 
       }}
     >
-      {isSmallScreen && (
-        <Button
-          component={Link}
-          to="/jobs"
-          // variant="contained"
-          startIcon={<ArrowBackRoundedIcon />}
-          sx={{
-            position: "fixed",
-            background: "rgba(92, 36, 179, 0.5)",
-            top: "0.15rem",
-            right: "0.15rem",
-            color: "black",
-            transition: 'background-color 0.3s, transform 0.3s',
-          }}
-        >
-          Back
-        </Button>
-      )}
+    
       <Box
         sx={{
           display: "flex",
@@ -224,24 +207,7 @@ function JobDetail() {
             ml: isSmallScreen ? "0" : "20px",
           }}
         >
-          {!isSmallScreen && (
-            <Button
-              component={Link}
-              to="/jobs"
-              startIcon={<ArrowBackRoundedIcon />}
-              sx={{
-                position: "fixed",
-                top: "0.5rem",
-                background: "rgba(92, 36, 179, 0.5)",
-                color: "black",
-                transition: 'background-color 0.3s, transform 0.3s',
-                right: "0.5rem",
-                zIndex: 0,
-              }}
-            >
-              Back to job list
-            </Button>
-          )}
+          
           <ApplicationComponent job={job} />
           <CompanyComponent id={job.organization} />
         </Box>

@@ -71,41 +71,6 @@ export default function EventDetails() {
 
   return (
     <>
-      {isSmallScreen ? (
-        <Button
-          component={Link}
-          to="/events"
-          startIcon={<ArrowBackRoundedIcon />}
-          sx={{
-            position: "fixed",
-            background: "rgba(92, 36, 179, 0.5)",
-            top: "0.15rem",
-            right: "0.15rem",
-            color: "black",
-            transition: 'background-color 0.3s, transform 0.3s',
-          }}
-        >
-          Back
-        </Button>
-      ) : (
-        <Button
-          component={Link}
-          to="/events"
-          startIcon={<ArrowBackRoundedIcon />}
-          sx={{
-            position: "fixed",
-            top: "0.5rem",
-            background: "rgba(92, 36, 179, 0.5)",
-            color: "black",
-            transition: 'background-color 0.3s, transform 0.3s',
-            right: "0.5rem",
-            zIndex: 0,
-          }}
-        >
-          See all events
-        </Button>
-      )}
-
       <Box
         sx={{
           display: "flex",

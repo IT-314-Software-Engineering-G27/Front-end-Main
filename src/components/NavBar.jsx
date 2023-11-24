@@ -38,16 +38,9 @@ function NavBar() {
     }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-
-
-
-
         <Grid item xs={12} md={6} lg={3} sx={{ display: { xs: 'none', md: 'block' },mt:1 }}>
               <img src={Logo} alt="Logo" width="45" height="45" style={{mr: 1,backgroundColor: 'white', borderRadius:'170px',border:'2px solid wheat'  }} />
             </Grid>
-
-
-         
            <Typography
             variant="h6"
             noWrap
@@ -169,31 +162,10 @@ function NavBar() {
             
                 <Button onClick={() => navigate('/login')}
                 
-                sx={{color: 'gray',
-                fontWeight: '1000',
-                letterSpacing: '.01rem',
-                borderRadius: '150px',
-                 padding:'8px',
-                paddingLeft:'30px',
-                paddingRight:'30px',
-            //    border: '2px solid wheat',
-                
-
-                background: 'black',
-             //   background: 'rgba(  205, 182, 245, 0.5 )',
-                // boxShadow:' 0 8px 32px 0 rgba( 31, 38, 135, 0.37 )',
-                // backdropfilter: 'blur( 6px )',
-              // webkitbackdropfilter: 'blur( p4x )',
-             //  border: '1px solid rgba( 255, 255, 255, 0.18 )',
+                sx={{ background:"rgba(92, 36, 179, 1)",borderRadius:"0.5rem", width: '100%', transition: 'background-color 0.3s, transform 0.3s',color :"White", '&:hover': { backgroundColor: 'White', transform: 'scale(1.05)',color:"rgba(92, 36, 179, 1)" }, }} >
                
-                
-              border: '1px solid wheat',
-                // backdropFilter: 'blur(5px)',
-                // backgroundColor: 'white',
-                 boxShadow: '35px 35px 68px 0px rgba(141, 86, 246, 0.25)', 
-                            }}
 
-                >Login</Button>
+                Login</Button>
              
           
           </Box>
