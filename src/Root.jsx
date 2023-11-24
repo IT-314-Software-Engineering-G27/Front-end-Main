@@ -66,14 +66,14 @@ function Root() {
                     <Route path="/individuals/:individualId" element={<IndividualDetails />} />
                     <Route path="/organizations" element={<OrganizationList />} />
                     <Route path="/organizations/:organizationId" element={<OrganizationDetails />} />
-                </>}
-
-                {auth?.session?.user?.individual && <>
-                    <Route path="/jobs" element={<JobList />}></Route>
                     <Route path="/jobs/:jobId">
                         <Route path="/jobs/:jobId" element={<JobDetails />}></Route>
                         <Route path="/jobs/:jobId/candidates" element={<CandidateList />} />
                     </Route>
+                </>}
+
+                {auth?.session?.user?.individual && <>
+                    <Route path="/jobs" element={<JobList />}></Route>
                 </>}
 
                 {auth?.session?.user?.organization && <>
