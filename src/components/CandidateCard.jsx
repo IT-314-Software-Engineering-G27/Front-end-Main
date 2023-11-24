@@ -102,7 +102,7 @@ export default function CandidateCard({ id, isLoadingData }) {
                         size="large"
                         fullWidth
                         component={Link}
-                        to={`/individuals/${id}`}
+                        to={`/individuals/${candidate.individual._id}`}
                         sx={{
                             width: '100%',
                             margin: 'auto',
