@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router';
+import { API_URL } from '../config';
 import {
   Grid,
   Paper,
@@ -32,6 +34,7 @@ const RegisterIndividual = () => {
   });
   const [openDialog, setOpenDialog] = useState(false);
   const [errorDialogText, setErrorDialogText] = useState('');
+  const navigate = useNavigate();
 
   const textFieldStyle = { marginBottom: 10, width: '100%' };
 
@@ -80,7 +83,13 @@ const RegisterIndividual = () => {
     }
 
     if (Object.keys(newErrors).length === 0 && page === 2) {
-      window.location.reload();
+      submitForm({ formData }).then((value) => {
+        if (value.error) {
+          alert(value.error);
+        }
+        else
+          navigate('/login');
+      })
     }
   };
 
@@ -244,5 +253,22 @@ const RegisterIndividual = () => {
     </Grid>
   );
 };
+
+async function submitForm({ formData }) {
+  const response = await fetch(`${API_URL}/individuals`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ formData }),
+  });
+  const data = await response.json();
+  if (!response.ok) {
+    return {
+      error: data.message
+    }
+  };
+  return data;
+}
 
 export default RegisterIndividual;

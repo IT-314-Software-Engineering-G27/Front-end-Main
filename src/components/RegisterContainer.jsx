@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
-import Paper from '@mui/material/Paper';
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
+import { Link } from 'react-router-dom';
+import {
+  Paper,
+  Typography,
+  Box,
+  Button,
+  Tabs,
+  Tab,
+} from '@mui/material';
 import { LoremIpsum } from 'lorem-ipsum'
 import RegisterIndividual from './RegisterIndividual';
 import RegisterOrganization from './RegisterOrganization';
@@ -94,6 +98,14 @@ const RegisterContainer = () => {
         <div style={textOverImageStyle}>
           <h1>StartApp for Startups</h1>
           <p>{loremIpsumText}</p>
+          <Link to='/login'>
+            <Button
+              variant="contained"
+              color="primary"
+            >
+              Login
+            </Button>
+          </Link>
         </div>
       </div>
     </div>
