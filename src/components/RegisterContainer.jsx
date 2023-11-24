@@ -88,7 +88,7 @@ const RegisterContainer = () => {
           <Tab label="Organizations" />
         </Tabs>
         <TabPanel value={value} index={0}>
-          <RegisterIndividual handleChange={handleChange} />
+          <RegisterIndividual />
         </TabPanel>
         <TabPanel value={value} index={1}>
           <RegisterOrganization />

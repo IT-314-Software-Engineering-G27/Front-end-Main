@@ -40,8 +40,8 @@ const Login = () => {
             <div id='bdy'>
                 <div id='form'>
                     <h1>Sign in</h1>
-                   
-                            
+
+
                     <div>
                         <p className='adjust'>
                             Email

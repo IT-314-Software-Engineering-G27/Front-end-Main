@@ -19,8 +19,8 @@ import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOu
 const LoginForm = () => {
   const auth = useAuth();
   const [user, setUser] = useState({
-      email: '',
-      password: ''
+    email: '',
+    password: ''
   });
   const [errors, setErrors] = useState({});
   const navigate = useNavigate();
