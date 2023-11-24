@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { Navigate, useNavigate } from 'react-router';
+import { Navigate, useNavigate  } from 'react-router';
+import {useTheme } from '@mui/material';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -18,6 +19,7 @@ const pages = ['Features', 'Contact-Us', 'Sign up'];
 
 
 function NavBar() {
+  const theme = useTheme();
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const navigate = useNavigate();
 
@@ -41,24 +43,7 @@ function NavBar() {
         <Grid item xs={12} md={6} lg={3} sx={{ display: { xs: 'none', md: 'block' },mt:1 }}>
               <img src={Logo} alt="Logo" width="45" height="45" style={{mr: 1,backgroundColor: 'white', borderRadius:'170px',border:'2px solid wheat'  }} />
             </Grid>
-           <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="/home"
-            sx={{
-                ml:2,
-              mr: 2,
-              display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'white',
-              textDecoration: 'none',
-            }}
-          >
-            STARTAPP
-          </Typography>
+           
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
@@ -124,7 +109,14 @@ function NavBar() {
               flexGrow: 1,
               fontFamily: 'monospace',
               fontWeight: 700,
-              letterSpacing: '.3rem',
+              [theme.breakpoints.down('sm')]: 
+                    {FontSize: '1rem', },
+                    [theme.breakpoints.between('sm', 'md')]: {
+                            fontSize: '1.3rem', 
+                    },
+                    [theme.breakpoints.up('md')]: {
+                        fontSize: '1.5rem',}
+                    ,
               color: 'white',
               textDecoration: 'none',
             }}
