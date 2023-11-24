@@ -78,8 +78,8 @@ function ApplicationModal({ open, handleClose, id, application, edit, individual
     >
         <FormControl sx={{ width: "100%", backgroundColor: 'white', padding: "20px" }}>
             <TextField multiline label="cover letter" rows={12} variant="outlined" sx={{ width: "100%", mb: 2 }} focused onChange={(e) => setContent(e.target.value)} value={content} placeholder="Why should we hire you?" />
-            <FormGroup sx={{ display: "flex", flexDirection: "row", justifyContent: "flex-end", gap: "10px" }}>
-                <Button variant="contained" sx={{ width: "10%" }} onClick={() => {
+            <FormGroup  sx={{ justifyContent:"center",display: "flex", flexDirection: "row", justifyContent: "flex-end", gap: "10px" }}>
+                <Button variant="contained" sx={{  width:{md:"100%" ,lg:"32%"} }} onClick={() => {
                     if (edit)
                         editApplication({ id: application._id, token: auth.session.token, cover_letter: content }).then(() => {
                             window.location.reload();
@@ -89,12 +89,12 @@ function ApplicationModal({ open, handleClose, id, application, edit, individual
                             window.location.reload();
                         })
                 }}> Submit </Button>
-                {application?._id && <Button variant="contained" sx={{ width: "30%" }} color="error" onClick={() => {
+                {application?._id && <Button variant="contained" sx={{ width:{md:"100%" ,lg:"32%"} }} color="error" onClick={() => {
                     deleteApplication({ id: application._id, token: auth.session.token }).then(() => {
                         window.location.reload();
                     });
                 }}> Withdraw Application </Button>}
-                <Button variant="contained" sx={{ width: "10%" }} onClick={handleClose}> Close </Button>
+                <Button variant="contained" sx={{  width:{ md:"100%" ,lg:"32%"} }} onClick={handleClose}> Close </Button>
             </FormGroup>
         </FormControl>
     </Modal>;

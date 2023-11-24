@@ -104,7 +104,7 @@ export default function CompanyJobRegistration() {
                         labelId="demo-simple-select-label"
                         id="demo-simple-select"
                         value={jobProfile.duration}
-                        label="Age"
+                        label="Type"
                         onChange={(e) => setJobProfile({ ...jobProfile, duration: e.target.value })}
                     >
                         <MenuItem value={"full-time"}>Full-time</MenuItem>

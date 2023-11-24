@@ -10,7 +10,7 @@ import Menu from '@mui/material/Menu';
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
-import Logo from '../assets/images/Logo.svg';
+import Logo from '../assets/images/Logo_dif.png';
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
 import MenuItem from '@mui/material/MenuItem';
@@ -41,7 +41,7 @@ function NavBar() {
       <Container maxWidth="xl">
         <Toolbar disableGutters>
         <Grid item xs={12} md={6} lg={3} sx={{ display: { xs: 'none', md: 'block' },mt:1 }}>
-              <img src={Logo} alt="Logo" width="45" height="45" style={{mr: 1,backgroundColor: 'white', borderRadius:'170px',border:'2px solid wheat'  }} />
+              <img src={Logo} alt="Logo" width="45" height="45" style={{mr: 1, borderRadius:'170px' }} />
             </Grid>
            
 
@@ -105,6 +105,7 @@ function NavBar() {
             href="#app-bar-with-responsive-menu"
             sx={{
               mr: 2,
+              marginLeft:"0.5em",
               display: { xs: 'flex', md: 'none' },
               flexGrow: 1,
               fontFamily: 'monospace',
@@ -123,7 +124,7 @@ function NavBar() {
           >
             STARTAPP
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' },
+          <Box sx={{ marginRight:"10rem", flexGrow: 1, display: { xs: 'none', md: 'flex' },
                   gap :"3em" }}>
             {pages.map((page) => (
               <Button
