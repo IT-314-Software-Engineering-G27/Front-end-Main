@@ -19,7 +19,6 @@ const ApplicationComponent = ({ job }) => {
     );
   }
 
-
   return (
 
     <Box sx={{ mb: 2, padding: "0.5rem", position: "sticky", mt: 2, pt: 3, borderRadius: "6px", border: "1px solid black", background: "#FFF", boxShadow: "3px 3px 3px rgba(156, 159, 181, 1);", }}>
@@ -53,9 +52,8 @@ const ApplicationComponent = ({ job }) => {
       </Box>
       <Box sx={{ display: 'flex', justifyContent: 'center' }}>
         <>
-          {auth?.session?.user?.individual && <ApplicationButton id={job._id} />}
+          {auth?.session?.user?.individual && (new Date() <= new Date(job.deadline)) && <ApplicationButton id={job._id} />}
           {auth?.session?.user?.organization && auth.session.user.organization === job.organization &&
-
             <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', gap: "1rem", padding: "1rem" }}>
               <Button
                 variant="contained"
