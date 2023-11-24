@@ -40,7 +40,7 @@ const LandingPage = () => {
         <NavBar/>
     <div className="Home">
         <Grid container justifyContent="center" sx={{ width: "100%" }}>
-          <Grid item xs={12} sm={10} md={8} lg={6}>
+          <Grid >
             <Button  className="signupB" onClick={() => window.location.href = '/register'}
               sx={{ color:"gray", display:"flex", fontSize:"16px", fontWeight:"1000", letterSpacing:".2rem", m:"auto", mt:"110px",
                  mb:"40px", width: "55%", height: "60px", borderRadius: "150px",border: "1px solid wheat",}}>
@@ -50,7 +50,7 @@ const LandingPage = () => {
         </Grid>
 
       
-        <Grid item xs={12} sm={10} md={8} lg={6} sx={{ color: "white", textAlign: "center", width: "100%" }}>
+        <Grid sx={{ color: "white", textAlign: "center", width: "100%" }}>
           <Typography variant="h1" className="eee" sx={{ marginBottom: "20px", fontWeight: 600, fontSize: "120px",fontFamily:'helvetica'}}>
             StartApp for Startups
           </Typography>
@@ -60,7 +60,7 @@ const LandingPage = () => {
         </Grid>
       
 
-        <Grid item xs={12} sm={10} md={8} lg={6} sx={{ mt: "60px", mb: "100px",}}>
+        <Grid sx={{ mt: "60px", mb: "100px",}}>
           <img className="laptop" src={laptop} alt="laptop" style={{ maxWidth: "100%" }}/>
         </Grid>
 
@@ -109,7 +109,7 @@ const LandingPage = () => {
     </Typography>
   </Grid>
   </div>
-  <Footer/>
+  {/* <Footer/> */}
 </div>
 
   );
