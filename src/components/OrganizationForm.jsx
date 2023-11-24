@@ -29,6 +29,7 @@ function Form() {
         else {
             setError([]);
         }
+        console.log(organization);
     }, [organization, confirmPassword]);
 
     return (
@@ -82,7 +83,7 @@ function Form() {
                     </tr>
                     <tr>
                         <td style={{ paddingBottom: '10px' }}>
-                            <TextField id="outlined-multiline-static" label="Description" multiline rows={4} onChange={(e) => setOrganization({ ...organization, description: organization.description })} value={organization.description} focused sx={{ width: "100%" }} />
+                            <TextField id="outlined-multiline-static" label="Description" multiline rows={4} onChange={(e) => setOrganization({ ...organization, description: e.target.value })} value={organization.description} focused sx={{ width: "100%" }} />
                         </td>
                     </tr>
                     <tr>
@@ -104,13 +105,13 @@ function Form() {
     );
 }
 
-async function submitForm({ individual }) {
-    const response = await fetch(`${API_URL}/individuals`, {
+async function submitForm({ organization }) {
+    const response = await fetch(`${API_URL}/organizations`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ individual }),
+        body: JSON.stringify({ organization }),
     });
     const data = await response.json();
     if (!response.ok) {
