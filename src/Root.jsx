@@ -3,7 +3,7 @@ import { Navigate } from "react-router-dom";
 import { Routes, Route } from "react-router";
 import IndividualList from './pages/IndividualList';
 import OrganizationList from './pages/OrganizationList';
-import Login from './Login/Login';
+import Login from './pages/Login';
 import Register from './pages/Register';
 import RegisterIndividual from './pages/RegisterIndividual';
 import RegisterOrganization from './pages/RegisterOrganization';
