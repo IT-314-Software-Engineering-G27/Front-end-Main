@@ -5,10 +5,13 @@ import { API_URL } from "../config";
 const SessionContext = createContext({
     session: { token: null, user: null },
     setSession: (session) => { },
+    isLoading: false,
+    setIsLoading: (isLoading) => { },
 });
 
 export default function SessionProvider({ children }) {
     const [session, setSession] = useState({ token: null, user: null });
+    const [isLoading, setIsLoading] = useState(false);
     useEffect(() => {
         const stored_session = JSON.parse(localStorage.getItem("session"));
         if (stored_session?.token)
@@ -21,6 +24,7 @@ export default function SessionProvider({ children }) {
         if (session.token) {
             localStorage.setItem("session", JSON.stringify(session));
             if (!session.user) {
+                setIsLoading(true);
                 getAuth(session.token).then(({ user, message }) => {
                     if (!user) {
                         localStorage.removeItem("session");
@@ -28,22 +32,22 @@ export default function SessionProvider({ children }) {
                     }
                     else
                         setSession({ ...session, user });
+                    setIsLoading(false);
                 });
             }
         }
     }, [session]);
 
     return (
-        <SessionContext.Provider value={{ session, setSession }}>
+        <SessionContext.Provider value={{ session, setSession, isLoading, setIsLoading }}>
             {children}
         </SessionContext.Provider>
     );
 };
 
 export function useAuth() {
-    const { session, setSession } = useContext(SessionContext);
+    const { session, setSession, isLoading, setIsLoading } = useContext(SessionContext);
     const navigate = useNavigate();
-    const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState("");
 
     const login = async ({ email, password }) => {

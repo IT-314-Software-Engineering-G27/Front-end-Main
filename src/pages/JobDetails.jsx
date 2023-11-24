@@ -69,19 +69,19 @@ function JobDetail() {
 
   return (
     <Container
-        maxWidth="lg"
-        sx={{
-          padding: {
-            xs: "1rem",
-            sm: "1.5rem",
-            md: "2rem",
+      maxWidth="lg"
+      sx={{
+        padding: {
+          xs: "1rem",
+          sm: "1.5rem",
+          md: "2rem",
         },
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          width: "100%",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        width: "100%",
 
-        }}
+      }}
     >
       {isSmallScreen && (
         <Button
@@ -123,7 +123,7 @@ function JobDetail() {
             border: "1px solid black",
             boxShadow: "5px 5px rgba(0, 0, 0, 0.1)",
             overflowY: "auto",
-            padding: "1rem", // Added padding
+            padding: "1rem",
           }}
         >
           <Box
@@ -132,52 +132,17 @@ function JobDetail() {
               backgroundSize: "cover",
               textAlign: "center",
               width: "100%",
+              minHeight: "20vh",
               borderRadius: "8px",
               backgroundRepeat: "no-repeat",
             }}
           >
             <br />
             <br />
-            <Box
-              sx={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
-              <Avatar
-                variant="rounded"
-                src={`${job.company_logo}`}
-                sx={{
-                  border: "4px solid black",
-                  width: "80px",
-                  height: "80px",
-                  borderRadius: "10px",
-                  mt: isSmallScreen ? "0" : "11px",
-                  border: "3px solid #EAEBF3",
-                  background: "linear-gradient(180deg, #376FFF 0%, #5E5BFF 100%)",
-                }}
-              />
-            </Box>
           </Box>
 
           <Box sx={{ px: 4 }}>
             <Box>
-              <Typography
-                sx={{
-                  textAlign: "center",
-                  color: "#232535",
-                  mt: 2,
-                  fontFamily: "sans-serif",
-                  fontSize: "18px",
-                  fontStyle: "WidthNormal",
-                  fontWeight: 500,
-                  lineHeight: "24px",
-                  mb: 1,
-                }}
-              >
-                {job.company}
-              </Typography>
               <Typography
                 sx={{
                   textAlign: "center",
@@ -193,7 +158,6 @@ function JobDetail() {
               >
                 {job.title}
               </Typography>
-
               <Box
                 display="flex"
                 flexDirection="column"
@@ -278,7 +242,7 @@ function JobDetail() {
               Back to job list
             </Button>
           )}
-          <ApplicationComponent  job={job} />
+          <ApplicationComponent job={job} />
           <CompanyComponent id={job.organization} />
         </Box>
       </Box>

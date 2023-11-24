@@ -71,7 +71,7 @@ function Form() {
             </tr>
             <tr>
               <td style={{ paddingBottom: '10px' }}>
-                <input minLength={12} type="tel" id="phone-number" placeholder="Phone Number" onChange={(e) => setIndividual({ ...individual, user: { ...individual.user, phone_number: e.target.value } })} value={individual.user.phone_number} />
+                <input minLength={12} type="tel" id="phone-number"  placeholder="tel: +xx xxx-xxx-xxxx"  onChange={(e) => setIndividual({ ...individual, user: { ...individual.user, phone_number: e.target.value } })} value={individual.user.phone_number} />
               </td>
             </tr>
             <tr>

@@ -1,13 +1,11 @@
-import { Container, Grid, Paper, Box, Stack, Divider, Typography, Skeleton } from '@mui/material';
-import OrganizationMenu from '../components/OrganizationMenu';
+import { Container, Grid, Paper, Stack, Divider, Typography, Skeleton } from '@mui/material';
 import OrganizationProfile from '../components/OrganizationProfile';
-import OrganizationSearchBar from '../components/OrganizationSearchBar';
 import PostCard from '../components/PostCard';
 import { useParams, useSearchParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { API_URL } from '../config';
 import OrganizationJobList from '../components/OrganizationJobList';
-
+import OrganizationEventList from '../components/OrganizationEventList';
 
 function OrganizationDetails() {
     const { organizationId } = useParams();
@@ -25,10 +23,10 @@ function OrganizationDetails() {
     return (
         <Container maxWidth="xl">
             <Paper sx={{ height: "100vh" }}>
-              
+
 
                 <Grid container spacing={4} >
-                    
+
 
                     <Grid item xs={10} md={4}>
                         <OrganizationProfile organization={organization} />
@@ -37,12 +35,13 @@ function OrganizationDetails() {
                     <Grid item xs={12} md={7} marginTop={2}>
                         <Paper sx={{ padding: "1rem" }}>
                             <Typography sx={{ textAlign: "center" }} variant="h5">  Who we are?  </Typography>
-                            <Typography variant="body2">
+                            <Divider sx={{ }} />
+                            <Typography sx={{fontSize: '16px',}} >
                                 {"  "} {organization.description}
                             </Typography>
-                            <Divider sx={{ marginY: "1rem" }} />
+                            {/* <Divider sx={{ marginY: "1rem" }} /> */}
                             {organization.user.posts.length > 0 ? <>
-                                <Typography sx={{ textAlign: "center" }} variant="h5"> Posts</Typography>
+                                <Typography sx={{ textAlign: "center",marginTop: "1rem"  }} variant="h5"> Posts</Typography>
                                 <Divider />
                                 <Stack container spacing={2} padding={4} sx={{ overflowY: "scroll", maxHeight: "60vh" }}>
                                     {organization.user.posts.map((post) => (
@@ -51,15 +50,18 @@ function OrganizationDetails() {
                                         </Grid>
                                     ))}
                                 </Stack>
-                            </> : <Typography sx={{ textAlign: "center" }} variant="h5"> No Posts</Typography>}
+                            </> : <Typography sx={{ textAlign: "center" , marginTop: "1rem" }} variant="h5"> No Posts</Typography>}
                         </Paper>
                     </Grid>
                 </Grid>
                 <Paper sx={{ padding: "4rem" }}>
-                {searchparams.get("profile") && <OrganizationJobList />}
+                    {organization.job_profiles && <OrganizationJobList jobProfiles={organization.job_profiles} />}
+                </Paper>
+                <Paper sx={{ padding: "4rem" }}>
+                    {searchparams.get("profile") && <OrganizationEventList />}
+                </Paper>
             </Paper>
-            </Paper>
-          
+
         </Container>
     );
 }

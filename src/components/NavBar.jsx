@@ -60,7 +60,7 @@ function NavBar() {
               fontFamily: 'monospace',
               fontWeight: 700,
               letterSpacing: '.3rem',
-              color: 'gray',
+              color: 'white',
               textDecoration: 'none',
             }}
           >
@@ -98,7 +98,19 @@ function NavBar() {
             >
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                  <Typography textAlign="center"  onClick={() => {
+                  if (page === 'Features') {
+                    const featuresSection = document.getElementById('featuresSection');
+                    if (featuresSection) {
+                      featuresSection.scrollIntoView({ behavior: 'smooth' });
+                    }
+                  } 
+                  if (page === 'Sign up') {navigate("/register");}
+                if (page === 'Contact-Us'){
+                  navigate("/contact-us");
+                    
+                  }
+                }}>{page}</Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -132,7 +144,7 @@ function NavBar() {
               <Button
                 key={page}
               
-                sx={{ my: 2, color: 'gray', display: 'block' ,fontWeight:'700',fontSize:'15px'}}
+                sx={{ my: 2, color: 'white', display: 'block' ,fontWeight:'700',fontSize:'15px'}}
                 onClick={() => {
                   if (page === 'Features') {
                     const featuresSection = document.getElementById('featuresSection');
@@ -155,7 +167,7 @@ function NavBar() {
           <Box sx={{ flexGrow: 0 }}>
             
             
-                <Button onClick={() => window.location.href = '/login'}
+                <Button onClick={() => navigate('/login')}
                 
                 sx={{color: 'gray',
                 fontWeight: '1000',

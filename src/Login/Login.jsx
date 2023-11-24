@@ -28,39 +28,20 @@ const Login = () => {
             <div id='nav'>
 
                 <div id='leftnav'>
-
-                    <Link to=''>
-                        <img src={Phone} alt="contact us" id='contact' />
-                    </Link>
                 </div>
-
-                <div id='rightnav'>
-                    <button id='snup'>
-                        <Link to='/register'>
-                            Sign up
-                        </Link>
-                    </button>
-                </div>
+                {/* <div id='rightnav'>
+              <button id='snup'>
+                <Link to='/register'>
+                  Sign up
+                </Link>
+              </button>
+            </div> */}
             </div>
             <div id='bdy'>
                 <div id='form'>
                     <h1>Sign in</h1>
-                    <div id='check'>
-                        <div id='radio1'>
-                            <label>
-                                <input type="radio" name='regi' value='Individual' onChange={(e) => setType(e.target.value)} checked />
-                                Individual
-                            </label>
-                        </div>
-                        <div id='radio2'>
-                            <label>
-                                <input type="radio" name='regi' value='Organization' onChange={(e) => setType(e.target.value)} />
-                                Organization
-                            </label>
-                        </div>
-                    </div>
-
-
+                   
+                            
                     <div>
                         <p className='adjust'>
                             Email
@@ -72,8 +53,8 @@ const Login = () => {
                         <p className='adjust'>
                             Password
                         </p>
-                        <div>
-                            <input type='password' className='inbox' id='pswd' onChange={(e) => setUser({ ...user, password: e.target.value })} />
+                        <div id='pwd'>
+                            <input type='password' className='inbox' id='pswd' onChange={(e) => setUser({ ...user, password: e.target.value })}  ></input>
                         </div>
                     </div>
 

@@ -72,7 +72,7 @@ function Form() {
                     </tr>
                     <tr>
                         <td style={{ paddingBottom: '10px' }}>
-                            <input type="text" id="number" placeholder="Phone Number" onChange={(e) => setOrganization({ ...organization, user: { ...organization.user, phone_number: e.target.value } })} value={organization.user.phone_number} />
+                            <input type="text" id="number" placeholder="tel: +xx xxx-xxx-xxxx" onChange={(e) => setOrganization({ ...organization, user: { ...organization.user, phone_number: e.target.value } })} value={organization.user.phone_number} />
                         </td>
                     </tr>
                     <tr>

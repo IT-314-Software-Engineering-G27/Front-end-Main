@@ -2,7 +2,9 @@
     display: flex;
     justify-content: right;
     margin: 10px;
+    /* margin-top:2px; */
     padding: 10px;
+
     position: fixed;
     margin-right: 0;
     width: 98%;
@@ -27,7 +29,7 @@
 }
 
 .topsn {
-    position: fixed;
+    position:absolute;
     width: 100%;
     justify-content: center;
     align-items: center;
@@ -56,27 +58,45 @@ p {
     background-color: rgba(255, 255, 255, 0.6);
 }
 
-#indi button,
+/* #indi button,
 #org button {
     background-color: #2f1263;
     /* color:white; */
-    width: 60%;
+    /* width: 60%;
     height: 35px;
-    border-radius: 2em;
-}
+    border-radius: 2em; */
+/* }  */
 
-    a {
+ .txt{
     text-decoration: none;
     color: white;
+ }
+
+    /* a {
+    text-decoration: none;
+    color: white;
+} */
+
+#mainSn1 {
+    font-size: larger;
+    background-color: #2f1263;
+    height: 35px;
+    border-radius: 2em;
+    width:25ex;
 }
 
-.mainSn {
+#mainSn2 {
     font-size: larger;
+    background-color: #2f1263;
+    height: 35px;
+    border-radius: 2em;
+    width:25ex;
 }
 
 #btn {
     width: 160px;
     height: 30px;
+    font-size:larger;
     background-color: #2f1263;
     border-radius: 2em;
     /* color: white; */
@@ -84,8 +104,10 @@ p {
     margin-top: 10px;
 }
 
-#ttl{
-    display:none;
+@media(max-width: 800px ) and (min-width:582px ){
+#mainSn1,#mainSn2{
+    width:14ex;
+}
 }
 
 @media (max-width: 582px) {
@@ -129,18 +151,7 @@ p {
 
         .topsn{
             display:none;
-        }  
-        #ttl{
-            display: flex;
-            justify-content: left;
-            margin-left:0;
-            margin-right:8ex;
-            font-weight: bold;
-            margin-top:2ex;
-            font-size:large;
-            width:100%;
-            
-        }  
+        }   
 
         #top {
            
@@ -150,5 +161,3 @@ p {
         }
 
 }
-
-

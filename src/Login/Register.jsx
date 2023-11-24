@@ -7,13 +7,13 @@ const Register = () => {
     return (
         <div className='register'>
             <div id='top'>
-                <div id='ttl'>Sign Up</div>
-                <button id='btn'>
-                    <Link to='/login'>
-                        Sign in
-                    </Link>
-                </button>
+                <Link to='/login'>
+                    <button id='btn'>
+                        <div className='txt'>Sign in</div>
+                    </button>
+                </Link>
             </div>
+
             <div className='topsn'>
                 <h1 id='title'> Sign up</h1>
             </div>
@@ -26,12 +26,14 @@ const Register = () => {
                         dolorum ut saepe ratione rem quia sequi laudantium illo asperiores
                         architecto eum, voluptates dicta.
                     </p>
-                    <button>
+
+                    <Link to='/register/individual'>
+                    <button  id='mainSn1'>
                         {/* link to RegAsInd */}
-                        <Link to='/register/individual' className='mainSn'>
-                            Sign up
-                        </Link>
-                    </button>
+                        <div className='txt'>Sign up</div>
+                        </button>
+                    </Link>
+
                 </div>
                 <div id='org'>
 
@@ -42,12 +44,15 @@ const Register = () => {
                         dolorum ut saepe ratione rem quia sequi laudantium illo asperiores
                         architecto eum, voluptates dicta.
                     </p>
-                    <button>
-                        {/* link to RegAsOrg */}
-                        <Link to='/register/organization' className='mainSn'>
-                            Sign up
-                        </Link>
-                    </button>
+
+                    
+                    <Link to='/register/organization' >
+                    <button  id='mainSn2'>
+                        {/* link to RegAsInd */}
+                        <div className='txt'>Sign up</div>
+                        </button>
+                    </Link>
+                    
 
                 </div>
             </div>

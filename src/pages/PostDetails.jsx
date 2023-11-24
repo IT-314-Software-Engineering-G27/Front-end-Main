@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link,  useNavigate, useParams } from 'react-router-dom';
 import { Avatar, Box, CircularProgress, Container, Paper, Typography, Divider, Button, } from '@mui/material';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { useAuth } from '../contexts/session';
@@ -9,6 +9,7 @@ import PersonIcon from '@mui/icons-material/Person';
 
 function PostDetail() {
     const { postId } = useParams();
+    const navigate = useNavigate();
     const auth = useAuth();
     const queryClient = useQueryClient();
     const { data: post } = useQuery({
@@ -80,7 +81,7 @@ function PostDetail() {
                     </Box>
                     <Divider sx={{ margin: '1rem 0' }} />
                     <Typography variant="h4" sx={{ wordBreak: "break-word" }}>{post.title}</Typography>
-                    <Typography variant="h5" sx={{ wordBreak: "break-word"}}>{post.subject}</Typography>
+                    <Typography variant="h5" sx={{ wordBreak: "break-word" }}>{post.subject}</Typography>
                     <Typography variant="h6" sx={{ wordBreak: "break-word" }}>{post.description}</Typography>
                     <img
                         src={post.image}
@@ -112,6 +113,20 @@ function PostDetail() {
                         <Typography variant="subtitle1" style={{ marginLeft: '1rem' }}>
                             {postStatus && `${postStatus.likes} likes`}
                         </Typography>
+                        {postStatus?.editable && (
+                            <Button
+                                variant="contained"
+                                color="error"
+                                sx={{ marginLeft: 'auto' }}
+                                onClick={() => {
+                                    deletePost({ id: postId, token: auth.session.token }).then(() => {
+                                        navigate('/profile');
+                                    });
+                                }}
+                            >
+                                Delete
+                            </Button>
+                        )}
                     </Box>
                 </Paper>
             </Box>
@@ -152,5 +167,15 @@ async function deleteLike({ id, token }) {
         method: 'DELETE',
     });
 };
+
+async function deletePost({ id, token }) {
+    await fetch(`${API_URL}/posts/${id}`, {
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+        method: 'DELETE',
+    });
+};
+
 
 export default PostDetail;

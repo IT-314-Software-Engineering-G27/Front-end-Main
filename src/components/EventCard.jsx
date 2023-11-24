@@ -17,7 +17,6 @@ export default function EventCard({ id }) {
         <Card
             sx={{
                 border: `1px solid black`,
-                height: "100%",
                 width: "100%",
                 overflow: "clip",
                 display: "flex",

@@ -102,6 +102,7 @@ export default function EditOrganization() {
                     />
 
                     <TextField
+                        disabled
                         id="outlined-multiline-static"
                         label="Year establishment"
                         value={organization?.year_of_establishment || ''}
@@ -142,7 +143,7 @@ export default function EditOrganization() {
                                 if (response.error)
                                     alert(response.error);
                                 else
-                                    navigate(`/organizations/${response._id}`);
+                                    navigate(`/profile`);
                             })
                         }}
                     >
