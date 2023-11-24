@@ -58,15 +58,30 @@ const LandingPage = () => {
     <div>
       <NavBar />
       <div className="Home">
-        <Grid container justifyContent="center">
-          
-          <Grid item>
-            <Button className="signupB" onClick={() => window.location.href = '/register'}
-              sx={{ background:"rgba(92, 36, 179, 1)",borderRadius:"1rem", width: '100%', transition: 'background-color 0.3s, transform 0.3s',color :"White", marginTop:"5rem", '&:hover': { backgroundColor: 'White', transform: 'scale(1.05)',color:"rgba(92, 36, 179, 1)" }, }} >
-               {windowWidth > 768 ? 'Signup for the Journey' : 'Sign Up'}
-            </Button>
-          </Grid>
-        </Grid>
+      <Grid container justifyContent="center">
+  <Grid item sx={{width :"36%", textAlign: 'center' }}>
+    <Button
+      className="signupB"
+      onClick={() => (window.location.href = '/register')}
+      sx={{
+        background: 'rgba(92, 36, 179, 1)',
+        borderRadius: '1rem',
+        width: '100%',
+        transition: 'background-color 0.3s, transform 0.3s',
+        color: 'White',
+        marginTop: '5rem',
+        justifyContent: 'center', // Centering the content horizontally
+        '&:hover': {
+          backgroundColor: 'White',
+          transform: 'scale(1.05)',
+          color: 'rgba(92, 36, 179, 1)',
+        },
+      }}
+    >
+      {windowWidth > 768 ? 'Signup for the Journey' : 'Sign Up'}
+    </Button>
+  </Grid>
+</Grid>
 
         <Grid sx={{ color: "white", textAlign: "center", width: "100%" }}>
           <Typography variant="h1" className="eee" sx={{ marginBottom: "20px", fontWeight: 600, 
@@ -147,6 +162,26 @@ const LandingPage = () => {
           </Grid>
         </Grid>
       </div>
+      <div className="Home">
+<Grid container justifyContent="center" sx={{ mt: 10, textAlign: 'center', borderBottom: '1px solid white' }}>
+    <Grid item xs={12} sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', pr: 40 }}>
+      <Box sx={{display:'flex',flexDirection:'column',}}>
+      <Typography sx={{ fontFamily:'helvetica',color: 'white', fontSize: '46px', lineHeight: '52px', mt: 1, textAlign: 'right' }}>
+        One
+      </Typography>
+      <Typography sx={{ fontFamily:'helvetica',color: 'white', fontSize: '46px', lineHeight: '52px' }}>
+        Platform
+      </Typography>
+      </Box>
+      <Typography className="eee" sx={{fontFamily:'helvetica', fontSize: '122px', lineHeight: '120px', fontWeight: 550 }}>
+        Endless
+      </Typography>
+    </Grid>
+    <Typography  className="eee" sx={{fontFamily:'helvetica', fontSize: '122px', lineHeight: '120px', fontWeight: 550, pl: 42, width: '100%', mb: 8 }}>
+      Opportunities
+    </Typography>
+  </Grid>
+  </div>
 
       <Footer />
     </div>

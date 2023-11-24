@@ -123,8 +123,8 @@ function NavBar() {
           >
             STARTAPP
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex',justifyContent:'center' },
-                     gap:'60px' }}>
+          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' },
+                  gap :"3em" }}>
             {pages.map((page) => (
               <Button
                 key={page}
@@ -154,7 +154,7 @@ function NavBar() {
             
                 <Button onClick={() => navigate('/login')}
                 
-                sx={{ background:"rgba(92, 36, 179, 1)",borderRadius:"0.5rem", width: '100%', transition: 'background-color 0.3s, transform 0.3s',color :"White", '&:hover': { backgroundColor: 'White', transform: 'scale(1.05)',color:"rgba(92, 36, 179, 1)" }, }} >
+                sx={{ background:"rgba(92, 36, 179, 1)",right:"1rem",borderRadius:"0.5rem", width: '130%', transition: 'background-color 0.3s, transform 0.3s',color :"White", '&:hover': { backgroundColor: 'White', transform: 'scale(1.05)',color:"rgba(92, 36, 179, 1)" }, }} >
                
 
                 Login</Button>
