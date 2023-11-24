@@ -30,6 +30,7 @@ const RegisterOrganization = () => {
     ceoName: '',
     age: '',
     yearOfEstablishment: '',
+    description: '',
   });
   const [openDialog, setOpenDialog] = useState(false);
   const [errorDialogText, setErrorDialogText] = useState('');
@@ -53,7 +54,7 @@ const RegisterOrganization = () => {
     event.preventDefault();
 
     const emailRegex = /^\S+@\S+\.\S{2,}$/;
-    const phoneRegex = /^\+?\d{1,3}[-.\s]?\d{1,15}$/;
+    const phoneRegex = /^\+\d{1,3} \d{3}-\d{3}-\d{4}$/;
     const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d@$!%*?&]{8,15}$/;
 
     let newErrors = {};
@@ -63,7 +64,7 @@ const RegisterOrganization = () => {
     }
 
     if (!phoneRegex.test(formData.phoneNumber.trim())) {
-      newErrors.phoneNumber = 'Phone number should be in this format: +(ISD code)(1-15 digits)';
+      newErrors.phoneNumber = 'Phone number should be in this format: +(ISD code) xxx-xxx-xxxx';
     }
 
     if (!passwordRegex.test(formData.password)) {
@@ -85,6 +86,7 @@ const RegisterOrganization = () => {
       submitForm({ formData }).then((value) => {
         if (value.error) {
           alert(value.error);
+          setPage(1);
         }
         else
           navigate('/login');
@@ -203,10 +205,22 @@ const RegisterOrganization = () => {
               />
               <TextField
                 style={textFieldStyle}
+                type='number'
+                InputProps={{ inputProps: { min: 1800, max: 2021 } }}
                 label="Year of Establishment"
                 placeholder="Enter year of establishment"
                 name="yearOfEstablishment"
                 value={formData.yearOfEstablishment}
+                onChange={handleChange}
+              />
+              <TextField
+                multiline
+                rows={4}
+                style={textFieldStyle}
+                label="Brief Description"
+                placeholder="Enter a brief description of your organization"
+                name="description"
+                value={formData.description}
                 onChange={handleChange}
               />
               <Button
@@ -238,12 +252,25 @@ const RegisterOrganization = () => {
 };
 
 async function submitForm({ formData }) {
-  const response = await fetch(`${API_URL}/individuals`, {
+  const organization = {
+    company_name: formData.legalName,
+    user: {
+      email: formData.email,
+      phone_number: formData.phoneNumber,
+      username: formData.username,
+      password: formData.password,
+    },
+    headquarter_location: formData.headquartersLocation,
+    CEOname: formData.ceoName,
+    year_of_establishment: formData.yearOfEstablishment,
+    description: formData.description,
+  };
+  const response = await fetch(`${API_URL}/organizations`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ formData }),
+    body: JSON.stringify({ organization }),
   });
   const data = await response.json();
   if (!response.ok) {
