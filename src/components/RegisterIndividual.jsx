@@ -45,7 +45,21 @@ const RegisterIndividual = () => {
       [event.target.name]: event.target.value,
     });
   };
-
+  const isLetter = (char) => {
+    return /^[A-Za-z]*$/.test(char);
+  };
+  
+  const handleNameChange = (event) => {
+    const { name, value } = event.target;
+    const inputValue = value.trim();
+  
+    if (inputValue === '' || isLetter(inputValue)) {
+      setFormData({
+        ...formData,
+        [name]: inputValue,
+      });
+    }
+  };
   const handleDialogClose = () => {
     setOpenDialog(false);
     setErrorDialogText('');
@@ -122,15 +136,30 @@ const RegisterIndividual = () => {
                 placeholder="Enter your first name"
                 name="firstName"
                 value={formData.firstName}
-                onChange={handleChange}
+                onChange={handleNameChange}
+                onKeyPress={(event) => {
+                const char = String.fromCharCode(event.charCode);
+                if (!isLetter(char) && char !== ' ') {
+                    event.preventDefault();
+                  }
+                }}
               />
+
+
+
               <TextField
                 style={textFieldStyle}
-                label="Last Name"
-                placeholder="Enter your last name"
+                label="Lasr Name"
+                placeholder="Enter your Last name"
                 name="lastName"
                 value={formData.lastName}
-                onChange={handleChange}
+                onChange={handleNameChange}
+                onKeyPress={(event) => {
+                const char = String.fromCharCode(event.charCode);
+                if (!isLetter(char) && char !== ' ') {
+                    event.preventDefault();
+                  }
+                }}
               />
               <TextField
                 style={textFieldStyle}

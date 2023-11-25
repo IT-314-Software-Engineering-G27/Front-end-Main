@@ -196,6 +196,8 @@ const RegisterOrganization = () => {
                 onChange={handleChange}
               />
               <TextField
+                type="number"
+                InputProps={{ inputProps: { min: 18, max: 120 } }}
                 style={textFieldStyle}
                 label="Age"
                 placeholder="Enter age since establishment"
