@@ -52,7 +52,7 @@ const RegisterOrganization = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
     const phoneRegex = /^\+\d{1,3} \d{3}-\d{3}-\d{4}$/;
     const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,15}$/;
 
