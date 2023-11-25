@@ -52,9 +52,9 @@ const RegisterOrganization = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    const emailRegex = /^\S+@\S+\.\S{2,}$/;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const phoneRegex = /^\+\d{1,3} \d{3}-\d{3}-\d{4}$/;
-    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d@$!%*?&]{8,15}$/;
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,15}$/;
 
     let newErrors = {};
 
@@ -67,8 +67,7 @@ const RegisterOrganization = () => {
     }
 
     if (!passwordRegex.test(formData.password)) {
-      newErrors.password =
-        'Password must be 8-15 characters, with at least one letter and one digit';
+      newErrors.password =   'Password must be 8-15 characters, with at least one capital letter, one small letter, one number and one special character from @$!%*?&';
     }
 
     setErrors(newErrors);

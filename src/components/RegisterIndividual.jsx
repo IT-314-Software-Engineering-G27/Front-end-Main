@@ -48,11 +48,11 @@ const RegisterIndividual = () => {
   const isLetter = (char) => {
     return /^[A-Za-z]*$/.test(char);
   };
-  
+
   const handleNameChange = (event) => {
     const { name, value } = event.target;
     const inputValue = value.trim();
-  
+
     if (inputValue === '' || isLetter(inputValue)) {
       setFormData({
         ...formData,
@@ -68,9 +68,11 @@ const RegisterIndividual = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    const emailRegex = /^\S+@\S+\.\S{2,}$/;
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const phoneRegex = /^\+\d{1,3} \d{3}-\d{3}-\d{4}$/;
-    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d@$!%*?&]{8,15}$/;
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,15}$/;
+
     let newErrors = {};
 
     if (!emailRegex.test(formData.email.trim())) {
@@ -82,8 +84,7 @@ const RegisterIndividual = () => {
     }
 
     if (!passwordRegex.test(formData.password)) {
-      newErrors.password =
-        'Password must be 8-15 characters, with at least one letter and one digit';
+      newErrors.password = 'Password must be 8-15 characters, with at least one capital letter, one small letter, one number and one special character from @$!%*?&';
     }
 
     setErrors(newErrors);
@@ -138,25 +139,22 @@ const RegisterIndividual = () => {
                 value={formData.firstName}
                 onChange={handleNameChange}
                 onKeyPress={(event) => {
-                const char = String.fromCharCode(event.charCode);
-                if (!isLetter(char) && char !== ' ') {
+                  const char = String.fromCharCode(event.charCode);
+                  if (!isLetter(char) && char !== ' ') {
                     event.preventDefault();
                   }
                 }}
               />
-
-
-
               <TextField
                 style={textFieldStyle}
-                label="Lasr Name"
+                label="Last Name"
                 placeholder="Enter your Last name"
                 name="lastName"
                 value={formData.lastName}
                 onChange={handleNameChange}
                 onKeyPress={(event) => {
-                const char = String.fromCharCode(event.charCode);
-                if (!isLetter(char) && char !== ' ') {
+                  const char = String.fromCharCode(event.charCode);
+                  if (!isLetter(char) && char !== ' ') {
                     event.preventDefault();
                   }
                 }}
@@ -310,7 +308,7 @@ async function submitForm({ formData }) {
     country: formData.country,
     age: formData.age,
     degree: formData.highestQualification,
-    skills: formData.skills.split(','),
+    skills: formData.skills.split(',').map((skill) => skill.trim()),
     bio: formData.bio,
   };
   const response = await fetch(`${API_URL}/individuals`, {
