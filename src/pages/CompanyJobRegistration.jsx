@@ -16,15 +16,12 @@ export default function CompanyJobRegistration() {
         posting_location: "",
         requirements: "",
         salary: 0,
-        deadline: new Date(),
+        deadline: "none",
         compensations: "",
         duration: "full-time"
     });
 
     const navigate = useNavigate();
-
-    useEffect(() => {
-    }, [jobProfile]);
 
     return (
         <div style={{
@@ -130,12 +127,11 @@ export default function CompanyJobRegistration() {
                     focused
                     type="date"
                     onChange={(e) => {
-                        const b = e.target.value.split(/\D/);
                         setJobProfile({
-                            ...jobProfile, deadline: new Date(b[0], --b[1], b[2])
+                            ...jobProfile, deadline: e.target.value
                         })
                     }}
-                    value={`${jobProfile.deadline.getFullYear()}-${jobProfile.deadline.getMonth() + 1}-${jobProfile.deadline.getDate()}`}
+                    value={jobProfile.deadline}
                 />
                 <Button variant="contained" sx={{ width: " 200px", border: "solid white 1px", borderRadius: "5px" }} disabled={!auth?.session?.user?.organization} onClick={async () => {
                     const { _id, error } = await postJobProfile({ token: auth.session.token, jobProfile });
@@ -155,6 +151,7 @@ export default function CompanyJobRegistration() {
 }
 
 async function postJobProfile({ token, jobProfile }) {
+    jobProfile.deadline = new Date(jobProfile.deadline);
     const response = await fetch(`${API_URL}/job-profiles`, {
         method: 'POST',
         headers: {

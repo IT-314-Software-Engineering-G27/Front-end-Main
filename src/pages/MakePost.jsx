@@ -13,7 +13,7 @@ export default function PostForm() {
         subject: "",
         description: "",
     });
-
+    const [loading, setLoading] = useState(false);
     const inputRef1 = useRef(null);
     const [image1, setImage1] = useState("");
 
@@ -89,16 +89,18 @@ export default function PostForm() {
                         </Box>
                     </Container>
                 </div>
-                <Button variant="contained" sx={{ width: " 200px", border: "solid white 1px", borderRadius: "5px" }} disabled={post.title === "" || post.subject === "" || post.description === "" || !auth?.session?.user}
+                <Button variant="contained" sx={{ width: " 200px", border: "solid white 1px", borderRadius: "5px" }} disabled={post.title === "" || post.subject === "" || post.description === "" || !auth?.session?.user || loading}
                     onClick={() => {
+                        setLoading(true);
                         postPost({ post, file: image1, token: auth.session.token }).then((response) => {
                             if (response.error)
                                 alert(response.error);
                             else
                                 navigate(`/posts/${response._id}`);
+                            setLoading(false);
                         })
                     }}>
-                    Post
+                    {loading ? "Loading..." : "Post"}
                 </Button>
                 <Typography variant="body1" sx={{ color: "red" }}>  {post.title === "" && "Please enter a title"}  </Typography>
                 <Typography variant="body1" sx={{ color: "red" }}>  {post.subject === "" && "Please enter a subject"}</Typography>

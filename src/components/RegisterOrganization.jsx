@@ -28,7 +28,6 @@ const RegisterOrganization = () => {
     confirmPassword: '',
     headquartersLocation: '',
     ceoName: '',
-    age: '',
     yearOfEstablishment: '',
     description: '',
   });
@@ -53,9 +52,9 @@ const RegisterOrganization = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    const emailRegex = /^\S+@\S+\.\S{2,}$/;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const phoneRegex = /^\+\d{1,3} \d{3}-\d{3}-\d{4}$/;
-    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d@$!%*?&]{8,15}$/;
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,15}$/;
 
     let newErrors = {};
 
@@ -68,8 +67,7 @@ const RegisterOrganization = () => {
     }
 
     if (!passwordRegex.test(formData.password)) {
-      newErrors.password =
-        'Password must be 8-15 characters, with at least one letter and one digit';
+      newErrors.password =   'Password must be 8-15 characters, with at least one capital letter, one small letter, one number and one special character from @$!%*?&';
     }
 
     setErrors(newErrors);
@@ -182,7 +180,7 @@ const RegisterOrganization = () => {
               <TextField
                 style={textFieldStyle}
                 label="Location of Headquarters"
-                placeholder="Enter location of heaquarters"
+                placeholder="Enter location of headquarters"
                 name="headquartersLocation"
                 value={formData.headquartersLocation}
                 onChange={handleChange}
@@ -193,16 +191,6 @@ const RegisterOrganization = () => {
                 placeholder="Enter name of CEO"
                 name="ceoName"
                 value={formData.ceoName}
-                onChange={handleChange}
-              />
-              <TextField
-                type="number"
-                InputProps={{ inputProps: { min: 18, max: 120 } }}
-                style={textFieldStyle}
-                label="Age"
-                placeholder="Enter age since establishment"
-                name="age"
-                value={formData.age}
                 onChange={handleChange}
               />
               <TextField
