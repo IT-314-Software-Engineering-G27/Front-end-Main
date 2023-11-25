@@ -10,6 +10,8 @@ export default function EventRegistration() {
     const [images, setImages] = useState([]);
     const { eventId } = useParams();
     const navigate = useNavigate();
+    const [loading, setLoading] = useState(false);
+
     const [registration, setRegistration] = useState({
         title: "",
         description: "",
@@ -67,16 +69,20 @@ export default function EventRegistration() {
                     <EventImage id={2} setImages={setImages} />
                 </Grid>
                 <Button variant="contained" sx={{ width: " 200px", border: "solid white 1px", borderRadius: "5px" }}
+                    disabled={loading}
                     onClick={() => {
+                        setLoading(true);
                         postRegistration({ token: auth?.session?.token, registration, eventId, images }).then((data) => {
                             if (data.error) {
                                 alert(data.error.message);
                             } else {
                                 navigate(`/startups/${data._id}`);
                             }
+                            setLoading(false);
                         });
                     }}
-                >Submit</Button>
+                > {loading ? "Loading..." : "Submit"}
+                </Button>
             </Paper>
         </div>
     )
@@ -98,7 +104,7 @@ async function postRegistration({ token, registration, eventId, images }) {
 
     const registration_id = data.payload.registration._id;
     await Promise.all(images.map(async (image) => {
-        if(!image) return;
+        if (!image) return;
         const formData = new FormData();
         formData.append("file", image);
         const image_response = await fetch(`${API_URL}/files/registrations/${registration_id}`, {

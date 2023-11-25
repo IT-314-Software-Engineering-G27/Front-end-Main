@@ -29,7 +29,6 @@ function Form() {
         else {
             setError([]);
         }
-        console.log(organization);
     }, [organization, confirmPassword]);
 
     return (

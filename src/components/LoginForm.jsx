@@ -23,6 +23,7 @@ const LoginForm = () => {
     password: ''
   });
   const [errors, setErrors] = useState({});
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -74,12 +75,16 @@ const LoginForm = () => {
             type="submit"
             variant="contained"
             color="primary"
+            disabled={loading}
             onClick={(e) => {
               e.preventDefault();
-              auth.login({ email: user.email, password: user.password });
+              setLoading(true);
+              auth.login({ email: user.email, password: user.password }).then((res) => {
+                setLoading(false);
+              });
             }}
           >
-            Submit
+            {loading ? 'Loading...' : 'Login'}
           </Button>
         </form>
       </Paper>
