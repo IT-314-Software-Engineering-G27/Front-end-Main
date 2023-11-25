@@ -205,7 +205,7 @@ const RegisterIndividual = () => {
                 style={textFieldStyle}
                 label="Highest Qualification"
                 placeholder="Enter your highest qualification"
-                name="highestQualification"
+                name="degree"
                 value={formData.highestQualification}
                 onChange={handleChange}
               />
