@@ -45,9 +45,26 @@ const RegisterIndividual = () => {
       [event.target.name]: event.target.value,
     });
   };
+  const handleChange1 = (event) => {
+    const { name, value } = event.target;
+  
+    if (name === 'country' || name === 'college') {
+      const onlyLetters = value.replace(/[^A-Za-z\s]/gi, ''); // Allow only letters and spaces
+      setFormData({
+        ...formData,
+        [name]: onlyLetters,
+      });
+    } else {
+      setFormData({
+        ...formData,
+        [name]: value,
+      });
+    }
+  };
   const isLetter = (char) => {
     return /^[A-Za-z]*$/.test(char);
   };
+  
   
   const handleNameChange = (event) => {
     const { name, value } = event.target;
@@ -222,7 +239,7 @@ const RegisterIndividual = () => {
                 placeholder="Enter your college name"
                 name="college"
                 value={formData.college}
-                onChange={handleChange}
+                onChange={handleChange1}
               />
               <TextField
                 style={textFieldStyle}
@@ -230,8 +247,8 @@ const RegisterIndividual = () => {
                 placeholder="Enter your country"
                 name="country"
                 value={formData.country}
-                onChange={handleChange}
-              />
+                onChange={handleChange1}
+                />
               <TextField
                 type="number"
                 InputProps={{ inputProps: { min: 18, max: 120 } }}
