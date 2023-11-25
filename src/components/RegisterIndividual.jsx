@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router';
+import { API_URL } from '../config';
 import {
   Grid,
   Paper,
@@ -27,11 +29,13 @@ const RegisterIndividual = () => {
     college: '',
     country: '',
     age: '',
-    highestQualification: '',
+    degree: '',
     skills: '',
+    bio: '',
   });
   const [openDialog, setOpenDialog] = useState(false);
   const [errorDialogText, setErrorDialogText] = useState('');
+  const navigate = useNavigate();
 
   const textFieldStyle = { marginBottom: 10, width: '100%' };
 
@@ -51,9 +55,8 @@ const RegisterIndividual = () => {
     event.preventDefault();
 
     const emailRegex = /^\S+@\S+\.\S{2,}$/;
-    const phoneRegex = /^\+?\d{1,3}[-.\s]?\d{1,15}$/;
+    const phoneRegex = /^\+\d{1,3} \d{3}-\d{3}-\d{4}$/;
     const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d@$!%*?&]{8,15}$/;
-
     let newErrors = {};
 
     if (!emailRegex.test(formData.email.trim())) {
@@ -61,7 +64,7 @@ const RegisterIndividual = () => {
     }
 
     if (!phoneRegex.test(formData.mobileNumber.trim())) {
-      newErrors.mobileNumber = 'Phone number should be in this format: +(ISD code)(1-15 digits)';
+      newErrors.mobileNumber = 'Phone number should be in this format: +(ISD code) xxx-xxx-xxxx';
     }
 
     if (!passwordRegex.test(formData.password)) {
@@ -80,7 +83,14 @@ const RegisterIndividual = () => {
     }
 
     if (Object.keys(newErrors).length === 0 && page === 2) {
-      window.location.reload();
+      submitForm({ formData }).then((value) => {
+        if (value.error) {
+          alert(value.error);
+          setPage(1);
+        }
+        else
+          navigate('/login');
+      })
     }
   };
 
@@ -194,6 +204,8 @@ const RegisterIndividual = () => {
                 onChange={handleChange}
               />
               <TextField
+                type="number"
+                InputProps={{ inputProps: { min: 18, max: 120 } }}
                 style={textFieldStyle}
                 label="Age"
                 placeholder="Enter your age"
@@ -205,7 +217,7 @@ const RegisterIndividual = () => {
                 style={textFieldStyle}
                 label="Highest Qualification"
                 placeholder="Enter your highest qualification"
-                name="degree"
+                name="highestQualification"
                 value={formData.highestQualification}
                 onChange={handleChange}
               />
@@ -215,6 +227,16 @@ const RegisterIndividual = () => {
                 placeholder="Mention your skills separated by commas"
                 name="skills"
                 value={formData.skills}
+                onChange={handleChange}
+              />
+              <TextField
+                multiline
+                rows={4}
+                style={textFieldStyle}
+                label="Bio"
+                placeholder="Enter your bio"
+                name="bio"
+                value={formData.bio}
                 onChange={handleChange}
               />
               <Button
@@ -244,5 +266,38 @@ const RegisterIndividual = () => {
     </Grid>
   );
 };
+
+async function submitForm({ formData }) {
+  const individual = {
+    first_name: formData.firstName,
+    last_name: formData.lastName,
+    user: {
+      email: formData.email,
+      phone_number: formData.mobileNumber,
+      username: formData.username,
+      password: formData.password,
+    },
+    college: formData.college,
+    country: formData.country,
+    age: formData.age,
+    degree: formData.highestQualification,
+    skills: formData.skills.split(','),
+    bio: formData.bio,
+  };
+  const response = await fetch(`${API_URL}/individuals`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ individual }),
+  });
+  const data = await response.json();
+  if (!response.ok) {
+    return {
+      error: data.message
+    }
+  };
+  return data;
+}
 
 export default RegisterIndividual;

@@ -72,17 +72,7 @@ function SideBar() {
         <div id='drwr'>
         <Drawer optionList={commonOptionList} />
         </div>
-        {location.pathname === '/login' && (
-          // <div>
-            <div id='rightnav'>
-              <button id='snup'>
-                <Link to='/register'>
-                  Sign up
-                </Link>
-              </button>
-            </div>
-          // </div>
-        )}
+        {location.pathname === '/login'}
       </div>
     );
   }

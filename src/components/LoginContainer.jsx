@@ -5,15 +5,12 @@ import {
   Typography,
   Box,
   Button,
-  Tabs,
-  Tab,
 } from '@mui/material';
 import { LoremIpsum } from 'lorem-ipsum'
-import RegisterIndividual from './RegisterIndividual';
-import RegisterOrganization from './RegisterOrganization';
+import LoginForm from './LoginForm';
 import backgroundImage from '../assets/background.png';
 
-const RegisterContainer = () => {
+const LoginContainer = () => {
   const [value, setValue] = useState(0);
 
   const handleChange = (event, newValue) => {
@@ -30,14 +27,14 @@ const RegisterContainer = () => {
   const paperStyle = {
     width: '50%',
     marginLeft: '20px',
-    height: '100vh',
+    height: '80vh',
   };
 
   const backgroundImageStyle = {
     backgroundImage: `url(${backgroundImage})`,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
-    height: '100vh',
+    height: '80vh',
     width: '50%',
     position: 'relative',
   };
@@ -47,63 +44,28 @@ const RegisterContainer = () => {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    color: 'white', // Text color
+    color: 'white',
     textAlign: 'center',
   };
 
   const loremIpsum = new LoremIpsum();
   const loremIpsumText = loremIpsum.generateSentences(3);
 
-  function TabPanel(props) {
-    const { children, value, index, ...other } = props;
-
-    return (
-      <div
-        role="tabpanel"
-        hidden={value !== index}
-        id={`simple-tabpanel-${index}`}
-        aria-labelledby={`simple-tab-${index}`}
-        {...other}
-      >
-        {value === index && (
-          <Box>
-            <Typography>{children}</Typography>
-          </Box>
-        )}
-      </div>
-    );
-  }
-
   return (
     <div style={containerStyle}>
       <Paper elevation={20} style={paperStyle}>
-        <Tabs
-          value={value}
-          indicatorColor="primary"
-          textColor="primary"
-          onChange={handleChange}
-          aria-label="disabled tabs example"
-        >
-          <Tab label="Individuals" />
-          <Tab label="Organizations" />
-        </Tabs>
-        <TabPanel value={value} index={0}>
-          <RegisterIndividual />
-        </TabPanel>
-        <TabPanel value={value} index={1}>
-          <RegisterOrganization />
-        </TabPanel>
+        <LoginForm/>
       </Paper>
       <div style={backgroundImageStyle}>
         <div style={textOverImageStyle}>
           <h1>StartApp for Startups</h1>
           <p>{loremIpsumText}</p>
-          <Link to='/login'>
+          <Link to='/register'>
             <Button
               variant="contained"
               color="primary"
             >
-              Login
+              Sign Up
             </Button>
           </Link>
         </div>
@@ -112,4 +74,4 @@ const RegisterContainer = () => {
   );
 };
 
-export default RegisterContainer;
+export default LoginContainer;
