@@ -28,7 +28,6 @@ const RegisterOrganization = () => {
     confirmPassword: '',
     headquartersLocation: '',
     ceoName: '',
-    age: '',
     yearOfEstablishment: '',
     description: '',
   });
@@ -182,7 +181,7 @@ const RegisterOrganization = () => {
               <TextField
                 style={textFieldStyle}
                 label="Location of Headquarters"
-                placeholder="Enter location of heaquarters"
+                placeholder="Enter location of headquarters"
                 name="headquartersLocation"
                 value={formData.headquartersLocation}
                 onChange={handleChange}
@@ -193,16 +192,6 @@ const RegisterOrganization = () => {
                 placeholder="Enter name of CEO"
                 name="ceoName"
                 value={formData.ceoName}
-                onChange={handleChange}
-              />
-              <TextField
-                type="number"
-                InputProps={{ inputProps: { min: 18, max: 120 } }}
-                style={textFieldStyle}
-                label="Age"
-                placeholder="Enter age since establishment"
-                name="age"
-                value={formData.age}
                 onChange={handleChange}
               />
               <TextField
