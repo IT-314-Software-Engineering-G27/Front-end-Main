@@ -1,18 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../contexts/session';
 import {
   Grid,
   Paper,
   Avatar,
-  Typography,
   TextField,
   Button,
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  DialogContentText,
-  DialogActions,
+  Box,
 } from '@mui/material';
 import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined';
 
@@ -86,6 +81,9 @@ const LoginForm = () => {
           >
             {loading ? 'Loading...' : 'Login'}
           </Button>
+          <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
+            <Link to='/password-reset'>Forgot Password?</Link>
+          </Box>
         </form>
       </Paper>
     </Grid>
