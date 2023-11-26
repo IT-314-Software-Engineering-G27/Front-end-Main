@@ -5,8 +5,6 @@ import IndividualList from './pages/IndividualList';
 import OrganizationList from './pages/OrganizationList';
 import Login from './pages/Login';
 import Register from './pages/Register';
-import RegisterIndividual from './pages/RegisterIndividual';
-import RegisterOrganization from './pages/RegisterOrganization';
 import PostList from "./pages/PostList";
 import PostDetails from "./pages/PostDetails";
 import JobList from "./pages/JobList";
@@ -42,11 +40,7 @@ function Root() {
             <SideBar />
             <Routes>
                 <Route exact path="/" element={<Navigate to={"/home"} />} />
-                <Route path='/register'>
-                    <Route path="/register/individual" element={<RegisterIndividual />} />
-                    <Route path="/register/organization" element={<RegisterOrganization />} />
-                    <Route path="/register" element={<Register />} />
-                </Route>
+                <Route path="/register" element={<Register />} />
                 <Route path="/password-reset" element={<PasswordResetEmail />} />
                 <Route path="/password-reset/:resetId" element={<PasswordResetOTP />} />
                 <Route exact path="/login" element={<Login />} />
