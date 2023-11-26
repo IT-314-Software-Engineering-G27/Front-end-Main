@@ -105,7 +105,7 @@ function NavBar() {
             href="#app-bar-with-responsive-menu"
             sx={{
               mr: 2,
-              marginLeft:"0.5em",
+              marginLeft:{xs:'0.05rem',md:'0.4rem',lg:'0.5rem'},
               display: { xs: 'flex', md: 'none' },
               flexGrow: 1,
               fontFamily: 'monospace',

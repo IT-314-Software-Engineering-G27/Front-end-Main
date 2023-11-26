@@ -2,6 +2,7 @@ import '../styles/landing_page.css';
 import { Button, Grid, Box, Typography , useTheme} from "@mui/material";
 import { useState, useEffect } from 'react';
 import Laptop from "../assets/laptop.jpg"
+import banner from "../assets/banner.bmp"
 import Home from "../assets/Home.jpg"
 import intuit from "../assets/intuit.png";
 import twilio from "../assets/twilio.png";
@@ -120,6 +121,7 @@ const LandingPage = () => {
             </Box>
           </Grid>
         </Grid>
+        
 
         <Box sx={{ display: 'flex', flexDirection: 'row', mb: 10 }}>
           <Box sx={{ p: 4, pl: 8, display: 'flex', flexDirection: 'column' }}>
@@ -147,6 +149,7 @@ const LandingPage = () => {
             </Typography>
           </Box>
         </Box>
+        
       </div>
 
       <div id="featuresSection" sx={{ mt: '60px', mb: '100px', overflow: 'auto'}}>
@@ -161,28 +164,23 @@ const LandingPage = () => {
             </Box>
           </Grid>
         </Grid>
+        
       </div>
       <div className="Home">
-<Grid container justifyContent="center" sx={{ mt: 10, textAlign: 'center', borderBottom: '1px solid white' }}>
-    <Grid item xs={12} sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', pr: 40 }}>
-      <Box sx={{display:'flex',flexDirection:'column',}}>
-      <Typography sx={{ fontFamily:'helvetica',color: 'white', fontSize: '46px', lineHeight: '52px', mt: 1, textAlign: 'right' }}>
-        One
-      </Typography>
-      <Typography sx={{ fontFamily:'helvetica',color: 'white', fontSize: '46px', lineHeight: '52px' }}>
-        Platform
-      </Typography>
-      </Box>
-      <Typography className="eee" sx={{fontFamily:'helvetica', fontSize: '122px', lineHeight: '120px', fontWeight: 550 }}>
-        Endless
-      </Typography>
-    </Grid>
-    <Typography  className="eee" sx={{fontFamily:'helvetica', fontSize: '122px', lineHeight: '120px', fontWeight: 550, pl: 42, width: '100%', mb: 8 }}>
-      Opportunities
-    </Typography>
-  </Grid>
-  </div>
+      <Grid container justifyContent="center">
+          <Grid item xs={12}>
+            <Box>
+              <img
+                src={banner}
+                alt="Feature Image"
+                style={{ maxWidth: "100%", height: "auto", display: 'block'}}
+              />
+            </Box>
+          </Grid>
+        </Grid>
 
+      
+  </div>
       <Footer />
     </div>
   );
