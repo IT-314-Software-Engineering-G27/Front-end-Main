@@ -34,9 +34,9 @@ function MessageCard({ id }) {
                     {isLoading ? "Loading..." : message.content}
                 </Typography>
                 <Typography variant="caption1" sx={{ color: "black", minWidth: "10vw", textAlign: "end" }}>
-                    {isLoading ? "Loading..." : message.direction === "incoming" ?
-                        (new Date(message?.read_timestamp).toLocaleString() || "...") :
-                        (new Date(message?.sent_timestamp).toLocaleString() || "...")}
+                    {isLoading ? "Loading..." : message.direction === "outgoing" ?
+                        ((message?.read_timestamp && new Date(message.read_timestamp).toLocaleString()) || "...") :
+                        ((message?.sent_timestamp && new Date(message.sent_timestamp).toLocaleString()) || "...")}
                 </Typography>
             </Box>
         </Box>
