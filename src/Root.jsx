@@ -30,6 +30,7 @@ import Profile from "./pages/Profile";
 import SideBar from "./components/SideBar";
 import LandingPage from "./pages/LandingPage";
 import { useAuth } from "./contexts/session";
+import CircularProgress from "@mui/material/CircularProgress";
 
 function Root() {
     const auth = useAuth();
@@ -80,7 +81,8 @@ function Root() {
                     <Route path="/startups/:startupId" element={<StartupDetails />} />
                     <Route path="/organizations/JobRegistration" element={<CompanyJobRegistration />} />
                 </>}
-                <Route path="*" element={auth?.isLoading ? <></> : <NotFound />} />
+                <Route path="*" element={(auth && !auth?.isLoading) ? <NotFound /> :
+                    <CircularProgress color="secondary" sx={{ position: "absolute", top: "45%", left: "45%" }} size="20vh" />} />
             </Routes>
         </>
     );
