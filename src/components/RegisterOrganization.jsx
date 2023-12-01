@@ -19,12 +19,12 @@ import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOu
 const RegisterOrganization = () => {
   const [page, setPage] = useState(1);
   const [errors, setErrors] = useState({});
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     legalName: '',
     email: '',
     phoneNumber: '',
     username: '',
-    password: '',
     confirmPassword: '',
     headquartersLocation: '',
     ceoName: '',
@@ -54,8 +54,6 @@ const RegisterOrganization = () => {
 
     const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
     const phoneRegex = /^\+\d{1,3} \d{3}-\d{3}-\d{4}$/;
-    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,15}$/;
-
     let newErrors = {};
 
     if (!emailRegex.test(formData.email.trim())) {
@@ -64,10 +62,6 @@ const RegisterOrganization = () => {
 
     if (!phoneRegex.test(formData.phoneNumber.trim())) {
       newErrors.phoneNumber = 'Phone number should be in this format: +(ISD code) xxx-xxx-xxxx';
-    }
-
-    if (!passwordRegex.test(formData.password)) {
-      newErrors.password =   'Password must be 8-15 characters, with at least one capital letter, one small letter, one number and one special character from @$!%*?&';
     }
 
     setErrors(newErrors);
@@ -80,14 +74,18 @@ const RegisterOrganization = () => {
       setOpenDialog(true);
     }
 
+
     if (Object.keys(newErrors).length === 0 && page === 2) {
+      setLoading(true);
       submitForm({ formData }).then((value) => {
         if (value.error) {
           alert(value.error);
           setPage(1);
         }
-        else
-          navigate('/login');
+        else {
+          alert('Check your email for verification link');
+        }
+        setLoading(false);
       })
     }
   };
@@ -144,24 +142,6 @@ const RegisterOrganization = () => {
                 placeholder="Enter your username"
                 name="username"
                 value={formData.username}
-                onChange={handleChange}
-              />
-              <TextField
-                style={textFieldStyle}
-                label="Password"
-                placeholder="Enter your password"
-                type="password"
-                name="password"
-                value={formData.password}
-                onChange={handleChange}
-              />
-              <TextField
-                style={textFieldStyle}
-                label="Confirm Password"
-                placeholder="Confirm your password"
-                type="password"
-                name="confirmPassword"
-                value={formData.confirmPassword}
                 onChange={handleChange}
               />
               <Button
@@ -224,6 +204,7 @@ const RegisterOrganization = () => {
             </>
           )}
         </form>
+        {loading && <Typography variant='h2' style={{ margin: '20px' }}>Loading...</Typography>}
       </Paper>
 
       <Dialog open={openDialog} onClose={handleDialogClose}>
