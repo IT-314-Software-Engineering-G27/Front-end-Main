@@ -19,6 +19,8 @@ function ContactDetails() {
     const { data, fetchNextPage, hasNextPage, isFetchingNextPage } = useInfiniteQuery({
         queryKey: ["messages", { id: contactId, token: auth.session.token }],
         queryFn: ({ pageParam = 0 }) => fetchMessages({ id: contactId, page: pageParam || 0, token: auth.session.token }),
+        refetchInterval: 10 * 1000,
+        staleTime: 10 * 1000,
         getNextPageParam: (lastPage, pages) => {
             if (lastPage.length < 10)
                 return null;
